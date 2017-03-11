@@ -16,8 +16,8 @@ public class RoomService {
     @Autowired
     RoomRepository roomRepository;
 
-    public List<Room> getAll() {
-        return roomRepository.findAll();
+    public List<Room> getAllActive() {
+        return roomRepository.showActiveRoom();
     }
 
     public Room create(Room room) {

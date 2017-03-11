@@ -16,13 +16,20 @@ public class RoomRepositoryImpl implements RoomRepositoryCustom {
 
     @Override
     public Room deleteRoom(String id) {
-
         EntityManager em = entityManagerFactory.createEntityManager();
         em.getTransaction().begin();
         Room result = em.find(Room.class, id);
         result.setStatus(0);
         em.getTransaction().commit();
 
+        return result;
+    }
+
+    @Override
+    public List<Room> showActiveRoom() {
+        EntityManager em = entityManagerFactory.createEntityManager();
+        List<Room> result = em.createNativeQuery(
+                "SELECT * FROM ROOM WHERE STATUS=1", Room.class).getResultList();
         return result;
     }
 }
