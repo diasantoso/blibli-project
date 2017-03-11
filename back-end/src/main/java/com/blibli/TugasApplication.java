@@ -1,12 +1,12 @@
-package com.future;
+package com.blibli;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class FutureProjectApplication {
+public class TugasApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(FutureProjectApplication.class, args);
+		SpringApplication.run(TugasApplication.class, args);
 	}
 }
