@@ -19,6 +19,7 @@ import java.util.List;
  * Created by Dias on 3/11/2017.
  */
 @Controller
+@RequestMapping(value = "/api")
 public class RoomController {
     @Autowired
     RoomService roomService;
