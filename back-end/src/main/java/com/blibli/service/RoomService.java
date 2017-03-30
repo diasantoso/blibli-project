@@ -1,7 +1,7 @@
 package com.blibli.service;
 
 import com.blibli.model.Room;
-import com.blibli.repository.RoomRepository;
+import com.blibli.repository.room.RoomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,22 +1,9 @@
-package com.blibli.model;
-
-import org.hibernate.annotations.GenericGenerator;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+package com.blibli.response.room;
 
 /**
  * Created by Dias on 3/11/2017.
  */
-@Entity
-@Table(name = "Room")
-public class Room {
-
-    @Id
-    @GeneratedValue(generator="system-uuid")
-    @GenericGenerator(name="system-uuid", strategy = "uuid")
+public class RoomResponse {
     private String idRoom;
     private String name;
     private Integer capacity;
