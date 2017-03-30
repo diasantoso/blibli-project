@@ -43,9 +43,9 @@ public class OfficeController {
     @RequestMapping(value = "/offices", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public ResponseBack createOffice(@RequestBody OfficeResponse param) {
-        Office room = new Office();
-        BeanUtils.copyProperties(param, room);
-        Office result = officeService.create(room);
+        Office office = new Office();
+        BeanUtils.copyProperties(param, office);
+        Office result = officeService.create(office);
 
         ResponseBack responseBack = new ResponseBack();
         if(result!=null)
@@ -59,9 +59,9 @@ public class OfficeController {
     @RequestMapping(value = "/offices", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public ResponseBack updateOffice(@RequestBody OfficeResponse param) {
-        Office room = new Office();
-        BeanUtils.copyProperties(param, room);
-        Office result = officeService.create(room);
+        Office office = new Office();
+        BeanUtils.copyProperties(param, office);
+        Office result = officeService.create(office);
 
         ResponseBack responseBack = new ResponseBack();
         if(result!=null)
