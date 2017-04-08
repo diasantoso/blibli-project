@@ -1,21 +1,19 @@
-package com.blibli.model;
+package com.blibli.response.booking;
 
+import com.blibli.model.Room;
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.*;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import java.sql.Time;
 import java.util.Date;
 
 /**
- * Created by Dias on 3/31/2017.
+ * Created by Dias on 4/8/2017.
  */
-@Entity
-@Table(name = "Booking")
-public class Booking {
-
-    @Id
-    @GeneratedValue(generator = "system-uuid")
-    @GenericGenerator(name = "system-uuid", strategy = "uuid")
+public class BookingResponse {
     private String idBooking;
     private String subject;
     private String description;
@@ -24,11 +22,6 @@ public class Booking {
     private Time endTime;
     private Date addedDate;
     private Integer status;
-
-    @ManyToOne(cascade = CascadeType.MERGE)
-    private Employee employee;
-
-    @ManyToOne(cascade = CascadeType.MERGE)
     private Room room;
 
     public String getIdBooking() {
@@ -93,14 +86,6 @@ public class Booking {
 
     public void setStatus(Integer status) {
         this.status = status;
-    }
-
-    public Employee getEmployee() {
-        return employee;
-    }
-
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
     }
 
     public Room getRoom() {

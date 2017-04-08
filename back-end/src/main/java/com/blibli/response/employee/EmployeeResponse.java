@@ -1,5 +1,9 @@
 package com.blibli.response.employee;
 
+import com.blibli.model.Booking;
+
+import java.util.List;
+
 /**
  * Created by Dias on 3/30/2017.
  */
@@ -9,6 +13,7 @@ public class EmployeeResponse {
     private String email;
     private String password;
     private String role;
+    private List<Booking> booking;
 
     public String getIdEmployee() {
         return idEmployee;
@@ -48,5 +53,13 @@ public class EmployeeResponse {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public List<Booking> getBooking() {
+        return booking;
+    }
+
+    public void setBooking(List<Booking> booking) {
+        this.booking = booking;
     }
 }
