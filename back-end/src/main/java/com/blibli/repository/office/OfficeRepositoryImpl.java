@@ -32,4 +32,11 @@ public class OfficeRepositoryImpl implements OfficeRepositoryCustom {
                 "SELECT * FROM OFFICE WHERE STATUS=1", Office.class).getResultList();
         return result;
     }
+
+    @Override
+    public Office showOneOffice(String id) {
+        EntityManager em = entityManagerFactory.createEntityManager();
+        Office result = em.find(Office.class, id);
+        return result;
+    }
 }

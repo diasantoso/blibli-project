@@ -20,6 +20,10 @@ public class OfficeService {
         return officeRepository.showActiveOffice();
     }
 
+    public Office getOneActive(String id){
+        return officeRepository.showOneOffice(id);
+    }
+
     public Office create(Office room) {
         Office result = officeRepository.save(room);
         return result;

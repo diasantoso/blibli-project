@@ -85,4 +85,17 @@ public class OfficeController {
 
         return responseBack;
     }
+
+    //Get one office -- for get data to form when update
+    //can't use param bcs path /offices had been used on get all active offices methods
+    @RequestMapping(value = "/offices/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public OfficeResponse getOneActiveOffice(@PathVariable("id") String id){
+        Office data = officeService.getOneActive(id);
+        OfficeResponse result = new OfficeResponse();
+
+        BeanUtils.copyProperties(data , result);
+
+        return result;
+    }
 }

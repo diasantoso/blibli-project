@@ -10,4 +10,5 @@ import java.util.List;
 public interface OfficeRepositoryCustom {
     Office deleteOffice(String id);
     List<Office> showActiveOffice();
+    Office showOneOffice(String id);
 }
