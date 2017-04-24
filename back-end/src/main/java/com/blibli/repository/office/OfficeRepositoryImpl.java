@@ -36,7 +36,9 @@ public class OfficeRepositoryImpl implements OfficeRepositoryCustom {
     @Override
     public Office showOneOffice(String id) {
         EntityManager em = entityManagerFactory.createEntityManager();
-        Office result = em.find(Office.class, id);
+        Office result = (Office) em.createNativeQuery(
+                "SELECT * FROM OFFICE WHERE STATUS=1 AND id_office = '" + id +"' ", Office.class).getSingleResult();
+        //Office result = em.find(Office.class, id);
         return result;
     }
 }

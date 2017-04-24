@@ -11,9 +11,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 
 @Controller
+//this controller used for webpage mapping
 public class AppController {
 
     //likely... this calls the folders
+    //this mapping to access office page
     @RequestMapping("/offices")
     String office(ModelMap modal) {
         modal.addAttribute("title","Bliblibli");
