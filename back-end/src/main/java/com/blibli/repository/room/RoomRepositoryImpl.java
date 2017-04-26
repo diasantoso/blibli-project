@@ -8,7 +8,7 @@ import javax.persistence.EntityManagerFactory;
 import java.util.List;
 
 /**
- * Created by Dias on 3/11/2017.
+ * Created by Adin on 4/24/2017.
  */
 public class RoomRepositoryImpl implements RoomRepositoryCustom {
     @Autowired
@@ -30,6 +30,14 @@ public class RoomRepositoryImpl implements RoomRepositoryCustom {
         EntityManager em = entityManagerFactory.createEntityManager();
         List<Room> result = em.createNativeQuery(
                 "SELECT * FROM ROOM WHERE STATUS=1", Room.class).getResultList();
+        return result;
+    }
+
+    @Override
+    public Room showOneRoom(String id) {
+        EntityManager em = entityManagerFactory.createEntityManager();
+        Room result = (Room) em.createNativeQuery(
+                "SELECT * FROM ROOM WHERE STATUS=1 AND id_room= '" + id +"' ", Room.class).getSingleResult();
         return result;
     }
 }

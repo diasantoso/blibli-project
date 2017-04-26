@@ -12,11 +12,11 @@ public class RoomResponse {
     private String numberExtension;
     private Integer status;
 
-    public String getId() {
+    public String getIdRoom() {
         return idRoom;
     }
 
-    public void setId(String id) {
+    public void setIdRoom(String id) {
         this.idRoom = id;
     }
 

@@ -11,7 +11,7 @@ import javax.persistence.Table;
  * Created by Dias on 3/11/2017.
  */
 @Entity
-@Table(name = "Room")
+@Table(name="Room")
 public class Room {
 
     @Id
@@ -25,12 +25,12 @@ public class Room {
     private String numberExtension;
     private Integer status;
 
-    public String getId() {
+    public String getIdRoom() {
         return idRoom;
     }
 
-    public void setId(String id) {
-        this.idRoom = id;
+    public void setIdRoom(String idRoom) {
+        this.idRoom = idRoom;
     }
 
     public String getName() {

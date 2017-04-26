@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * Created by Dias on 3/11/2017.
+ * Created by Adin on 4/24/2017.
  */
 @Service
 public class RoomService {
@@ -19,6 +19,8 @@ public class RoomService {
     public List<Room> getAllActive() {
         return roomRepository.showActiveRoom();
     }
+
+    public Room getOneActive (String id){ return roomRepository.showOneRoom(id);}
 
     public Room create(Room room) {
         Room result = roomRepository.save(room);

@@ -2,11 +2,13 @@ package com.blibli.controller;
 
 import com.blibli.model.Room;
 import com.blibli.response.ResponseBack;
+import com.blibli.response.office.OfficeResponse;
 import com.blibli.response.room.RoomResponse;
 import com.blibli.response.room.RoomResponseList;
 import com.blibli.service.RoomService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Dias on 3/11/2017.
+ * Created by Adin on 4/24/2017.
  */
 @Controller
 @RequestMapping(value = "/api")
@@ -83,5 +85,17 @@ public class RoomController {
             responseBack.setResponse("failed delete");
 
         return responseBack;
+    }
+
+    //Mapping to get one room based on their ID
+    @RequestMapping(value = "/rooms/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public RoomResponse getOneActiveRoom(@PathVariable ("id") String id) {
+        Room data = roomService.getOneActive(id);
+        RoomResponse result = new RoomResponse();
+
+        BeanUtils.copyProperties(data,result);
+
+        return result;
     }
 }
