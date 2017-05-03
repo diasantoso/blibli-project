@@ -11,6 +11,7 @@ public class RoomResponse {
     private Integer isProjector;
     private String numberExtension;
     private Integer status;
+    private String office;
 
     public String getIdRoom() {
         return idRoom;
@@ -66,5 +67,14 @@ public class RoomResponse {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+
+    public String getOffice() {
+        return office;
+    }
+
+    public void setOffice(String office) {
+        this.office = office;
     }
 }

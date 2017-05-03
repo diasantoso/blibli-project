@@ -2,10 +2,7 @@ package com.blibli.model;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Created by Dias on 3/11/2017.
@@ -24,6 +21,9 @@ public class Room {
     private Integer isProjector;
     private String numberExtension;
     private Integer status;
+
+    @ManyToOne(cascade = CascadeType.MERGE)
+    private Office office;
 
     public String getIdRoom() {
         return idRoom;
@@ -79,5 +79,13 @@ public class Room {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public Office getOffice() {
+        return office;
+    }
+
+    public void setOffice(Office office) {
+        this.office = office;
     }
 }

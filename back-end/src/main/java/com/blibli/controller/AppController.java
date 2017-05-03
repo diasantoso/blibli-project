@@ -22,6 +22,8 @@ public class AppController {
         return "office/index";
     }
 
+
+
     @RequestMapping("/partials/{page}")
     String partialHandler(@PathVariable("page") final String page) {
         return "office/"+page;
