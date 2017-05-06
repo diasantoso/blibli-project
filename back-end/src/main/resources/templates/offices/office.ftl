@@ -1,3 +1,4 @@
+
 <div class="generic-container">
     <div class="panel panel-default">
         <!-- Default panel contents -->
@@ -57,7 +58,7 @@
 	                    <#--<div class="form-group col-md-12">-->
 	                        <#--<label class="col-md-2 control-lable" for="age">Age</label>-->
 	                        <#--<div class="col-md-7">-->
-	                            <#--<input type="text" ng-model="ctrlOffice.office.age" id="age" class="form-control input-sm" placeholder="Enter your Age." required ng-pattern="ctrl.onlyIntegers"/>-->
+	                            <#--<input type="text" ng-model="ctrlOffice.offices.age" id="age" class="form-control input-sm" placeholder="Enter your Age." required ng-pattern="ctrl.onlyIntegers"/>-->
 	                        <#--</div>-->
 	                    <#--</div>-->
 	                <#--</div>-->

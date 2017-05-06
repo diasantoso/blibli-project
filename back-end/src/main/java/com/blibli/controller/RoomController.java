@@ -87,7 +87,7 @@ public class RoomController {
         return responseBack;
     }
 
-    //Mapping to get one room based on their ID
+    //Mapping to get one rooms based on their ID
     @RequestMapping(value = "/rooms/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public RoomResponse getOneActiveRoom(@PathVariable ("id") String id) {

@@ -15,18 +15,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class AppController {
 
     //likely... this calls the folders
-    //this mapping to access office page
+    //this mapping to access offices page
     @RequestMapping("/offices")
     String office(ModelMap modal) {
         modal.addAttribute("title","Bliblibli");
-        return "office/index";
+        return "offices/index";
     }
 
-
+    @RequestMapping("/rooms")
+    String room(ModelMap modal) {
+        modal.addAttribute("title","Bliblibli");
+        return "rooms/index";
+    }
 
     @RequestMapping("/partials/{page}")
     String partialHandler(@PathVariable("page") final String page) {
-        return "office/"+page;
+        return "/templates/offices/" +page;
     }
 
 }

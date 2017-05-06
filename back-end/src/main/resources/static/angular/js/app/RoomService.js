@@ -1,33 +1,33 @@
 'use strict';
 
-angular.module('bookingApp').factory('OfficeService',
+angular.module('bookingApp').factory('RoomService',
     ['$localStorage','$http','$q','urls',
         function ($localStorage,$http,$q,urls){
 
             var factory = {
-                loadAllOffices : loadAllOffices,
-                getAllOffices : getAllOffices,
-                getOffice : getOffice,
-                createOffice : createOffice,
-                updateOffice : updateOffice,
-                removeOffice : removeOffice
+                loadAllRooms : loadAllRooms,
+                getAllRooms : getAllRooms,
+                getRoom : getRoom,
+                createRoom : createRoom,
+                updateRoom : updateRoom,
+                removeRoom : removeRoom
             };
 
             return factory;
 
-            function loadAllOffices(){
-                console.log('Fetching all offices');
+            function loadAllRooms(){
+                console.log('Fetching all Rooms');
                 var deferred = $q.defer();
-                $http.get(urls.OFFICE_SERVICE_API)
+                $http.get(urls.ROOM_SERVICE_API)
                     .then(
                         function (response){
-                            console.log('Fetched successfully all Offices');
+                            console.log('Fetched successfully all Rooms');
 
-                            $localStorage.offices = response.data.value;
+                            $localStorage.rooms = response.data.value;
                             deferred.resolve(response);
                         },
                         function (errResponse){
-                            console.error('Error while Fetching offices');
+                            console.error('Error while Fetching Rooms');
                             console.error(errResponse);
                             deferred.reject(errResponse);
                         }
@@ -35,39 +35,39 @@ angular.module('bookingApp').factory('OfficeService',
                 return deferred.promise;
             }
 
-            function getAllOffices(){
-                return $localStorage.offices;
+            function getAllRooms(){
+                return $localStorage.rooms;
             }
 
-            function getOffice(id){
-                console.log('Fetching Office with id : ' +id);
+            function getRoom(id){
+                console.log('Fetching Room with id : ' +id);
                 var deferred =  $q.defer();
-                $http.get(urls.OFFICE_SERVICE_API + id)
+                $http.get(urls.ROOM_SERVICE_API + id)
                     .then(
                         function (response){
-                            console.log('Fetched successfully offices with id : ' + id);
+                            console.log('Fetched successfully Room with id : ' + id);
                             deferred.resolve(response.data);
                         },
                         function (errResponse) {
-                            console.error('Error while loading offices with id : ' +id);
+                            console.error('Error while loading Room with id : ' +id);
                             deferred.reject(errResponse);
                         }
                     );
                  return deferred.promise;
             }
 
-            function createOffice(office){
-                console.log('Creating Office');
+            function createRoom(room){
+                console.log('Creating Room');
                 var deferred = $q.defer();
-                $http.post(urls.OFFICE_SERVICE_API, office)
+                $http.post(urls.ROOM_SERVICE_API, room)
                     .then(
                         function (response){
-                            loadAllOffices();
+                            loadAllRooms();
                             deferred.resolve(response.data);
                         },
 
                         function (errResponse) {
-                            console.error('Error while creating Office : ' + errResponse.data.errorMessage);
+                            console.error('Error while creating Room: ' + errResponse.data.errorMessage);
                             deferred.reject(errResponse);
                         }
                     );
@@ -75,35 +75,35 @@ angular.module('bookingApp').factory('OfficeService',
                  return deferred.promise;
             }
 
-            function updateOffice(office , id){
-                console.log('Updating Office with id ' + id);
+            function updateRoom(office , id){
+                console.log('Updating Room with id ' + id);
                 var deferred = $q.defer();
-                $http.put(urls.OFFICE_SERVICE_API + id, user)
+                $http.put(urls.ROOM_SERVICE_API + id, user)
                     .then(
                         function (response){
-                            loadAllOffices();
+                            loadAllRooms();
                             deferred.resolve(response.data);
                         },
                         function (errResponse){
-                            console.error('Error while updating offices with id : ' + id);
+                            console.error('Error while updating Room with id : ' + id);
                             deferred.reject(errResponse);
                         }
                     );
                  return deferred.promise;
             }
 
-            function removeOffice(id){
-                console.log('Removing offices with id : ' +id);
+            function removeRoom(id){
+                console.log('Removing Room with id : ' +id);
                 var deferred = $q.defer();
-                $http.delete(urls.OFFICE_SERVICE_API+"?id="+id)
+                $http.delete(urls.ROOM_SERVICE_API+"?id="+id)
                     .then(
                         function (response){
-                            loadAllOffices();
+                            loadAllRooms();
                             deferred.resolve(response.data);
                         },
 
                         function (errResponse){
-                            console.error('Error while removing offices with id : '+ id);
+                            console.error('Error while removing Room with id : '+ id);
                             deferred.reject(errResponse);
                         }
                     );

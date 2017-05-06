@@ -34,7 +34,7 @@ angular.module('bookingApp').controller('OfficeController',
         }
 
         function createOffice (office){
-            console.log('About to create office');
+            console.log('About to create offices');
             OfficeService.createOffice(office)
                 .then(
                     function (response){
@@ -55,7 +55,7 @@ angular.module('bookingApp').controller('OfficeController',
         }
 
         function updateOffice (office , id){
-            console.log('About to update office');
+            console.log('About to update offices');
             OfficeService.updateOffice(office , id)
                 .then(
                     function (response){
@@ -84,7 +84,7 @@ angular.module('bookingApp').controller('OfficeController',
                         self.errorMessage='';
                     },
                     function (errResponse){
-                        console.error('Error while removing office '+id +', Error :'+errResponse.data);
+                        console.error('Error while removing offices '+id +', Error :'+errResponse.data);
                     }
                 );
         }
@@ -101,7 +101,7 @@ angular.module('bookingApp').controller('OfficeController',
                     self.office = office;
                 },
                 function (errResponse){
-                    console.error('Error while editing office '+id +', Error :'+errResponse.data);
+                    console.error('Error while editing offices '+id +', Error :'+errResponse.data);
                 }
             );
         }
