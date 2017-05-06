@@ -3,24 +3,24 @@
 <html lang="en" ng-app="bookingApp">
     <head>
         <title>${title}</title>
-        <link href="../angular/css/bootstrap.css" rel="stylesheet"/>
-        <link href="../angular/css/app.css" rel="stylesheet"/>
+        <link href="/angular/css/bootstrap.css" rel="stylesheet"/>
+        <link href="/angular/css/app.css" rel="stylesheet"/>
     </head>
     <body>
         <#-- Nav Bar -->
-        <nav class="navbar navbar-default"
+        <nav class="navbar navbar-default">
              <div class="container">
                  <div class="navbar-header">
                      <a class="navbar-brand" href="/">Blibli Booking Room Application</a>
                  </div>
                  <ul class="nav navbar-nav navbar-right">
                      <#--This #.... follows url=/ in app.js-->
-                     <li><a href="#"><i class="fa fa-home"></i></a></li>
-                     <li><a href="#offices"><i class="fa fa-shield"></i></a></li>
-                     <li><a href="#rooms"><i class="fa fa-comment"></i></a></li>
+                     <li><a href="#"><i class="fa fa-home"></i>Home</a></li>
+                     <li><a href="#offices"><i class="fa fa-shield"></i> Office </a></li>
+                     <li><a href="#rooms"><i class="fa fa-comment"></i> Room </a></li>
                  </ul>
              </div>
-
+        </nav>
         <#-- Content -->
         <div class="row">
             <div ui-view></div>

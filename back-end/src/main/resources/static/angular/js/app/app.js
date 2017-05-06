@@ -1,7 +1,7 @@
 var app = angular.module('bookingApp',['ui.router','ngStorage']);
 
 app.constant('urls',{
-    BASE : 'http://localhost:8080',
+    BASE : 'http://localhost:8080/',
     OFFICE_SERVICE_API : 'http://localhost:8080/api/offices/',
     ROOM_SERVICE_API : 'http://localhost:8080/api/rooms/'
 });
@@ -59,9 +59,9 @@ app.config(['$stateProvider', '$urlRouterProvider',
                             }
                         })
 
-                   .state('room',{
+                   .state('Room',{
                        url: '/rooms',
-                       templateUrl: 'partials/rooms/rooms',
+                       templateUrl: 'partials/rooms/room',
                        controller: 'roomController',
                        controllerAs: 'ctrlRoom',
                        resolve: {
