@@ -1,13 +1,14 @@
 package com.blibli.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
+import javax.validation.constraints.Size;
+import java.util.*;
 
 /**
- * Created by Dias on 3/30/2017.
+ * Editted by Audin on 5/8/2017.
  */
 @Entity
 @Table(name="Office")
@@ -24,8 +25,13 @@ public class Office {
     private Integer status;
 
 //    @OneToMany(mappedBy = "room")
-    @OneToMany(mappedBy = "office", cascade = CascadeType.ALL)
-    private Set<Room> rooms = new HashSet<Room>();
+//    @OneToMany(mappedBy = "office", cascade = CascadeType.ALL)
+//    private Set<Room> rooms = new HashSet<Room>();
+
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name="officeId" , nullable = false, insertable = false, updatable = false)
+    private List<Room> rooms = Collections.emptyList();
 
     public String getIdOffice() {
         return idOffice;
@@ -75,11 +81,4 @@ public class Office {
         this.status = status;
     }
 
-    public Set<Room> getRooms() {
-        return rooms;
-    }
-
-    public void setRooms(Set<Room> rooms) {
-        this.rooms = rooms;
-    }
 }

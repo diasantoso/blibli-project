@@ -2,12 +2,13 @@ package com.blibli.model;
 
 import com.blibli.service.OfficeService;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 
 /**
- * Created by Dias on 3/11/2017.
+ * Editted by Audin on 5/8/2017.
  */
 @Entity
 @Table(name="Room")
@@ -28,8 +29,18 @@ public class Room {
 //    @JoinColumn (name="idOffice")
 //    @JsonBackReference
 //    private Office office;
+//    @ManyToOne
+//    @JoinColumn(name = "idOffice")
+
+    @JsonIgnore
     @ManyToOne
-    @JoinColumn(name = "idOffice")
+    //name = "..." must match to the ones in whom it hasr relation with
+    //in this case between room.java and office.java
+    @JoinColumn(name="officeId", nullable = false)
+
+    //variable name (in this case 'private Office Office
+    // must match to the ones in model (here), response, and in web (.ftl)
+    // or else will be error -> the program read something unavailable ->NULL
     private Office office;
 
     public String getIdRoom() {
