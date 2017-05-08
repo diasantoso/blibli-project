@@ -1,5 +1,9 @@
 package com.blibli.response.office;
 
+import com.blibli.model.Room;
+
+import java.util.List;
+
 /**
  * Created by Dias on 3/30/2017.
  */
@@ -11,6 +15,7 @@ public class OfficeResponse {
     private String telephone;
     private Integer status;
 
+    private List<Room> rooms;
 
     public String getIdOffice() {
         return idOffice;
@@ -58,5 +63,13 @@ public class OfficeResponse {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public List<Room> getRooms() {
+        return rooms;
+    }
+
+    public void setRooms(List<Room> rooms) {
+        this.rooms = rooms;
     }
 }

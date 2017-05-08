@@ -1,5 +1,7 @@
 package com.blibli.response.room;
 
+import com.blibli.model.Office;
+
 /**
  * Created by Dias on 3/11/2017.
  */
@@ -12,7 +14,7 @@ public class RoomResponse {
     private String numberExtension;
     private Integer status;
 
-    private String idOffice;
+    private Office office;
 
     public String getIdRoom() {
         return idRoom;
@@ -70,11 +72,11 @@ public class RoomResponse {
         this.status = status;
     }
 
-    public String getIdOffice() {
-        return idOffice;
+    public Office getOffice() {
+        return office;
     }
 
-    public void setIdOffice(String idOffice) {
-        this.idOffice = idOffice;
+    public void setOffice(Office office) {
+        this.office = office;
     }
 }
