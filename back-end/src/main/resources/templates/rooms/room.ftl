@@ -7,7 +7,7 @@
 	            <div class="alert alert-success" role="alert" ng-if="ctrlRoom.successMessage">{{ctrlRoom.successMessage}}</div>
 	            <div class="alert alert-danger" role="alert" ng-if="ctrlRoom.errorMessage">{{ctrlRoom.errorMessage}}</div>
 	            <form ng-submit="ctrlRoom.submit()" name="myForm" class="form-horizontal">
-	                <input type="hidden" ng-model="ctrlRoom.room.id" />
+	                <input type="hidden" ng-model="ctrlRoom.room.idRoom" />
 	                <div class="row">
 	                    <div class="form-group col-md-12">
 	                        <label class="col-md-2 control-lable" for="uname">Name</label>
@@ -21,7 +21,7 @@
                         <div class="form-group col-md-12">
                             <label class="col-md-2 control-lable" for="capacity">Capacity</label>
                             <div class="col-md-7">
-                                <input type="text" ng-model="ctrlRoom.room.capacity" id="capacity" class="username form-control input-sm" placeholder="Enter Capacity for new Room" required />
+                                <input type="number" ng-model="ctrlRoom.room.capacity" id="capacity" class="username form-control input-sm" placeholder="Enter Capacity for new Room" required />
                             </div>
                         </div>
                     </div>
@@ -30,7 +30,7 @@
                         <div class="form-group col-md-12">
                             <label class="col-md-2 control-lable" for="isConference">isConference</label>
                             <div class="col-md-7">
-                                <input type="text" ng-model="ctrlRoom.room.isConference" ng-init="ctrlRoom.room.isProjector=1" id="isConference" class="username form-control input-sm" placeholder="isConference" required />
+                                <input type="text" ng-model="ctrlRoom.room.isConference" ng-init="ctrlRoom.room.isConference=1" id="isConference" class="username form-control input-sm" placeholder="isConference" required />
                             </div>
                         </div>
                     </div>
@@ -57,7 +57,7 @@
                         <div class="form-group col-md-12">
                             <label class="col-md-2 control-lable" for="status">Room Status</label>
                             <div class="col-md-7">
-                                <input type="text" ng-model="ctrlRoom.room.Status" ng-init="ctrlRoom.room.isProjector=1" id="status" class="username form-control input-sm" placeholder="Enter Status for new Room" required />
+                                <input type="text" ng-model="ctrlRoom.room.status" ng-init="ctrlRoom.room.status=1" id="status" class="username form-control input-sm" placeholder="Enter Status for new Room" required />
                             </div>
                         </div>
                     </div>
@@ -66,7 +66,7 @@
                         <div class="form-group col-md-12">
                             <label class="col-md-2 control-lable" for="office">Office</label>
                             <div class="col-md-7">
-                                <input type="text" ng-model="ctrlRoom.room.office" ng-init="ctrlRoom.room.office='4028abcf5ba063ff015ba06465d80000'" id="office" class="username form-control input-sm" placeholder="Enter Office for the new room" required />
+                                <input type="text" ng-model="ctrlRoom.room.office.idOffice" id="office" class="username form-control input-sm" placeholder="Enter Office for the new room" required />
                             </div>
                         </div>
                     </div>
@@ -91,7 +91,7 @@
 
 	                <div class="row">
 	                    <div class="form-actions floatRight">
-                            <input type="submit"  value="{{!ctrlRoom.room.id ? 'Add' : 'Update'}}" class="btn btn-primary btn-sm" ng-disabled="myForm.$invalid || myForm.$pristine">
+                            <input type="submit"  value="{{!ctrlRoom.room.idRoom ? 'Add' : 'Update'}}" class="btn btn-primary btn-sm" ng-disabled="myForm.$invalid || myForm.$pristine">
 	                        <button type="button" ng-click="ctrlRoom.reset()" class="btn btn-warning btn-sm" ng-disabled="myForm.$pristine">Reset Form</button>
 	                    </div>
 	                </div>
@@ -113,6 +113,7 @@
                         <th>ISCONFERENCE</th>
                         <th>ISPROJECTOR</th>
                         <th>NUMBER EXTENSION</th>
+                        <th>STATUS</th>
                         <th>OFFICE</th>
                         <th width="100"></th>
                         <th width="100"></th>
@@ -126,7 +127,8 @@
                         <td>{{u.isConference}}</td>
                         <td>{{u.isProjector}}</td>
                         <td>{{u.numberExtension}}</td>
-                        <td>{{u.office}}</td>
+                        <td>{{u.status}}</td>
+                        <td>{{u.office.name}}</td>
                         <td><button type="button" ng-click="ctrlRoom.editRoom(u.idRoom)" class="btn btn-success custom-width">Edit</button></td>
                         <td><button type="button" ng-click="ctrlRoom.removeRoom(u.idRoom)" class="btn btn-danger custom-width">Remove</button></td>
                     </tr>

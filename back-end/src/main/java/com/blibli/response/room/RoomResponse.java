@@ -3,7 +3,7 @@ package com.blibli.response.room;
 import com.blibli.model.Office;
 
 /**
- * Created by Dias on 3/11/2017.
+ * Editted by Audin on 5/8/2017.
  */
 public class RoomResponse {
     private String idRoom;
