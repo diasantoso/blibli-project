@@ -7,12 +7,12 @@
 	            <div class="alert alert-success" role="alert" ng-if="ctrlRoom.successMessage">{{ctrlRoom.successMessage}}</div>
 	            <div class="alert alert-danger" role="alert" ng-if="ctrlRoom.errorMessage">{{ctrlRoom.errorMessage}}</div>
 	            <form ng-submit="ctrlRoom.submit()" name="myForm" class="form-horizontal">
-	                <input type="hidden" ng-model="ctrlRoom.room.idRoom" />
+	                <input type="hidden" ng-model="ctrlRoom.room.id" />
 	                <div class="row">
 	                    <div class="form-group col-md-12">
 	                        <label class="col-md-2 control-lable" for="uname">Name</label>
 	                        <div class="col-md-7">
-	                            <input type="text" ng-model="ctrlRoom.room.name" id="uname" class="username form-control input-sm" placeholder="Enter new Room name" required ng-minlength="3"/>
+	                            <input type="text" ng-model="ctrlRoom.room.name" id="uname" class="username form-control input-sm" placeholder="Enter new Room name" required />
 	                        </div>
 	                    </div>
 	                </div>
@@ -21,7 +21,7 @@
                         <div class="form-group col-md-12">
                             <label class="col-md-2 control-lable" for="capacity">Capacity</label>
                             <div class="col-md-7">
-                                <input type="text" ng-model="ctrlOffice.office.capacity" id="capacity" class="username form-control input-sm" placeholder="Enter Capacity for new Room" required ng-minlength="3"/>
+                                <input type="text" ng-model="ctrlRoom.room.capacity" id="capacity" class="username form-control input-sm" placeholder="Enter Capacity for new Room" required />
                             </div>
                         </div>
                     </div>
@@ -30,7 +30,7 @@
                         <div class="form-group col-md-12">
                             <label class="col-md-2 control-lable" for="isConference">isConference</label>
                             <div class="col-md-7">
-                                <input type="text" ng-model="ctrlRoom.room.isConference" ng-init="ctrlRoom.room.isProjector=1" id="isConference" class="username form-control input-sm" placeholder="isConference" required ng-minlength="3"/>
+                                <input type="text" ng-model="ctrlRoom.room.isConference" ng-init="ctrlRoom.room.isProjector=1" id="isConference" class="username form-control input-sm" placeholder="isConference" required />
                             </div>
                         </div>
                     </div>
@@ -91,7 +91,7 @@
 
 	                <div class="row">
 	                    <div class="form-actions floatRight">
-	                        <input type="submit"  value="{{!ctrlRoom.room.idRoom ? 'Add' : 'Update'}}" class="btn btn-primary btn-sm" ng-disabled="myForm.$invalid || myForm.$pristine">
+                            <input type="submit"  value="{{!ctrlRoom.room.id ? 'Add' : 'Update'}}" class="btn btn-primary btn-sm" ng-disabled="myForm.$invalid || myForm.$pristine">
 	                        <button type="button" ng-click="ctrlRoom.reset()" class="btn btn-warning btn-sm" ng-disabled="myForm.$pristine">Reset Form</button>
 	                    </div>
 	                </div>

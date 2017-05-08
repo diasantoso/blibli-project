@@ -1,5 +1,7 @@
 package com.blibli.model;
 
+import com.blibli.service.OfficeService;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -22,7 +24,12 @@ public class Room {
     private String numberExtension;
     private Integer status;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
+//    @ManyToOne
+//    @JoinColumn (name="idOffice")
+//    @JsonBackReference
+//    private Office office;
+    @ManyToOne
+    @JoinColumn(name = "idOffice")
     private Office office;
 
     public String getIdRoom() {
@@ -81,11 +88,14 @@ public class Room {
         this.status = status;
     }
 
+
     public Office getOffice() {
         return office;
     }
 
     public void setOffice(Office office) {
+//        OfficeService officeService = new OfficeService();
+//        Office newOffice = officeService.getOneActive(office);
         this.office = office;
     }
 }

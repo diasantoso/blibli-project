@@ -26,7 +26,7 @@ angular.module('bookingApp').controller('RoomController',
             console.log('Submitting');
             if(self.room.id === undefined || self.room.id === null) {
                 console.log('Saving new Room');
-                createOffice(self.room);
+                createRoom(self.room);
             } else {
                 updateRoom(self.room, self.room.id);
                 console.log('rooms updated with id ', self.room.id);
@@ -75,8 +75,8 @@ angular.module('bookingApp').controller('RoomController',
         }
 
         function removeRoom (id){
-            console.log('About to remove Office with id '+id);
-            OfficeService.removeRoom(id)
+            console.log('About to remove Room with id '+id);
+            RoomService.removeRoom(id)
                 .then(
                     function(){
                         console.log('Room with '+id + ' removed successfully');

@@ -75,7 +75,7 @@ angular.module('bookingApp').factory('RoomService',
                  return deferred.promise;
             }
 
-            function updateRoom(office , id){
+            function updateRoom(room, id){
                 console.log('Updating Room with id ' + id);
                 var deferred = $q.defer();
                 $http.put(urls.ROOM_SERVICE_API + id, user)

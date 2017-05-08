@@ -2,10 +2,9 @@ package com.blibli.model;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by Dias on 3/30/2017.
@@ -24,6 +23,9 @@ public class Office {
     private String telephone;
     private Integer status;
 
+//    @OneToMany(mappedBy = "room")
+    @OneToMany(mappedBy = "office", cascade = CascadeType.ALL)
+    private Set<Room> rooms = new HashSet<Room>();
 
     public String getIdOffice() {
         return idOffice;
@@ -71,5 +73,13 @@ public class Office {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public Set<Room> getRooms() {
+        return rooms;
+    }
+
+    public void setRooms(Set<Room> rooms) {
+        this.rooms = rooms;
     }
 }

@@ -62,7 +62,7 @@ app.config(['$stateProvider', '$urlRouterProvider',
                    .state('Room',{
                        url: '/rooms',
                        templateUrl: 'partials/rooms/room',
-                       controller: 'roomController',
+                       controller: 'RoomController',
                        controllerAs: 'ctrlRoom',
                        resolve: {
                            rooms: function ($q, RoomService) {
