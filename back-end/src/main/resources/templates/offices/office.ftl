@@ -1,115 +1,96 @@
+<div class="main-panel">
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
 
-<div class="generic-container">
-    <div class="panel panel-default">
-        <!-- Default panel contents -->
-        <div class="panel-heading"><span class="lead">Office </span></div>
-		<div class="panel-body">
-	        <div class="formcontainer">
-	            <div class="alert alert-success" role="alert" ng-if="ctrlOffice.successMessage">{{ctrlOffice.successMessage}}</div>
-	            <div class="alert alert-danger" role="alert" ng-if="ctrlOffice.errorMessage">{{ctrlOffice.errorMessage}}</div>
-	            <form ng-submit="ctrlOffice.submit()" name="myForm" class="form-horizontal">
-	                <input type="hidden" ng-model="ctrlOffice.office.idOffice" />
-	                <div class="row">
-	                    <div class="form-group col-md-12">
-	                        <label class="col-md-2 control-lable" for="uname">Name</label>
-	                        <div class="col-md-7">
-	                            <input type="text" ng-model="ctrlOffice.office.name" id="uname" class="username form-control input-sm" placeholder="Enter new office name" required ng-minlength="3"/>
-	                        </div>
-	                    </div>
-	                </div>
+                <div class="col-md-12">
+                    <div class="card card-plain">
+                        <div class="header">
+                            <h4 class="title"><strong>OFFICE DATA</strong></h4>
+                            <p class="category">This is office data from Blibli.com. You can manage to add, update, delete data office.</p>
+                        </div>
+                        <br/><br/>
+                        <div class="content table-responsive table-full-width">
+                            <table class="table table-hover table-striped data">
+                                <thead>
+                                <tr>
+                                    <th width="100">ID</th>
+                                    <th width="200">NAME</th>
+                                    <th width="250">ADDRESS</th>
+                                    <th width="180">CITY</th>
+                                    <th width="200">TELEPHONE</th>
+                                    <th width="100"></th>
+                                    <th width="100"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr ng-repeat="u in ctrlOffice.getAllOffices()">
+                                    <td>{{u.idOffice}}</td>
+                                    <td>{{u.name}}</td>
+                                    <td>{{u.address}}</td>
+                                    <td>{{u.city}}</td>
+                                    <td>{{u.telephone}}</td>
+                                    <td><button type="button" ng-click="ctrlOffice.editOffice(u.idOffice)" data-toggle="modal" data-target="#myModalAdd" class="btn btn-success custom-width">Edit</button></td>
+                                    <td><button type="button" ng-click="ctrlOffice.removeOffice(u.idOffice)" class="btn btn-danger custom-width">Remove</button></td>
+                                </tr>
+                                </tbody>
+                            </table>
 
-                    <div class="row">
-                        <div class="form-group col-md-12">
-                            <label class="col-md-2 control-lable" for="address">Address</label>
-                            <div class="col-md-7">
-                                <input type="text" ng-model="ctrlOffice.office.address" id="address" class="username form-control input-sm" placeholder="Enter new Office address" required ng-minlength="3"/>
-                            </div>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalAdd">Add New Data</button><br/><br/>
+
                         </div>
                     </div>
-
-                    <div class="row">
-                        <div class="form-group col-md-12">
-                            <label class="col-md-2 control-lable" for="city">City</label>
-                            <div class="col-md-7">
-                                <input type="text" ng-model="ctrlOffice.office.city" id="city" class="username form-control input-sm" placeholder="Enter new Office city Location" required ng-minlength="3"/>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="form-group col-md-12">
-                            <label class="col-md-2 control-lable" for="status">Status</label>
-                            <div class="col-md-7">
-                                <input type="text" ng-model="ctrlOffice.office.status" ng-init="ctrlOffice.office.status=1" id="status" class="username form-control input-sm" required />
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="form-group col-md-12">
-                            <label class="col-md-2 control-lable" for="Telpne">Telpne</label>
-                            <div class="col-md-7">
-                                <input type="text" ng-model="ctrlOffice.office.telephone" id="Telpne" class="username form-control input-sm" placeholder="Enter new Office Phone" required />
-                            </div>
-                        </div>
-                    </div>
-
-	                <#--<div class="row">-->
-	                    <#--<div class="form-group col-md-12">-->
-	                        <#--<label class="col-md-2 control-lable" for="age">Age</label>-->
-	                        <#--<div class="col-md-7">-->
-	                            <#--<input type="text" ng-model="ctrlOffice.offices.age" id="age" class="form-control input-sm" placeholder="Enter your Age." required ng-pattern="ctrl.onlyIntegers"/>-->
-	                        <#--</div>-->
-	                    <#--</div>-->
-	                <#--</div>-->
-	<#---->
-	                <#--<div class="row">-->
-	                    <#--<div class="form-group col-md-12">-->
-	                        <#--<label class="col-md-2 control-lable" for="salary">Salary</label>-->
-	                        <#--<div class="col-md-7">-->
-	                            <#--<input type="text" ng-model="ctrl.user.salary" id="salary" class="form-control input-sm" placeholder="Enter your Salary." required ng-pattern="ctrl.onlyNumbers"/>-->
-	                        <#--</div>-->
-	                    <#--</div>-->
-	                <#--</div>-->
-
-	                <div class="row">
-	                    <div class="form-actions floatRight">
-	                        <input type="submit"  value="{{!ctrlOffice.office.id ? 'Add' : 'Update'}}" class="btn btn-primary btn-sm" ng-disabled="myForm.$invalid || myForm.$pristine">
-	                        <button type="button" ng-click="ctrlOffice.reset()" class="btn btn-warning btn-sm" ng-disabled="myForm.$pristine">Reset Form</button>
-	                    </div>
-	                </div>
-	            </form>
-    	    </div>
-		</div>	
-    </div>
-    <div class="panel panel-default">
-        <!-- Default panel contents -->
-        <div class="panel-heading"><span class="lead">List of Offices </span></div>
-        <div class="panel-body">
-            <div class="table-responsive">
-                <table class="table table-hover">
-                    <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>NAME</th>
-                        <th>ADDRESS</th>
-                        <th>CITY</th>
-                        <th width="100"></th>
-                        <th width="100"></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr ng-repeat="u in ctrlOffice.getAllOffices()">
-                        <td>{{u.idOffice}}</td>
-                        <td>{{u.name}}</td>
-                        <td>{{u.address}}</td>
-                        <td>{{u.city}}</td>
-                        <td><button type="button" ng-click="ctrlOffice.editOffice(u.idOffice)" class="btn btn-success custom-width">Edit</button></td>
-                        <td><button type="button" ng-click="ctrlOffice.removeOffice(u.idOffice)" class="btn btn-danger custom-width">Remove</button></td>
-                    </tr>
-                    </tbody>
-                </table>
+                </div>
             </div>
         </div>
+    </div>
+</div>
+</div>
+
+<div class="modal fade" id="myModalAdd" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Add / Update Data</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" ng-submit="ctrlOffice.submit()" name="myForm">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Name :</label>
+                        <div class="col-sm-8">
+                            <input type="text" ng-model="ctrlOffice.office.name" id="uname" class="username form-control input-sm" placeholder="Enter new office name" style="width:200px;"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Address :</label>
+                        <div class="col-sm-8">
+                            <input type="text" ng-model="ctrlOffice.office.address" id="address" class="username form-control input-sm" placeholder="Enter new office address" style="width:300px;"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">City :</label>
+                        <div class="col-sm-8">
+                            <input type="text" ng-model="ctrlOffice.office.city" id="city" class="username form-control input-sm" placeholder="Enter new office city location" style="width:200px;"/>
+                        </div>
+                    </div>
+
+                    <input type="hidden" ng-model="ctrlOffice.office.status" ng-init="ctrlOffice.office.status=1" id="status" class="username form-control input-sm" style="width:200px;"/>
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Telephone :</label>
+                        <div class="col-sm-8">
+                            <input type="text" ng-model="ctrlOffice.office.telephone" id="Telpne" class="username form-control input-sm" placeholder="Enter new office telephone" style="width:200px;"/>
+                        </div>
+                    </div>
+                    <div class="form-group modal-footer">
+                        <input type="submit"  value="{{!ctrlOffice.office.id ? 'Add' : 'Update'}}" class="btn btn-primary btn-sm" ng-disabled="myForm.$invalid || myForm.$pristine">
+                    </div>
+                </form>
+            </div>
+        </div>
+
     </div>
 </div>

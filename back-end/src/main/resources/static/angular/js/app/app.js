@@ -60,19 +60,24 @@ app.config(['$stateProvider', '$urlRouterProvider',
                         })
 
                    .state('Room',{
-                       url: '/rooms',
-                       templateUrl: 'partials/rooms/room',
-                       controller: 'RoomController',
-                       controllerAs: 'ctrlRoom',
-                       resolve: {
-                           rooms: function ($q, RoomService) {
-                               console.log('Load all rooms');
-                               var deferred = $q.defer();
-                               RoomService.loadAllRooms()
-                                   .then(deferred.resolve,deferred.resolve);
-                               return deferred.promise;
+                           url: '/rooms',
+                           templateUrl: 'partials/rooms/room',
+                           controller: 'RoomController',
+                           controllerAs: 'ctrlRoom',
+                           resolve: {
+                               rooms: function ($q, RoomService) {
+                                   console.log('Load all rooms');
+                                   var deferred = $q.defer();
+                                   RoomService.loadAllRooms()
+                                       .then(deferred.resolve,deferred.resolve);
+                                   return deferred.promise;
+                               }
                            }
-                       }
-                   });
+                        })
+
+                    .state('booking',{
+                        url: '/bookings',
+                        templateUrl: '/partials/bookings/booking'
+                    });
 
                      $urlRouterProvider.otherwise('/');}]);
