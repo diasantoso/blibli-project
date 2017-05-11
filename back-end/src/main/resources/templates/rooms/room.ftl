@@ -6,7 +6,7 @@
                 <div class="col-md-12">
                     <div class="card card-plain">
                         <div class="header">
-                            <h4 class="title"><strong>ROOM DATA</strong></h4>
+                            <h4 class="title"><strong>ROOM DATA</strong></h4><br/>
                             <p class="category">This is office data from Blibli.com. You can manage to add, update, delete data office.</p>
                         </div>
                         <br/><br/>
@@ -103,7 +103,6 @@
                     </div>
 
                     <input type="hidden" ng-model="ctrlRoom.room.status" ng-init="ctrlRoom.room.status=1" id="status" class="username form-control input-sm" />
-
 
                     <div class="form-group modal-footer">
                         <input type="submit"  value="{{!ctrlRoom.room.idRoom ? 'Add' : 'Update'}}" class="btn btn-primary btn-sm" ng-disabled="myForm.$invalid || myForm.$pristine">

@@ -63,7 +63,7 @@
                 </li>
                 <li>
                     <a href="#rooms">
-                        <i class="pe-7s-user"></i>
+                        <i class="pe-7s-note2"></i>
                         <p>Room Manage</p>
                     </a>
                 </li>
@@ -75,13 +75,13 @@
                 </li>
                 <li>
                     <a href="#bookings">
-                        <i class="pe-7s-news-paper"></i>
+                        <i class="pe-7s-note2"></i>
                         <p>Booking Manage</p>
                     </a>
                 </li>
                 <li class="active-pro">
                     <a href="#">
-                        <i class="pe-7s-rocket"></i>
+                        <i class="pe-7s-user"></i>
                         <p>LOG OUT</p>
                     </a>
                 </li>

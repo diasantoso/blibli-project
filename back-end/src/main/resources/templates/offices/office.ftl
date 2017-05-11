@@ -6,7 +6,7 @@
                 <div class="col-md-12">
                     <div class="card card-plain">
                         <div class="header">
-                            <h4 class="title"><strong>OFFICE DATA</strong></h4>
+                            <h4 class="title"><strong>OFFICE DATA</strong></h4><br/>
                             <p class="category">This is office data from Blibli.com. You can manage to add, update, delete data office.</p>
                         </div>
                         <br/><br/>

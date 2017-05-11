@@ -6,7 +6,7 @@
                 <div class="col-md-12">
                     <div class="card card-plain">
                         <div class="header">
-                            <h4 class="title"><strong>BOOKING DATA</strong></h4>
+                            <h4 class="title"><strong>BOOKING DATA</strong></h4><br/>
                             <p class="category">This is booking data from Blibli.com</p>
                         </div>
                     </div>

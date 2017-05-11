@@ -59,7 +59,7 @@ app.config(['$stateProvider', '$urlRouterProvider',
                             }
                         })
 
-                   .state('Room',{
+                       .state('Room',{
                            url: '/rooms',
                            templateUrl: 'partials/rooms/room',
                            controller: 'RoomController',
@@ -75,9 +75,9 @@ app.config(['$stateProvider', '$urlRouterProvider',
                            }
                         })
 
-                    .state('booking',{
-                        url: '/bookings',
-                        templateUrl: '/partials/bookings/booking'
-                    });
+                        .state('booking',{
+                            url: '/bookings',
+                            templateUrl: '/partials/bookings/booking'
+                        });
 
                      $urlRouterProvider.otherwise('/');}]);
