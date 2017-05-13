@@ -90,6 +90,6 @@ app.config(['$stateProvider', '$urlRouterProvider',
                             return deferred.promise;
                         }
                     }
-                })
+                });
 
        $urlRouterProvider.otherwise('/');}]);
