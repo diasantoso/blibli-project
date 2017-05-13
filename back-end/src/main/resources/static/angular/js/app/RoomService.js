@@ -16,18 +16,18 @@ angular.module('bookingApp').factory('RoomService',
             return factory;
 
             function loadAllRooms(){
-                console.log('Fetching all Rooms');
+                console.log('Fetching all rooms');
                 var deferred = $q.defer();
                 $http.get(urls.ROOM_SERVICE_API)
                     .then(
                         function (response){
-                            console.log('Fetched successfully all Rooms');
+                            console.log('Fetched successfully all rooms');
 
                             $localStorage.rooms = response.data.value;
                             deferred.resolve(response);
                         },
                         function (errResponse){
-                            console.error('Error while Fetching Rooms');
+                            console.error('Error while Fetching rooms');
                             console.error(errResponse);
                             deferred.reject(errResponse);
                         }
@@ -40,16 +40,16 @@ angular.module('bookingApp').factory('RoomService',
             }
 
             function getRoom(id){
-                console.log('Fetching Room with id : ' +id);
+                console.log('Fetching room with id : ' +id);
                 var deferred =  $q.defer();
                 $http.get(urls.ROOM_SERVICE_API + id)
                     .then(
                         function (response){
-                            console.log('Fetched successfully Room with id : ' + id);
+                            console.log('Fetched successfully room with id : ' + id);
                             deferred.resolve(response.data);
                         },
                         function (errResponse) {
-                            console.error('Error while loading Room with id : ' +id);
+                            console.error('Error while loading room with id : ' +id);
                             deferred.reject(errResponse);
                         }
                     );
@@ -57,7 +57,7 @@ angular.module('bookingApp').factory('RoomService',
             }
 
             function createRoom(room){
-                console.log('Creating Room');
+                console.log('Creating room');
                 var deferred = $q.defer();
                 $http.post(urls.ROOM_SERVICE_API, room)
                     .then(
@@ -67,7 +67,7 @@ angular.module('bookingApp').factory('RoomService',
                         },
 
                         function (errResponse) {
-                            console.error('Error while creating Room: ' + errResponse.data.errorMessage);
+                            console.error('Error while creating room: ' + errResponse.data.errorMessage);
                             deferred.reject(errResponse);
                         }
                     );
@@ -76,7 +76,7 @@ angular.module('bookingApp').factory('RoomService',
             }
 
             function updateRoom(room, id){
-                console.log('Updating Room with id ' + id);
+                console.log('Updating room with id ' + id);
                 var deferred = $q.defer();
                 $http.put(urls.ROOM_SERVICE_API + id, user)
                     .then(
@@ -85,7 +85,7 @@ angular.module('bookingApp').factory('RoomService',
                             deferred.resolve(response.data);
                         },
                         function (errResponse){
-                            console.error('Error while updating Room with id : ' + id);
+                            console.error('Error while updating room with id : ' + id);
                             deferred.reject(errResponse);
                         }
                     );
@@ -93,7 +93,7 @@ angular.module('bookingApp').factory('RoomService',
             }
 
             function removeRoom(id){
-                console.log('Removing Room with id : ' +id);
+                console.log('Removing room with id : ' +id);
                 var deferred = $q.defer();
                 $http.delete(urls.ROOM_SERVICE_API+"?id="+id)
                     .then(
@@ -103,7 +103,7 @@ angular.module('bookingApp').factory('RoomService',
                         },
 
                         function (errResponse){
-                            console.error('Error while removing Room with id : '+ id);
+                            console.error('Error while removing room with id : '+ id);
                             deferred.reject(errResponse);
                         }
                     );

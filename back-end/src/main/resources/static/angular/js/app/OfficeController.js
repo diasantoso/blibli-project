@@ -25,7 +25,7 @@ angular.module('bookingApp').controller('OfficeController',
         function submit(){
             console.log('Submitting');
             if(self.office.id === undefined || self.office.id === null) {
-                console.log('Saving new Office');
+                console.log('Saving new office');
                 createOffice(self.office);
             } else {
                 updateOffice(self.office, self.office.id);
@@ -47,8 +47,8 @@ angular.module('bookingApp').controller('OfficeController',
                     },
 
                     function (errResponse){
-                        console.log('Error while creating Office');
-                        self.errorMessage = 'Error while creating Office';
+                        console.log('Error while creating office');
+                        self.errorMessage = 'Error while creating office';
                         self.successMessage = '';
                     }
                 );
@@ -67,8 +67,8 @@ angular.module('bookingApp').controller('OfficeController',
                     },
 
                     function (errResponse){
-                        console.log('Error while updating Office');
-                        self.errorMessage = 'Error while updating Office';
+                        console.log('Error while updating office');
+                        self.errorMessage = 'Error while updating office';
                         self.successMessage = '';
                     }
                 );

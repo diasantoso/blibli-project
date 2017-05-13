@@ -3,7 +3,8 @@ var app = angular.module('bookingApp',['ui.router','ngStorage']);
 app.constant('urls',{
     BASE : 'http://localhost:8080/',
     OFFICE_SERVICE_API : 'http://localhost:8080/api/offices/',
-    ROOM_SERVICE_API : 'http://localhost:8080/api/rooms/'
+    ROOM_SERVICE_API : 'http://localhost:8080/api/rooms/',
+    BOOKING_SERVICE_API : 'http://localhost:8080/api/bookings'
 });
 
 // app.config(['$stateProvider', '$urlRouterProvider',function ($routeProvider) {
@@ -35,49 +36,60 @@ app.constant('urls',{
 // });
 
 app.config(['$stateProvider', '$urlRouterProvider',
-               function($stateProvider, $urlRouterProvider){
+       function($stateProvider, $urlRouterProvider){
 
-                    $stateProvider
-                       .state('home',{
-                           url: '/',
-                           templateUrl: '/partials/home'
-                       })
+            $stateProvider
+                .state('home',{
+                   url: '/',
+                   templateUrl: '/partials/home'
+                })
 
-                       .state('Office',{
-                            url: '/offices',
-                            templateUrl: '/partials/offices/office',
-                            controller: 'OfficeController',
-                            controllerAs: 'ctrlOffice',
-                            resolve: {
-                                offices: function ($q, OfficeService) {
-                                    console.log('Load all Offices');
-                                    var deferred = $q.defer();
-                                    OfficeService.loadAllOffices()
-                                        .then(deferred.resolve,deferred.resolve);
-                                    return deferred.promise;
-                                }
-                            }
-                        })
+                .state('Office',{
+                    url: '/offices',
+                    templateUrl: '/partials/offices/office',
+                    controller: 'OfficeController',
+                    controllerAs: 'ctrlOffice',
+                    resolve: {
+                        offices: function ($q, OfficeService) {
+                            console.log('Load all offices');
+                            var deferred = $q.defer();
+                            OfficeService.loadAllOffices()
+                                .then(deferred.resolve,deferred.resolve);
+                            return deferred.promise;
+                        }
+                    }
+                })
 
-                       .state('Room',{
-                           url: '/rooms',
-                           templateUrl: 'partials/rooms/room',
-                           controller: 'RoomController',
-                           controllerAs: 'ctrlRoom',
-                           resolve: {
-                               rooms: function ($q, RoomService) {
-                                   console.log('Load all rooms');
-                                   var deferred = $q.defer();
-                                   RoomService.loadAllRooms()
-                                       .then(deferred.resolve,deferred.resolve);
-                                   return deferred.promise;
-                               }
-                           }
-                        })
+                .state('Room',{
+                    url: '/rooms',
+                    templateUrl: 'partials/rooms/room',
+                    controller: 'RoomController',
+                    controllerAs: 'ctrlRoom',
+                    resolve: {
+                       rooms: function ($q, RoomService) {
+                           console.log('Load all rooms');
+                           var deferred = $q.defer();
+                           RoomService.loadAllRooms()
+                               .then(deferred.resolve,deferred.resolve);
+                           return deferred.promise;
+                       }
+                    }
+                })
 
-                        .state('booking',{
-                            url: '/bookings',
-                            templateUrl: '/partials/bookings/booking'
-                        });
+                .state('Booking',{
+                    url: '/bookings',
+                    templateUrl: '/partials/bookings/booking',
+                    controller: 'BookingController',
+                    controllerAs: 'ctrlBooking',
+                    resolve: {
+                        offices: function ($q, BookingService) {
+                            console.log('Load all bookingss');
+                            var deferred = $q.defer();
+                            BookingService.loadAllBookings()
+                                .then(deferred.resolve,deferred.resolve);
+                            return deferred.promise;
+                        }
+                    }
+                })
 
-                     $urlRouterProvider.otherwise('/');}]);
+       $urlRouterProvider.otherwise('/');}]);

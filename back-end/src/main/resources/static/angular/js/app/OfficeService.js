@@ -21,7 +21,7 @@ angular.module('bookingApp').factory('OfficeService',
                 $http.get(urls.OFFICE_SERVICE_API)
                     .then(
                         function (response){
-                            console.log('Fetched successfully all Offices');
+                            console.log('Fetched successfully all offices');
 
                             $localStorage.offices = response.data.value;
                             deferred.resolve(response);
@@ -40,7 +40,7 @@ angular.module('bookingApp').factory('OfficeService',
             }
 
             function getOffice(id){
-                console.log('Fetching Office with id : ' +id);
+                console.log('Fetching office with id : ' +id);
                 var deferred =  $q.defer();
                 $http.get(urls.OFFICE_SERVICE_API + id)
                     .then(
@@ -57,7 +57,7 @@ angular.module('bookingApp').factory('OfficeService',
             }
 
             function createOffice(office){
-                console.log('Creating Office');
+                console.log('Creating office');
                 var deferred = $q.defer();
                 $http.post(urls.OFFICE_SERVICE_API, office)
                     .then(
@@ -67,7 +67,7 @@ angular.module('bookingApp').factory('OfficeService',
                         },
 
                         function (errResponse) {
-                            console.error('Error while creating Office : ' + errResponse.data.errorMessage);
+                            console.error('Error while creating office : ' + errResponse.data.errorMessage);
                             deferred.reject(errResponse);
                         }
                     );
@@ -76,7 +76,7 @@ angular.module('bookingApp').factory('OfficeService',
             }
 
             function updateOffice(office , id){
-                console.log('Updating Office with id ' + id);
+                console.log('Updating office with id ' + id);
                 var deferred = $q.defer();
                 $http.put(urls.OFFICE_SERVICE_API + id, user)
                     .then(

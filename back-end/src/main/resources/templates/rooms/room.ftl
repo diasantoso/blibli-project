@@ -17,8 +17,8 @@
                                     <th>ID</th>
                                     <th>NAME</th>
                                     <th>CAPACITY</th>
-                                    <th>ISCONFERENCE</th>
-                                    <th>ISPROJECTOR</th>
+                                    <th>HAVE CONFERENCE</th>
+                                    <th>HAVE PROJECTOR</th>
                                     <th>NUMBER EXTENSION</th>
                                     <th>STATUS</th>
                                     <th>OFFICE</th>
