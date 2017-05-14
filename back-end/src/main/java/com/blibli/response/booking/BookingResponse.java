@@ -8,7 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import java.sql.Time;
-import java.util.Date;
+import java.sql.Date;
 
 /**
  * Created by Dias on 4/8/2017.

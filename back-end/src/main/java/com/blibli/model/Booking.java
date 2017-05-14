@@ -3,8 +3,8 @@ package com.blibli.model;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.sql.Date;
 import java.sql.Time;
-import java.util.Date;
 
 /**
  * Created by Dias on 3/31/2017.

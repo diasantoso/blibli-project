@@ -32,7 +32,7 @@
 
 <div class="content-section-a">
     <div class="container">
-        </br>
+        <br/>
         <h2 class="section-heading">List Booking</h2>
         <div class="content table-responsive table-full-width">
             <table class="table table-hover table-striped data">
