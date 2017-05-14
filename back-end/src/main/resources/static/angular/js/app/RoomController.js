@@ -25,7 +25,7 @@ angular.module('bookingApp').controller('RoomController',
         function submit(){
             console.log('Submitting');
             if(self.room.id === undefined || self.room.id === null) {
-                console.log('Saving new Room');
+                console.log('Saving new room');
                 createRoom(self.room);
             } else {
                 updateRoom(self.room, self.room.id);
@@ -47,15 +47,15 @@ angular.module('bookingApp').controller('RoomController',
                     },
 
                     function (errResponse){
-                        console.log('Error while creating Room');
-                        self.errorMessage = 'Error while creating Room';
+                        console.log('Error while creating room');
+                        self.errorMessage = 'Error while creating room';
                         self.successMessage = '';
                     }
                 );
         }
 
         function updateRoom (room , id){
-            console.log('About to update Room');
+            console.log('About to update room');
             RoomService.updateRoom(room , id)
                 .then(
                     function (response){
@@ -67,8 +67,8 @@ angular.module('bookingApp').controller('RoomController',
                     },
 
                     function (errResponse){
-                        console.log('Error while updating Room');
-                        self.errorMessage = 'Error while updating Room';
+                        console.log('Error while updating room');
+                        self.errorMessage = 'Error while updating room';
                         self.successMessage = '';
                     }
                 );
@@ -84,7 +84,7 @@ angular.module('bookingApp').controller('RoomController',
                         self.errorMessage='';
                     },
                     function (errResponse){
-                        console.error('Error while removing Room '+id +', Error :'+errResponse.data);
+                        console.error('Error while removing room '+id +', Error :'+errResponse.data);
                     }
                 );
         }
@@ -101,7 +101,7 @@ angular.module('bookingApp').controller('RoomController',
                     self.room = room;
                 },
                 function (errResponse){
-                    console.error('Error while editing Room'+id +', Error :'+errResponse.data);
+                    console.error('Error while editing room'+id +', Error :'+errResponse.data);
                 }
             );
         }
