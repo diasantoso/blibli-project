@@ -9,7 +9,6 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand topnav" href="#">Blibli.com</a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -45,6 +44,24 @@
             </div>
         </div>
 
+    </div>
+    <!-- /.container -->
+</div>
+
+<a  name="services"></a>
+<div class="content-section-a">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5 col-sm-6">
+                <hr class="section-heading-spacer">
+                <div class="clearfix"></div>
+                <h2 class="section-heading">About this System</h2>
+                <p class="lead">A system which manage booking meeting room in Blibli.com</p>
+            </div>
+            <div class="col-lg-5 col-lg-offset-2 col-sm-6">
+                <img class="img-responsive" src="../assets-landingpage/img/ipad.png" alt="">
+            </div>
+        </div>
     </div>
     <!-- /.container -->
 </div>
