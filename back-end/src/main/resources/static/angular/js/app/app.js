@@ -7,34 +7,6 @@ app.constant('urls',{
     BOOKING_SERVICE_API : 'http://localhost:8080/api/bookings'
 });
 
-// app.config(['$stateProvider', '$urlRouterProvider',function ($routeProvider) {
-//
-//     $routeProvider.when('/offices', {
-//         templateUrl: '/partials/list',
-//         controller: 'OfficeController'
-//     }).when('/rooms', {
-//         templateUrl: '/partials/list',
-//         controller: 'RoomController'
-//     }).otherwise({
-//         redirectTo: "/"
-//     });
-// }]);
-
-// app.config(function ($stateProvider, $urlRouterProvider) {
-//     $urlRouterProvider.otherwise('/daily');
-//     $stateProvider
-//         .state('hourly', {
-//             url: '/hourly',
-//             controller: 'WeatherCtrl',
-//             templateUrl: 'partials/hourly.html'
-//         })
-//         .state('daily', {
-//             url: '/daily',
-//             controller: 'WeatherCtrl',
-//             templateUrl: 'partials/daily.html'
-//         });
-// });
-
 app.config(['$stateProvider', '$urlRouterProvider',
        function($stateProvider, $urlRouterProvider){
 
@@ -42,6 +14,16 @@ app.config(['$stateProvider', '$urlRouterProvider',
                 .state('home',{
                     url: '/',
                     templateUrl: '/partials/landingpage'
+                })
+
+                .state('showbooking',{
+                    url: '/listbooking',
+                    templateUrl: '/partials/showbooking'
+                })
+
+                .state('login',{
+                    url: '/login',
+                    templateUrl: '/partials/login'
                 })
 
                 .state('dashboard',{

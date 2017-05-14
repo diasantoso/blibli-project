@@ -9,7 +9,7 @@
             <!--NAVIGATION-->
             <ul class="nav">
                 <li class="active">
-                    <a href="#">
+                    <a href="#dashboard">
                         <i class="pe-7s-graph"></i>
                         <p>Dashboard</p>
                     </a>

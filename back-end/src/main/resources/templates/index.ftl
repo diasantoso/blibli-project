@@ -47,11 +47,18 @@
     <link href="../assets-landingpage/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
 
+    <#--CSS & JS for Layout Bootstrap - LOGIN PAGE-->
+    <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css'>
+    <link rel="stylesheet" href="../assets-login/css/style.css">
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script src="../assets-login/js/index.js"></script>
+
     <#--CSS & JS for Datatables-->
     <link rel="stylesheet" type="text/css" href="../assets/DataTables/media/css/jquery.dataTables.css">
     <link rel="stylesheet" type="text/css" href="../assets/DataTables/media/css/dataTables.bootstrap.css">
     <script type="text/javascript" src="../assets/DataTables/media/js/jquery.js"></script>
     <script type="text/javascript" src="../assets/DataTables/media/js/jquery.dataTables.js"></script>
+
 </head>
 <body>
 
