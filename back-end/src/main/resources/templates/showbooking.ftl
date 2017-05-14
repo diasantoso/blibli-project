@@ -30,22 +30,42 @@
     <!-- /.container -->
 </nav>
 
-<a  name="services"></a>
 <div class="content-section-a">
-
     <div class="container">
-        <div class="row">
-            <div class="col-lg-5 col-sm-6">
-                <hr class="section-heading-spacer">
-                <div class="clearfix"></div>
-                <h2 class="section-heading">Death to the Stock Photo:<br>Special Thanks</h2>
-                <p class="lead">A special thanks to <a target="_blank" href="http://join.deathtothestockphoto.com/">Death to the Stock Photo</a> for providing the photographs that you see in this template. Visit their website to become a member.</p>
-            </div>
-            <div class="col-lg-5 col-lg-offset-2 col-sm-6">
-                <img class="img-responsive" src="../assets-landingpage/img/ipad.png" alt="">
-            </div>
+        </br>
+        <h2 class="section-heading">List Booking</h2>
+        <div class="content table-responsive table-full-width">
+            <table class="table table-hover table-striped data">
+                <thead>
+                <tr>
+                    <th width="200">SUBJECT</th>
+                    <th width="250">DESCRIPTION</th>
+                    <th width="200">ROOM</th>
+                    <th width="180">DATE MEETING</th>
+                    <th width="200">START TIME</th>
+                    <th width="200">END TIME</th>
+                    <th width="200">ADDED DATE</th>
+                    <th width="200">STATUS</th>
+                    <th width="100"></th>
+                    <th width="100"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="u in ctrlBooking.getAllBookings()">
+                    <td>{{u.subject}}</td>
+                    <td>{{u.description}}</td>
+                    <td>{{u.room.name}}</td>
+                    <td>{{u.dateMeeting}}</td>
+                    <td>{{u.startTime}}</td>
+                    <td>{{u.endTime}}</td>
+                    <td>{{u.addedDate}}</td>
+                    <td>{{u.status}}</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                </tbody>
+            </table>
         </div>
-
     </div>
     <!-- /.container -->
 

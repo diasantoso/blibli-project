@@ -18,7 +18,18 @@ app.config(['$stateProvider', '$urlRouterProvider',
 
                 .state('showbooking',{
                     url: '/listbooking',
-                    templateUrl: '/partials/showbooking'
+                    templateUrl: '/partials/showbooking',
+                    controller: 'BookingController',
+                    controllerAs: 'ctrlBooking',
+                    resolve: {
+                        offices: function ($q, BookingService) {
+                            console.log('Load all bookings');
+                            var deferred = $q.defer();
+                            BookingService.loadAllBookings()
+                                .then(deferred.resolve,deferred.resolve);
+                            return deferred.promise;
+                        }
+                    }
                 })
 
                 .state('login',{
@@ -70,7 +81,7 @@ app.config(['$stateProvider', '$urlRouterProvider',
                     controllerAs: 'ctrlBooking',
                     resolve: {
                         offices: function ($q, BookingService) {
-                            console.log('Load all bookingss');
+                            console.log('Load all bookings');
                             var deferred = $q.defer();
                             BookingService.loadAllBookings()
                                 .then(deferred.resolve,deferred.resolve);
