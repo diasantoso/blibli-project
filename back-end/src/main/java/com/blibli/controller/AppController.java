@@ -18,7 +18,6 @@ public class AppController {
     //this mapping to access offices page
     @RequestMapping("/")
     String home(ModelMap modal) {
-        modal.addAttribute("title","Bliblibli");
         return "index";
     }
 

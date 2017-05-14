@@ -40,7 +40,12 @@ app.config(['$stateProvider', '$urlRouterProvider',
 
             $stateProvider
                 .state('home',{
-                   url: '/',
+                    url: '/',
+                    templateUrl: '/partials/landingpage'
+                })
+
+                .state('dashboard',{
+                   url: '/dashboard',
                    templateUrl: '/partials/home'
                 })
 
