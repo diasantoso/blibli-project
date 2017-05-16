@@ -21,6 +21,7 @@ public class BookingResponse {
     private Time startTime;
     private Time endTime;
     private Date addedDate;
+    private String statusBooking;
     private Integer status;
     private Room room;
 

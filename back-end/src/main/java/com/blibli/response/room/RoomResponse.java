@@ -9,8 +9,8 @@ public class RoomResponse {
     private String idRoom;
     private String name;
     private Integer capacity;
-    private Integer isConference;
-    private Integer isProjector;
+    private String isConference;
+    private String isProjector;
     private String numberExtension;
     private Integer status;
 
@@ -40,19 +40,19 @@ public class RoomResponse {
         this.capacity = capacity;
     }
 
-    public Integer getIsConference() {
+    public String getIsConference() {
         return isConference;
     }
 
-    public void setIsConference(Integer isConference) {
+    public void setIsConference(String isConference) {
         this.isConference = isConference;
     }
 
-    public Integer getIsProjector() {
+    public String getIsProjector() {
         return isProjector;
     }
 
-    public void setIsProjector(Integer isProjector) {
+    public void setIsProjector(String isProjector) {
         this.isProjector = isProjector;
     }
 

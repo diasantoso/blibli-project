@@ -22,4 +22,15 @@ public class BookingRepositoryImpl implements BookingRepositoryCustom {
                 "SELECT * FROM BOOKING WHERE IDBOOKING='"+id+"'", Office.class).getResultList();
         return result;
     }
+
+    @Override
+    public Booking deleteBooking(String id) {
+        EntityManager em = entityManagerFactory.createEntityManager();
+        em.getTransaction().begin();
+        Booking result = em.find(Booking.class, id);
+        result.setStatus(0);
+        em.getTransaction().commit();
+
+        return result;
+    }
 }

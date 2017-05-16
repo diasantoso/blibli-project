@@ -28,4 +28,9 @@ public class BookingService {
         Booking result = bookingRepository.save(booking);
         return result;
     }
+
+    public Booking delete(String id) {
+        Booking result = bookingRepository.deleteBooking(id);
+        return result;
+    }
 }

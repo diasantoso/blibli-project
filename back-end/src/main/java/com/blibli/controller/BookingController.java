@@ -1,9 +1,11 @@
 package com.blibli.controller;
 
 import com.blibli.model.Booking;
+import com.blibli.model.Office;
 import com.blibli.response.ResponseBack;
 import com.blibli.response.booking.BookingResponse;
 import com.blibli.response.booking.BookingResponseList;
+import com.blibli.response.office.OfficeResponse;
 import com.blibli.service.BookingService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,7 +60,7 @@ public class BookingController {
 
     @RequestMapping(value = "/bookings", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public ResponseBack createRoom(@RequestBody BookingResponse param) {
+    public ResponseBack createBooking(@RequestBody BookingResponse param) {
         Booking booking = new Booking();
         BeanUtils.copyProperties(param, booking);
         Booking result = bookingService.create(booking);
@@ -68,6 +70,36 @@ public class BookingController {
             responseBack.setResponse("success adding");
         else
             responseBack.setResponse("failed adding");
+
+        return responseBack;
+    }
+
+    @RequestMapping(value = "/bookings", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public ResponseBack updateBooking(@RequestBody BookingResponse param) {
+        Booking booking = new Booking();
+        BeanUtils.copyProperties(param, booking);
+        Booking result = bookingService.create(booking);
+
+        ResponseBack responseBack = new ResponseBack();
+        if(result!=null)
+            responseBack.setResponse("success updating");
+        else
+            responseBack.setResponse("failed updating");
+
+        return responseBack;
+    }
+
+    @RequestMapping(value = "/bookings", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public ResponseBack deleteOffice(@RequestParam String id) {
+        Booking result = bookingService.delete(id);
+
+        ResponseBack responseBack = new ResponseBack();
+        if(result!=null)
+            responseBack.setResponse("success delete");
+        else
+            responseBack.setResponse("failed delete");
 
         return responseBack;
     }
