@@ -1,11 +1,9 @@
 package com.blibli.controller;
 
 import com.blibli.model.Booking;
-import com.blibli.model.Office;
 import com.blibli.response.ResponseBack;
 import com.blibli.response.booking.BookingResponse;
 import com.blibli.response.booking.BookingResponseList;
-import com.blibli.response.office.OfficeResponse;
 import com.blibli.service.BookingService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,7 +58,7 @@ public class BookingController {
 
     @RequestMapping(value = "/bookings", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public ResponseBack createBooking(@RequestBody BookingResponse param) {
+    public ResponseBack createRoom(@RequestBody BookingResponse param) {
         Booking booking = new Booking();
         BeanUtils.copyProperties(param, booking);
         Booking result = bookingService.create(booking);

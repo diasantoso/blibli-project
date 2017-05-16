@@ -96,4 +96,12 @@ public class BookingResponse {
     public void setRoom(Room room) {
         this.room = room;
     }
+
+    public String getStatusBooking() {
+        return statusBooking;
+    }
+
+    public void setStatusBooking(String statusBooking) {
+        this.statusBooking = statusBooking;
+    }
 }

@@ -75,7 +75,7 @@ angular.module('bookingApp').controller('OfficeController',
         }
 
         function removeOffice (id){
-            console.log('About to remove office with id '+id);
+            console.log('About to remove Office with id '+id);
             OfficeService.removeOffice(id)
                 .then(
                     function(){
