@@ -9,6 +9,8 @@ angular.module('bookingApp').factory('BookingService',
                 getAllBookings : getAllBookings,
                 getBooking : getBooking,
                 createBooking : createBooking,
+                updateBooking : updateBooking,
+                removeBooking : removeBooking
             };
 
             return factory;
@@ -70,6 +72,41 @@ angular.module('bookingApp').factory('BookingService',
                         }
                     );
 
+                return deferred.promise;
+            }
+
+            function updateBooking(booking , id){
+                console.log('Updating booking with id ' + id);
+                var deferred = $q.defer();
+                $http.put(urls.BOOKING_SERVICE_API + id, user)
+                    .then(
+                        function (response){
+                            loadAllBookings();
+                            deferred.resolve(response.data);
+                        },
+                        function (errResponse){
+                            console.error('Error while updating booking with id : ' + id);
+                            deferred.reject(errResponse);
+                        }
+                    );
+                return deferred.promise;
+            }
+
+            function removeBooking(id){
+                console.log('Removing booking with id : ' +id);
+                var deferred = $q.defer();
+                $http.delete(urls.BOOKING_SERVICE_API+"?id="+id)
+                    .then(
+                        function (response){
+                            loadAllBookings();
+                            deferred.resolve(response.data);
+                        },
+
+                        function (errResponse){
+                            console.error('Error while removing booking with id : '+ id);
+                            deferred.reject(errResponse);
+                        }
+                    );
                 return deferred.promise;
             }
 

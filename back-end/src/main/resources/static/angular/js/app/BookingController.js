@@ -10,6 +10,9 @@ angular.module('bookingApp').controller('BookingController',
         self.submit = submit;
         self.getAllBookings = getAllBookings;
         self.createBooking = createBooking;
+        self.updateBooking = updateBooking;
+        self.removeBooking = removeBooking;
+        self.editBooking = editBooking;
         self.reset = reset;
 
         self.successMessage = '';
@@ -48,8 +51,56 @@ angular.module('bookingApp').controller('BookingController',
                 );
         }
 
+        function updateBooking (booking , id){
+            console.log('About to update booking');
+            BookingService.updateBooking(booking , id)
+                .then(
+                    function (response){
+                        console.log('Booking updated successfully');
+                        self.successMessage='Booking updated successfully';
+                        self.errorMessage='';
+                        self.done = true;
+                        $scope.myForm.$setPristine();
+                    },
+
+                    function (errResponse){
+                        console.log('Error while updating booking');
+                        self.errorMessage = 'Error while updating booking';
+                        self.successMessage = '';
+                    }
+                );
+        }
+
+        function removeBooking (id){
+            console.log('About to remove booking with id '+id);
+            BookingService.removeBooking(id)
+                .then(
+                    function(){
+                        console.log('Booking with '+id + ' removed successfully');
+                        self.successMessage='Booking removed successfully';
+                        self.errorMessage='';
+                    },
+                    function (errResponse){
+                        console.error('Error while removing booking '+id +', Error :'+errResponse.data);
+                    }
+                );
+        }
+
         function getAllBookings(){
             return BookingService.getAllBookings();
+        }
+
+        function editBooking(id) {
+            self.successMessage='';
+            self.errorMessage='';
+            BookingService.getBooking(id).then(
+                function (booking) {
+                    self.booking = booking;
+                },
+                function (errResponse){
+                    console.error('Error while editing booking '+id +', Error :'+errResponse.data);
+                }
+            );
         }
 
         function reset(){
