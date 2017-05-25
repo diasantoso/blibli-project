@@ -13,6 +13,7 @@ public class EmployeeResponse {
     private String email;
     private String password;
     private String role;
+    private Integer status;
     private List<Booking> booking;
 
     public String getIdEmployee() {
@@ -61,5 +62,13 @@ public class EmployeeResponse {
 
     public void setBooking(List<Booking> booking) {
         this.booking = booking;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 }

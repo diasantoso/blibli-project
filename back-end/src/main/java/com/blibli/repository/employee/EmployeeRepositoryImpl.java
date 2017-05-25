@@ -22,4 +22,31 @@ public class EmployeeRepositoryImpl implements EmployeeRepositoryCustom {
 
         return result.get(0);
     }
+
+    @Override
+    public Employee deleteEmployee(String id) {
+        EntityManager em = entityManagerFactory.createEntityManager();
+        em.getTransaction().begin();
+        Employee result = em.find(Employee.class, id);
+        result.setStatus(0);
+        em.getTransaction().commit();
+
+        return result;
+    }
+
+    @Override
+    public List<Employee> showActiveEmployee() {
+        EntityManager em = entityManagerFactory.createEntityManager();
+        List<Employee> result = em.createNativeQuery(
+                "SELECT * FROM EMPLOYEE WHERE STATUS=1", Employee.class).getResultList();
+        return result;
+    }
+
+    @Override
+    public Employee showOneEmployee(String id) {
+        EntityManager em = entityManagerFactory.createEntityManager();
+        Employee result = (Employee) em.createNativeQuery(
+                "SELECT * FROM EMPLOYEE WHERE STATUS=1 AND id_office = '" + id +"' ", Employee.class).getSingleResult();
+        return result;
+    }
 }

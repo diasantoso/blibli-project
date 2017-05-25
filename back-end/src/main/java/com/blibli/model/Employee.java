@@ -1,8 +1,10 @@
 package com.blibli.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -20,6 +22,13 @@ public class Employee {
     private String email;
     private String password;
     private String role;
+    //1=active, 0=deactive
+    private Integer status;
+
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name="employeeId" , nullable = false, insertable = false, updatable = false)
+    private List<Booking> bookings = Collections.emptyList();
 
     public String getIdEmployee() {
         return idEmployee;
@@ -59,5 +68,21 @@ public class Employee {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    public List<Booking> getBookings() {
+        return bookings;
+    }
+
+    public void setBookings(List<Booking> bookings) {
+        this.bookings = bookings;
     }
 }

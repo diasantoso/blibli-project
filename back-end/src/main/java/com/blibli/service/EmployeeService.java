@@ -5,6 +5,8 @@ import com.blibli.repository.employee.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by Dias on 3/30/2017.
  */
@@ -25,8 +27,27 @@ public class EmployeeService {
         employee.setEmail("dias@gmail.com");
         employee.setPassword("dias");
         employee.setRole("Engineer");
+        employee.setStatus(1);
 
         Employee result = employeeRepository.save(employee);
+        return result;
+    }
+
+    public List<Employee> getAllActive() {
+        return employeeRepository.showActiveEmployee();
+    }
+
+    public Employee getOneActive(String id){
+        return employeeRepository.showOneEmployee(id);
+    }
+
+    public Employee create(Employee room) {
+        Employee result = employeeRepository.save(room);
+        return result;
+    }
+
+    public Employee delete(String id) {
+        Employee result = employeeRepository.deleteEmployee(id);
         return result;
     }
 }
