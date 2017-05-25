@@ -31,9 +31,9 @@ public class OfficeController {
         List<OfficeResponse> response = new ArrayList<>();
         OfficeResponseList result = new OfficeResponseList();
 
-        for(Office room : data) {
+        for(Office office : data) {
             OfficeResponse parse = new OfficeResponse();
-            BeanUtils.copyProperties(room, parse);
+            BeanUtils.copyProperties(office, parse);
             response.add(parse);
         }
         result.setValue(response);
