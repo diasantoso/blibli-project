@@ -24,10 +24,6 @@ public class Office {
     private String telephone;
     private Integer status;
 
-//    @OneToMany(mappedBy = "room")
-//    @OneToMany(mappedBy = "office", cascade = CascadeType.ALL)
-//    private Set<Room> rooms = new HashSet<Room>();
-
     @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name="officeId" , nullable = false, insertable = false, updatable = false)

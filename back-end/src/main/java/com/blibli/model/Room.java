@@ -6,6 +6,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * Editted by Audin on 5/8/2017.
@@ -25,23 +27,15 @@ public class Room {
     private String numberExtension;
     private Integer status;
 
-//    @ManyToOne
-//    @JoinColumn (name="idOffice")
-//    @JsonBackReference
-//    private Office office;
-//    @ManyToOne
-//    @JoinColumn(name = "idOffice")
+    @JsonIgnore
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="officeId", nullable = false)
+    private Office office;
 
     @JsonIgnore
-    @ManyToOne
-    //name = "..." must match to the ones in whom it hasr relation with
-    //in this case between room.java and office.java
-    @JoinColumn(name="officeId", nullable = false)
-
-    //variable name (in this case 'private Office Office
-    // must match to the ones in model (here), response, and in web (.ftl)
-    // or else will be error -> the program read something unavailable ->NULL
-    private Office office;
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name="roomId" , nullable = false, insertable = false, updatable = false)
+    private List<Room> bookings = Collections.emptyList();
 
     public String getIdRoom() {
         return idRoom;
@@ -106,5 +100,13 @@ public class Room {
 
     public void setOffice(Office office) {
         this.office = office;
+    }
+
+    public List<Room> getBookings() {
+        return bookings;
+    }
+
+    public void setBookings(List<Room> bookings) {
+        this.bookings = bookings;
     }
 }

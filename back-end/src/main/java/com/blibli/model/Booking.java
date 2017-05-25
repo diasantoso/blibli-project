@@ -1,5 +1,6 @@
 package com.blibli.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -26,10 +27,14 @@ public class Booking {
     private String statusBooking;
     private Integer status;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @JsonIgnore
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="employeeId", nullable = false)
     private Employee employee;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @JsonIgnore
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="roomId", nullable = false)
     private Room room;
 
     public String getIdBooking() {
