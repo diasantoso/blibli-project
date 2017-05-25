@@ -26,6 +26,12 @@
                         <p>Office Manage</p>
                     </a>
                 </li>
+                <li>
+                    <a href="#employees">
+                        <i class="pe-7s-note2"></i>
+                        <p>Employee Manage</p>
+                    </a>
+                </li>
                 <li class="active">
                     <a href="#bookings">
                         <i class="pe-7s-note2"></i>

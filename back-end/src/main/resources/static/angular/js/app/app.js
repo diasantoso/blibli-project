@@ -76,6 +76,22 @@ app.config(['$stateProvider', '$urlRouterProvider',
                     }
                 })
 
+                .state('Employee',{
+                    url: '/employees',
+                    templateUrl: '/partials/employees/employee',
+                    controller: 'EmployeeController',
+                    controllerAs: 'ctrlEmployee',
+                    resolve: {
+                        employees: function ($q, EmployeeService) {
+                            console.log('Load all employees');
+                            var deferred = $q.defer();
+                            EmployeeService.loadAllEmployees()
+                                .then(deferred.resolve,deferred.resolve);
+                            return deferred.promise;
+                        }
+                    }
+                })
+
                 .state('Booking',{
                     url: '/bookings',
                     templateUrl: '/partials/bookings/booking',

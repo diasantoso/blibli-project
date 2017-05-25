@@ -20,6 +20,8 @@
     <script src="../angular/js/app/OfficeController.js"></script>
     <script src="../angular/js/app/RoomService.js"></script>
     <script src="../angular/js/app/RoomController.js"></script>
+    <script src="../angular/js/app/EmployeeService.js"></script>
+    <script src="../angular/js/app/EmployeeController.js"></script>
     <script src="../angular/js/app/BookingService.js"></script>
     <script src="../angular/js/app/BookingController.js"></script>
 
