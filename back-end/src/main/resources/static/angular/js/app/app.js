@@ -6,7 +6,8 @@ app.constant('urls',{
     ROOM_SERVICE_API : 'http://localhost:8080/api/rooms/',
     EMPLOYEE_SERVICE_API : 'http://localhost:8080/api/employees',
     BOOKING_SERVICE_API : 'http://localhost:8080/api/bookings',
-    LOGIN_SERVICE_API : 'http://localhost:8080/api/login'
+    LOGIN_SERVICE_API : 'http://localhost:8080/api/login',
+    COUNT_SERVICE_API : 'http://localhost:8080/api/count'
 });
 
 app.config(['$stateProvider', '$urlRouterProvider',
@@ -40,8 +41,19 @@ app.config(['$stateProvider', '$urlRouterProvider',
                 })
 
                 .state('dashboard',{
-                   url: '/dashboard',
-                   templateUrl: '/partials/home'
+                    url: '/dashboard',
+                    templateUrl: '/partials/home',
+                    controller: 'CountController',
+                    controllerAs: 'ctrlCount',
+                    resolve: {
+                        count: function ($q, CountService) {
+                            console.log('Load all count');
+                            var deferred = $q.defer();
+                            CountService.loadCount()
+                                .then(deferred.resolve,deferred.resolve);
+                            return deferred.promise;
+                        }
+                    }
                 })
 
                 .state('Office',{
