@@ -67,7 +67,7 @@
                                     <a href="#rooms">
                                         <div class="icon"><i class="fa fa-university"></i>
                                         </div>
-                                        <div class="count">5</div>
+                                        <div class="count">{{ctrlCount.getCountRoom()}}</div>
 
                                         <h3>ROOM</h3>
                                         <p>Total Room Registered</p>
@@ -79,7 +79,7 @@
                                     <a href="#offices">
                                         <div class="icon"><i class="fa fa-university"></i>
                                         </div>
-                                        <div class="count">5</div>
+                                        <div class="count">{{ctrlCount.getCountOffice()}}</div>
 
                                         <h3>OFFICE</h3>
                                         <p>Total Office Registered</p>
@@ -91,7 +91,7 @@
                                     <a href="#employees">
                                         <div class="icon"><i class="fa fa-users"></i>
                                         </div>
-                                        <div class="count">5</div>
+                                        <div class="count">{{ctrlCount.getCountEmployee()}}</div>
 
                                         <h3>EMPLOYEE</h3>
                                         <p>Total Employee Registered</p>
@@ -103,7 +103,7 @@
                                     <a href="#bookings">
                                         <div class="icon"><i class="fa fa-exchange"></i>
                                         </div>
-                                        <div class="count">5</div>
+                                        <div class="count">{{ctrlCount.getCountBooking()}}</div>
 
                                         <h3>BOOKING</h3>
                                         <p>Total Booking Registered</p>

@@ -24,6 +24,8 @@
     <script src="../angular/js/app/EmployeeController.js"></script>
     <script src="../angular/js/app/BookingService.js"></script>
     <script src="../angular/js/app/BookingController.js"></script>
+    <script src="../angular/js/app/CountService.js"></script>
+    <script src="../angular/js/app/CountController.js"></script>
 
     <#--CSS for Layout Bootstrap - ADMIN PAGE-->
     <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
