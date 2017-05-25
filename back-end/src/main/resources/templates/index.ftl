@@ -27,6 +27,7 @@
 
     <#--CSS for Layout Bootstrap - ADMIN PAGE-->
     <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../assets-custom/custom.min.css" rel="stylesheet" />
     <link href="../assets/css/animate.min.css" rel="stylesheet"/>
     <link href="../assets/css/light-bootstrap-dashboard.css" rel="stylesheet"/>
     <link href="../assets/css/demo.css" rel="stylesheet" />

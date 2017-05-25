@@ -32,11 +32,6 @@ public class Room {
     @JoinColumn(name="officeId", nullable = false)
     private Office office;
 
-    @JsonIgnore
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name="roomId" , nullable = false, insertable = false, updatable = false)
-    private List<Room> bookings = Collections.emptyList();
-
     public String getIdRoom() {
         return idRoom;
     }
@@ -100,13 +95,5 @@ public class Room {
 
     public void setOffice(Office office) {
         this.office = office;
-    }
-
-    public List<Room> getBookings() {
-        return bookings;
-    }
-
-    public void setBookings(List<Room> bookings) {
-        this.bookings = bookings;
     }
 }

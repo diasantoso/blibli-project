@@ -9,7 +9,7 @@
             <!--NAVIGATION-->
             <ul class="nav">
                 <li>
-                    <a href="#">
+                    <a href="#dashboard">
                         <i class="pe-7s-graph"></i>
                         <p>Dashboard</p>
                     </a>
@@ -56,8 +56,8 @@
                 <div class="col-md-12">
                     <div class="card card-plain">
                         <div class="header">
-                            <h4 class="title"><strong>BOOKING DATA</strong></h4><br/>
-                            <p class="category">This is booking data from Blibli.com. You can see list of booking meeting room.</p>
+                            <h3 class="title"><strong>BOOKING DATA</strong></h3><br/>
+                            <p class="category"><h5>This is booking data from Blibli.com. You can see list of booking meeting room.</h5></p>
                         </div>
                         <br/><br/>
                         <div class="content table-responsive table-full-width">

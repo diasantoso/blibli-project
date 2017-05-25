@@ -1,5 +1,6 @@
 package com.blibli.response.booking;
 
+import com.blibli.model.Employee;
 import com.blibli.model.Room;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -23,6 +24,7 @@ public class BookingResponse {
     private Date addedDate;
     private String statusBooking;
     private Integer status;
+    private Employee employee;
     private Room room;
 
     public String getIdBooking() {
@@ -103,5 +105,13 @@ public class BookingResponse {
 
     public void setStatusBooking(String statusBooking) {
         this.statusBooking = statusBooking;
+    }
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
     }
 }

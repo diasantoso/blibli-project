@@ -1,10 +1,12 @@
 package com.blibli.controller;
 
+import com.blibli.configuration.DatabaseSeeder;
 import com.blibli.model.Employee;
 import com.blibli.response.ResponseBack;
 import com.blibli.response.employee.EmployeeResponse;
 import com.blibli.response.employee.EmployeeResponseList;
 import com.blibli.service.EmployeeService;
+import org.hibernate.boot.model.relational.Database;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -38,6 +40,21 @@ public class EmployeeController {
 
         return responseBack;
     }
+
+    //=========================================================================================================
+    @Autowired
+    DatabaseSeeder databaseSeeder;
+
+    //Load DatabaseSeeder
+    @RequestMapping(value = "/load", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public ResponseBack load() {
+        databaseSeeder.mockupData();
+        ResponseBack responseBack = new ResponseBack();
+        responseBack.setResponse("success loading");
+        return responseBack;
+    }
+    //=========================================================================================================
 
     //Login Employee
     @RequestMapping(value = "/login", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)

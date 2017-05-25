@@ -56,9 +56,60 @@
                 <div class="col-md-12">
                     <div class="card card-plain">
                         <div class="header">
-                            <h4 class="title"><strong>DASHBOARD | </strong>Control Panel</h4><br/><br/><br/>
-                            <p class="category">Welcome Admin, <br/>
-                                This is admin page. In here, you can manage office, room and booking data.</p>
+                            <h3 class="title"><strong>DASHBOARD | </strong>Control Panel</h3><br/><br/>
+                            <p class="category"><h5>Welcome Admin, <br/>
+                                This is admin page. In here, you can manage office, room, employee and booking data.</h5></p>
+                        </div>
+                        <br/><br/><br/>
+                        <div class="right_col" role="main">
+                            <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                <div class="tile-stats">
+                                    <a href="#rooms">
+                                        <div class="icon"><i class="fa fa-university"></i>
+                                        </div>
+                                        <div class="count">5</div>
+
+                                        <h3>ROOM</h3>
+                                        <p>Total Room Registered</p>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                <div class="tile-stats">
+                                    <a href="#offices">
+                                        <div class="icon"><i class="fa fa-university"></i>
+                                        </div>
+                                        <div class="count">5</div>
+
+                                        <h3>OFFICE</h3>
+                                        <p>Total Office Registered</p>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                <div class="tile-stats">
+                                    <a href="#employees">
+                                        <div class="icon"><i class="fa fa-users"></i>
+                                        </div>
+                                        <div class="count">5</div>
+
+                                        <h3>EMPLOYEE</h3>
+                                        <p>Total Employee Registered</p>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                <div class="tile-stats">
+                                    <a href="#bookings">
+                                        <div class="icon"><i class="fa fa-exchange"></i>
+                                        </div>
+                                        <div class="count">5</div>
+
+                                        <h3>BOOKING</h3>
+                                        <p>Total Booking Registered</p>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
