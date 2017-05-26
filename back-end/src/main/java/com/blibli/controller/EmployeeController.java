@@ -138,7 +138,7 @@ public class EmployeeController {
 
     @RequestMapping(value = "/employees/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public EmployeeResponse getOneActiveOffice(@PathVariable("id") String id){
+    public EmployeeResponse getOneActiveEmployee(@PathVariable("id") String id){
         Employee data = employeeService.getOneActive(id);
         EmployeeResponse result = new EmployeeResponse();
 

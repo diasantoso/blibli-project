@@ -46,7 +46,7 @@ public class EmployeeRepositoryImpl implements EmployeeRepositoryCustom {
     public Employee showOneEmployee(String id) {
         EntityManager em = entityManagerFactory.createEntityManager();
         Employee result = (Employee) em.createNativeQuery(
-                "SELECT * FROM EMPLOYEE WHERE STATUS=1 AND id_office = '" + id +"' ", Employee.class).getSingleResult();
+                "SELECT * FROM EMPLOYEE WHERE STATUS=1 AND id_employee = '" + id +"' ", Employee.class).getSingleResult();
         return result;
     }
 }

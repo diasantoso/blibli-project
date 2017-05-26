@@ -96,7 +96,7 @@ angular.module('bookingApp').controller('EmployeeController',
         function editEmployee(id) {
             self.successMessage='';
             self.errorMessage='';
-            EmployeeService.getAllEmployees(id).then(
+            EmployeeService.getEmployee(id).then(
                 function (employee) {
                     self.employee = employee;
                 },

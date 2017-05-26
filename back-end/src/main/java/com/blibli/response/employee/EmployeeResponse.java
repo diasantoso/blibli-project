@@ -14,7 +14,7 @@ public class EmployeeResponse {
     private String password;
     private String role;
     private Integer status;
-    private List<Booking> booking;
+    private List<Booking> bookings;
 
     public String getIdEmployee() {
         return idEmployee;
@@ -56,12 +56,12 @@ public class EmployeeResponse {
         this.role = role;
     }
 
-    public List<Booking> getBooking() {
-        return booking;
+    public List<Booking> getBookings() {
+        return bookings;
     }
 
-    public void setBooking(List<Booking> booking) {
-        this.booking = booking;
+    public void setBookings(List<Booking> bookings) {
+        this.bookings = bookings;
     }
 
     public Integer getStatus() {
