@@ -29,6 +29,12 @@ public class Office {
     @JoinColumn(name="officeId" , nullable = false, insertable = false, updatable = false)
     private List<Room> rooms = Collections.emptyList();
 
+    public Office(String idOffice, String name) {
+        setIdOffice(idOffice);
+        setName(name);
+        setStatus(1);
+    }
+
     public String getIdOffice() {
         return idOffice;
     }
