@@ -30,6 +30,12 @@ public class Employee {
     @JoinColumn(name="employeeId" , nullable = false, insertable = false, updatable = false)
     private List<Booking> bookings = Collections.emptyList();
 
+    public Employee(String idEmployee, String name) {
+        setIdEmployee(idEmployee);
+        setName(name);
+        setStatus(1);
+    }
+
     public String getIdEmployee() {
         return idEmployee;
     }

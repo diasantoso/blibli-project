@@ -37,6 +37,11 @@ public class Booking {
     @JoinColumn(name="roomId", nullable = false)
     private Room room;
 
+    public Booking(String idBooking, String subject) {
+        setIdBooking(idBooking);
+        setSubject(subject);
+    }
+
     public String getIdBooking() {
         return idBooking;
     }
