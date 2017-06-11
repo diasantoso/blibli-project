@@ -10,7 +10,9 @@ angular.module('bookingApp').factory('RoomService',
                 getRoom : getRoom,
                 createRoom : createRoom,
                 updateRoom : updateRoom,
-                removeRoom : removeRoom
+                removeRoom : removeRoom,
+                loadOffices : loadOffices,
+                getAllOffices : getAllOffices
             };
 
             return factory;
@@ -108,6 +110,30 @@ angular.module('bookingApp').factory('RoomService',
                         }
                     );
                  return deferred.promise;
+            }
+
+            function loadOffices(){
+                console.log('Fetching all offices');
+                var deferred = $q.defer();
+                $http.get(urls.OFFICE_SERVICE_API)
+                    .then(
+                        function (response){
+                            console.log('Fetched successfully all offices');
+
+                            //$localStorage.offices = response.data.value;
+                            deferred.resolve(response);
+                        },
+                        function (errResponse){
+                            console.error('Error while Fetching offices');
+                            console.error(errResponse);
+                            deferred.reject(errResponse);
+                        }
+                    );
+                return deferred.promise;
+            }
+
+            function getAllOffices(){
+                return $localStorage.offices;
             }
 
         }

@@ -83,6 +83,8 @@ app.config(['$stateProvider', '$urlRouterProvider',
                            var deferred = $q.defer();
                            RoomService.loadAllRooms()
                                .then(deferred.resolve,deferred.resolve);
+                           RoomService.loadAllOffices()
+                               .then(deferred.resolve,deferred.resolve);
                            return deferred.promise;
                        }
                     }

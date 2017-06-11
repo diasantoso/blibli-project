@@ -14,6 +14,7 @@ angular.module('bookingApp').controller('RoomController',
         self.removeRoom = removeRoom;
         self.editRoom = editRoom;
         self.reset = reset;
+        self.getOffices = getOffices;
 
         self.successMessage = '';
         self.errorMessage = '';
@@ -111,6 +112,10 @@ angular.module('bookingApp').controller('RoomController',
             self.errorMessage='';
             self.room={};
             $scope.myForm.$setPristine(); //reset Form
+        }
+
+        function getOffices(){
+            return RoomService.getAllOffices();
         }
     }
     ]);
