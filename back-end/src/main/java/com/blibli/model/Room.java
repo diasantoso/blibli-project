@@ -32,6 +32,12 @@ public class Room {
     @JoinColumn(name="officeId", nullable = false)
     private Office office;
 
+    public Room(String idRoom, String name) {
+        setIdRoom(idRoom);
+        setName(name);
+        setStatus(1);
+    }
+
     public String getIdRoom() {
         return idRoom;
     }
