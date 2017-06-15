@@ -42,6 +42,8 @@ public class Booking {
         setSubject(subject);
     }
 
+    public Booking() {}
+
     public String getIdBooking() {
         return idBooking;
     }

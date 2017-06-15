@@ -36,6 +36,8 @@ public class Employee {
         setStatus(1);
     }
 
+    public Employee() {}
+
     public String getIdEmployee() {
         return idEmployee;
     }

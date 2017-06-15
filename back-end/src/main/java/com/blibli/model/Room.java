@@ -38,6 +38,8 @@ public class Room {
         setStatus(1);
     }
 
+    public Room() {}
+
     public String getIdRoom() {
         return idRoom;
     }

@@ -35,6 +35,8 @@ public class Office {
         setStatus(1);
     }
 
+    public Office() {}
+
     public String getIdOffice() {
         return idOffice;
     }

@@ -120,7 +120,7 @@ angular.module('bookingApp').factory('RoomService',
                         function (response){
                             console.log('Fetched successfully all offices');
 
-                            //$localStorage.offices = response.data.value;
+                            $localStorage.offices = response.data.value;
                             deferred.resolve(response);
                         },
                         function (errResponse){
