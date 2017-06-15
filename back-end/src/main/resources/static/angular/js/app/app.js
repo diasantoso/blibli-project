@@ -35,6 +35,11 @@ app.config(['$stateProvider', '$urlRouterProvider',
                     }
                 })
 
+                .state('addbooking',{
+                    url: '/addbooking',
+                    templateUrl: '/partials/addbooking'
+                })
+
                 .state('login',{
                     url: '/login',
                     templateUrl: '/partials/login'

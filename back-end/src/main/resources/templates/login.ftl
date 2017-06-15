@@ -20,6 +20,9 @@
                     <a href="#listbooking">List Booking</a>
                 </li>
                 <li>
+                    <a href="#addbooking">Add Booking</a>
+                </li>
+                <li>
                     <a href="#login">Login</a>
                 </li>
             </ul>

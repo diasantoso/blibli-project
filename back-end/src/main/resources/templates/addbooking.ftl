@@ -35,39 +35,36 @@
 <div class="content-section-a">
     <div class="container">
         <br/>
-        <h2 class="section-heading">List Booking</h2>
-        <br/><br/>
-        <div class="content table-responsive table-full-width">
-            <table class="table table-hover table-striped data">
-                <thead>
-                <tr>
-                    <th width="200">SUBJECT</th>
-                    <th width="250">DESCRIPTION</th>
-                    <th width="200">ROOM</th>
-                    <th width="180">DATE MEETING</th>
-                    <th width="200">START TIME</th>
-                    <th width="200">END TIME</th>
-                    <th width="200">ADDED DATE</th>
-                    <th width="200">STATUS</th>
-                    <th width="100"></th>
-                    <th width="100"></th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr ng-repeat="u in ctrlBooking.getAllBookings()">
-                    <td>{{u.subject}}</td>
-                    <td>{{u.description}}</td>
-                    <td>{{u.room.name}}</td>
-                    <td>{{u.dateMeeting}}</td>
-                    <td>{{u.startTime}}</td>
-                    <td>{{u.endTime}}</td>
-                    <td>{{u.addedDate}}</td>
-                    <td>{{u.status}}</td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                </tbody>
-            </table>
+        <h2 class="section-heading">Add Booking</h2>
+        <br/><br/><br/>
+        <div>
+            <form class="form-horizontal" ng-submit="" name="myForm">
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Date :</label>
+                    <div class="col-sm-8">
+                        <input type="date" ng-model="" id="date" class="username form-control input-sm" placeholder="Enter date meeting" required />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Start Time :</label>
+                    <div class="col-sm-8">
+                        <input type="text" ng-model="" id="starttime" class="username form-control input-sm" placeholder="Enter date start time meeting" required />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">End Time :</label>
+                    <div class="col-sm-8">
+                        <input type="text" ng-model="" id="endtime" class="username form-control input-sm" placeholder="Enter end time meeting" required />
+                    </div>
+                </div>
+                <br/><br/>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label"></label>
+                    <div class="col-sm-8">
+                        <input type="submit" value = "Check" class="btn btn-primary" ng-disabled="myForm.$invalid || myForm.$pristine">
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
     <!-- /.container -->

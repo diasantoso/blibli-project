@@ -20,6 +20,9 @@
                     <a href="#listbooking">List Booking</a>
                 </li>
                 <li>
+                    <a href="#addbooking">Add Booking</a>
+                </li>
+                <li>
                     <a href="#login">Login</a>
                 </li>
             </ul>
@@ -56,7 +59,7 @@
                 <hr class="section-heading-spacer">
                 <div class="clearfix"></div>
                 <h2 class="section-heading">About this System</h2>
-                <p class="lead">A system which manage booking meeting room in Blibli.com</p>
+                <p class="lead">A system which manage booking meeting room in Blibli.com.<br/>You can make a booking for meeting room.</p>
             </div>
             <div class="col-lg-5 col-lg-offset-2 col-sm-6">
                 <img class="img-responsive" src="../assets-landingpage/img/ipad.png" alt="">
