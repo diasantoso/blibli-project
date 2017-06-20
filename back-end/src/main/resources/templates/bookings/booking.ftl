@@ -94,6 +94,8 @@
                                 </tbody>
                             </table>
 
+                            <a href="#bookings/add" type="button" class="btn btn-primary">Add New Data</a><br/><br/>
+
                         </div>
                     </div>
                 </div>

@@ -83,15 +83,15 @@ app.config(['$stateProvider', '$urlRouterProvider',
                     controller: 'RoomController',
                     controllerAs: 'ctrlRoom',
                     resolve: {
-                       rooms: function ($q, RoomService) {
-                           console.log('Load all rooms');
-                           var deferred = $q.defer();
-                           RoomService.loadAllRooms()
-                               .then(deferred.resolve,deferred.resolve);
-                           RoomService.loadOffices()
-                               .then(deferred.resolve,deferred.resolve);
-                           return deferred.promise;
-                       }
+                        rooms: function ($q, RoomService) {
+                            console.log('Load all rooms');
+                            var deferred = $q.defer();
+                            RoomService.loadAllRooms()
+                                .then(deferred.resolve, deferred.resolve);
+                            RoomService.loadOffices()
+                                .then(deferred.resolve, deferred.resolve);
+                            return deferred.promise;
+                        }
                     }
                 })
 
@@ -114,6 +114,22 @@ app.config(['$stateProvider', '$urlRouterProvider',
                 .state('Booking',{
                     url: '/bookings',
                     templateUrl: '/partials/bookings/booking',
+                    controller: 'BookingController',
+                    controllerAs: 'ctrlBooking',
+                    resolve: {
+                        offices: function ($q, BookingService) {
+                            console.log('Load all bookings');
+                            var deferred = $q.defer();
+                            BookingService.loadAllBookings()
+                                .then(deferred.resolve,deferred.resolve);
+                            return deferred.promise;
+                        }
+                    }
+                })
+
+                .state('BookingAdd',{
+                    url: '/bookings/add',
+                    templateUrl: '/partials/bookings/addbooking',
                     controller: 'BookingController',
                     controllerAs: 'ctrlBooking',
                     resolve: {
