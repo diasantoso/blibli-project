@@ -5,6 +5,7 @@ import com.blibli.response.ResponseBack;
 import com.blibli.response.office.OfficeResponse;
 import com.blibli.response.room.RoomResponse;
 import com.blibli.response.room.RoomResponseList;
+import com.blibli.service.OfficeService;
 import com.blibli.service.RoomService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,8 @@ import java.util.List;
 public class RoomController {
     @Autowired
     RoomService roomService;
+    @Autowired
+    OfficeService officeService;
 
     @RequestMapping(value = "/rooms", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody

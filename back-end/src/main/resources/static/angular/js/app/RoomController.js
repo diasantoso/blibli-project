@@ -43,8 +43,7 @@ angular.module('bookingApp').controller('RoomController',
                       self.successMessage = 'Room created successfully';
                       self.errorMessage = '';
                       self.done = true;
-                      self.room={};
-                      $scope.myForm.$setPristine();
+                      reset();
                     },
 
                     function (errResponse){
@@ -64,7 +63,7 @@ angular.module('bookingApp').controller('RoomController',
                         self.successMessage='Room updated successfully';
                         self.errorMessage='';
                         self.done = true;
-                        $scope.myForm.$setPristine();
+                        reset();
                     },
 
                     function (errResponse){
@@ -91,6 +90,7 @@ angular.module('bookingApp').controller('RoomController',
         }
 
         function getAllRooms(){
+
             return RoomService.getAllRooms();
         }
 
@@ -112,6 +112,12 @@ angular.module('bookingApp').controller('RoomController',
             self.errorMessage='';
             self.room={};
             $scope.myForm.$setPristine(); //reset Form
+            self.room={};
+            self.room.idRoom='';
+            self.room.status=1;
+            self.room.isConference=1;
+            self.room.isProjector=1;
+
         }
 
         function getOffices(){
