@@ -111,6 +111,7 @@ angular.module('bookingApp').controller('OfficeController',
             self.errorMessage='';
             self.office={};
             $scope.myForm.$setPristine(); //reset Form
+            
         }
     }
     ]);

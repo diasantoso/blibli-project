@@ -1,5 +1,6 @@
 package com.blibli.controller;
 
+import com.blibli.model.Office;
 import com.blibli.model.Room;
 import com.blibli.response.ResponseBack;
 import com.blibli.response.office.OfficeResponse;
@@ -28,6 +29,7 @@ public class RoomController {
     @Autowired
     OfficeService officeService;
 
+
     @RequestMapping(value = "/rooms", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public RoomResponseList getAllActiveRooms() {
@@ -49,6 +51,8 @@ public class RoomController {
     public ResponseBack createRoom(@RequestBody RoomResponse param) {
         Room room = new Room();
         BeanUtils.copyProperties(param, room);
+        //Make office data not changed to null (because room only have idOffice, it will make other attribute null)
+        room.setOffice(officeService.getOneActive(room.getOffice().getIdOffice()));
         Room result = roomService.create(room);
 
         ResponseBack responseBack = new ResponseBack();

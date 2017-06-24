@@ -90,7 +90,6 @@ angular.module('bookingApp').controller('RoomController',
         }
 
         function getAllRooms(){
-
             return RoomService.getAllRooms();
         }
 
