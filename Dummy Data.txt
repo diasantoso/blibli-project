@@ -1,0 +1,48 @@
+
+-- Execute sql di databasenya, copast aja
+
+
+INSERT INTO employee VALUES ('402881e85cee7df1015cee879ffb0000', 'dias@gmail.com', 'Dias', 'dias', 'Admin', 1);
+INSERT INTO employee VALUES ('402881e85cee7df1015cee87a0880001', 'audine@gmail.com', 'Audine', 'audine', 'Employee', 1);
+
+
+--
+-- TOC entry 2157 (class 0 OID 33336)
+-- Dependencies: 187
+-- Data for Name: office; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO office VALUES ('4028abcf5ba063ff015ba06465d80000', 'Auidn', 'AaAa', 'Audinw', 1, '12313123');
+INSERT INTO office VALUES ('ff8080815c04eb2f015c04ecaa920004', 'jalan', 'jalan999', 'office 2', 1, '899999');
+INSERT INTO office VALUES ('1', 'jalan maguwo', 'jogja', 'kantor maguwo', 1, '0821111111');
+INSERT INTO office VALUES ('402881e85cee7df1015cee87a08f0002', 'Jalan Tubun Raya no 100', 'Jakarta', 'KS. Tubun', 1, '778899');
+INSERT INTO office VALUES ('402881e85cee7df1015cee87a0ab0003', 'Jalan Thamrin no 99', 'Jakarta', 'KS. Thamrin', 1, '123456');
+
+
+--
+-- TOC entry 2158 (class 0 OID 33344)
+-- Dependencies: 188
+-- Data for Name: room; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO room VALUES ('1', 1245, '1', '1', '1245', '1245', 1, '4028abcf5ba063ff015ba06465d80000');
+INSERT INTO room VALUES ('8a20831d5be7b6f0015be7b800080000', 12, '1', '1', 'room A', '12345', 1, '4028abcf5ba063ff015ba06465d80000');
+INSERT INTO room VALUES ('402881955be8fbb0015be8fd5db80000', 1230, '1', '1', 'Room 45', '089', 1, '4028abcf5ba063ff015ba06465d80000');
+INSERT INTO room VALUES ('1245', 1245, '1', '1', '1245', '12453', 1, '4028abcf5ba063ff015ba06465d80000');
+INSERT INTO room VALUES ('8ab2984d5c052461015c052c86460001', 20, '1', '1', 'A', '123456', 1, '1');
+INSERT INTO room VALUES ('8ab2984d5c05367f015c053866f60000', 20, '1', '1', 'Room 3', '123456', 1, '1');
+INSERT INTO room VALUES ('8ab2984d5c053d06015c053d871c0000', 25, '1', '1', 'Room 4', '12345678', 1, '1');
+INSERT INTO room VALUES ('8ab2984d5c05e336015c05e5561f0001', 12, '1', '1', 'Room 19', '12345', 0, '1');
+INSERT INTO room VALUES ('8ab2984d5c05e336015c05e43ed80000', 12, '1', '1', 'Room 101', '1212121', 1, '1');
+INSERT INTO room VALUES ('8ab2984d5c05ebb4015c05ec08b80000', 1, '1', '1', '1233', '11', 0, '1');
+INSERT INTO room VALUES ('8ab2984d5c066269015c066301d90000', 1000, '1', '1', 'Room111', '1212121', 1, '1');
+INSERT INTO room VALUES ('8ab2984d5c0663ee015c06644bf60000', 12, '1', '1', 'room112', '12121211', 1, '1');
+INSERT INTO room VALUES ('8ab2984d5c0663ee015c066740170001', 12, '1', '1', 'room 102', '12345', 1, '1');
+INSERT INTO room VALUES ('8ab2984d5c0668b8015c066918280000', 12, '1', '1', 'room180', '1212', 1, '1');
+INSERT INTO room VALUES ('8ab2984d5c066cd8015c066d74ae0000', 19, '1', '1', 'Room 123', '098777', 1, '1');
+INSERT INTO room VALUES ('8ab2984d5c066cd8015c06771ae40001', 10, '1', '1', 'Room 189', '1111111', 1, '1');
+INSERT INTO room VALUES ('8ab2984d5c067bd6015c067c5dd50000', 10, '1', '1', 'Room123', '092828282', 1, '1');
+INSERT INTO room VALUES ('8ab2984d5c067dda015c067e60610000', 100, '1', '1', 'Room200', '087666666', 1, '1');
+INSERT INTO room VALUES ('8ab2984d5c067f86015c06803e0d0000', 12, '1', '1', 'Room 201', '6767530', 1, '1');
+INSERT INTO room VALUES ('ff8080815c06b2a5015c06b367b70000', 10, '1', '1', '123', '12121', 1, '1');
+INSERT INTO room VALUES ('4028e4b05c3a941b015c3a96918f0000', 1000, '1', '1', '1', '12345', 1, '1');

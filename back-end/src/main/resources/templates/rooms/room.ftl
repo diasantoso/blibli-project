@@ -127,7 +127,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-3 control-label">Have Conference :</label>
+                        <label class="col-sm-3 control-label">Conference :</label>
                         <div class="col-sm-8">
                             <input type='hidden' ng-model="ctrlRoom.room.isConference" ng-init="ctrlRoom.room.isConference=1"  ng-true-value="0" ng-false-value="0" ng-checked="ctrlRoom.room.isConference == 1">
                             <input type='checkbox' ng-model="ctrlRoom.room.isConference" ng-init="ctrlRoom.room.isConference=1" id="isConference" ng-true-value="1" ng-false-value="0" ng-checked="ctrlRoom.room.isConference == 1"> Yes
@@ -135,7 +135,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="col-sm-3 control-label">Have Projector :</label>
+                        <label class="col-sm-3 control-label">Projector :</label>
                         <div class="col-sm-8">
                             <input type='hidden' ng-model="ctrlRoom.room.isProjector" ng-init="ctrlRoom.room.isProjector=1"  ng-true-value="0" ng-false-value="0" ng-checked="ctrlRoom.room.isProjector == 1">
                             <input type='checkbox' ng-model="ctrlRoom.room.isProjector" ng-init="ctrlRoom.room.isProjector=1" id="isProjector" ng-true-value="1" ng-false-value="0" ng-checked="ctrlRoom.room.isProjector == 1"> Yes
@@ -156,6 +156,24 @@
                             </select>
                         </div>
                     </div>
+                    <#--Upload Gambar-->
+                    <div class="form-group"  >
+                        <label class="col-sm-3 control-label">Room Image :</label>
+                        <div id="image-preview" class="image-preview">
+                            <label for="image-upload" id="image-label">Choose File</label>
+                            <input type="file" name="file" id="image-upload" ng-upload-change="ctrlRoom.uploadImage($event)" />
+                        </div>
+                        <div id="image-preview1" class="image-preview">
+                            <label for="image-upload1" id="image-label">Choose File</label>
+                            <input type="file" name="file" id="image-upload1" ng-upload-change="ctrlRoom.uploadImage($event)"/>
+                        </div>
+                        <div id="image-preview2" class="image-preview">
+                            <label for="image-upload2" id="image-label2">Choose File</label>
+                            <input type="file" name="file" id="image-upload2" ng-upload-change="ctrlRoom.uploadImage($event)"/>
+                        </div>
+                    </div>
+
+
 
                     <input type="hidden" ng-model="ctrlRoom.room.status" ng-init="ctrlRoom.room.status=1" id="status" class="username form-control input-sm" />
                     <input type="hidden" ng-model="ctrlRoom.room.idRoom" ng-init="ctrlRoom.room.idRoom=''" id="idRoom" class="username form-control input-sm" />
@@ -164,8 +182,34 @@
                         <input type="submit"  value="{{!ctrlRoom.room.idRoom ? 'Add' : 'Update'}}" class="btn btn-primary btn-sm" ng-disabled="myForm.$invalid || myForm.$pristine">
                     </div>
                 </form>
+
             </div>
         </div>
 
     </div>
 </div>
+<script src="../assets-upload/jquery.uploadPreview.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $.uploadPreview({
+            input_field: "#image-upload",
+            preview_box: "#image-preview",
+            label_field: "#image-label"
+        });
+    });
+    $(document).ready(function() {
+        $.uploadPreview({
+            input_field: "#image-upload1",
+            preview_box: "#image-preview1",
+            label_field: "#image-label1"
+        });
+    });
+    $(document).ready(function() {
+        $.uploadPreview({
+            input_field: "#image-upload2",
+            preview_box: "#image-preview2",
+            label_field: "#image-label2"
+        });
+    });
+</script>
+

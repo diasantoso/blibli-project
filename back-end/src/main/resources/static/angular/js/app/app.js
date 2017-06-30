@@ -7,7 +7,9 @@ app.constant('urls',{
     EMPLOYEE_SERVICE_API : 'http://localhost:8080/api/employees',
     BOOKING_SERVICE_API : 'http://localhost:8080/api/bookings',
     LOGIN_SERVICE_API : 'http://localhost:8080/api/login',
-    COUNT_SERVICE_API : 'http://localhost:8080/api/count'
+    COUNT_SERVICE_API : 'http://localhost:8080/api/count',
+    IMAGES_SERVICE_API : 'http://localhost:8080/api/rooms/images',
+    IMAGES_UPLOAD_API : 'http://localhost:8080/api/upload'
 });
 
 app.config(['$stateProvider', '$urlRouterProvider',
@@ -144,3 +146,20 @@ app.config(['$stateProvider', '$urlRouterProvider',
                 });
 
        $urlRouterProvider.otherwise('/');}]);
+
+
+app.directive("ngUploadChange",function(){
+    return{
+        scope:{
+            ngUploadChange:"&"
+        },
+        link:function($scope, $element, $attrs){
+            $element.on("change",function(event){
+                $scope.ngUploadChange({$event: event})
+            })
+            $scope.$on("$destroy",function(){
+                $element.off();
+            });
+        }
+    }
+});

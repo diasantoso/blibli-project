@@ -6,12 +6,20 @@ import com.blibli.response.ResponseBack;
 import com.blibli.response.roomImage.RoomImageResponse;
 import com.blibli.response.roomImage.RoomImageResponseList;
 import com.blibli.service.RoomImageService;
+import com.blibli.service.RoomService;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,10 +28,12 @@ import java.util.List;
  * Created by ADIN on 5/11/2017.
  */
 @Controller
-@RequestMapping(value="/api")
+@RequestMapping(value="/api/rooms")
 public class RoomImageController {
     @Autowired
     RoomImageService roomImageService;
+    @Autowired
+    RoomService roomService;
 
     @RequestMapping(value = "/images", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
@@ -43,7 +53,7 @@ public class RoomImageController {
     }
 
     //Mapping to get images of one room
-    @RequestMapping(value = "/images{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/images/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public RoomImageResponseList getImagesforOneRoom(@PathVariable ("id") String roomId){
         List<RoomImage> dataList = roomImageService.getAllImagesForOneRoom(roomId);
@@ -62,8 +72,12 @@ public class RoomImageController {
     @RequestMapping(value="/images", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public ResponseBack createRoomImages(@RequestBody RoomImageResponse param){
+
+
+        //Image Room Save to Database
         RoomImage roomImage = new RoomImage();
         BeanUtils.copyProperties(param,roomImage);
+        roomImage.setRoom(roomService.getOneActive(roomImage.getRoom().getIdRoom()));
         RoomImage data = roomImageService.create(roomImage);
 
         ResponseBack responseBack = new ResponseBack();

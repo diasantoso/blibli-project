@@ -12,7 +12,9 @@ angular.module('bookingApp').factory('RoomService',
                 updateRoom : updateRoom,
                 removeRoom : removeRoom,
                 loadOffices : loadOffices,
-                getAllOffices : getAllOffices
+                getAllOffices : getAllOffices,
+                uploadImage : uploadImage,
+                createRoomImage : createRoomImage
             };
 
             return factory;
@@ -134,6 +136,50 @@ angular.module('bookingApp').factory('RoomService',
 
             function getAllOffices(){
                 return $localStorage.offices;
+            }
+
+            //-----------------------------------Upload Image Room---------------------------------------
+            function uploadImage(file){
+                console.log('Service : Upload Image');
+                var deferred = $q.defer();
+                var fd = new FormData();
+                fd.append('file', file);
+                $http.post(urls.IMAGES_UPLOAD_API, fd, {
+                    transformRequest: angular.identity,
+                    headers: {'Content-Type': undefined}
+                })
+                    .then(
+                        function (response){
+                            console.log('Succes add image');
+                            deferred.resolve(response.data);
+                        },
+
+                        function (errResponse) {
+                            console.error('Error while upload image: ' + errResponse.data.errorMessage);
+                            deferred.reject(errResponse);
+                        }
+                    );
+
+                return deferred.promise;
+            }
+
+            function createRoomImage(image){
+                console.log('Service : Creating Room image');
+                var deferred = $q.defer();
+                $http.post(urls.IMAGES_SERVICE_API, image)
+                    .then(
+                        function (response){
+                            console.log('Service : Success Saving Image')
+                            deferred.resolve(response.data);
+                        },
+
+                        function (errResponse) {
+                            console.error('Error while saving image: ' + errResponse.data.errorMessage);
+                            deferred.reject(errResponse);
+                        }
+                    );
+
+                return deferred.promise;
             }
 
         }

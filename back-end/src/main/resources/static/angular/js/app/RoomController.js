@@ -6,6 +6,10 @@ angular.module('bookingApp').controller('RoomController',
         var self = this;
         self.room = {};
         self.rooms = [];
+        //New for Image Upload
+        self.imageTemp = []; //Ini menampung nama gambar2 yg sudah diupload (gambar belum masuk database, tp sudah terupload)
+        self.roomImage = []; //Ini untuk menampung object gambar yang akan disimpan ke database
+
 
         self.submit = submit;
         self.getAllRooms = getAllRooms;
@@ -15,6 +19,9 @@ angular.module('bookingApp').controller('RoomController',
         self.editRoom = editRoom;
         self.reset = reset;
         self.getOffices = getOffices;
+        self.uploadImage = uploadImage;
+        self.submitImage = submitImage;
+        self.createRoomImage = createRoomImage;
 
         self.successMessage = '';
         self.errorMessage = '';
@@ -40,6 +47,8 @@ angular.module('bookingApp').controller('RoomController',
                 .then(
                     function (response){
                       console.log('Room created successfully');
+                      //Save Room Image With Room Id
+                        submitImage(response.response);
                       self.successMessage = 'Room created successfully';
                       self.errorMessage = '';
                       self.done = true;
@@ -116,11 +125,81 @@ angular.module('bookingApp').controller('RoomController',
             self.room.status=1;
             self.room.isConference=1;
             self.room.isProjector=1;
-
+            self.imageTemp=[];
+            self.roomImage = [];
         }
 
         function getOffices(){
             return RoomService.getAllOffices();
         }
+
+        //-----------------------------------Upload Image Room---------------------------------------
+
+        //Ini untuk melakukan upload gambar (Gambar terupload, tp belum masuk database RoomImage)
+        function uploadImage($event){
+            var files = $event.target.files[0];
+            console.log('About to upload image');
+            RoomService.uploadImage(files)
+                .then(
+                    function (response){
+                        console.log('Image Uploaded Succesfully');
+                        console.log('File Gambar : '+response.response);
+                        self.imageTemp.push(response.response);
+                        self.successMessage = 'Image Uploaded successfully';
+                        self.errorMessage = '';
+
+                    },
+
+                    function (errResponse){
+                        console.log('Error while uploading Image');
+                        self.errorMessage = 'Error while uploading image';
+                        self.successMessage = '';
+                    }
+                );
+        }
+
+        //Ini untuk menyimpan gambar-gambar (lebih dr 1) yang sudah terupload ke database
+        function submitImage(roomid){
+            console.log('Submitting Image');
+            var i,arrL;
+            arrL=self.imageTemp.length;
+            //Perulangan *karna gambar bisa lebih dari satu
+            if(arrL!=0) {
+                for (i = 0; i < arrL; i++) {
+                    self.roomImage[i] = {};
+                    self.roomImage[i].room = {};
+                    self.roomImage[i].imageDescription = 'Room Image';
+                    self.roomImage[i].imageAddress = self.imageTemp[i];
+                    console.log('sGambar '+i+' : '+self.imageTemp[i]);
+                    self.roomImage[i].room.idRoom = roomid;
+
+                    createRoomImage(self.roomImage[i]);
+                }
+            } else {
+                console.log('No Image Submitted');
+            }
+        }
+
+        //Ini untuk menyimpan gambar 1 per 1 ke database
+        function createRoomImage(roomimage){
+            console.log('About to create room image');
+            RoomService.createRoomImage(roomimage)
+                .then(
+                    function (response){
+                        console.log('Room Image Saved Succesfully');
+                        self.successMessage = 'Room Image Saved  successfully';
+                        self.errorMessage = '';
+
+                    },
+
+                    function (errResponse){
+                        console.log('Error while saving Room Image');
+                        self.errorMessage = 'Error while saving Room image';
+                        self.successMessage = '';
+                    }
+                );
+        }
+
+
     }
     ]);

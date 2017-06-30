@@ -3,6 +3,8 @@ package com.blibli.controller;
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 
+import com.blibli.response.ResponseBack;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ResourceLoader;
@@ -90,21 +92,20 @@ public class UploadingController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/api/upload")
-    public String handleFileUpload(@RequestParam("file") MultipartFile file,
-                                   RedirectAttributes redirectAttributes) {
-
+    @ResponseBody
+    public ResponseBack handleFileUpload(@RequestParam("file") MultipartFile file) {
+        ResponseBack responseBack = new ResponseBack();
+        String filename = "default.jpg";
         if (!file.isEmpty()) {
             try {
-                Files.copy(file.getInputStream(), Paths.get(ROOT, file.getOriginalFilename()));
-                redirectAttributes.addFlashAttribute("message",
-                        "You successfully uploaded " + file.getOriginalFilename() + "!");
+                filename = "room-"+ RandomStringUtils.randomAlphanumeric(5)+"-"+file.getOriginalFilename();
+                Files.copy(file.getInputStream(), Paths.get(ROOT,file.getOriginalFilename()));
             } catch (IOException|RuntimeException e) {
-                redirectAttributes.addFlashAttribute("message", "Failured to upload " + file.getOriginalFilename() + " => " + e.getMessage());
+
             }
-        } else {
-            redirectAttributes.addFlashAttribute("message", "Failed to upload " + file.getOriginalFilename() + " because it was empty");
         }
 
-        return "redirect:/";
+        responseBack.setResponse(filename);
+        return responseBack;
     }
 }

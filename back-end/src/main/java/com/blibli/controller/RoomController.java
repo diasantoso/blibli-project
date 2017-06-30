@@ -57,7 +57,8 @@ public class RoomController {
 
         ResponseBack responseBack = new ResponseBack();
         if(result!=null)
-            responseBack.setResponse("success adding");
+            //Response set to idRoom, so RoomImage can get id Room from here
+            responseBack.setResponse(result.getIdRoom());
         else
             responseBack.setResponse("failed adding");
 

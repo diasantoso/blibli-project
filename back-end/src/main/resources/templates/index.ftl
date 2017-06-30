@@ -10,6 +10,10 @@
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
 
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+
+
     <#--AngularJS Source Scripts-->
     <script src="../angular/js/lib/angular.min.js" ></script>
     <script src="../angular/js/lib/angular-ui-router.min.js" ></script>
@@ -38,12 +42,13 @@
     <link href="../assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
 
     <#--JS for layout Bootstrap - ADMIN PAGE-->
-    <script src="../assets/js/jquery-1.10.2.js" type="text/javascript"></script>
+
+    <#--<script src="../assets/js/jquery-1.10.2.js" type="text/javascript"></script>-->
     <script src="../assets/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="../assets/js/bootstrap-checkbox-radio-switch.js"></script>
     <script src="../assets/js/chartist.min.js"></script>
     <script src="../assets/js/bootstrap-notify.js"></script>
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <#--<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>-->
     <script src="../assets/js/light-bootstrap-dashboard.js"></script>
     <script src="../assets/js/demo.js"></script>
 
@@ -55,14 +60,56 @@
     <#--CSS & JS for Layout Bootstrap - LOGIN PAGE-->
     <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css'>
     <link rel="stylesheet" href="../assets-login/css/style.css">
-    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <#--<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>-->
     <script src="../assets-login/js/index.js"></script>
 
     <#--CSS & JS for Datatables-->
     <link rel="stylesheet" type="text/css" href="../assets/DataTables/media/css/jquery.dataTables.css">
     <link rel="stylesheet" type="text/css" href="../assets/DataTables/media/css/dataTables.bootstrap.css">
-    <script type="text/javascript" src="../assets/DataTables/media/js/jquery.js"></script>
+    <#--<script type="text/javascript" src="../assets/DataTables/media/js/jquery.js"></script>-->
     <script type="text/javascript" src="../assets/DataTables/media/js/jquery.dataTables.js"></script>
+
+    <#--Image Preview CSS-->
+
+    <style type="text/css">
+        .image-preview {
+            width: 120px;
+            height: 120px;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+            background-color: #f7f7f8;
+            color: #ecf0f1;
+            border: 2px solid #dddddd;
+            border-radius: 5px;
+        }
+        .image-preview input {
+            line-height: 90px;
+            font-size: 90px;
+            position: absolute;
+            opacity: 0;
+            z-index: 10;
+        }
+        .image-preview label {
+            position: absolute;
+            z-index: 5;
+            opacity: 0.8;
+            cursor: pointer;
+            background-color: #bdc3c7;
+            width: 80px;
+            height: 25px;
+            font-size: 14px;
+            line-height: 25px;
+            text-transform: uppercase;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            text-align: center;
+        }
+
+    </style>
 
 </head>
 <body>
@@ -74,5 +121,8 @@
             $('.data').DataTable();
         });
     </script>
+
+
+
 </body>
 </html>
