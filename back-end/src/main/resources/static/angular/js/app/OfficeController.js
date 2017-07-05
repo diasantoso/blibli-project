@@ -110,6 +110,7 @@ angular.module('bookingApp').controller('OfficeController',
             self.successMessage='';
             self.errorMessage='';
             self.office={};
+            self.office.status=1;
             $scope.myForm.$setPristine(); //reset Form
             
         }
