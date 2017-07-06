@@ -50,4 +50,6 @@ public class EmployeeService {
         Employee result = employeeRepository.deleteEmployee(id);
         return result;
     }
+
+    public Employee findOneByEmail (String email){return employeeRepository.findOneByEmail(email);}
 }

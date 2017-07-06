@@ -3,6 +3,7 @@ package com.blibli.response.employee;
 import com.blibli.model.Booking;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Dias on 3/30/2017.
@@ -15,6 +16,8 @@ public class EmployeeResponse {
     private String role;
     private Integer status;
     private List<Booking> bookings;
+
+    private Map<String, Object> tokenMap;
 
     public String getIdEmployee() {
         return idEmployee;
@@ -70,5 +73,13 @@ public class EmployeeResponse {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public Map<String, Object> getTokenMap() {
+        return tokenMap;
+    }
+
+    public void setTokenMap(Map<String, Object> tokenMap) {
+        this.tokenMap = tokenMap;
     }
 }

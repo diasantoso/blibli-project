@@ -12,4 +12,6 @@ public interface EmployeeRepositoryCustom {
     Employee deleteEmployee(String id);
     List<Employee> showActiveEmployee();
     Employee showOneEmployee(String id);
+
+    Employee findOneByEmail (String email);
 }

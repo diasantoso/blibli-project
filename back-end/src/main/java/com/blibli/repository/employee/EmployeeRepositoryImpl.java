@@ -49,4 +49,15 @@ public class EmployeeRepositoryImpl implements EmployeeRepositoryCustom {
                 "SELECT * FROM EMPLOYEE WHERE STATUS=1 AND id_employee = '" + id +"' ", Employee.class).getSingleResult();
         return result;
     }
+
+    @Override
+    public Employee findOneByEmail(String email) {
+        EntityManager em = entityManagerFactory.createEntityManager();
+        Employee result = (Employee) em.createNativeQuery(
+                "SELECT * FROM employee WHERE email='"+email+"';", Employee.class).getSingleResult();
+
+        return result;
+    }
+
+
 }
