@@ -2,6 +2,7 @@ package com.blibli.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -10,16 +11,18 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-//import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
-import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 /**
  * Created by Dias on 3/30/2017.
+ * Editted by Adin on 7/6/2017.
  */
 @Entity
 @Table(name="Employee")
-public class Employee {
+public class Employee implements UserDetails {
 
     @Id
     @GeneratedValue(generator="system-uuid")
@@ -27,12 +30,12 @@ public class Employee {
     private String idEmployee;
     private String name;
 
-    //@Column(unique = true)
+    @Column(unique = true)
     private String email;
-    //@JsonProperty(access = Access.WRITE_ONLY)
+    @JsonProperty(access = Access.WRITE_ONLY)
     private String password;
-    //@ElementCollection
-    //private List<String> roles =  new ArrayList<>();
+//    @ElementCollection
+//    private List<String> roles =  new ArrayList<>();
     public String role;
     //1=active, 0=deactive
     private Integer status;
@@ -113,40 +116,40 @@ public class Employee {
         this.bookings = bookings;
     }
 
-//    @JsonIgnore
-//    @Override
-//    public boolean isEnabled() {
-//        return true;
-//    }
-//
-//    @JsonIgnore
-//    @Override
-//    public boolean isCredentialsNonExpired() {
-//        return true;
-//    }
-//
-//    @JsonIgnore
-//    @Override
-//    public boolean isAccountNonLocked() {
-//        return true;
-//    }
-//
-//    @JsonIgnore
-//    @Override
-//    public boolean isAccountNonExpired() {
-//        return true;
-//    }
-//
-//    @JsonIgnore
-//    @Override
-//    public Collection<? extends GrantedAuthority> getAuthorities() {
-//        Collection<GrantedAuthority> authorities = new ArrayList<>();
-//        for (String role : roles) {
-//            authorities.add(new SimpleGrantedAuthority(role));
-//        }
-//        return authorities;
-//    }
+    @JsonIgnore
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
 
+    @JsonIgnore
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
 
+    @JsonIgnore
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
 
+    @JsonIgnore
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @JsonIgnore
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        Collection<GrantedAuthority> authorities = new ArrayList<>();
+        authorities.add(new SimpleGrantedAuthority(role));
+        return authorities;
+    }
+
+    @Override
+    public String getUsername() {
+        return email;
+    }
 }
