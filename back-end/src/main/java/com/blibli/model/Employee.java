@@ -1,11 +1,18 @@
 package com.blibli.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+
+//import org.springframework.security.core.userdetails.UserDetails;
+
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 /**
  * Created by Dias on 3/30/2017.
@@ -19,9 +26,14 @@ public class Employee {
     @GenericGenerator(name="system-uuid", strategy = "uuid")
     private String idEmployee;
     private String name;
+
+    //@Column(unique = true)
     private String email;
+    //@JsonProperty(access = Access.WRITE_ONLY)
     private String password;
-    private String role;
+    //@ElementCollection
+    //private List<String> roles =  new ArrayList<>();
+    public String role;
     //1=active, 0=deactive
     private Integer status;
 
@@ -69,6 +81,13 @@ public class Employee {
     public void setPassword(String password) {
         this.password = password;
     }
+//    public List<String> getRoles() {
+//        return roles;
+//    }
+//
+//    public void setRoles(List<String> roles) {
+//        this.roles = roles;
+//    }
 
     public String getRole() {
         return role;
@@ -93,4 +112,41 @@ public class Employee {
     public void setBookings(List<Booking> bookings) {
         this.bookings = bookings;
     }
+
+//    @JsonIgnore
+//    @Override
+//    public boolean isEnabled() {
+//        return true;
+//    }
+//
+//    @JsonIgnore
+//    @Override
+//    public boolean isCredentialsNonExpired() {
+//        return true;
+//    }
+//
+//    @JsonIgnore
+//    @Override
+//    public boolean isAccountNonLocked() {
+//        return true;
+//    }
+//
+//    @JsonIgnore
+//    @Override
+//    public boolean isAccountNonExpired() {
+//        return true;
+//    }
+//
+//    @JsonIgnore
+//    @Override
+//    public Collection<? extends GrantedAuthority> getAuthorities() {
+//        Collection<GrantedAuthority> authorities = new ArrayList<>();
+//        for (String role : roles) {
+//            authorities.add(new SimpleGrantedAuthority(role));
+//        }
+//        return authorities;
+//    }
+
+
+
 }

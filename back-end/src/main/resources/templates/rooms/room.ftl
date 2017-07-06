@@ -172,7 +172,18 @@
                             <input type="file" name="file" id="image-upload2" ng-upload-change="ctrlRoom.uploadImage($event)"/>
                         </div>
                     </div>
-
+                <#--New Row Image Upload-->
+                    <div class="form-group"  >
+                        <label class="col-sm-3 control-label"></label>
+                        <div id="image-preview3" class="image-preview">
+                            <label for="image-upload3" id="image-label3">Choose File</label>
+                            <input type="file" name="file" id="image-upload3" ng-upload-change="ctrlRoom.uploadImage($event)" />
+                        </div>
+                        <div id="image-preview4" class="image-preview">
+                            <label for="image-upload4" id="image-label4">Choose File</label>
+                            <input type="file" name="file" id="image-upload4" ng-upload-change="ctrlRoom.uploadImage($event)"/>
+                        </div>
+                    </div>
 
 
                     <input type="hidden" ng-model="ctrlRoom.room.status" ng-init="ctrlRoom.room.status=1" id="status" class="username form-control input-sm" />
@@ -209,6 +220,20 @@
             input_field: "#image-upload2",
             preview_box: "#image-preview2",
             label_field: "#image-label2"
+        });
+    });
+    $(document).ready(function() {
+        $.uploadPreview({
+            input_field: "#image-upload3",
+            preview_box: "#image-preview3",
+            label_field: "#image-label3"
+        });
+    });
+    $(document).ready(function() {
+        $.uploadPreview({
+            input_field: "#image-upload4",
+            preview_box: "#image-preview4",
+            label_field: "#image-label4"
         });
     });
 </script>

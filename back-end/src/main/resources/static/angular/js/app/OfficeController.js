@@ -43,6 +43,7 @@ angular.module('bookingApp').controller('OfficeController',
                       self.errorMessage = '';
                       self.done = true;
                       self.office={};
+                      self.office.status=1;
                       $scope.myForm.$setPristine();
                     },
 
