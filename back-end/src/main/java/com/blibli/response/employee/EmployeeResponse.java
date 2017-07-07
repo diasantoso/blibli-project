@@ -17,7 +17,7 @@ public class EmployeeResponse {
     private Integer status;
     private List<Booking> bookings;
 
-    private Map<String, Object> tokenMap;
+//    private Map<String, Object> tokenMap;
 
     public String getIdEmployee() {
         return idEmployee;
@@ -75,11 +75,11 @@ public class EmployeeResponse {
         this.status = status;
     }
 
-    public Map<String, Object> getTokenMap() {
-        return tokenMap;
-    }
-
-    public void setTokenMap(Map<String, Object> tokenMap) {
-        this.tokenMap = tokenMap;
-    }
+//    public Map<String, Object> getTokenMap() {
+//        return tokenMap;
+//    }
+//
+//    public void setTokenMap(Map<String, Object> tokenMap) {
+//        this.tokenMap = tokenMap;
+//    }
 }

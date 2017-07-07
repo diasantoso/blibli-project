@@ -20,6 +20,8 @@ import java.util.*;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
+import javax.servlet.http.HttpServletResponse;
+
 /**
  * Created by Dias on 3/30/2017.
  */
@@ -78,14 +80,15 @@ public class EmployeeController {
 
     @RequestMapping(value = "/login", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public ResponseEntity<Map<String, Object>> doLogin(@RequestBody EmployeeResponse param) {
+    public ResponseEntity<Map<String, Object>> doLogin(@RequestParam String email, @RequestParam String password, HttpServletResponse response) {
 
         String token = null;
-        Employee employee = employeeService.findOneByEmail(param.getEmail());
+        Employee employee = employeeService.findOneByEmail(email);
+        System.out.println(email);
         Map<String, Object> tokenMap = new HashMap<String, Object>();
 
-        if (employee != null && employee.getPassword().equals(param.getPassword())) {
-            token = Jwts.builder().setSubject(param.getEmail()).claim("role", employee.getRole()).setIssuedAt(new Date())
+        if (employee != null && employee.getPassword().equals(password)) {
+            token = Jwts.builder().setSubject(email).claim("role", employee.getRole()).setIssuedAt(new Date())
                     .signWith(SignatureAlgorithm.HS256, "secretkey").compact();
             tokenMap.put("token", token);
             tokenMap.put("user", employee);
