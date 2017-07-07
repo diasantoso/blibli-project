@@ -44,7 +44,9 @@ app.config(['$stateProvider', '$urlRouterProvider',
 
                 .state('login',{
                     url: '/login',
-                    templateUrl: '/partials/login'
+                    templateUrl: '/partials/login',
+                    controller: 'LoginController',
+                    controllerAs: 'ctrlLogin'
                 })
 
                 .state('dashboard',{
