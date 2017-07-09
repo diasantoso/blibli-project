@@ -34,13 +34,13 @@
 
 <div class="login-form">
     <h1>Blibli</h1>
-    <form ng-submit="login()">
+    <form ng-submit="ctrlLogin.login()">
         <div class="form-group ">
-            <input type="text" class="form-control" placeholder="Email " id="email">
+            <input type="text" class="form-control" placeholder="Email" ng-model="ctrlLogin.user.email" id="email">
             <i class="fa fa-user"></i>
         </div>
         <div class="form-group log-status">
-            <input type="password" class="form-control" placeholder="Password" id="password">
+            <input type="password" class="form-control" placeholder="Password" ng-model="ctrlLogin.user.password" id="password">
             <i class="fa fa-lock"></i>
         </div>
         <span class="alert">Invalid Credentials</span>
