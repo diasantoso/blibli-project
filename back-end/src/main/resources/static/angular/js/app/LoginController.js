@@ -2,12 +2,13 @@
 
 angular.module('bookingApp')
 // Creating the Angular Controller
-    .controller('LoginController', function($http, $scope, $state, LoginService, $rootScope) {
+    .controller('LoginController', function($http, $scope, $state, LoginService, $rootScope, urls) {
         // method for login
         $scope.login = function() {
+            console.log("Debug : Login");
             // requesting the token by usename and password
             $http({
-                url : 'login',
+                url : urls.LOGIN_API,
                 method : "POST",
                 params : {
                     email : $scope.email,
@@ -25,14 +26,18 @@ angular.module('bookingApp')
                     LoginService.user = res.user;
                     $rootScope.$broadcast('LoginSuccessful');
                     // going to the home page
-                    $state.go('home');
+                    console.log("Debug : Login Success -> Going Dashboard");
+                    console.log("Debug : Login Token -> "+res.token);
+                    $state.go('dashboard');
                 } else {
                     // if the token is not present in the response then the
                     // authentication was not successful. Setting the error message.
+                    console.log("Debug : Login Failed");
                     $scope.message = 'Authetication Failed !';
                 }
             }).error(function(error) {
                 // if authentication was not successful. Setting the error message.
+                console.log("Debug : Login Failed");
                 $scope.message = 'Authetication Failed !';
             });
         };

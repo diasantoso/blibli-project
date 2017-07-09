@@ -30,6 +30,8 @@
     <script src="../angular/js/app/BookingController.js"></script>
     <script src="../angular/js/app/CountService.js"></script>
     <script src="../angular/js/app/CountController.js"></script>
+    <script src="../angular/js/app/LoginController.js"></script>
+    <script src="../angular/js/app/LoginService.js"></script>
 
     <#--CSS for Layout Bootstrap - ADMIN PAGE-->
     <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />

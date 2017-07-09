@@ -6,10 +6,10 @@ app.constant('urls',{
     ROOM_SERVICE_API : 'http://localhost:8080/api/rooms/',
     EMPLOYEE_SERVICE_API : 'http://localhost:8080/api/employees',
     BOOKING_SERVICE_API : 'http://localhost:8080/api/bookings',
-    LOGIN_SERVICE_API : 'http://localhost:8080/api/login',
     COUNT_SERVICE_API : 'http://localhost:8080/api/count',
     IMAGES_SERVICE_API : 'http://localhost:8080/api/rooms/images',
-    IMAGES_UPLOAD_API : 'http://localhost:8080/api/upload'
+    IMAGES_UPLOAD_API : 'http://localhost:8080/api/upload',
+    LOGIN_API : 'http://localhost:8080/api/login'
 });
 
 app.config(['$stateProvider', '$urlRouterProvider',
