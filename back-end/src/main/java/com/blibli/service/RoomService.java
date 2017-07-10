@@ -22,7 +22,7 @@ public class RoomService {
 
     public Room getOneActive (String id){ return roomRepository.showOneRoom(id);}
 
-    public Room create(Room room) {
+    public Room save(Room room) {
         Room result = roomRepository.save(room);
         return result;
     }

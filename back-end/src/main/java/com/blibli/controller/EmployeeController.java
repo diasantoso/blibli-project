@@ -122,7 +122,7 @@ public class EmployeeController {
             throw new RuntimeException("Email is already used");
         }
         emp.setRole("Employee");
-        Employee result = employeeService.create(emp);
+        Employee result = employeeService.save(emp);
 
         ResponseBack responseBack = new ResponseBack();
         if(result!=null)
@@ -153,7 +153,7 @@ public class EmployeeController {
     public ResponseBack updateEmployee(@RequestBody EmployeeResponse param) {
         Employee emp = new Employee();
         BeanUtils.copyProperties(param, emp);
-        Employee result = employeeService.create(emp);
+        Employee result = employeeService.save(emp);
 
         ResponseBack responseBack = new ResponseBack();
         if(result!=null)

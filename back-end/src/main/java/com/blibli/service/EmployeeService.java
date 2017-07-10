@@ -41,8 +41,8 @@ public class EmployeeService {
         return employeeRepository.showOneEmployee(id);
     }
 
-    public Employee create(Employee room) {
-        Employee result = employeeRepository.save(room);
+    public Employee save(Employee employee) {
+        Employee result = employeeRepository.save(employee);
         return result;
     }
 

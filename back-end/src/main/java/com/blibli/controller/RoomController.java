@@ -53,7 +53,7 @@ public class RoomController {
         BeanUtils.copyProperties(param, room);
         //Make office data not changed to null (because room only have idOffice, it will make other attribute null)
         room.setOffice(officeService.getOneActive(room.getOffice().getIdOffice()));
-        Room result = roomService.create(room);
+        Room result = roomService.save(room);
 
         ResponseBack responseBack = new ResponseBack();
         if(result!=null)
@@ -70,7 +70,7 @@ public class RoomController {
     public ResponseBack updateRoom(@RequestBody RoomResponse param) {
         Room room = new Room();
         BeanUtils.copyProperties(param, room);
-        Room result = roomService.create(room);
+        Room result = roomService.save(room);
 
         ResponseBack responseBack = new ResponseBack();
         if(result!=null)

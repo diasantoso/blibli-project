@@ -1,7 +1,12 @@
 package com.blibli.controller;
 
 import com.blibli.model.Employee;
+import com.blibli.model.Office;
+import com.blibli.model.Room;
 import com.blibli.repository.employee.EmployeeRepository;
+import com.blibli.service.EmployeeService;
+import com.blibli.service.OfficeService;
+import com.blibli.service.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,30 +24,51 @@ import java.util.List;
 @RequestMapping(value = "/api")
 public class AuthorizationController {
     @Autowired
-    private EmployeeRepository employeeRepository;
+    private EmployeeService employeeService;
+    @Autowired
+    private RoomService roomService;
+    @Autowired
+    private OfficeService officeService;
+/**
+ * Role Admin and Employee:
+ * - /Home
+ * - /Login
+ * - /Register
+ * - /booking (Post,put,get)
+ * - /Rooms (get)
+ * - /office(get)
+ *
+ * Role Admin :
+ * - /offices (post,delete)
+ * - /rooms (post, delete)
+ * - /employees
+ * - /booking (edit,delete)
+ */
+/*-------------------------------   ADMIN ---------------------------------------------*/
 
+    /*====================  AUTH FOR EMPLOYEES API ================================*/
     /**
-     * Web service for getting all the appUsers in the application.
+     * Web service for GETTING ALL the appUsers in the application.
      *
-     * @return list of all AppUser
+     * @return list of all AppUsers
      */
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    @RequestMapping(value = "/users", method = RequestMethod.GET)
+    @RequestMapping(value = "/employees", method = RequestMethod.GET)
     public List<Employee> users() {
-        return employeeRepository.findAll();
+        return employeeService.getAllActive();
     }
 
     /**
-     * Web service for getting a user by his ID
+     * Web service for GETTING A USER by his ID
      *
      * @param id
      *            appUser ID
      * @return appUser
      */
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    @RequestMapping(value = "/users/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/employees/{id}", method = RequestMethod.GET)
     public ResponseEntity<Employee> userById(@PathVariable String id) {
-        Employee appUser = employeeRepository.findOne(id);
+        Employee appUser = employeeService.getOneActive(id);
         if (appUser == null) {
             return new ResponseEntity<Employee>(HttpStatus.NO_CONTENT);
         } else {
@@ -51,15 +77,15 @@ public class AuthorizationController {
     }
 
     /**
-     * Method for deleting a user by his ID
+     * Method for DELETING a user by his ID
      *
      * @param id
      * @return
      */
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    @RequestMapping(value = "/users/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/employees/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<Employee> deleteUser(@PathVariable String id) {
-        Employee appUser = employeeRepository.findOne(id);
+        Employee appUser = employeeService.getOneActive(id);
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String loggedUsername = auth.getName();
         if (appUser == null) {
@@ -67,7 +93,7 @@ public class AuthorizationController {
         } else if (appUser.getUsername().equalsIgnoreCase(loggedUsername)) {
             throw new RuntimeException("You cannot delete your account");
         } else {
-            employeeRepository.delete(appUser);
+            employeeService.delete(id);
             return new ResponseEntity<Employee>(appUser, HttpStatus.OK);
         }
 
@@ -80,12 +106,12 @@ public class AuthorizationController {
      * @return
      */
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    @RequestMapping(value = "/users", method = RequestMethod.POST)
+    @RequestMapping(value = "/employees", method = RequestMethod.POST)
     public ResponseEntity<Employee> createUser(@RequestBody Employee appUser) {
-        if (employeeRepository.findOneByEmail(appUser.getEmail()) != null) {
+        if (employeeService.findOneByEmail(appUser.getEmail()) != null) {
             throw new RuntimeException("Username already exist");
         }
-        return new ResponseEntity<Employee>(employeeRepository.save(appUser), HttpStatus.CREATED);
+        return new ResponseEntity<Employee>(employeeService.save(appUser), HttpStatus.CREATED);
     }
 
     /**
@@ -95,13 +121,170 @@ public class AuthorizationController {
      * @return modified appUser
      */
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    @RequestMapping(value = "/users", method = RequestMethod.PUT)
+    @RequestMapping(value = "/employees", method = RequestMethod.PUT)
     public Employee updateUser(@RequestBody Employee appUser) {
-        if (employeeRepository.findOneByEmail(appUser.getEmail()) != null
-                && employeeRepository.findOneByEmail(appUser.getEmail()).getIdEmployee() != appUser.getIdEmployee()) {
+        if (employeeService.findOneByEmail(appUser.getEmail()) != null
+                && employeeService.findOneByEmail(appUser.getEmail()).getIdEmployee() != appUser.getIdEmployee()) {
             throw new RuntimeException("Username already exist");
         }
-        return employeeRepository.save(appUser);
+        return employeeService.save(appUser);
     }
+     /*==============================================================================*/
+
+     /*====================  AUTH FOR ROOMS API ================================*/
+
+    /**
+     * Web service for GETTING ALL the Rooms in the application.
+     *
+     * @return list of all Rooms
+     */
+    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_EMPLOYEE')")
+    @RequestMapping(value = "/rooms", method = RequestMethod.GET)
+    public List<Room> rooms() {
+        return roomService.getAllActive();
+    }
+
+    /**
+     * Web service for GETTING A ROOM by its ID
+     *
+     * @param id
+     *            room ID
+     * @return Room
+     */
+    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_EMPLOYEE')")
+    @RequestMapping(value = "/rooms/{id}", method = RequestMethod.GET)
+    public ResponseEntity<Room> roomById(@PathVariable String id) {
+        Room room = roomService.getOneActive(id);
+        if (room == null) {
+            return new ResponseEntity<Room>(HttpStatus.NO_CONTENT);
+        } else {
+            return new ResponseEntity<Room>(room, HttpStatus.OK);
+        }
+    }
+
+    /**
+     * Method for DELETING a room by its ID
+     *
+     * @param id
+     * @return
+     */
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @RequestMapping(value = "/rooms/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<Room> deleteRoom(@PathVariable String id) {
+        Room room = roomService.getOneActive(id);
+        if (room == null) {
+            return new ResponseEntity<Room>(HttpStatus.NO_CONTENT);
+        } else {
+            roomService.delete(id);
+            return new ResponseEntity<Room>(room, HttpStatus.OK);
+        }
+
+    }
+
+    /**
+     * Method for adding a room
+     *
+     * @param room
+     * @return
+     */
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @RequestMapping(value = "/rooms", method = RequestMethod.POST)
+    public ResponseEntity<Room> createRoom(@RequestBody Room room) {
+
+        return new ResponseEntity<Room>(roomService.save(room), HttpStatus.CREATED);
+    }
+
+    /**
+     * Method for editing an room details
+     *
+     * @param room
+     * @return modified appUser
+     */
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @RequestMapping(value = "/rooms", method = RequestMethod.PUT)
+    public Room updateRoom(@RequestBody Room room) {
+
+        return roomService.save(room);
+    }
+
+
+     /*=========================================================================*/
+
+     /*====================  AUTH FOR OFFICES API ================================*/
+
+    /**
+     * Web service for GETTING ALL the Offices in the application.
+     *
+     * @return list of all Rooms
+     */
+    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_EMPLOYEE')")
+    @RequestMapping(value = "/offices", method = RequestMethod.GET)
+    public List<Office> offices() {
+        return officeService.getAllActive();
+    }
+
+    /**
+     * Web service for GETTING A ROOM by its ID
+     *
+     * @param id
+     *            room ID
+     * @return Room
+     */
+    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_EMPLOYEE')")
+    @RequestMapping(value = "/rooms/{id}", method = RequestMethod.GET)
+    public ResponseEntity<Room> roomById(@PathVariable String id) {
+        Room room = roomService.getOneActive(id);
+        if (room == null) {
+            return new ResponseEntity<Room>(HttpStatus.NO_CONTENT);
+        } else {
+            return new ResponseEntity<Room>(room, HttpStatus.OK);
+        }
+    }
+
+    /**
+     * Method for DELETING a room by its ID
+     *
+     * @param id
+     * @return
+     */
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @RequestMapping(value = "/rooms/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<Room> deleteRoom(@PathVariable String id) {
+        Room room = roomService.getOneActive(id);
+        if (room == null) {
+            return new ResponseEntity<Room>(HttpStatus.NO_CONTENT);
+        } else {
+            roomService.delete(id);
+            return new ResponseEntity<Room>(room, HttpStatus.OK);
+        }
+
+    }
+
+    /**
+     * Method for adding a room
+     *
+     * @param room
+     * @return
+     */
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @RequestMapping(value = "/rooms", method = RequestMethod.POST)
+    public ResponseEntity<Room> createRoom(@RequestBody Room room) {
+
+        return new ResponseEntity<Room>(roomService.save(room), HttpStatus.CREATED);
+    }
+
+    /**
+     * Method for editing an room details
+     *
+     * @param room
+     * @return modified appUser
+     */
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @RequestMapping(value = "/rooms", method = RequestMethod.PUT)
+    public Room updateRoom(@RequestBody Room room) {
+
+        return roomService.save(room);
+    }
+
 
 }
