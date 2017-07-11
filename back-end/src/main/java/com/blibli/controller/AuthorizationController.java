@@ -224,38 +224,38 @@ public class AuthorizationController {
     }
 
     /**
-     * Web service for GETTING A ROOM by its ID
+     * Web service for GETTING an office by its ID
      *
      * @param id
      *            room ID
      * @return Room
      */
     @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_EMPLOYEE')")
-    @RequestMapping(value = "/rooms/{id}", method = RequestMethod.GET)
-    public ResponseEntity<Room> roomById(@PathVariable String id) {
-        Room room = roomService.getOneActive(id);
-        if (room == null) {
-            return new ResponseEntity<Room>(HttpStatus.NO_CONTENT);
+    @RequestMapping(value = "/offices/{id}", method = RequestMethod.GET)
+    public ResponseEntity<Office> officeById(@PathVariable String id) {
+        Office office = officeService.getOneActive(id);
+        if (office == null) {
+            return new ResponseEntity<Office>(HttpStatus.NO_CONTENT);
         } else {
-            return new ResponseEntity<Room>(room, HttpStatus.OK);
+            return new ResponseEntity<Office>(office, HttpStatus.OK);
         }
     }
 
     /**
-     * Method for DELETING a room by its ID
+     * Method for DELETING an office by its ID
      *
      * @param id
      * @return
      */
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    @RequestMapping(value = "/rooms/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<Room> deleteRoom(@PathVariable String id) {
-        Room room = roomService.getOneActive(id);
-        if (room == null) {
-            return new ResponseEntity<Room>(HttpStatus.NO_CONTENT);
+    @RequestMapping(value = "/offices/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<Office> deleteoffice(@PathVariable String id) {
+        Office office = officeService.getOneActive(id);
+        if (office == null) {
+            return new ResponseEntity<Office>(HttpStatus.NO_CONTENT);
         } else {
-            roomService.delete(id);
-            return new ResponseEntity<Room>(room, HttpStatus.OK);
+            officeService.delete(id);
+            return new ResponseEntity<Office>(office, HttpStatus.OK);
         }
 
     }
@@ -263,27 +263,27 @@ public class AuthorizationController {
     /**
      * Method for adding a room
      *
-     * @param room
+     * @param office
      * @return
      */
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    @RequestMapping(value = "/rooms", method = RequestMethod.POST)
-    public ResponseEntity<Room> createRoom(@RequestBody Room room) {
+    @RequestMapping(value = "/offices", method = RequestMethod.POST)
+    public ResponseEntity<Office> createOffice(@RequestBody Office office) {
 
-        return new ResponseEntity<Room>(roomService.save(room), HttpStatus.CREATED);
+        return new ResponseEntity<Office>(officeService.save(office), HttpStatus.CREATED);
     }
 
     /**
      * Method for editing an room details
      *
-     * @param room
+     * @param office
      * @return modified appUser
      */
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    @RequestMapping(value = "/rooms", method = RequestMethod.PUT)
-    public Room updateRoom(@RequestBody Room room) {
+    @RequestMapping(value = "/offices", method = RequestMethod.PUT)
+    public Office updateOffice(@RequestBody Office office) {
 
-        return roomService.save(room);
+        return officeService.save(office);
     }
 
 

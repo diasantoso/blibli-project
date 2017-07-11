@@ -24,7 +24,7 @@ public class OfficeService {
         return officeRepository.showOneOffice(id);
     }
 
-    public Office create(Office office) {
+    public Office save(Office office) {
         Office result = officeRepository.save(office);
         return result;
     }

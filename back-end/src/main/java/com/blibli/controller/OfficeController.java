@@ -45,7 +45,7 @@ public class OfficeController {
     public ResponseBack createOffice(@RequestBody OfficeResponse param) {
         Office office = new Office();
         BeanUtils.copyProperties(param, office);
-        Office result = officeService.create(office);
+        Office result = officeService.save(office);
 
         ResponseBack responseBack = new ResponseBack();
         if(result!=null)
@@ -61,7 +61,7 @@ public class OfficeController {
     public ResponseBack updateOffice(@RequestBody OfficeResponse param) {
         Office office = new Office();
         BeanUtils.copyProperties(param, office);
-        Office result = officeService.create(office);
+        Office result = officeService.save(office);
 
         ResponseBack responseBack = new ResponseBack();
         if(result!=null)
