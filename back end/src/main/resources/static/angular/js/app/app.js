@@ -12,8 +12,8 @@ app.constant('urls',{
     LOGIN_API : 'http://localhost:8080/api/login'
 });
 
-app.config(['$stateProvider', '$urlRouterProvider',
-       function($stateProvider, $urlRouterProvider){
+app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
+       function($stateProvider, $urlRouterProvider, $locationProvider){
 
             $stateProvider
                 .state('home',{
@@ -146,7 +146,8 @@ app.config(['$stateProvider', '$urlRouterProvider',
                         }
                     }
                 });
-
+       // use the HTML5 History API
+       $locationProvider.html5Mode(true);
        $urlRouterProvider.otherwise('/');}]);
 
 
