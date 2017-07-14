@@ -8,6 +8,7 @@ import com.blibli.service.OfficeService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -40,6 +41,7 @@ public class OfficeController {
         return result;
     }
 
+    @PreAuthorize("hasAuthority('Admin')")
     @RequestMapping(value = "/offices", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public ResponseBack createOffice(@RequestBody OfficeResponse param) {
@@ -56,6 +58,7 @@ public class OfficeController {
         return responseBack;
     }
 
+    @PreAuthorize("hasAuthority('Admin')")
     @RequestMapping(value = "/offices", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public ResponseBack updateOffice(@RequestBody OfficeResponse param) {
@@ -72,6 +75,7 @@ public class OfficeController {
         return responseBack;
     }
 
+    @PreAuthorize("hasAuthority('Admin')")
     @RequestMapping(value = "/offices", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public ResponseBack deleteOffice(@RequestParam String id) {

@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -68,6 +69,7 @@ public class UploadingController {
         return "index";
     }
 
+    @PreAuthorize("hasAuthority('Admin')")
     @RequestMapping(method = RequestMethod.GET, value = "/api/files")
     public ResponseEntity<List<Link>> list(Model model) throws IOException {
 
@@ -91,6 +93,7 @@ public class UploadingController {
         }
     }
 
+    @PreAuthorize("hasAuthority('Admin')")
     @RequestMapping(method = RequestMethod.POST, value = "/api/upload")
     @ResponseBody
     public ResponseBack handleFileUpload(@RequestParam("file") MultipartFile file) {

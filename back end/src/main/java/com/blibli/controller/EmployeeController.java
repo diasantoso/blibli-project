@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -132,6 +133,8 @@ public class EmployeeController {
 
         return responseBack;
     }
+
+    @PreAuthorize("hasAuthority('Admin')")
     @RequestMapping(value = "/employees", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public EmployeeResponseList getAllActiveEmployees() {
@@ -164,6 +167,7 @@ public class EmployeeController {
         return responseBack;
     }
 
+    @PreAuthorize("hasAuthority('Admin')")
     @RequestMapping(value = "/employees", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public ResponseBack deleteEmployee(@RequestParam String id) {

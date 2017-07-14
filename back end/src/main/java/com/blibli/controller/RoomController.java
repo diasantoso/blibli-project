@@ -12,6 +12,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.MediaType;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,7 +30,6 @@ public class RoomController {
     @Autowired
     OfficeService officeService;
 
-
     @RequestMapping(value = "/rooms", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public RoomResponseList getAllActiveRooms() {
@@ -46,6 +46,7 @@ public class RoomController {
         return result;
     }
 
+    @PreAuthorize("hasAuthority('Admin')")
     @RequestMapping(value = "/rooms", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public ResponseBack createRoom(@RequestBody RoomResponse param) {
@@ -65,6 +66,7 @@ public class RoomController {
         return responseBack;
     }
 
+    @PreAuthorize("hasAuthority('Admin')")
     @RequestMapping(value = "/rooms", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public ResponseBack updateRoom(@RequestBody RoomResponse param) {
@@ -81,6 +83,7 @@ public class RoomController {
         return responseBack;
     }
 
+    @PreAuthorize("hasAuthority('Admin')")
     @RequestMapping(value = "/rooms", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public ResponseBack deleteRoom(@RequestParam String id) {

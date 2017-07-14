@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -69,6 +70,7 @@ public class RoomImageController {
         return result;
     }
 
+    @PreAuthorize("hasAuthority('Admin')")
     @RequestMapping(value="/images", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public ResponseBack createRoomImages(@RequestBody RoomImageResponse param){
@@ -89,6 +91,7 @@ public class RoomImageController {
         return responseBack;
     }
 
+    @PreAuthorize("hasAuthority('Admin')")
     @RequestMapping(value = "/images", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public  ResponseBack deleteRoomImage(@RequestParam String id){
