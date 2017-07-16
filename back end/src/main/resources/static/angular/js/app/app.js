@@ -20,7 +20,10 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
                     url: '/',
                     templateUrl: '/partials/landingpage'
                 })
-
+                .state('access-denied', {
+                    url : '/access-denied',
+                    templateUrl: '/partials/access-denied'
+                })
                 .state('showbooking',{
                     url: '/listbooking',
                     templateUrl: '/partials/showbooking',
@@ -51,6 +54,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
 
                 .state('dashboard',{
                     url: '/dashboard',
+                    //data : {role:'Admin'},
                     templateUrl: '/partials/home',
                     controller: 'CountController',
                     controllerAs: 'ctrlCount',
@@ -67,6 +71,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
 
                 .state('Office',{
                     url: '/offices',
+                    data : {role:'Admin'},
                     templateUrl: '/partials/offices/office',
                     controller: 'OfficeController',
                     controllerAs: 'ctrlOffice',
@@ -83,6 +88,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
 
                 .state('Room',{
                     url: '/rooms',
+                    data : {role:'Admin'},
                     templateUrl: 'partials/rooms/room',
                     controller: 'RoomController',
                     controllerAs: 'ctrlRoom',
@@ -101,6 +107,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
 
                 .state('Employee',{
                     url: '/employees',
+                    data : {role:'Admin'},
                     templateUrl: '/partials/employees/employee',
                     controller: 'EmployeeController',
                     controllerAs: 'ctrlEmployee',
@@ -166,3 +173,49 @@ app.directive("ngUploadChange",function(){
         }
     }
 });
+
+// the following method will run at the time of initializing the module. That
+// means it will run only one time.
+app.run(function(LoginService, $rootScope, $state) {
+    // For implementing the authentication with ui-router we need to listen the
+    // state change. For every state change the ui-router module will broadcast
+    // the '$stateChangeStart'.
+    $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
+        // checking the user is logged in or not
+        console.log('To State ='+toState.name);
+        if(toState.data.role)
+        console.log('To State Data Role ='+toState.data.role);
+        else
+            console.log('ToState Data Role null.')
+        if (!LoginService.user) { //Ini buat ngecek user login belum, nah kalau belum dia bakal masuk ke dalam blok if nya
+            // To avoiding the infinite looping of state change we have to add a
+            // if condition.
+            //disini if nya ngecek, kalau belum login halaman apa aja yg boleh dikunjungi
+            //(dalam contoh ini cuma boleh ke "state" alias halaman login dan register
+
+
+            if (toState.name != 'login' && toState.name != 'register' && toState.name != 'home') {
+                //selain akses halaman login atau register dia bakal masuk ke blok ini
+
+                event.preventDefault(); //ini buat ngestop paksa (contoh mau kehalamaan office, trus di stop paksa
+                $state.go('login'); // dipaksa ke halaman login dulu
+
+            }
+        } else {
+            // checking the user is authorized to view the states
+            if (toState.data && toState.data.role) {
+                var hasAccess = false;
+                    var role = LoginService.user.role;
+                    if (toState.data.role == role) {
+                        hasAccess = true;
+                    }
+                if (!hasAccess) {
+                    event.preventDefault();
+                    $state.go('access-denied');
+                }
+
+            }
+        }
+    });
+});
+
