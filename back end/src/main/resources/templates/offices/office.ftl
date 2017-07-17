@@ -64,7 +64,7 @@
                             <table class="table table-hover table-striped data">
                                 <thead>
                                 <tr>
-                                    <th width="100">ID</th>
+                                    <th width="100">No.</th>
                                     <th width="200">NAME</th>
                                     <th width="250">ADDRESS</th>
                                     <th width="180">CITY</th>
@@ -75,7 +75,8 @@
                                 </thead>
                                 <tbody>
                                 <tr ng-repeat="u in ctrlOffice.getAllOffices()">
-                                    <td>{{u.idOffice}}</td>
+                                    <!--<td>{{u.idOffice}}</td>-->
+                                    <td>{{$index +1}}</td>
                                     <td>{{u.name}}</td>
                                     <td>{{u.address}}</td>
                                     <td>{{u.city}}</td>

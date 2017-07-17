@@ -64,7 +64,7 @@
                             <table class="table table-hover table-striped data">
                                 <thead>
                                 <tr>
-                                    <th width="100">ID</th>
+                                    <th width="100">No.</th>
                                     <th width="200">SUBJECT</th>
                                     <th width="250">DESCRIPTION</th>
                                     <th width="200">ROOM</th>
@@ -79,7 +79,8 @@
                                 </thead>
                                 <tbody>
                                 <tr ng-repeat="u in ctrlBooking.getAllBookings()">
-                                    <td>{{u.idBooking}}</td>
+                                    <!--<td>{{u.idBooking}}</td>-->
+                                    <td>{{$index +1}}</td>
                                     <td>{{u.subject}}</td>
                                     <td>{{u.description}}</td>
                                     <td>{{u.room.name}}</td>

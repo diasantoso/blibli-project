@@ -64,7 +64,7 @@
                             <table class="table table-hover table-striped data">
                                 <thead>
                                 <tr>
-                                    <th>ID</th>
+                                    <th>No.</th>
                                     <th>NAME</th>
                                     <th>CAPACITY</th>
                                     <th>HAVE CONFERENCE</th>
@@ -78,7 +78,8 @@
                                 </thead>
                                 <tbody>
                                 <tr ng-repeat="u in ctrlRoom.getAllRooms()">
-                                    <td>{{u.idRoom}}</td>
+                                    <!--<td>{{u.idRoom}}</td>-->
+                                    <td>{{$index +1}}</td>
                                     <td>{{u.name}}</td>
                                     <td>{{u.capacity}}</td>
                                     <td>{{u.isConference}}</td>
