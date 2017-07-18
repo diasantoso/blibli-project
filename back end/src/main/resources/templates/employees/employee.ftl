@@ -122,7 +122,7 @@
                     <div class="form-group">
                         <label class="col-sm-3 control-label">Password :</label>
                         <div class="col-sm-8">
-                            <input type="text" ng-model="ctrlEmployee.employee.password" id="password" class="username form-control input-sm" placeholder="Enter new employee password" style="width:200px;"/>
+                            <input type="password" ng-model="ctrlEmployee.employee.password" id="password" class="username form-control input-sm" placeholder="Enter new employee password" style="width:200px;"/>
                         </div>
                     </div>
 
@@ -131,7 +131,11 @@
                     <div class="form-group">
                         <label class="col-sm-3 control-label">Role :</label>
                         <div class="col-sm-8">
-                            <input type="text" ng-model="ctrlEmployee.employee.role" id="role" class="username form-control input-sm" placeholder="Enter new employee role" style="width:200px;"/>
+                            <!--<input type="text" ng-model="ctrlEmployee.employee.role" id="role" class="username form-control input-sm" placeholder="Enter new employee role" style="width:200px;"/>-->
+                           <select class="username form-control input-sm" ng-model="ctrlEmployee.employee.role" required>
+                                <option value="Admin">Admin</option>
+                                <option value="Employee">Employee</option>
+                            </select>
                         </div>
                     </div>
                     <div class="form-group modal-footer">
@@ -143,3 +147,24 @@
 
     </div>
 </div>
+
+<script type="text/javascript">
+    var app = angular.module('bookingApp', [])
+    app.controller('RoleController', function ($scope, $window) {
+        $scope.Roles = [{
+            Id: 1,
+            Name: 'Admin'
+        }, {
+            Id: 2,
+            Name: 'Employee'
+        }];
+
+        $scope.GetValue = function (role) {
+            var roleId = $scope.ddlRoles;
+            var roleName = $.grep($scope.Roles, function (role) {
+                return role.Id == roleId;
+            })[0].Name;
+            $window.alert("Selected Value: " + roleId + "\nSelected Text: " + roleName);
+        }
+    });
+</script>

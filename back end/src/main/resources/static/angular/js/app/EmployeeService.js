@@ -59,7 +59,7 @@ angular.module('bookingApp').factory('EmployeeService',
             function createEmployee(employee){
                 console.log('Creating employee');
                 var deferred = $q.defer();
-                $http.post(urls.EMPLOYEE_SERVICE_API, employee)
+                $http.post(urls.REGISTER_EMPLOYEE_SERVICE_API, employee)
                     .then(
                         function (response){
                             loadAllEmployees();

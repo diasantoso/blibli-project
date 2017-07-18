@@ -5,6 +5,7 @@ app.constant('urls',{
     OFFICE_SERVICE_API : 'http://localhost:8080/api/offices/',
     ROOM_SERVICE_API : 'http://localhost:8080/api/rooms/',
     EMPLOYEE_SERVICE_API : 'http://localhost:8080/api/employees',
+    REGISTER_EMPLOYEE_SERVICE_API : 'http://localhost:8080/api/register',
     BOOKING_SERVICE_API : 'http://localhost:8080/api/bookings',
     COUNT_SERVICE_API : 'http://localhost:8080/api/count',
     IMAGES_SERVICE_API : 'http://localhost:8080/api/rooms/images',
