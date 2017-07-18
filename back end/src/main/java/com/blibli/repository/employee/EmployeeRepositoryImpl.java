@@ -53,8 +53,13 @@ public class EmployeeRepositoryImpl implements EmployeeRepositoryCustom {
     @Override
     public Employee findOneByEmail(String email) {
         EntityManager em = entityManagerFactory.createEntityManager();
-        Employee result = (Employee) em.createNativeQuery(
-                "SELECT * FROM employee WHERE email='"+email+"';", Employee.class).getSingleResult();
+        Employee result = null;
+
+        try {
+            result = (Employee) em.createNativeQuery(
+                    "SELECT * FROM employee WHERE email='" + email + "';", Employee.class).getSingleResult();
+        }
+        catch(Exception ex){}
 
         return result;
     }
