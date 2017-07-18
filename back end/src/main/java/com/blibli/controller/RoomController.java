@@ -111,11 +111,15 @@ public class RoomController {
         Room data = roomService.getOneActive(id);
         RoomResponse result = new RoomResponse();
 
-        BeanUtils.copyProperties(data,result);
+        if(data!=null)
+            BeanUtils.copyProperties(data,result);
 
         return result;
     }
 
+    //Mapping to get one rooms based on their ID
+    @RequestMapping(value = "/rooms/available", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
     public RoomResponseList getAvailableRoom(@RequestParam Date date, @RequestParam Time startTime,
                                              @RequestParam Time endTime) {
 
@@ -134,35 +138,24 @@ public class RoomController {
             if (book.getDateMeeting().equals(date) &&
                     ((book.getStartTime().equals(startTime) || book.getStartTime().before(startTime)) && book.getEndTime().after(startTime)) ||
                     ((book.getEndTime().equals(endTime) || book.getEndTime().after(endTime) && book.getStartTime().before(endTime)))) {
-
-                //data_used.add(book.getRoom());--> room from booking is not exactly same room (don't have the office ID)
                 data_used.add(book.getRoom());
             }
         }
 
         //Get Available Room
-        //data_used.removeAll(data);
-        System.out.println(data.indexOf(data_used.get(0)));
-        System.out.println(data_used.get(0).getIdRoom());
-        System.out.println(data.get(data.size()-2).getIdRoom());
+        data.removeAll(data_used);
+
         for(Room room : data){
-
-            for(Room room_used : data_used){
-
-            }
-
             RoomResponse parse = new RoomResponse();
             BeanUtils.copyProperties(room, parse);
             responses.add(parse);
         }
 
-        System.out.println(data.size());
-        System.out.println(data.remove(data_used));
-        System.out.println(data.containsAll(data_used));
-        System.out.println(data.size());
-        System.out.println(data_used.size());
-        result.setValue(responses);
+        System.out.println("## Room Available : "+data.size());
+        System.out.println("## Room Booked    : "+data_used.size());
         return result;
 
     }
+
+
 }

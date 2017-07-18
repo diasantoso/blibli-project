@@ -104,4 +104,14 @@ public class Room {
     public void setOffice(Office office) {
         this.office = office;
     }
+
+    @Override
+    public boolean equals(Object anObject) {
+        if (!(anObject instanceof Room)) {
+            return false;
+        }
+        Room otherMember = (Room)anObject;
+        return otherMember.getIdRoom().equals(getIdRoom());
+    }
+
 }

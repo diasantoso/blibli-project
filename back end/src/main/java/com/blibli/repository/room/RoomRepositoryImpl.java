@@ -36,8 +36,14 @@ public class RoomRepositoryImpl implements RoomRepositoryCustom {
     @Override
     public Room showOneRoom(String id) {
         EntityManager em = entityManagerFactory.createEntityManager();
-        Room result = (Room) em.createNativeQuery(
-                "SELECT * FROM ROOM WHERE STATUS=1 AND id_room= '" + id +"' ", Room.class).getSingleResult();
+        Room result = null;
+        try {
+            result = (Room) em.createNativeQuery(
+                    "SELECT * FROM ROOM WHERE STATUS=1 AND id_room= '" + id + "' ", Room.class).getSingleResult();
+            return result;
+        } catch(Exception e){
+
+        }
         return result;
     }
 }
