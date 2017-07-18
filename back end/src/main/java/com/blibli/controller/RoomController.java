@@ -1,11 +1,13 @@
 package com.blibli.controller;
 
+import com.blibli.model.Booking;
 import com.blibli.model.Office;
 import com.blibli.model.Room;
 import com.blibli.response.ResponseBack;
 import com.blibli.response.office.OfficeResponse;
 import com.blibli.response.room.RoomResponse;
 import com.blibli.response.room.RoomResponseList;
+import com.blibli.service.BookingService;
 import com.blibli.service.OfficeService;
 import com.blibli.service.RoomService;
 import org.springframework.beans.BeanUtils;
@@ -16,7 +18,9 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Time;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -29,6 +33,8 @@ public class RoomController {
     RoomService roomService;
     @Autowired
     OfficeService officeService;
+    @Autowired
+    BookingService bookingService;
 
     @RequestMapping(value = "/rooms", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
@@ -108,5 +114,55 @@ public class RoomController {
         BeanUtils.copyProperties(data,result);
 
         return result;
+    }
+
+    public RoomResponseList getAvailableRoom(@RequestParam Date date, @RequestParam Time startTime,
+                                             @RequestParam Time endTime) {
+
+        List<Room> data = roomService.getAllActive();
+        List<Room> data_used = new ArrayList<>();
+        List<RoomResponse> responses = new ArrayList<>();
+        RoomResponseList result = new RoomResponseList();
+
+        //Get Unavailable Room
+        List<Booking> data_book = bookingService.getAllBooking();
+
+        for (Booking book : data_book) {
+            //(book.startTime >= startTime && book.startTime <endTime)
+            //(book.endTime <= endTime && book.endTime > startTime)
+
+            if (book.getDateMeeting().equals(date) &&
+                    ((book.getStartTime().equals(startTime) || book.getStartTime().before(startTime)) && book.getEndTime().after(startTime)) ||
+                    ((book.getEndTime().equals(endTime) || book.getEndTime().after(endTime) && book.getStartTime().before(endTime)))) {
+
+                //data_used.add(book.getRoom());--> room from booking is not exactly same room (don't have the office ID)
+                data_used.add(book.getRoom());
+            }
+        }
+
+        //Get Available Room
+        //data_used.removeAll(data);
+        System.out.println(data.indexOf(data_used.get(0)));
+        System.out.println(data_used.get(0).getIdRoom());
+        System.out.println(data.get(data.size()-2).getIdRoom());
+        for(Room room : data){
+
+            for(Room room_used : data_used){
+
+            }
+
+            RoomResponse parse = new RoomResponse();
+            BeanUtils.copyProperties(room, parse);
+            responses.add(parse);
+        }
+
+        System.out.println(data.size());
+        System.out.println(data.remove(data_used));
+        System.out.println(data.containsAll(data_used));
+        System.out.println(data.size());
+        System.out.println(data_used.size());
+        result.setValue(responses);
+        return result;
+
     }
 }

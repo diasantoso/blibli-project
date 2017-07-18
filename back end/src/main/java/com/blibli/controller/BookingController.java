@@ -11,7 +11,9 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Time;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -100,5 +102,29 @@ public class BookingController {
             responseBack.setResponse("failed delete");
 
         return responseBack;
+    }
+
+    @RequestMapping(value = "bookings/used", method = RequestMethod.GET , produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public BookingResponseList getBookingByDateTime(@RequestParam Date date, @RequestParam Time startTime,
+                                                    @RequestParam Time endTime){
+        List<Booking> data = bookingService.getAllBooking();
+        List<BookingResponse> responses = new ArrayList<>();
+        BookingResponseList result = new BookingResponseList();
+
+        for(Booking book : data){
+            //(book.startTime >= startTime && book.startTime <endTime)
+            //(book.endTime <= endTime && book.endTime > startTime)
+
+            if(book.getDateMeeting().equals(date) &&
+                    ((book.getStartTime().equals(startTime) || book.getStartTime().before(startTime))&& book.getEndTime().after(startTime))||
+                    ((book.getEndTime().equals(endTime) || book.getEndTime().after(endTime) && book.getStartTime().before(endTime))) ){
+                BookingResponse parse = new BookingResponse();
+                BeanUtils.copyProperties(book,parse);
+                responses.add(parse);
+            }
+        }
+        result.setValue(responses);
+        return result;
     }
 }
