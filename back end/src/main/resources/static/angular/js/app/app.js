@@ -53,6 +53,13 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
                     controllerAs: 'ctrlLogin'
                 })
 
+                .state('register',{
+                url: '/register',
+                templateUrl: '/partials/register',
+                controller: 'EmployeeController',
+                controllerAs: 'ctrlEmployee'
+                })
+
                 .state('dashboard',{
                     url: '/dashboard',
                     //data : {role:'Admin'},
