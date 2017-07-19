@@ -9,6 +9,7 @@ import org.apache.tomcat.jni.Local;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -79,6 +80,7 @@ public class BookingController {
         return responseBack;
     }
 
+    @PreAuthorize("hasAuthority('Admin')")
     @RequestMapping(value = "/bookings", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public ResponseBack updateBooking(@RequestBody BookingResponse param) {

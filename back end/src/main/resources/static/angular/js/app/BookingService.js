@@ -6,7 +6,9 @@ angular.module('bookingApp').factory('BookingService',
 
             var factory = {
                 loadAllBookings : loadAllBookings,
+                loadUpcomingBookings : loadUpcomingBookings,
                 getAllBookings : getAllBookings,
+                getUpcomingBookings : getUpcomingBookings,
                 getBooking : getBooking,
                 createBooking : createBooking,
                 updateBooking : updateBooking,
@@ -35,7 +37,32 @@ angular.module('bookingApp').factory('BookingService',
                 return deferred.promise;
             }
 
+
+            function loadUpcomingBookings(){
+                console.log('Fetching upcoming bookings');
+                var deferred = $q.defer();
+                $http.get(urls.BOOKING_SERVICE_API+'/schedule')
+                    .then(
+                        function (response){
+                            console.log('Fetched successfully all upcoming bookings');
+
+                            $localStorage.bookings = response.data.value;
+                            deferred.resolve(response);
+                        },
+                        function (errResponse){
+                            console.error('Error while Fetching bookings');
+                            console.error(errResponse);
+                            deferred.reject(errResponse);
+                        }
+                    );
+                return deferred.promise;
+            }
+
             function getAllBookings(){
+                return $localStorage.bookings;
+            }
+
+            function getUpcomingBookings(){
                 return $localStorage.bookings;
             }
 

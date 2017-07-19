@@ -9,6 +9,7 @@ angular.module('bookingApp').controller('BookingController',
 
         self.submit = submit;
         self.getAllBookings = getAllBookings;
+        self.getUpcomingBookings = getUpcomingBookings;
         self.createBooking = createBooking;
         self.updateBooking = updateBooking;
         self.removeBooking = removeBooking;
@@ -88,6 +89,10 @@ angular.module('bookingApp').controller('BookingController',
 
         function getAllBookings(){
             return BookingService.getAllBookings();
+        }
+
+        function getUpcomingBookings(){
+            return BookingService.getUpcomingBookings();
         }
 
         function editBooking(id) {

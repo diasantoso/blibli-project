@@ -34,7 +34,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
                         offices: function ($q, BookingService) {
                             console.log('Load all bookings');
                             var deferred = $q.defer();
-                            BookingService.loadAllBookings()
+                            BookingService.loadUpcomingBookings()
                                 .then(deferred.resolve,deferred.resolve);
                             return deferred.promise;
                         }

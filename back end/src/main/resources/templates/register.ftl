@@ -65,7 +65,7 @@
             <div class="form-group">
                 <label class="col-sm-3 control-label"></label>
                 <div class="col-sm-8">
-                    <input type="submit" value = "{{!ctrlEmployee.employee.id ? 'Add' : 'Update'}}" class="btn btn-primary" ng-disabled="myForm.$invalid || myForm.$pristine">
+                    <input type="submit" value = "Register" class="btn btn-primary" ng-disabled="myForm.$invalid || myForm.$pristine">
                 </div>
             </div>
 

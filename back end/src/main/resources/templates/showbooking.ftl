@@ -25,6 +25,9 @@
                 <li>
                     <a href="/login">Login</a>
                 </li>
+                <li>
+                    <a href="/register">Register</a>
+                </li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->
@@ -35,34 +38,38 @@
 <div class="content-section-a">
     <div class="container">
         <br/>
-        <h2 class="section-heading">List Booking</h2>
+        <h2 class="section-heading">Upcoming Booking</h2>
         <br/><br/>
         <div class="content table-responsive table-full-width">
             <table class="table table-hover table-striped data">
                 <thead>
                 <tr>
-                    <th width="200">SUBJECT</th>
+                    <!--<th width="200">SUBJECT</th>
                     <th width="250">DESCRIPTION</th>
-                    <th width="200">ROOM</th>
-                    <th width="180">DATE MEETING</th>
-                    <th width="200">START TIME</th>
-                    <th width="200">END TIME</th>
                     <th width="200">ADDED DATE</th>
-                    <th width="200">STATUS</th>
+                    <th width="200">STATUS</th>-->
+                    <th width="180">MEETING DATE</th>
+                    <th width="200">START</th>
+                    <th width="200">END</th>
+                    <th width="200">ROOM</th>
+                    <th width="200">REQUEST BY</th>
+                    <th width="200">CONTACT</th>
                     <th width="100"></th>
                     <th width="100"></th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr ng-repeat="u in ctrlBooking.getAllBookings()">
-                    <td>{{u.subject}}</td>
-                    <td>{{u.description}}</td>
-                    <td>{{u.room.name}}</td>
+                <tr ng-repeat="u in ctrlBooking.getUpcomingBookings()">
                     <td>{{u.dateMeeting}}</td>
                     <td>{{u.startTime}}</td>
                     <td>{{u.endTime}}</td>
+                    <td>{{u.room.name}}</td>
+                    <td>{{u.employee.name}}</td>
+                    <td>{{u.picContact}}</td>
+                    <!--<td>{{u.subject}}</td>
+                    <td>{{u.description}}</td>
                     <td>{{u.addedDate}}</td>
-                    <td>{{u.status}}</td>
+                    <td>{{u.status}}</td>-->
                     <td></td>
                     <td></td>
                 </tr>
