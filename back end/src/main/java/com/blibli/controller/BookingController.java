@@ -149,9 +149,9 @@ public class BookingController {
 
         for(Booking book : data){
 
-            if((localDate.isBefore(book.getDateMeeting().toLocalDate()) || localDate.isEqual(book.getDateMeeting().toLocalDate())) &&
-                    (localTime.isBefore(book.getStartTime().toLocalTime())|| localTime.equals(book.getStartTime().toLocalTime())) &&
-                    (localTime.isBefore(book.getEndTime().toLocalTime()))){
+            if((localDate.isBefore(book.getDateMeeting().toLocalDate())) || ( localDate.isEqual(book.getDateMeeting().toLocalDate()) &&
+                            localTime.isBefore(book.getEndTime().toLocalTime()))) {
+
                 BookingResponse parse = new BookingResponse();
                 BeanUtils.copyProperties(book,parse);
                 responses.add(parse);

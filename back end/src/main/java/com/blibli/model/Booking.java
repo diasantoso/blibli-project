@@ -26,6 +26,7 @@ public class Booking {
     private Date addedDate;
     private String statusBooking;
     private Integer status;
+    private String picContact;
 
     @JsonIgnore
     @ManyToOne(cascade = CascadeType.ALL)
@@ -130,5 +131,13 @@ public class Booking {
 
     public void setStatusBooking(String statusBooking) {
         this.statusBooking = statusBooking;
+    }
+
+    public String getPicContact() {
+        return picContact;
+    }
+
+    public void setPicContact(String picContact) {
+        this.picContact = picContact;
     }
 }

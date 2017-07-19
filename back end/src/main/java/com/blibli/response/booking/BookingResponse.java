@@ -26,6 +26,7 @@ public class BookingResponse {
     private Integer status;
     private Employee employee;
     private Room room;
+    private String picContact;
 
     public String getIdBooking() {
         return idBooking;
@@ -113,5 +114,13 @@ public class BookingResponse {
 
     public void setEmployee(Employee employee) {
         this.employee = employee;
+    }
+
+    public String getPicContact() {
+        return picContact;
+    }
+
+    public void setPicContact(String picContact) {
+        this.picContact = picContact;
     }
 }
