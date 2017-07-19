@@ -29,7 +29,15 @@
                 </li>
             </ul>
         </div>
+    </div>
+</nav>
 
+    <div class="content-section-a">
+        <div class="container">
+            <br/>
+            <h2 class="section-heading">Register</h2>
+            <br/><br/><br/>
+        </div>
 
         <form class="form-horizontal" ng-submit="ctrlEmployee.submit()" name="myForm">
             <div class="form-group">
@@ -53,9 +61,27 @@
 
             <input type="hidden" ng-model="ctrlEmployee.employee.status" ng-init="ctrlEmployee.employee.status=1" id="status" class="username form-control input-sm" style="width:200px;"/>
             <input type="hidden" ng-model="ctrlEmployee.employee.role" ng-init="ctrlEmployee.employee.role=Employee" id="role" class="username form-control input-sm" style="width:200px;"/>
-            <input type="submit"  value="{{!ctrlEmployee.employee.id ? 'Add' : 'Update'}}" class="btn btn-primary btn-sm" ng-disabled="myForm.$invalid || myForm.$pristine">
+
+            <div class="form-group">
+                <label class="col-sm-3 control-label"></label>
+                <div class="col-sm-8">
+                    <input type="submit" value = "{{!ctrlEmployee.employee.id ? 'Add' : 'Update'}}" class="btn btn-primary" ng-disabled="myForm.$invalid || myForm.$pristine">
+                </div>
+            </div>
+           
         </form>
     </div>
-</nav>
+
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <p class="copyright text-muted small">Copyright &copy; Future Program Batch 1 - 2017. All Rights Reserved</p>
+            </div>
+        </div>
+    </div>
+</footer>
 
 
