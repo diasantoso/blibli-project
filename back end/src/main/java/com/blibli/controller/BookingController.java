@@ -5,6 +5,7 @@ import com.blibli.response.ResponseBack;
 import com.blibli.response.booking.BookingResponse;
 import com.blibli.response.booking.BookingResponseList;
 import com.blibli.service.BookingService;
+import org.apache.tomcat.jni.Local;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -12,9 +13,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Time;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.time.*;
+
 
 /**
  * Created by Dias on 4/8/2017.
@@ -104,6 +109,7 @@ public class BookingController {
         return responseBack;
     }
 
+    //Untuk menampilkan data booking sesuai tanggal dan waktu yang dimasukkan user
     @RequestMapping(value = "bookings/used", method = RequestMethod.GET , produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public BookingResponseList getBookingByDateTime(@RequestParam Date date, @RequestParam Time startTime,
@@ -126,5 +132,35 @@ public class BookingController {
         }
         result.setValue(responses);
         return result;
+    }
+
+    @RequestMapping(value = "bookings/schedule", method = RequestMethod.GET , produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    //Untuk menampilkan jadwal booking yang belum kadaluarsa
+    public BookingResponseList getBookingSchedule (){
+
+        List<Booking> data = bookingService.getAllBooking();
+        List<BookingResponse> responses = new ArrayList<>();
+        BookingResponseList result = new BookingResponseList();
+
+        //DateTimeFormatter dtf = new DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        LocalDate localDate = LocalDate.now();
+        LocalTime localTime = LocalTime.now();
+
+        for(Booking book : data){
+
+            if((localDate.isBefore(book.getDateMeeting().toLocalDate()) || localDate.isEqual(book.getDateMeeting().toLocalDate())) &&
+                    (localTime.isBefore(book.getStartTime().toLocalTime())|| localTime.equals(book.getStartTime().toLocalTime())) &&
+                    (localTime.isBefore(book.getEndTime().toLocalTime()))){
+                BookingResponse parse = new BookingResponse();
+                BeanUtils.copyProperties(book,parse);
+                responses.add(parse);
+            }
+
+        }
+
+        result.setValue(responses);
+        return result;
+
     }
 }

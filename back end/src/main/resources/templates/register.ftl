@@ -68,7 +68,7 @@
                     <input type="submit" value = "{{!ctrlEmployee.employee.id ? 'Add' : 'Update'}}" class="btn btn-primary" ng-disabled="myForm.$invalid || myForm.$pristine">
                 </div>
             </div>
-           
+
         </form>
     </div>
 
