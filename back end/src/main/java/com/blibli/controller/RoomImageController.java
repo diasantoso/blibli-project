@@ -56,14 +56,14 @@ public class RoomImageController {
     //Mapping to get images of one room
     @RequestMapping(value = "/images/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public RoomImageResponseList getImagesforOneRoom(@PathVariable ("id") String roomId){
-        List<RoomImage> dataList = roomImageService.getAllImagesForOneRoom(roomId);
+    public RoomImageResponseList getImagesforOneRoom(@PathVariable ("id") String room_id){
+        List<RoomImage> data = roomImageService.getAllImagesForOneRoom(room_id);
         List<RoomImageResponse> responseList = new ArrayList<>();
         RoomImageResponseList result = new RoomImageResponseList();
 
-        for(RoomImage data : dataList){
+        for(RoomImage roomImage : data){
             RoomImageResponse parse = new RoomImageResponse();
-            BeanUtils.copyProperties(data, parse);
+            BeanUtils.copyProperties(roomImage, parse);
             responseList.add(parse);
         }
         result.setValue(responseList);

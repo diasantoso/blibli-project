@@ -21,8 +21,12 @@ public class RoomImageRepositoryImpl implements RoomImageRepositoryCustom {
 
         EntityManager em = entityManagerFactory.createEntityManager();
         em.getTransaction().begin();
-        List<RoomImage> result = em.createNativeQuery("SELECT * FROM room_image WHERE room_id = '" + RoomId +"';" ).getResultList();
-        return result;
+        List<RoomImage> result = null;
+        try {
+            result = em.createNativeQuery("SELECT * FROM room_image WHERE room_id = '" + RoomId + "';",RoomImage.class).getResultList();
+        }
+        catch (Exception ex){}
+            return result;
     }
 
     @Override
