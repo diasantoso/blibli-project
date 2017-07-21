@@ -158,11 +158,8 @@ public class BookingController {
                 BeanUtils.copyProperties(book,parse);
                 responses.add(parse);
             }
-
         }
-
         result.setValue(responses);
         return result;
-
     }
 }

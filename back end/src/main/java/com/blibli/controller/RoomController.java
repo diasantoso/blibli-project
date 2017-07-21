@@ -117,11 +117,10 @@ public class RoomController {
         return result;
     }
 
-    //Mapping to get one rooms based on their ID
     @RequestMapping(value = "/rooms/available", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public RoomResponseList getAvailableRoom(@RequestParam Date date, @RequestParam Time startTime,
-                                             @RequestParam Time endTime) {
+                                             @RequestParam Time endTime, @RequestParam String officeId) {
 
         List<Room> data = roomService.getAllActive();
         List<Room> data_used = new ArrayList<>();
@@ -148,14 +147,16 @@ public class RoomController {
         for(Room room : data){
             RoomResponse parse = new RoomResponse();
             BeanUtils.copyProperties(room, parse);
-            responses.add(parse);
+            if(officeId.equals(room.getOffice().getIdOffice())) {
+                responses.add(parse);
+            }
         }
 
+        result.setValue(responses);
         System.out.println("## Room Available : "+data.size());
         System.out.println("## Room Booked    : "+data_used.size());
         return result;
 
     }
-
 
 }

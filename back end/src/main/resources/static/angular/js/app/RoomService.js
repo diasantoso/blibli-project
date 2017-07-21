@@ -43,6 +43,8 @@ angular.module('bookingApp').factory('RoomService',
                 return $localStorage.rooms;
             }
 
+
+
             function getRoom(id){
                 console.log('Fetching room with id : ' +id);
                 var deferred =  $q.defer();
@@ -181,6 +183,10 @@ angular.module('bookingApp').factory('RoomService',
 
                 return deferred.promise;
             }
+
+            //-------------Showing Available room based on date,startTime,endTime and Office---------------//
+
+
 
         }
      ]);
