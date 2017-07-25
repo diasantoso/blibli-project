@@ -43,7 +43,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
 
                 .state('addbooking',{
                     url: '/addbooking',
-                    templateUrl: '/partials/addbooking',
+                    templateUrl: '/partials/checkbooking',
                     controller: 'BookingController',
                     controllerAs: 'ctrlBooking',
                     resolve: {
@@ -170,7 +170,23 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
                             return deferred.promise;
                         }
                     }
-                });
+                })
+
+               .state('AvailRooms',{
+                   url: '/rooms/available',
+                   templateUrl: '/partials/showavailableroom',
+                   controller: 'BookingController',
+                   controllerAs: 'ctrlBooking',
+                   resolve: {
+                       rooms: function ($q, BookingService) {
+                           console.log('Load all available rooms');
+                           // var deferred = $q.defer();
+                           // BookingService.loadAllBookings()
+                           //     .then(deferred.resolve,deferred.resolve);
+                           // return deferred.promise;
+                       }
+                   }
+               });
        // use the HTML5 History API
        $locationProvider.html5Mode(true);
        $urlRouterProvider.otherwise('/');}]);

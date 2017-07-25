@@ -112,5 +112,11 @@ angular.module('bookingApp').controller('EmployeeController',
             self.employee={};
             $scope.myForm.$setPristine(); //reset Form
         }
+
+        function logout (){
+            LoginService.user = null;
+            $rootScope.$broadcast('LogoutSuccessful');
+            $state.go('home');
+        };
     }
     ]);

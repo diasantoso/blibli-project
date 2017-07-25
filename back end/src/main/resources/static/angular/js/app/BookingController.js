@@ -9,6 +9,8 @@ angular.module('bookingApp').controller('BookingController',
         //For loading Offices
         self.office = {};
         self.offices = [];
+        //for loading available Rooms
+        self.searchVar = {};
 
         self.submit = submit;
         self.getAllBookings = getAllBookings;
@@ -20,6 +22,9 @@ angular.module('bookingApp').controller('BookingController',
         self.reset = reset;
 
         self.getOffices=getOffices;
+
+        //to show and check the available room
+        self.check = check;
 
         self.successMessage = '';
         self.errorMessage = '';
@@ -122,6 +127,14 @@ angular.module('bookingApp').controller('BookingController',
             self.errorMessage='';
             self.booking={};
             $scope.myForm.$setPristine(); //reset Form
+        }
+
+        function check(){
+            console.log('Fetched successfully All available rooms in office with id : '+self.searchVar.officeId+
+                ' on date : ' +self.searchVar.date +
+                ' with start Time : '+self.searchVar.startTime+
+                ' And end Time : '+self.searchVar.endTime);
+            return BookingService.getAvailableRooms(self.searchVar.date,self.searchVar.startTime,self.searchVar.endTime,self.searchVar.officeId);
         }
     }
     ]);

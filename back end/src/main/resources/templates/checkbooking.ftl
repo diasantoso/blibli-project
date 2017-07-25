@@ -41,7 +41,7 @@
         <h2 class="section-heading">Check Available Room</h2>
         <br/><br/><br/>
         <div>
-            <form class="form-horizontal" ng-submit="" name="myForm">
+            <form class="form-horizontal" ng-submit="ctrlOffice.submit()" name="myForm">
                 <div class="form-group">
                     <label class="col-sm-3 control-label">Office :</label>
                     <div class="col-sm-8">
