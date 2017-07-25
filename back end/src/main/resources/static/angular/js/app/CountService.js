@@ -54,4 +54,6 @@ angular.module('bookingApp').factory('CountService',
                 return $localStorage.booking;
             }
         }
+
+
     ]);

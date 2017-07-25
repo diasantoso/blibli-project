@@ -46,7 +46,7 @@
                     <label class="col-sm-3 control-label">Office :</label>
                     <div class="col-sm-8">
                     <#--<input type="text" ng-model="ctrlRoom.room.office.idOffice" id="office" class="username form-control input-sm" placeholder="Enter Office for the new room" required />-->
-                        <select class="username form-control input-sm"  required>
+                        <select class="username form-control input-sm" ng-model="ctrlBooking.booking.room.office.idOffice" required>
                             <option ng-repeat="u in ctrlBooking.getOffices()" value="{{u.idOffice}}">{{u.name}}</option>
                         </select>
                     </div>

@@ -6,6 +6,9 @@ angular.module('bookingApp').controller('BookingController',
         var self = this;
         self.booking = {};
         self.bookings = [];
+        //For loading Offices
+        self.office = {};
+        self.offices = [];
 
         self.submit = submit;
         self.getAllBookings = getAllBookings;
@@ -16,7 +19,7 @@ angular.module('bookingApp').controller('BookingController',
         self.editBooking = editBooking;
         self.reset = reset;
 
-        self.getOffices=getOffices();
+        self.getOffices=getOffices;
 
         self.successMessage = '';
         self.errorMessage = '';

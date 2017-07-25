@@ -59,7 +59,6 @@ angular.module('bookingApp').controller('RoomController',
                         console.log('Error while creating room');
                         self.errorMessage = 'Error while creating room';
                         self.successMessage = '';
-                        self
                     }
                 );
         }

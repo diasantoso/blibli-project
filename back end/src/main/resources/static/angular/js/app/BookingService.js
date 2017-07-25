@@ -15,7 +15,7 @@ angular.module('bookingApp').factory('BookingService',
                 removeBooking : removeBooking,
 
                 loadOffices : loadOffices,
-                getAllOffices : getAllOffices()
+                getAllOffices : getAllOffices
             };
 
             return factory;

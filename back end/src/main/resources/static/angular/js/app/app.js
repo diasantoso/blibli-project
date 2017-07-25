@@ -43,7 +43,17 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
 
                 .state('addbooking',{
                     url: '/addbooking',
-                    templateUrl: '/partials/addbooking'
+                    templateUrl: '/partials/addbooking',
+                    controller: 'BookingController',
+                    controllerAs: 'ctrlBooking',
+                    resolve: {
+                        offices: function ($q, BookingService) {
+                            var deferred = $q.defer();
+                            BookingService.loadOffices()
+                                .then(deferred.resolve, deferred.resolve);
+                            return deferred.promise;
+                        }
+                    }
                 })
 
                 .state('login',{

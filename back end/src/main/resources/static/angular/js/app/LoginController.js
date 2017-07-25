@@ -41,4 +41,9 @@ angular.module('bookingApp')
                 $scope.message = 'Authetication Failed !';
             });
         };
+        $scope.logout = function(){
+            LoginService.user = null;
+            $rootScope.$broadcast('LogoutSuccessful');
+            $state.go('home');
+        };
     });
