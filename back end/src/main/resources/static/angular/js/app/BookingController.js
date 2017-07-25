@@ -16,6 +16,8 @@ angular.module('bookingApp').controller('BookingController',
         self.editBooking = editBooking;
         self.reset = reset;
 
+        self.getOffices=getOffices();
+
         self.successMessage = '';
         self.errorMessage = '';
         self.done = false;
@@ -106,6 +108,10 @@ angular.module('bookingApp').controller('BookingController',
                     console.error('Error while editing booking '+id +', Error :'+errResponse.data);
                 }
             );
+        }
+
+        function getOffices(){
+            return BookingService.getAllOffices();
         }
 
         function reset(){

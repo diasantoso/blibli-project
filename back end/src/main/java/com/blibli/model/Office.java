@@ -26,8 +26,12 @@ public class Office {
 
     @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name="officeId" , nullable = false, insertable = false, updatable = false)
+    @JoinColumn(name="officeId" ,  nullable = false, insertable = false, updatable = false)
     private List<Room> rooms = Collections.emptyList();
+
+//    @JsonIgnore
+//    @JoinColumn(name="office_booking" , nullable = false, insertable = false, updatable = false)
+//    private List<Room> bookings = Collections.emptyList();
 
     public Office(String idOffice, String name) {
         setIdOffice(idOffice);

@@ -1,6 +1,7 @@
 package com.blibli.response.booking;
 
 import com.blibli.model.Employee;
+import com.blibli.model.Office;
 import com.blibli.model.Room;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -27,6 +28,8 @@ public class BookingResponse {
     private Employee employee;
     private Room room;
     private String picContact;
+
+    private Office office;
 
     public String getIdBooking() {
         return idBooking;
@@ -122,5 +125,13 @@ public class BookingResponse {
 
     public void setPicContact(String picContact) {
         this.picContact = picContact;
+    }
+
+    public Office getOffice() {
+        return office;
+    }
+
+    public void setOffice(Office office) {
+        this.office = office;
     }
 }

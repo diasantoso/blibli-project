@@ -12,7 +12,10 @@ angular.module('bookingApp').factory('BookingService',
                 getBooking : getBooking,
                 createBooking : createBooking,
                 updateBooking : updateBooking,
-                removeBooking : removeBooking
+                removeBooking : removeBooking,
+
+                loadOffices : loadOffices,
+                getAllOffices : getAllOffices()
             };
 
             return factory;
@@ -137,5 +140,29 @@ angular.module('bookingApp').factory('BookingService',
                 return deferred.promise;
             }
 
+            //------------Return the office to chose along with date, startTime and endTime Input ------------------//
+            function loadOffices(){
+                console.log('Fetching all offices');
+                var deferred = $q.defer();
+                $http.get(urls.OFFICE_SERVICE_API)
+                    .then(
+                        function (response){
+                            console.log('Fetched successfully all offices');
+
+                            $localStorage.offices = response.data.value;
+                            deferred.resolve(response);
+                        },
+                        function (errResponse){
+                            console.error('Error while Fetching offices');
+                            console.error(errResponse);
+                            deferred.reject(errResponse);
+                        }
+                    );
+                return deferred.promise;
+            }
+
+            function getAllOffices(){
+                return $localStorage.offices;
+            }
         }
     ]);

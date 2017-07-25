@@ -25,6 +25,9 @@
                 <li>
                     <a href="/login">Login</a>
                 </li>
+                <li>
+                    <a href="/register">Register</a>
+                </li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->
@@ -35,33 +38,42 @@
 <div class="content-section-a">
     <div class="container">
         <br/>
-        <h2 class="section-heading">Add Booking</h2>
+        <h2 class="section-heading">Check Available Room</h2>
         <br/><br/><br/>
         <div>
             <form class="form-horizontal" ng-submit="" name="myForm">
                 <div class="form-group">
+                    <label class="col-sm-3 control-label">Office :</label>
+                    <div class="col-sm-8">
+                    <#--<input type="text" ng-model="ctrlRoom.room.office.idOffice" id="office" class="username form-control input-sm" placeholder="Enter Office for the new room" required />-->
+                        <select class="username form-control input-sm"  required>
+                            <option ng-repeat="u in ctrlBooking.getOffices()" value="{{u.idOffice}}">{{u.name}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
                     <label class="col-sm-3 control-label">Date :</label>
                     <div class="col-sm-8">
-                        <input type="date" ng-model="" id="date" class="username form-control input-sm" placeholder="Enter date meeting" required />
+                        <input type="date" ng-model="ctrlBooking.booking.dateMeeting" id="date" class="username form-control input-sm" placeholder="Enter date meeting" required />
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-3 control-label">Start Time :</label>
                     <div class="col-sm-8">
-                        <input type="text" ng-model="" id="starttime" class="username form-control input-sm" placeholder="Enter date start time meeting" required />
+                        <input type="text" ng-model="ctrlBooking.booking.startTime" id="starttime" class="username form-control input-sm" placeholder="Enter date start time meeting" required />
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-3 control-label">End Time :</label>
                     <div class="col-sm-8">
-                        <input type="text" ng-model="" id="endtime" class="username form-control input-sm" placeholder="Enter end time meeting" required />
+                        <input type="text" ng-model="ctrlBooking.booking.endTime" id="endtime" class="username form-control input-sm" placeholder="Enter end time meeting" required />
                     </div>
                 </div>
                 <br/><br/>
                 <div class="form-group">
                     <label class="col-sm-3 control-label"></label>
                     <div class="col-sm-8">
-                        <input type="submit" value = "Check" class="btn btn-primary" ng-disabled="myForm.$invalid || myForm.$pristine">
+                        <input type="submit" value ="Check" class="btn btn-primary" ng-disabled="myForm.$invalid || myForm.$pristine">
                     </div>
                 </div>
             </form>

@@ -38,6 +38,11 @@ public class Booking {
     @JoinColumn(name="roomId", nullable = false)
     private Room room;
 
+//    @JsonIgnore
+//    @JoinColumn(name="office_booking" , nullable = false)
+//    private Office office;
+
+
     public Booking(String idBooking, String subject) {
         setIdBooking(idBooking);
         setSubject(subject);
@@ -140,4 +145,12 @@ public class Booking {
     public void setPicContact(String picContact) {
         this.picContact = picContact;
     }
+
+//    public Office getOffice() {
+//        return office;
+//    }
+//
+//    public void setOffice(Office office) {
+//        this.office = office;
+//    }
 }
