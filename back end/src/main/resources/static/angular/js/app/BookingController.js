@@ -27,6 +27,7 @@ angular.module('bookingApp').controller('BookingController',
 
         //to show and check the available room
         self.check = check;
+        self.getAvailableRoom = getAvailableRoom;
 
         self.successMessage = '';
         self.errorMessage = '';
@@ -144,8 +145,12 @@ angular.module('bookingApp').controller('BookingController',
                 console.log('Go to AvailRooms');
                 $state.go('AvailRooms');
             }else{
-                console.log('Gagal redirect, cek variable test, nimmy tidak yakin sama if nya');
+                console.log('Gagal redirect');
             }
+        }
+
+        function getAvailableRoom(){
+            return BookingService.getAllAvailableRooms();
         }
     }
     ]);

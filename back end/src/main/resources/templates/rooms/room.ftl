@@ -77,7 +77,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr ng-repeat="u in ctrlRoom.check()">
+                                <tr ng-repeat="u in ctrlRoom.getAllRooms()">
                                     <!--<td>{{u.idRoom}}</td>-->
                                     <td>{{$index +1}}</td>
                                     <td>{{u.name}}</td>
@@ -86,8 +86,8 @@
                                     <td>{{u.isProjector}}</td>
                                     <td>{{u.numberExtension}}</td>
                                     <td>{{u.office.name}}</td>
-                                    <td><button type="button" ng-click="ctrlRoom.editRoom(u.idRoom)" data-toggle="modal" data-target="#myModalAdd" class="btn btn-success custom-width">Book</button></td>
-                                    <td><button type="button" ng-click="ctrlRoom.removeRoom(u.idRoom)" class="btn btn-danger custom-width">Details</button></td>
+                                    <td><button type="button" ng-click="ctrlRoom.editRoom(u.idRoom)" data-toggle="modal" data-target="#myModalAdd" class="btn btn-success custom-width">Edit</button></td>
+                                    <td><button type="button" ng-click="ctrlRoom.removeRoom(u.idRoom)" class="btn btn-danger custom-width">Remove</button></td>
                                 </tr>
                                 </tbody>
                             </table>

@@ -17,7 +17,8 @@ angular.module('bookingApp').factory('BookingService',
                 loadOffices : loadOffices,
                 getAllOffices : getAllOffices,
 
-                getAvailableRooms : getAvailableRooms
+                getAvailableRooms : getAvailableRooms,
+                getAllAvailableRooms : getAllAvailableRooms
             };
 
             return factory;
@@ -197,6 +198,10 @@ angular.module('bookingApp').factory('BookingService',
                     );
                 return $localStorage.rooms;
                 ////return deferred.promise();
+            }
+
+            function getAllAvailableRooms(){
+                return $localStorage.rooms;
             }
         }
     ]);

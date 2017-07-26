@@ -177,12 +177,6 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
                    templateUrl: '/partials/showavailableroom',
                    controller: 'BookingController',
                    controllerAs: 'ctrlBooking'
-                   // resolve: {
-                   //     rooms: function ($q, BookingService) {
-                   //         console.log('Load all available rooms');
-                   //     }
-                   //     //bagian ini yg bikin error kayaknya bebb
-                   // }
                });
        // use the HTML5 History API
        $locationProvider.html5Mode(true);
@@ -225,7 +219,7 @@ app.run(function(LoginService, $rootScope, $state) {
             //(dalam contoh ini cuma boleh ke "state" alias halaman login dan register
 
 
-            if (toState.name != 'login' && toState.name != 'register' && toState.name != 'home') {
+            if (toState.name != 'login' && toState.name != 'register' && toState.name != 'home' && toState.name != 'showbooking') {
                 //selain akses halaman login atau register dia bakal masuk ke blok ini
 
                 event.preventDefault(); //ini buat ngestop paksa (contoh mau kehalamaan office, trus di stop paksa

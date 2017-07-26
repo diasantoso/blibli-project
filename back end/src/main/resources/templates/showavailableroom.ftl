@@ -57,7 +57,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr ng-repeat="u in ctrlBooking.rooms">
+                <tr ng-repeat="u in ctrlBooking.getAvailableRoom()">
                     <!--<td>{{u.idRoom}}</td>-->
                     <td>{{$index +1}}</td>
                     <td>{{u.name}}</td>
@@ -65,10 +65,9 @@
                     <td>{{u.isConference}}</td>
                     <td>{{u.isProjector}}</td>
                     <td>{{u.numberExtension}}</td>
-                    <td>{{u.status}}</td>
                     <td>{{u.office.name}}</td>
-                    <td><button type="button" ng-click="ctrlRoom.editRoom(u.idRoom)" data-toggle="modal" data-target="#myModalAdd" class="btn btn-success custom-width">Edit</button></td>
-                    <td><button type="button" ng-click="ctrlRoom.removeRoom(u.idRoom)" class="btn btn-danger custom-width">Remove</button></td>
+                    <td><button type="button" ng-click="ctrlRoom.editRoom(u.idRoom)" data-toggle="modal" data-target="#myModalAdd" class="btn btn-success custom-width">Details</button></td>
+                    <td><button type="button" ng-click="ctrlRoom.removeRoom(u.idRoom)" class="btn btn-danger custom-width">Book</button></td>
                 </tr>
                 </tbody>
             </table>
