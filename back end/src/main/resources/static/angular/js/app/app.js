@@ -180,10 +180,14 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
                    resolve: {
                        rooms: function ($q, BookingService) {
                            console.log('Load all available rooms');
-                           // var deferred = $q.defer();
-                           // BookingService.loadAllBookings()
-                           //     .then(deferred.resolve,deferred.resolve);
-                           // return deferred.promise;
+
+                           var values = {};
+                           var log = [];
+                           angular.forEach(values, function(value, key) {
+                               this.push(key + ': ' + value);
+                           }, log);
+                           expect(log).toEqual(['name: misko', 'gender: male']);
+
                        }
                    }
                });

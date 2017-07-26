@@ -38,40 +38,37 @@
 <div class="content-section-a">
     <div class="container">
         <br/>
-        <h2 class="section-heading">Upcoming Booking</h2>
+        <h2 class="section-heading">Available Rooms</h2>
+        <p class="category"><h5>You can see list of available rooms to book, based on your given data.</h5></p>
         <br/><br/>
         <div class="content table-responsive table-full-width">
             <table class="table table-hover table-striped data">
                 <thead>
                 <tr>
-                    <!--<th width="200">SUBJECT</th>
-                    <th width="250">DESCRIPTION</th>
-                    <th width="200">ADDED DATE</th>
-                    <th width="200">STATUS</th>-->
-                    <th width="180">MEETING DATE</th>
-                    <th width="200">START</th>
-                    <th width="200">END</th>
-                    <th width="200">ROOM</th>
-                    <th width="200">REQUEST BY</th>
-                    <th width="200">CONTACT</th>
+                    <th>No.</th>
+                    <th>NAME</th>
+                    <th>CAPACITY</th>
+                    <th>HAVE CONFERENCE</th>
+                    <th>HAVE PROJECTOR</th>
+                    <th>NUMBER EXTENSION</th>
+                    <th>OFFICE</th>
                     <th width="100"></th>
                     <th width="100"></th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr ng-repeat="u in ctrlBooking.getUpcomingBookings()">
-                    <td>{{u.dateMeeting}}</td>
-                    <td>{{u.startTime}}</td>
-                    <td>{{u.endTime}}</td>
-                    <td>{{u.room.name}}</td>
-                    <td>{{u.employee.name}}</td>
-                    <td>{{u.picContact}}</td>
-                    <!--<td>{{u.subject}}</td>
-                    <td>{{u.description}}</td>
-                    <td>{{u.addedDate}}</td>
-                    <td>{{u.status}}</td>-->
-                    <td></td>
-                    <td></td>
+                <tr ng-repeat="u in ctrlBooking.getAllRooms()">
+                    <!--<td>{{u.idRoom}}</td>-->
+                    <td>{{$index +1}}</td>
+                    <td>{{u.name}}</td>
+                    <td>{{u.capacity}}</td>
+                    <td>{{u.isConference}}</td>
+                    <td>{{u.isProjector}}</td>
+                    <td>{{u.numberExtension}}</td>
+                    <td>{{u.status}}</td>
+                    <td>{{u.office.name}}</td>
+                    <td><button type="button" ng-click="ctrlRoom.editRoom(u.idRoom)" data-toggle="modal" data-target="#myModalAdd" class="btn btn-success custom-width">Edit</button></td>
+                    <td><button type="button" ng-click="ctrlRoom.removeRoom(u.idRoom)" class="btn btn-danger custom-width">Remove</button></td>
                 </tr>
                 </tbody>
             </table>
