@@ -80,7 +80,7 @@ public class BookingController {
         return responseBack;
     }
 
-    @PreAuthorize("hasAuthority('Admin')")
+    //@PreAuthorize("hasAuthority('Admin')")
     @RequestMapping(value = "/bookings", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public ResponseBack updateBooking(@RequestBody BookingResponse param) {

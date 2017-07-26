@@ -28,7 +28,13 @@ angular.module('bookingApp')
                     // going to the home page
                     console.log("Debug : Login Success -> Going Dashboard");
                     console.log("Debug : Login Token -> "+res.token);
-                    $state.go('dashboard');
+                    if(res.user.role=='Admin'){
+                        $state.go('home');
+                        //sementara buat debug ke state home semua dulu aja :3
+                    }
+                    else {
+                        $state.go('home');
+                    }
                 } else {
                     // if the token is not present in the response then the
                     // authentication was not successful. Setting the error message.

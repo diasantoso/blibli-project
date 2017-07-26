@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('bookingApp').controller('BookingController',
-    ['BookingService', '$scope' , function( BookingService , $scope) {
+    ['BookingService', '$scope', '$state' , function( BookingService , $scope, $state) {
 
         var self = this;
         self.booking = {};
@@ -11,6 +11,8 @@ angular.module('bookingApp').controller('BookingController',
         self.offices = [];
         //for loading available Rooms
         self.searchVar = {};
+        //rooms
+        self.rooms=[];
 
         self.submit = submit;
         self.getAllBookings = getAllBookings;
@@ -134,7 +136,16 @@ angular.module('bookingApp').controller('BookingController',
                 ' on date : ' +self.searchVar.date +
                 ' with start Time : '+self.searchVar.startTime+
                 ' And end Time : '+self.searchVar.endTime);
-            return BookingService.getAvailableRooms(self.searchVar.date,self.searchVar.startTime,self.searchVar.endTime,self.searchVar.officeId);
+            //$state.go('AvailRooms');
+
+            self.rooms= BookingService.getAvailableRooms(self.searchVar.date,self.searchVar.startTime,self.searchVar.endTime,self.searchVar.officeId);
+            console.log('rooms'+self.rooms);
+            if(self.rooms!=null){
+                console.log('Go to AvailRooms');
+                $state.go('AvailRooms');
+            }else{
+                console.log('Gagal redirect, cek variable test, nimmy tidak yakin sama if nya');
+            }
         }
     }
     ]);

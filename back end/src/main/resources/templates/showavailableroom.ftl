@@ -38,7 +38,7 @@
 <div class="content-section-a">
     <div class="container">
         <br/>
-        <h2 class="section-heading">Available Rooms</h2>
+        <h2 class="section-heading">Available Rooms {{ctrlBooking.rooms}}</h2>
         <p class="category"><h5>You can see list of available rooms to book, based on your given data.</h5></p>
         <br/><br/>
         <div class="content table-responsive table-full-width">
@@ -57,7 +57,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr ng-repeat="u in ctrlBooking.getAllRooms()">
+                <tr ng-repeat="u in ctrlBooking.rooms">
                     <!--<td>{{u.idRoom}}</td>-->
                     <td>{{$index +1}}</td>
                     <td>{{u.name}}</td>

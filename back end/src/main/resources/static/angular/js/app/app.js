@@ -176,20 +176,13 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
                    url: '/rooms/available',
                    templateUrl: '/partials/showavailableroom',
                    controller: 'BookingController',
-                   controllerAs: 'ctrlBooking',
-                   resolve: {
-                       rooms: function ($q, BookingService) {
-                           console.log('Load all available rooms');
-
-                           var values = {};
-                           var log = [];
-                           angular.forEach(values, function(value, key) {
-                               this.push(key + ': ' + value);
-                           }, log);
-                           expect(log).toEqual(['name: misko', 'gender: male']);
-
-                       }
-                   }
+                   controllerAs: 'ctrlBooking'
+                   // resolve: {
+                   //     rooms: function ($q, BookingService) {
+                   //         console.log('Load all available rooms');
+                   //     }
+                   //     //bagian ini yg bikin error kayaknya bebb
+                   // }
                });
        // use the HTML5 History API
        $locationProvider.html5Mode(true);
@@ -221,7 +214,7 @@ app.run(function(LoginService, $rootScope, $state) {
     $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
         // checking the user is logged in or not
         console.log('To State ='+toState.name);
-        if(toState.data.role)
+        if(toState.data!=null)
         console.log('To State Data Role ='+toState.data.role);
         else
             console.log('ToState Data Role null.')
@@ -253,6 +246,7 @@ app.run(function(LoginService, $rootScope, $state) {
                 }
 
             }
+
         }
     });
 });

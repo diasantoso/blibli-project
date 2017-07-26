@@ -17,8 +17,7 @@ angular.module('bookingApp').factory('BookingService',
                 loadOffices : loadOffices,
                 getAllOffices : getAllOffices,
 
-                getAvailableRooms : getAvailableRooms,
-                getAllAvailableRooms : getAllAvailableRooms
+                getAvailableRooms : getAvailableRooms
             };
 
             return factory;
@@ -175,7 +174,7 @@ angular.module('bookingApp').factory('BookingService',
                     ' And end Time : '+endTime);
                 //var deferred =  $q.defer();
                 //available?date=8/20/2017&startTime=20:00:00&endTime=22:00:00&officeId=ff8080815c04eb2f015c04ecaa920004
-                $http.get(urls.urls.ROOM_SERVICE_API+"available?date="+date+
+                $http.get(urls.ROOM_SERVICE_API+"available?date="+date+
                                                     '&startTime='+startTime+
                                                     '&endTime='+endTime+
                                                     '&officeId='+officeId)
@@ -186,17 +185,18 @@ angular.module('bookingApp').factory('BookingService',
                                 ' with start Time : '+startTime+
                                 ' And end Time : '+endTime);
                             $localStorage.rooms = response.data.value;
-                           // deferred.resolve(response.data);
+                           ////deferred.resolve(response.data);
                         },
                         function (errResponse) {
                             console.error('Error while loading All available rooms in office with id : '+officeId+
                                 ' on date : ' + date +
                                 ' with start Time : '+startTime+
                                 ' And end Time : '+endTime);
-                            //deferred.reject(errResponse);
+                            ////deferred.reject(errResponse);
                         }
                     );
                 return $localStorage.rooms;
+                ////return deferred.promise();
             }
         }
     ]);
