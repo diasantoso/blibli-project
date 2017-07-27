@@ -83,7 +83,7 @@ public class BookingController {
         //set the booking ticket
         Timestamp timestampNow = new Timestamp(System.currentTimeMillis());
         Timestamp timestampMeet =  new Timestamp(booking.getDateMeeting().getTime());
-        
+
         Booking result = bookingService.save(booking);
 
         ResponseBack responseBack = new ResponseBack();

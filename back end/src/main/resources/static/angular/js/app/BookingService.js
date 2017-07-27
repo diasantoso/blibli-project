@@ -91,6 +91,7 @@ angular.module('bookingApp').factory('BookingService',
 
             function createBooking(booking){
                 console.log('Creating booking');
+
                 var deferred = $q.defer();
                 $http.post(urls.BOOKING_SERVICE_API, booking)
                     .then(

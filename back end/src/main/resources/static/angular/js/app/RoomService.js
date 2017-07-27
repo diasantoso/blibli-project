@@ -43,8 +43,6 @@ angular.module('bookingApp').factory('RoomService',
                 return $localStorage.rooms;
             }
 
-
-
             function getRoom(id){
                 console.log('Fetching room with id : ' +id);
                 var deferred =  $q.defer();

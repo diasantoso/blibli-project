@@ -44,8 +44,16 @@ angular.module('bookingApp').controller('BookingController',
             }
         }
 
-        function createBooking (booking){
+        function createBooking (booking , room){
             console.log('About to create booking');
+            //Taking data from previous form
+            booking.employee = LoginService.user;
+            console.log('Logged user : ' + LoginService.user);
+            booking.dateMeeting = self.searchVar.date;
+            booking.startTime = self.searchVar.startTime;
+            booking.endTime = self.searchVar.endTime;
+            booking.room = room;
+
             BookingService.createBooking(booking)
                 .then(
                     function (response){
