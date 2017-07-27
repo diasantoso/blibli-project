@@ -38,7 +38,7 @@
 <div class="content-section-a">
     <div class="container">
         <br/>
-        <h2 class="section-heading">Available Rooms {{ctrlBooking.rooms}}</h2>
+        <h2 class="section-heading">Available Rooms</h2>
         <p class="category"><h5>You can see list of available rooms to book, based on your given data.</h5></p>
         <br/><br/>
         <div class="content table-responsive table-full-width">
@@ -66,15 +66,63 @@
                     <td>{{u.isProjector}}</td>
                     <td>{{u.numberExtension}}</td>
                     <td>{{u.office.name}}</td>
-                    <td><button type="button" ng-click="ctrlRoom.editRoom(u.idRoom)" data-toggle="modal" data-target="#myModalAdd" class="btn btn-success custom-width">Details</button></td>
-                    <td><button type="button" ng-click="ctrlRoom.removeRoom(u.idRoom)" class="btn btn-danger custom-width">Book</button></td>
+                    <td><button type="button" ng-click="" data-toggle="modal" data-target="#myModalAdd" class="btn btn-success custom-width">Book</button></td>
+                    <td><button type="button" ng-click="" class="btn btn-danger custom-width">Details</button></td>
                 </tr>
                 </tbody>
             </table>
         </div>
     </div>
     <!-- /.container -->
+</div>
+<div class="modal fade" id="myModalAdd" role="dialog">
+    <div class="modal-dialog">
 
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Aditional Booking Data</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" ng-submit="ctrlBooking.submit()" name="myForm">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Description :</label>
+                        <div class="col-sm-8">
+                            <input type="text" ng-model="ctrlBooking.booking.description" id="description" class="username form-control input-sm" placeholder="Enter Booking Description" required />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Subject :</label>
+                        <div class="col-sm-8">
+                            <input type="text" ng-model="ctrlBooking.booking.subject" id="subject" class="username form-control input-sm" placeholder="Enter Booking Subject" required />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">PIC contact :</label>
+                        <div class="col-sm-8">
+                            <input type="text" ng-model="ctrlBooking.booking.pic_contact" id="PIC" class="username form-control input-sm" placeholder="Enter the Person in Charge Contact" required />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Special Request :</label>
+                        <div class="col-sm-8">
+                            <input type="text" ng-model="ctrlBooking.booking.special_request" id="special_request" class="username form-control input-sm" placeholder="Enter Special Request" required />
+                        </div>
+                    </div>
+                    <input type="hidden" ng-model="ctrlRoom.room.status" ng-init="ctrlRoom.room.status=1" id="status" class="username form-control input-sm" />
+                    <input type="hidden" ng-model="ctrlRoom.room.idRoom" ng-init="ctrlRoom.room.idRoom=''" id="idRoom" class="username form-control input-sm" />
+
+                    <div class="form-group modal-footer">
+                        <input type="submit"  value="Book" class="btn btn-primary btn-sm" ng-disabled="myForm.$invalid || myForm.$pristine">
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+    </div>
 </div>
 
 <!-- Footer -->

@@ -24,7 +24,7 @@ public class BookingService {
         return bookingRepository.showById(id);
     }
 
-    public Booking create(Booking booking) {
+    public Booking save(Booking booking) {
         Booking result = bookingRepository.save(booking);
         return result;
     }

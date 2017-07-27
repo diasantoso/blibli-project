@@ -26,7 +26,11 @@ public class Booking {
     private Date addedDate;
     private String statusBooking;
     private Integer status;
+
+    //Tambahan
     private String picContact;
+    private String bookingTicket;
+    private String specialRequest;
 
     @JsonIgnore
     @ManyToOne(cascade = CascadeType.ALL)
@@ -37,11 +41,6 @@ public class Booking {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="roomId", nullable = false)
     private Room room;
-
-//    @JsonIgnore
-//    @JoinColumn(name="office_booking" , nullable = false)
-//    private Office office;
-
 
     public Booking(String idBooking, String subject) {
         setIdBooking(idBooking);
@@ -146,11 +145,19 @@ public class Booking {
         this.picContact = picContact;
     }
 
-//    public Office getOffice() {
-//        return office;
-//    }
-//
-//    public void setOffice(Office office) {
-//        this.office = office;
-//    }
+    public String getBookingTicket() {
+        return bookingTicket;
+    }
+
+    public void setBookingTicket(String bookingTicket) {
+        this.bookingTicket = bookingTicket;
+    }
+
+    public String getSpecialRequest() {
+        return specialRequest;
+    }
+
+    public void setSpecialRequest(String specialRequest) {
+        this.specialRequest = specialRequest;
+    }
 }

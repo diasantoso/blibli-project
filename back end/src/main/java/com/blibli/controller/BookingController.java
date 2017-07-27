@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Time;
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -66,10 +67,24 @@ public class BookingController {
 
     @RequestMapping(value = "/bookings", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public ResponseBack createRoom(@RequestBody BookingResponse param) {
+    public ResponseBack createBooking(@RequestBody BookingResponse param) {
         Booking booking = new Booking();
         BeanUtils.copyProperties(param, booking);
-        Booking result = bookingService.create(booking);
+
+        //set added data to current date
+        LocalDate localDate = LocalDate.now();
+        java.sql.Date date = java.sql.Date.valueOf(localDate);
+        booking.setAddedDate(date);
+
+        //set status and statusbooking to 1
+        booking.setStatus(1);
+        booking.setStatusBooking("1");
+
+        //set the booking ticket
+        Timestamp timestampNow = new Timestamp(System.currentTimeMillis());
+        Timestamp timestampMeet =  new Timestamp(booking.getDateMeeting().getTime());
+        
+        Booking result = bookingService.save(booking);
 
         ResponseBack responseBack = new ResponseBack();
         if(result!=null)
@@ -80,13 +95,13 @@ public class BookingController {
         return responseBack;
     }
 
-    //@PreAuthorize("hasAuthority('Admin')")
+    @PreAuthorize("hasAuthority('Admin')")
     @RequestMapping(value = "/bookings", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public ResponseBack updateBooking(@RequestBody BookingResponse param) {
         Booking booking = new Booking();
         BeanUtils.copyProperties(param, booking);
-        Booking result = bookingService.create(booking);
+        Booking result = bookingService.save(booking);
 
         ResponseBack responseBack = new ResponseBack();
         if(result!=null)
@@ -99,7 +114,7 @@ public class BookingController {
 
     @RequestMapping(value = "/bookings", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public ResponseBack deleteOffice(@RequestParam String id) {
+    public ResponseBack deleteBooking(@RequestParam String id) {
         Booking result = bookingService.delete(id);
 
         ResponseBack responseBack = new ResponseBack();
