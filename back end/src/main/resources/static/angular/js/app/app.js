@@ -199,6 +199,19 @@ app.directive("ngUploadChange",function(){
     }
 });
 
+app.directive("modalToggle",function(){
+    return function(scope, element, attrs){
+        console.log('modal ready');
+        scope.$watch(function(){ return scope.loaded.showModal; }, function(value) {
+            if (value) element.modal('show');
+            else element.modal('hide');
+            console.log('modal try to show');
+            if (value) element.modal('show');
+            else element.modal('hide');
+        });
+    }
+})
+
 // the following method will run at the time of initializing the module. That
 // means it will run only one time.
 app.run(function(LoginService, $rootScope, $state) {

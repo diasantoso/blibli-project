@@ -119,7 +119,7 @@ public class RoomController {
 
     @RequestMapping(value = "/rooms/available", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public RoomResponseList getAvailableRoom(@RequestParam Date date, @RequestParam Time startTime,
+    public RoomResponseList getAvailableRoom(@RequestParam java.sql.Date date, @RequestParam Time startTime,
                                              @RequestParam Time endTime, @RequestParam String officeId) {
 
         List<Room> data = roomService.getAllActive();

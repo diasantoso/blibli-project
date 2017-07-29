@@ -1,10 +1,14 @@
 package com.blibli.controller;
 
 import com.blibli.model.Booking;
+import com.blibli.model.Employee;
+import com.blibli.model.Room;
 import com.blibli.response.ResponseBack;
 import com.blibli.response.booking.BookingResponse;
 import com.blibli.response.booking.BookingResponseList;
 import com.blibli.service.BookingService;
+import com.blibli.service.EmployeeService;
+import com.blibli.service.RoomService;
 import org.apache.tomcat.jni.Local;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +36,10 @@ public class BookingController {
 
     @Autowired
     BookingService bookingService;
+    @Autowired
+    EmployeeService employeeService;
+    @Autowired
+    RoomService roomService;
 
     @RequestMapping(value = "/bookings", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
@@ -76,13 +84,24 @@ public class BookingController {
         java.sql.Date date = java.sql.Date.valueOf(localDate);
         booking.setAddedDate(date);
 
+        //set the employee
+        System.out.println("Print ID Employee : "+param.getEmployee().getIdEmployee());
+        Employee employee = employeeService.getOneActive(booking.getEmployee().getIdEmployee());
+        booking.setEmployee(employee);
+
+        //set The room
+        System.out.println("Print ID room : "+param.getRoom().getIdRoom());
+        Room room = roomService.getOneActive(booking.getRoom().getIdRoom());
+        booking.setRoom(room);
+
+
         //set status and statusbooking to 1
         booking.setStatus(1);
         booking.setStatusBooking("1");
 
         //set the booking ticket
-        Timestamp timestampNow = new Timestamp(System.currentTimeMillis());
-        Timestamp timestampMeet =  new Timestamp(booking.getDateMeeting().getTime());
+//        Timestamp timestampNow = new Timestamp(System.currentTimeMillis());
+//        Timestamp timestampMeet =  new Timestamp(booking.getDateMeeting().getTime());
 
         Booking result = bookingService.save(booking);
 

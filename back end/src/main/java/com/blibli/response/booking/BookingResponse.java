@@ -27,9 +27,10 @@ public class BookingResponse {
     private Integer status;
     private Employee employee;
     private Room room;
-    private String picContact;
 
-    private Office office;
+    private String bookingTicket;
+    private String specialRequest;
+    private String picContact;
 
     public String getIdBooking() {
         return idBooking;
@@ -127,11 +128,19 @@ public class BookingResponse {
         this.picContact = picContact;
     }
 
-    public Office getOffice() {
-        return office;
+    public String getBookingTicket() {
+        return bookingTicket;
     }
 
-    public void setOffice(Office office) {
-        this.office = office;
+    public void setBookingTicket(String bookingTicket) {
+        this.bookingTicket = bookingTicket;
+    }
+
+    public String getSpecialRequest() {
+        return specialRequest;
+    }
+
+    public void setSpecialRequest(String specialRequest) {
+        this.specialRequest = specialRequest;
     }
 }

@@ -33,12 +33,12 @@ public class Booking {
     private String specialRequest;
 
     @JsonIgnore
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.DETACH)
     @JoinColumn(name="employeeId", nullable = false)
     private Employee employee;
 
     @JsonIgnore
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.DETACH)
     @JoinColumn(name="roomId", nullable = false)
     private Room room;
 

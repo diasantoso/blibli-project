@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('bookingApp').controller('BookingController',
-    ['BookingService', '$scope', '$state' , function( BookingService , $scope, $state) {
+    ['BookingService', 'LoginService', 'RoomService' , '$scope', '$state' , function( BookingService ,LoginService, RoomService, $scope, $state) {
 
         var self = this;
         self.booking = {};
@@ -11,7 +11,9 @@ angular.module('bookingApp').controller('BookingController',
         self.offices = [];
         //for loading available Rooms
         self.searchVar = {};
+        self.roomTemp={}
         //rooms
+        self.room={};
         self.rooms=[];
 
         self.submit = submit;
@@ -22,12 +24,16 @@ angular.module('bookingApp').controller('BookingController',
         self.removeBooking = removeBooking;
         self.editBooking = editBooking;
         self.reset = reset;
+        self.getRoombyId = getRoombyId;
 
         self.getOffices=getOffices;
 
         //to show and check the available room
         self.check = check;
         self.getAvailableRoom = getAvailableRoom;
+        self.getSearchVar = getSearchVar;
+
+        $scope.loaded={};
 
         self.successMessage = '';
         self.errorMessage = '';
@@ -40,19 +46,22 @@ angular.module('bookingApp').controller('BookingController',
             console.log('Submitting');
             if(self.booking.id === undefined || self.booking.id === null) {
                 console.log('Saving new booking');
+                self.searchVar = getSearchVar();
+                self.booking.employee = LoginService.user;
+                console.log('Logged user : ' + LoginService.user);
+                self.booking.dateMeeting = self.searchVar.date;
+                self.booking.startTime = self.searchVar.startTime;
+                self.booking.endTime = self.searchVar.endTime;
+                //console.log('Room Id'+self.roomTemp.idRoom);
+                self.booking.room = self.room;
+
                 createBooking(self.booking);
             }
         }
 
-        function createBooking (booking , room){
+        function createBooking (booking , roomId , room){
             console.log('About to create booking');
             //Taking data from previous form
-            booking.employee = LoginService.user;
-            console.log('Logged user : ' + LoginService.user);
-            booking.dateMeeting = self.searchVar.date;
-            booking.startTime = self.searchVar.startTime;
-            booking.endTime = self.searchVar.endTime;
-            booking.room = room;
 
             BookingService.createBooking(booking)
                 .then(
@@ -147,7 +156,7 @@ angular.module('bookingApp').controller('BookingController',
                 ' And end Time : '+self.searchVar.endTime);
             //$state.go('AvailRooms');
 
-            self.rooms= BookingService.getAvailableRooms(self.searchVar.date,self.searchVar.startTime,self.searchVar.endTime,self.searchVar.officeId);
+            self.rooms= BookingService.getAvailableRooms(self.searchVar);
             console.log('rooms'+self.rooms);
             if(self.rooms!=null){
                 console.log('Go to AvailRooms');
@@ -159,6 +168,27 @@ angular.module('bookingApp').controller('BookingController',
 
         function getAvailableRoom(){
             return BookingService.getAllAvailableRooms();
+        }
+
+        function getSearchVar(){
+            return BookingService.getSearchVar();
+        }
+
+
+
+        function getRoombyId(roomId) {
+
+            console.log('masuk ng click');
+            RoomService.getRoom(roomId).then(
+                function (room) {
+                    console.log(room);
+                    self.room = room;
+                    $scope.loaded["showModal"]=true;
+                },
+                function (errResponse){
+                    console.error('Error while getting room '+roomId +', Error :'+errResponse.data);
+                }
+            );
         }
     }
     ]);

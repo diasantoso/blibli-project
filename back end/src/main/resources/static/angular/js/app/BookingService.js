@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('bookingApp').factory('BookingService',
+angular.module('bookingApp').factory('BookingService' ,
     ['$localStorage','$http','$q','urls',
         function ($localStorage,$http,$q,urls){
 
@@ -18,7 +18,9 @@ angular.module('bookingApp').factory('BookingService',
                 getAllOffices : getAllOffices,
 
                 getAvailableRooms : getAvailableRooms,
-                getAllAvailableRooms : getAllAvailableRooms
+                getAllAvailableRooms : getAllAvailableRooms,
+                getSearchVar : getSearchVar,
+
             };
 
             return factory;
@@ -169,7 +171,14 @@ angular.module('bookingApp').factory('BookingService',
                 return $localStorage.offices;
             }
 
-            function getAvailableRooms(date,startTime,endTime,officeId){
+            function getAvailableRooms(searchVar){
+                var date = searchVar.date;
+                var startTime = searchVar.startTime;
+                var endTime = searchVar.endTime;
+                var officeId = searchVar.officeId;
+
+                $localStorage.searchVar = searchVar;
+
                 console.log('Fetching All available rooms in office with id : '+officeId+
                     ' on date : ' + date +
                     ' with start Time : '+startTime+
@@ -203,6 +212,10 @@ angular.module('bookingApp').factory('BookingService',
 
             function getAllAvailableRooms(){
                 return $localStorage.rooms;
+            }
+
+            function getSearchVar(){
+                return $localStorage.searchVar;
             }
         }
     ]);

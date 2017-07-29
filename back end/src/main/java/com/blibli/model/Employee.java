@@ -34,8 +34,6 @@ public class Employee implements UserDetails {
     private String email;
     @JsonProperty(access = Access.WRITE_ONLY)
     private String password;
-//    @ElementCollection
-//    private List<String> roles =  new ArrayList<>();
     public String role;
     //1=active, 0=deactive
     private Integer status;
@@ -84,13 +82,6 @@ public class Employee implements UserDetails {
     public void setPassword(String password) {
         this.password = password;
     }
-//    public List<String> getRoles() {
-//        return roles;
-//    }
-//
-//    public void setRoles(List<String> roles) {
-//        this.roles = roles;
-//    }
 
     public String getRole() {
         return role;

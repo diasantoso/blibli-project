@@ -66,8 +66,9 @@
                     <td>{{u.isProjector}}</td>
                     <td>{{u.numberExtension}}</td>
                     <td>{{u.office.name}}</td>
-                    <td><button type="button" ng-click="" data-toggle="modal" data-target="#myModalAdd" class="btn btn-success custom-width">Book</button></td>
+                    <td><button type="button" ng-click="ctrlBooking.getRoombyId(u.idRoom)" data-toggle="modal" data-target="#myModalAdd" class="btn btn-success custom-width">Book {{u.idRoom}}</button></td>
                     <td><button type="button" ng-click="" class="btn btn-danger custom-width">Details</button></td>
+                    <#--data-toggle="modal" data-target="#myModalAdd"-->
                 </tr>
                 </tbody>
             </table>
@@ -101,14 +102,14 @@
                     <div class="form-group">
                         <label class="col-sm-3 control-label">PIC contact :</label>
                         <div class="col-sm-8">
-                            <input type="text" ng-model="ctrlBooking.booking.pic_contact" id="PIC" class="username form-control input-sm" placeholder="Enter the Person in Charge Contact" required />
+                            <input type="text" ng-model="ctrlBooking.booking.picContact" id="picContact" class="username form-control input-sm" placeholder="Enter the Person in Charge Contact" required />
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="col-sm-3 control-label">Special Request :</label>
                         <div class="col-sm-8">
-                            <input type="text" ng-model="ctrlBooking.booking.special_request" id="special_request" class="username form-control input-sm" placeholder="Enter Special Request" required />
+                            <input type="text" ng-model="ctrlBooking.booking.specialRequest" id="specialRequest" class="username form-control input-sm" placeholder="Enter Special Request" required />
                         </div>
                     </div>
                     <input type="hidden" ng-model="ctrlRoom.room.status" ng-init="ctrlRoom.room.status=1" id="status" class="username form-control input-sm" />
