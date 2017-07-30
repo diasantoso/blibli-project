@@ -21,6 +21,9 @@ angular.module('bookingApp').factory('BookingService' ,
                 getAllAvailableRooms : getAllAvailableRooms,
                 getSearchVar : getSearchVar,
 
+                getBookingPerUser : getBookingPerUser,
+                getAllBookingPerUser : getAllBookingPerUser
+
             };
 
             return factory;
@@ -216,6 +219,29 @@ angular.module('bookingApp').factory('BookingService' ,
 
             function getSearchVar(){
                 return $localStorage.searchVar;
+            }
+            
+            function getBookingPerUser(empid) {
+                console.log('Fetching bookings owned by employee id : ' +empid);
+                //var deferred =  $q.defer();
+                $http.get(urls.BOOKING_SERVICE_API +'/employee/' + empid)
+                    .then(
+                        function (response){
+                            console.log('Fetched successfully bookings owned by employee id : ' + empid);
+                            $localStorage.userBookings = response.data.value;
+                            //deferred.resolve(response.data);
+                        },
+                        function (errResponse) {
+                            console.error('Error while loading bookings owned by employee id : ' + empid);
+                            //deferred.reject(errResponse);
+                        }
+                    );
+                return $localStorage.userBookings;
+                //return deferred.promise;
+            }
+
+            function getAllBookingPerUser(){
+                return $localStorage.userBookings;
             }
         }
     ]);

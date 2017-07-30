@@ -177,7 +177,18 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
                    templateUrl: '/partials/addnewbooking',
                    controller: 'BookingController',
                    controllerAs: 'ctrlBooking'
-               });
+               })
+
+                .state('EmpDashboard',{
+                    url: '/employees/dashboard',
+                    templateUrl: '/partials/employees/employeedashboard',
+                    controller: 'BookingController',
+                    controllerAs: 'ctrlBooking'
+                })
+
+            ;
+
+
        // use the HTML5 History API
        $locationProvider.html5Mode(true);
        $urlRouterProvider.otherwise('/');}]);

@@ -15,6 +15,10 @@ angular.module('bookingApp').controller('BookingController',
         //rooms
         self.room={};
         self.rooms=[];
+        //user
+        self.user = {};
+        self.userBooking = {};
+        self.userBookings = [];
 
         self.submit = submit;
         self.getAllBookings = getAllBookings;
@@ -32,6 +36,10 @@ angular.module('bookingApp').controller('BookingController',
         self.check = check;
         self.getAvailableRoom = getAvailableRoom;
         self.getSearchVar = getSearchVar;
+
+        //to show booking per User (by employeeId)
+        self.getBookingPerUser = getBookingPerUser;
+        self.getAllBookingPerUser = getAllBookingPerUser;
 
         $scope.loaded={};
 
@@ -72,6 +80,7 @@ angular.module('bookingApp').controller('BookingController',
                         self.done = true;
                         self.booking={};
                         $scope.myForm.$setPristine();
+                        $state.go('showbooking');
                     },
 
                     function (errResponse){
@@ -175,7 +184,7 @@ angular.module('bookingApp').controller('BookingController',
 
         function getRoombyId(roomId) {
 
-            console.log('masuk ng click');
+            //console.log('masuk ng click');
             RoomService.getRoom(roomId).then(
                 function (room) {
                     console.log(room);
@@ -186,6 +195,21 @@ angular.module('bookingApp').controller('BookingController',
                     console.error('Error while getting room '+roomId +', Error :'+errResponse.data);
                 }
             );
+        }
+
+        function getBookingPerUser() {
+            self.user = LoginService.user;
+            self.userBookings = BookingService.getBookingPerUser(self.user.idEmployee);
+            console.log("Booking from user "+self.user.idEmployee+" are " + self.userBookings);
+            if(self.userBookings!=null){
+                console.log("Booking from user "+self.user.idEmployee+" are " + self.userBookings);
+            }else{
+                console.log('');
+            }
+        }
+
+        function getAllBookingPerUser() {
+            return BookingService.getAllBookingPerUser();
         }
     }
     ]);

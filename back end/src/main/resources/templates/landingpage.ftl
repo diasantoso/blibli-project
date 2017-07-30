@@ -28,6 +28,9 @@
                 <li>
                     <a href="/register">Register</a>
                 </li>
+                <li>
+                    <a href="/employees/dashboard">Employe Dashboard</a>
+                </li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->
