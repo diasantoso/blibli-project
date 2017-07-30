@@ -29,7 +29,7 @@ public class OfficeRepositoryImpl implements OfficeRepositoryCustom {
     public List<Office> showActiveOffice() {
         EntityManager em = entityManagerFactory.createEntityManager();
         List<Office> result = em.createNativeQuery(
-                "SELECT * FROM OFFICE WHERE STATUS=1", Office.class).getResultList();
+                "SELECT * FROM office WHERE status=1", Office.class).getResultList();
         return result;
     }
 
@@ -37,7 +37,7 @@ public class OfficeRepositoryImpl implements OfficeRepositoryCustom {
     public Office showOneOffice(String id) {
         EntityManager em = entityManagerFactory.createEntityManager();
         Office result = (Office) em.createNativeQuery(
-                "SELECT * FROM OFFICE WHERE STATUS=1 AND id_office = '" + id +"' ", Office.class).getSingleResult();
+                "SELECT * FROM office WHERE status=1 AND id_office = '" + id +"' ", Office.class).getSingleResult();
         //Office result = em.find(Office.class, id);
         return result;
     }

@@ -154,7 +154,6 @@ angular.module('bookingApp').controller('BookingController',
                 ' on date : ' +self.searchVar.date +
                 ' with start Time : '+self.searchVar.startTime+
                 ' And end Time : '+self.searchVar.endTime);
-            //$state.go('AvailRooms');
 
             self.rooms= BookingService.getAvailableRooms(self.searchVar);
             console.log('rooms'+self.rooms);
@@ -174,8 +173,6 @@ angular.module('bookingApp').controller('BookingController',
             return BookingService.getSearchVar();
         }
 
-
-
         function getRoombyId(roomId) {
 
             console.log('masuk ng click');
@@ -183,7 +180,7 @@ angular.module('bookingApp').controller('BookingController',
                 function (room) {
                     console.log(room);
                     self.room = room;
-                    $scope.loaded["showModal"]=true;
+                    //$scope.loaded["showModal"]=true;
                 },
                 function (errResponse){
                     console.error('Error while getting room '+roomId +', Error :'+errResponse.data);

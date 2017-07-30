@@ -174,7 +174,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
 
                .state('AvailRooms',{
                    url: '/rooms/available',
-                   templateUrl: '/partials/showavailableroom',
+                   templateUrl: '/partials/addnewbooking',
                    controller: 'BookingController',
                    controllerAs: 'ctrlBooking'
                });

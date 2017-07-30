@@ -6,6 +6,7 @@ import com.blibli.model.Room;
 import com.blibli.response.ResponseBack;
 import com.blibli.response.booking.BookingResponse;
 import com.blibli.response.booking.BookingResponseList;
+import com.blibli.response.employee.EmployeeResponse;
 import com.blibli.service.BookingService;
 import com.blibli.service.EmployeeService;
 import com.blibli.service.RoomService;
@@ -159,8 +160,8 @@ public class BookingController {
             //(book.endTime <= endTime && book.endTime > startTime)
 
             if(book.getDateMeeting().equals(date) &&
-                    ((book.getStartTime().equals(startTime) || book.getStartTime().before(startTime))&& book.getEndTime().after(startTime))||
-                    ((book.getEndTime().equals(endTime) || book.getEndTime().after(endTime) && book.getStartTime().before(endTime))) ){
+                    (((book.getStartTime().equals(startTime) || book.getStartTime().before(startTime))&& book.getEndTime().after(startTime))||
+                    ((book.getEndTime().equals(endTime) || book.getEndTime().after(endTime) && book.getStartTime().before(endTime)))) ){
                 BookingResponse parse = new BookingResponse();
                 BeanUtils.copyProperties(book,parse);
                 responses.add(parse);
@@ -170,9 +171,9 @@ public class BookingController {
         return result;
     }
 
+    //Untuk menampilkan jadwal booking yang belum kadaluarsa
     @RequestMapping(value = "bookings/schedule", method = RequestMethod.GET , produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    //Untuk menampilkan jadwal booking yang belum kadaluarsa
     public BookingResponseList getBookingSchedule (){
 
         List<Booking> data = bookingService.getAllBooking();
@@ -196,4 +197,25 @@ public class BookingController {
         result.setValue(responses);
         return result;
     }
+
+    //Untuk menampilkan booking per-User (lewat idEmployee)
+    //@PreAuthorize("hasAuthority('Employee')")
+    @RequestMapping(value = "bookings/employee/{employee_id}", method = RequestMethod.GET , produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public BookingResponseList ShowBookingForOneUser(@PathVariable String employee_id) {
+
+        List<Booking> data = bookingService.getByEmpId(employee_id);
+        List<BookingResponse> response = new ArrayList<>();
+        BookingResponseList result = new BookingResponseList();
+
+        for(Booking room : data) {
+            BookingResponse parse = new BookingResponse();
+            BeanUtils.copyProperties(room, parse);
+            response.add(parse);
+        }
+        result.setValue(response);
+        return result;
+
+    }
+
 }

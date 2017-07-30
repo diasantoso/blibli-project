@@ -10,6 +10,5 @@ import java.util.List;
 public interface BookingRepositoryCustom {
     List<Booking> showById(String id);
     Booking deleteBooking(String id);
-
-
+    List<Booking> showByEmployeeId(String empId);
 }

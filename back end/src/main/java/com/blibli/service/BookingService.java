@@ -33,4 +33,6 @@ public class BookingService {
         Booking result = bookingRepository.deleteBooking(id);
         return result;
     }
+
+    public  List<Booking> getByEmpId(String empId){ return bookingRepository.showByEmployeeId(empId);}
 }
