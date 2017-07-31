@@ -229,6 +229,7 @@ angular.module('bookingApp').factory('BookingService' ,
                         function (response){
                             console.log('Fetched successfully bookings owned by employee id : ' + empid);
                             $localStorage.userBookings = response.data.value;
+                            //$localStorage.user = response.data.value.employee;
                             //deferred.resolve(response.data);
                         },
                         function (errResponse) {

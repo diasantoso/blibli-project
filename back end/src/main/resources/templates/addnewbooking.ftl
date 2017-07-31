@@ -116,7 +116,7 @@
                     <input type="hidden" ng-model="ctrlRoom.room.idRoom" ng-init="ctrlRoom.room.idRoom=''" id="idRoom" class="username form-control input-sm" />
 
                     <div class="form-group modal-footer">
-                        <input type="submit"  value="Book" class="btn btn-primary btn-sm" ng-disabled="myForm.$invalid || myForm.$pristine">
+                        <input type="submit" data-dismiss="myModalAdd" value="Book" class="btn btn-primary btn-sm" ng-disabled="myForm.$invalid || myForm.$pristine">
                     </div>
                 </form>
 

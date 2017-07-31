@@ -183,10 +183,14 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
                     url: '/employees/dashboard',
                     templateUrl: '/partials/employees/employeedashboard',
                     controller: 'BookingController',
-                    controllerAs: 'ctrlBooking'
-                })
-
-            ;
+                    controllerAs: 'ctrlBooking',
+                    resolve: {
+                        userBookings: function (BookingService) {
+                            console.log('Load all user bookings');
+                            BookingService.getBookingPerUser('402881ea5d565475015d5655f7a50000');
+                        }
+                    }
+                });
 
 
        // use the HTML5 History API
@@ -209,19 +213,6 @@ app.directive("ngUploadChange",function(){
         }
     }
 });
-
-app.directive("modalToggle",function(){
-    return function(scope, element, attrs){
-        console.log('modal ready');
-        scope.$watch(function(){ return scope.loaded.showModal; }, function(value) {
-            if (value) element.modal('show');
-            else element.modal('hide');
-            console.log('modal try to show');
-            if (value) element.modal('show');
-            else element.modal('hide');
-        });
-    }
-})
 
 // the following method will run at the time of initializing the module. That
 // means it will run only one time.

@@ -29,7 +29,7 @@ angular.module('bookingApp')
                     console.log("Debug : Login Success -> Going Dashboard");
                     console.log("Debug : Login Token -> "+res.token);
                     if(res.user.role=='Admin'){
-                        $state.go('home');
+                        $state.go('dashboard');
                         //sementara buat debug ke state home semua dulu aja :3
                     }
                     else {

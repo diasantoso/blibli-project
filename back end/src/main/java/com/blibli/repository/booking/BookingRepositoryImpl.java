@@ -38,7 +38,7 @@ public class BookingRepositoryImpl implements BookingRepositoryCustom {
     public List<Booking> showByEmployeeId(String empId) {
         EntityManager em = entityManagerFactory.createEntityManager();
         List<Booking> result = em.createNativeQuery(
-                "SELECT * FROM booking WHERE employee_id='"+empId+"' ;", Booking.class).getResultList();
+                "SELECT * FROM booking WHERE employee_id='"+empId+"' ORDER BY date_meeting DESC;", Booking.class).getResultList();
         return result;
     }
 }
