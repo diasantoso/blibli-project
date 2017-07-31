@@ -22,7 +22,8 @@ angular.module('bookingApp').factory('BookingService' ,
                 getSearchVar : getSearchVar,
 
                 getBookingPerUser : getBookingPerUser,
-                getAllBookingPerUser : getAllBookingPerUser
+                getAllBookingPerUser : getAllBookingPerUser,
+                getLoggedUser : getLoggedUser
 
             };
 
@@ -220,10 +221,15 @@ angular.module('bookingApp').factory('BookingService' ,
             function getSearchVar(){
                 return $localStorage.searchVar;
             }
+
+            function getLoggedUser(){
+                return $localStorage.user;
+            }
             
             function getBookingPerUser(empid) {
                 console.log('Fetching bookings owned by employee id : ' +empid);
                 //var deferred =  $q.defer();
+
                 $http.get(urls.BOOKING_SERVICE_API +'/employee/' + empid)
                     .then(
                         function (response){

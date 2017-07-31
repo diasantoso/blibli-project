@@ -187,7 +187,8 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
                     resolve: {
                         userBookings: function (BookingService) {
                             console.log('Load all user bookings');
-                            BookingService.getBookingPerUser('402881ea5d565475015d5655f7a50000');
+                            var empId = BookingService.getLoggedUser().idEmployee;
+                            BookingService.getBookingPerUser(empId);
                         }
                     }
                 });

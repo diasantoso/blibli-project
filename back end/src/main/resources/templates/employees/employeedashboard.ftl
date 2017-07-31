@@ -15,7 +15,7 @@
                     </a>
                 </li>
                 <li >
-                    <a href="">
+                    <a href="showbooking">
                         <i class="pe-7s-note2"></i>
                         <p>Upcoming Bookings</p>
                     </a>
@@ -54,36 +54,108 @@
                                 <p class="category"><h5>This is Your Past and future Booking Data</h5></p>
                             </div>
                             <br/><br/>
-                            <div class="content table-responsive table-full-width">
-                                <table class="table table-hover table-striped data">
-                                    <thead>
-                                    <tr>
-                                        <th width="180">MEETING DATE</th>
-                                        <th width="200">START</th>
-                                        <th width="200">END</th>
-                                        <th width="200">ROOM</th>
-                                        <th width="200">SUBJECT</th>
-                                        <th width="200">DESCRIPTION</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr ng-repeat="u in ctrlBooking.getAllBookingPerUser()">
-                                        <!--<td>{{u.idEmployee}}</td>-->
-                                        <td>{{u.dateMeeting}}</td>
-                                        <td>{{u.startTime}}</td>
-                                        <td>{{u.endTime}}</td>
-                                        <td>{{u.room.name}}</td>
-                                        <td>{{u.subject}}</td>
-                                        <td>{{u.description}}</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
+
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a data-toggle="tab" href="#menu1">Upcoming</a></li>
+                                <li><a data-toggle="tab" href="#menu2">Past</a></li>
+                                <li><a data-toggle="tab" href="#menu3">Canceled</a></li>
+                            </ul>
+
+                            <div class="tab-content">
+                                <div id="menu1" class="tab-pane fade in active">
+                                    <h3>Table Upcoming</h3>
+                                    <div class="content table-responsive table-full-width">
+                                        <table class="table table-hover table-striped data">
+                                            <thead>
+                                            <tr>
+                                                <th width="180">MEETING DATE</th>
+                                                <th width="200">START</th>
+                                                <th width="200">END</th>
+                                                <th width="200">ROOM</th>
+                                                <th width="200">SUBJECT</th>
+                                                <th width="200">DESCRIPTION</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr ng-repeat="u in ctrlBooking.getAllBookingPerUser()">
+                                                <!--<td>{{u.idEmployee}}</td>-->
+                                                <td>{{u.dateMeeting}}</td>
+                                                <td>{{u.startTime}}</td>
+                                                <td>{{u.endTime}}</td>
+                                                <td>{{u.room.name}}</td>
+                                                <td>{{u.subject}}</td>
+                                                <td>{{u.description}}</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                                <div id="menu2" class="tab-pane fade">
+                                    <h3>Table Past {{date | date:'yyyy-MM-dd'}}</h3>
+                                    <div class="content table-responsive table-full-width">
+                                        <table class="table table-hover table-striped data">
+                                            <thead>
+                                            <tr>
+                                                <th width="180">MEETING DATE</th>
+                                                <th width="200">START</th>
+                                                <th width="200">END</th>
+                                                <th width="200">ROOM</th>
+                                                <th width="200">SUBJECT</th>
+                                                <th width="200">DESCRIPTION</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr ng-repeat="u in ctrlBooking.getAllBookingPerUser()">
+                                                <!--<td>{{u.idEmployee}}</td>-->
+                                                <td>{{u.dateMeeting}}</td>
+                                                <td>{{u.startTime}}</td>
+                                                <td>{{u.endTime}}</td>
+                                                <td>{{u.room.name}}</td>
+                                                <td>{{u.subject}}</td>
+                                                <td>{{u.description}}</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                                <div id="menu3" class="tab-pane fade">
+                                    <h3>Table Canceled</h3>
+                                        <div class="content table-responsive table-full-width">
+                                            <table class="table table-hover table-striped data">
+                                                <thead>
+                                                <tr>
+                                                    <th width="180">MEETING DATE</th>
+                                                    <th width="200">START</th>
+                                                    <th width="200">END</th>
+                                                    <th width="200">ROOM</th>
+                                                    <th width="200">SUBJECT</th>
+                                                    <th width="200">DESCRIPTION</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr ng-repeat="u in ctrlBooking.getAllBookingPerUser()">
+                                                    <!--<td>{{u.idEmployee}}</td>-->
+                                                    <td>{{u.dateMeeting}}</td>
+                                                    <td>{{u.startTime}}</td>
+                                                    <td>{{u.endTime}}</td>
+                                                    <td>{{u.room.name}}</td>
+                                                    <td>{{u.subject}}</td>
+                                                    <td>{{u.description}}</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                </div>
+
+
                             </div>
                         </div>
                     </div>
-                </div>
+
+                </div> <!-- row -->
             </div>
         </div>
     </div>
 </div>
-

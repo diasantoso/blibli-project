@@ -2,7 +2,7 @@
 
 angular.module('bookingApp')
 // Creating the Angular Controller
-    .controller('LoginController', function($http, $scope, $state, LoginService, $rootScope, urls) {
+    .controller('LoginController', function($http, $scope, $state, LoginService, $rootScope, $localStorage, urls) {
         // method for login
         $scope.login = function() {
             console.log("Debug : Login");
@@ -24,13 +24,16 @@ angular.module('bookingApp')
 
                     // setting the user in AuthService
                     LoginService.user = res.user;
+                    $localStorage.user = res.user;
                     $rootScope.$broadcast('LoginSuccessful');
                     // going to the home page
                     console.log("Debug : Login Success -> Going Dashboard");
                     console.log("Debug : Login Token -> "+res.token);
                     if(res.user.role=='Admin'){
                         $state.go('dashboard');
-                        //sementara buat debug ke state home semua dulu aja :3
+                    }
+                    else if(res.user.role=='Employee'){
+                        $state.go('EmpDashboard');
                     }
                     else {
                         $state.go('home');

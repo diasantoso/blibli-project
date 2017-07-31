@@ -19,6 +19,8 @@ angular.module('bookingApp').controller('BookingController',
         self.user = {};
         self.userBooking = {};
         self.userBookings = [];
+        //get date
+        $scope.date = new Date();
 
         self.submit = submit;
         self.getAllBookings = getAllBookings;
