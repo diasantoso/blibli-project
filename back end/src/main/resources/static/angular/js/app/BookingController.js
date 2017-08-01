@@ -31,7 +31,6 @@ angular.module('bookingApp').controller('BookingController',
         self.editBooking = editBooking;
         self.reset = reset;
         self.getRoombyId = getRoombyId;
-
         self.getOffices=getOffices;
 
         //to show and check the available room
@@ -42,6 +41,8 @@ angular.module('bookingApp').controller('BookingController',
         //to show booking per User (by employeeId)
         self.getBookingPerUser = getBookingPerUser;
         self.getAllBookingPerUser = getAllBookingPerUser;
+
+        self.logout = logout;
 
         $scope.loaded={};
 
@@ -213,5 +214,11 @@ angular.module('bookingApp').controller('BookingController',
         function getAllBookingPerUser() {
             return BookingService.getAllBookingPerUser();
         }
+
+        function logout (){
+            LoginService.user = null;
+            console.log("Logout Successfully");
+            $state.go('home');
+        };
     }
     ]);
