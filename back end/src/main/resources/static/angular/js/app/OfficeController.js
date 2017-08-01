@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('bookingApp').controller('OfficeController',
-    ['OfficeService', '$scope' , function( OfficeService , $scope) {
+    ['$state', 'OfficeService', 'LoginService', '$scope' , function( $state, OfficeService, LoginService, $scope) {
 
         var self = this;
         self.office = {};
@@ -14,6 +14,7 @@ angular.module('bookingApp').controller('OfficeController',
         self.removeOffice = removeOffice;
         self.editOffice = editOffice;
         self.reset = reset;
+        self.logout = logout;
 
         self.successMessage = '';
         self.errorMessage = '';
@@ -113,7 +114,12 @@ angular.module('bookingApp').controller('OfficeController',
             self.office={};
             self.office.status=1;
             $scope.myForm.$setPristine(); //reset Form
-            
         }
+
+        function logout (){
+            LoginService.user = null;
+            console.log("Logout Successfully");
+            $state.go('home');
+        };
     }
     ]);
