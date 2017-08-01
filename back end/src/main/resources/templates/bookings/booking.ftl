@@ -39,7 +39,7 @@
                     </a>
                 </li>
                 <li class="active-pro">
-                    <a href="#">
+                    <a href="#" ng-click="ctrlBooking.logout()">
                         <i class="pe-7s-user"></i>
                         <p>LOG OUT</p>
                     </a>
