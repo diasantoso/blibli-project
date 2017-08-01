@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('bookingApp').controller('RoomController',
-    ['RoomService', '$scope' , function( RoomService , $scope) {
+    ['$state', 'RoomService', LoginService, '$scope' , function( $state, RoomService, LoginService, $scope) {
 
         var self = this;
         self.room = {};
@@ -22,6 +22,7 @@ angular.module('bookingApp').controller('RoomController',
         self.uploadImage = uploadImage;
         self.submitImage = submitImage;
         self.createRoomImage = createRoomImage;
+        self.logout = logout;
 
         self.successMessage = '';
         self.errorMessage = '';
@@ -200,6 +201,10 @@ angular.module('bookingApp').controller('RoomController',
                 );
         }
 
-
+        function logout (){
+            LoginService.user = null;
+            console.log("Logout Successfully");
+            $state.go('home');
+        };
     }
     ]);
