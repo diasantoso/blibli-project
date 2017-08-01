@@ -133,11 +133,11 @@ public class RoomController {
         for (Booking book : data_book) {
             //(book.startTime >= startTime && book.startTime <endTime)
             //(book.endTime <= endTime && book.endTime > startTime)
-            //dia cuma ngecek di date yg equals doang ._.
 
-            if (book.getDateMeeting().equals(date) &&
+            if ((book.getDateMeeting().equals(date) &&
                     (((book.getStartTime().equals(startTime) || book.getStartTime().before(startTime)) && book.getEndTime().after(startTime)) ||
-                    ((book.getEndTime().equals(endTime) || book.getEndTime().after(endTime) && book.getStartTime().before(endTime))))) {
+                            ((book.getEndTime().equals(endTime) || book.getEndTime().after(endTime) && book.getStartTime().before(endTime)))))
+                    && book.getStatusBooking().equalsIgnoreCase("1")) {
                 data_used.add(book.getRoom());
             }
         }
@@ -159,5 +159,6 @@ public class RoomController {
         return result;
 
     }
+
 
 }
