@@ -125,6 +125,7 @@ public class BookingController {
     public ResponseBack updateBooking(@RequestBody BookingResponse param) {
         Booking booking = new Booking();
         BeanUtils.copyProperties(param, booking);
+        booking.setStatusBooking("0");
         Booking result = bookingService.save(booking);
 
         ResponseBack responseBack = new ResponseBack();
@@ -163,13 +164,16 @@ public class BookingController {
             //(book.startTime >= startTime && book.startTime <endTime)
             //(book.endTime <= endTime && book.endTime > startTime)
 
-            if(book.getDateMeeting().equals(date) &&
+            if( (book.getDateMeeting().equals(date) &&
                     (((book.getStartTime().equals(startTime) || book.getStartTime().before(startTime))&& book.getEndTime().after(startTime))||
-                    ((book.getEndTime().equals(endTime) || book.getEndTime().after(endTime) && book.getStartTime().before(endTime)))) ){
+                            ((book.getEndTime().equals(endTime) || book.getEndTime().after(endTime) && book.getStartTime().before(endTime)))))
+                    && book.getStatusBooking().equalsIgnoreCase("1")){
                 BookingResponse parse = new BookingResponse();
                 BeanUtils.copyProperties(book,parse);
                 responses.add(parse);
             }
+
+
         }
         result.setValue(responses);
         return result;
