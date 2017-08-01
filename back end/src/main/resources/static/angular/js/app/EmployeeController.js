@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('bookingApp').controller('EmployeeController',
-    ['EmployeeService', '$scope' , function( EmployeeService , $scope) {
+    ['$state', 'EmployeeService', 'LoginService', '$scope' , function( $state, EmployeeService, LoginService, $scope) {
 
         var self = this;
         self.employee = {};
@@ -14,6 +14,7 @@ angular.module('bookingApp').controller('EmployeeController',
         self.removeEmployee = removeEmployee;
         self.editEmployee = editEmployee;
         self.reset = reset;
+        self.logout = logout;
 
         self.successMessage = '';
         self.errorMessage = '';
@@ -115,7 +116,7 @@ angular.module('bookingApp').controller('EmployeeController',
 
         function logout (){
             LoginService.user = null;
-            $rootScope.$broadcast('LogoutSuccessful');
+            console.log("Logout Successfully");
             $state.go('home');
         };
     }
