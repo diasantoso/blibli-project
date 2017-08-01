@@ -35,7 +35,7 @@ public class EmailSendController {
         MimeMessage message = sender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message);
 
-        helper.setTo("mikhaelmds@gmail.com");
+        helper.setTo("adinatma@gmail.com");
         helper.setSubject("Booking Meeting Information");
         helper.setText("Attention,\n" +
                 "You have successfully booked a meeting room");

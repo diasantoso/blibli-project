@@ -74,6 +74,7 @@
                                                 <th width="200">ROOM</th>
                                                 <th width="200">SUBJECT</th>
                                                 <th width="200">DESCRIPTION</th>
+                                                <th width="100"></th>
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -85,6 +86,7 @@
                                                 <td>{{u.room.name}}</td>
                                                 <td>{{u.subject}}</td>
                                                 <td>{{u.description}}</td>
+                                                <td><button type="button" ng-click="" data-toggle="modal" data-target="#myModalAdd" class="btn btn-success custom-width">Cancel Booking</button></td>
                                             </tr>
                                             </tbody>
                                         </table>
