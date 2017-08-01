@@ -1,13 +1,14 @@
 'use strict';
 
 angular.module('bookingApp').controller('CountController',
-    ['CountService', '$scope' , function( CountService , $scope) {
+    ['$state', 'CountService', 'LoginService', '$scope' , function( $state, CountService , LoginService, $scope) {
 
         var self = this;
         self.getCountOffice = getCountOffice;
         self.getCountRoom = getCountRoom;
         self.getCountEmployee = getCountEmployee;
         self.getCountBooking = getCountBooking;
+        self.logout = logout;
 
         function getCountOffice(){
             return CountService.getCountOffice();
@@ -24,5 +25,11 @@ angular.module('bookingApp').controller('CountController',
         function getCountBooking(){
             return CountService.getCountBooking();
         }
+
+        function logout (){
+            LoginService.user = null;
+            console.log("Logout Successfully");
+            $state.go('home');
+        };
     }
     ]);
