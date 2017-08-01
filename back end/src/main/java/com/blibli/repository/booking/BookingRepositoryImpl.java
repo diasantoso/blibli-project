@@ -41,4 +41,12 @@ public class BookingRepositoryImpl implements BookingRepositoryCustom {
                 "SELECT * FROM booking WHERE employee_id='"+empId+"' ORDER BY date_meeting DESC;", Booking.class).getResultList();
         return result;
     }
+
+    @Override
+    public Integer countBooking() {
+        EntityManager em = entityManagerFactory.createEntityManager();
+        Integer result = (Integer) em.createNativeQuery(
+                "SELECT count(*) FROM booking WHERE employee_id=", Booking.class).getSingleResult();
+        return result;
+    }
 }

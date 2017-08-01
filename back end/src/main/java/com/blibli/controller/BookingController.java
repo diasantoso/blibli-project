@@ -104,6 +104,10 @@ public class BookingController {
 //        Timestamp timestampNow = new Timestamp(System.currentTimeMillis());
 //        Timestamp timestampMeet =  new Timestamp(booking.getDateMeeting().getTime());
 
+        Integer number = bookingService.count() + 1;
+        String ticket = "BOOK-"+number;
+        booking.setBookingTicket(ticket);
+
         Booking result = bookingService.save(booking);
 
         ResponseBack responseBack = new ResponseBack();

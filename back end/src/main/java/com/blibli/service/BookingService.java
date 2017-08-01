@@ -35,4 +35,8 @@ public class BookingService {
     }
 
     public  List<Booking> getByEmpId(String empId){ return bookingRepository.showByEmployeeId(empId);}
+
+    public Integer count() {
+        return bookingRepository.countBooking();
+    }
 }
