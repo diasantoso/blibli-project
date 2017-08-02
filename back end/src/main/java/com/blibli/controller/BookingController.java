@@ -21,6 +21,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.mail.internet.MimeMessage;
+import java.math.BigInteger;
 import java.sql.Time;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
@@ -107,8 +108,10 @@ public class BookingController {
         booking.setStatusBooking("1");
 
         //set the booking ticket
-        Integer number = bookingService.count() + 1;
-        String ticket = "BOOK-"+number;
+        BigInteger addingNumber;
+        addingNumber = new BigInteger("1");
+        BigInteger number = bookingService.count().add(addingNumber);
+        String ticket = "BOOK-"+ number;
         booking.setBookingTicket(ticket);
 
         Booking result = bookingService.save(booking);

@@ -5,6 +5,7 @@ import com.blibli.repository.booking.BookingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigInteger;
 import java.util.List;
 
 /**
@@ -36,7 +37,7 @@ public class BookingService {
 
     public  List<Booking> getByEmpId(String empId){ return bookingRepository.showByEmployeeId(empId);}
 
-    public Integer count() {
+    public BigInteger count() {
         return bookingRepository.countBooking();
     }
 

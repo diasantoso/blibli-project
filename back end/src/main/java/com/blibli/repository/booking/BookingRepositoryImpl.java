@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import java.math.BigInteger;
 import java.util.List;
 
 /**
@@ -19,7 +20,7 @@ public class BookingRepositoryImpl implements BookingRepositoryCustom {
     public List<Booking> showById(String id) {
         EntityManager em = entityManagerFactory.createEntityManager();
         List<Booking> result = em.createNativeQuery(
-                "SELECT * FROM BOOKING WHERE ID_BOOKING='"+id+"'", Booking.class).getResultList();
+                "SELECT * FROM booking WHERE id_booking='"+id+"'", Booking.class).getResultList();
         return result;
     }
 
@@ -43,10 +44,10 @@ public class BookingRepositoryImpl implements BookingRepositoryCustom {
     }
 
     @Override
-    public Integer countBooking() {
+    public BigInteger countBooking() {
         EntityManager em = entityManagerFactory.createEntityManager();
-        Integer result = (Integer) em.createNativeQuery(
-                "SELECT count(*) FROM booking WHERE employee_id=", Booking.class).getSingleResult();
+        BigInteger result = (BigInteger) em.createNativeQuery(
+                "SELECT count (id_booking) FROM booking;").getSingleResult();
         return result;
     }
 
