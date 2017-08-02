@@ -272,6 +272,7 @@ angular.module('bookingApp').controller('BookingController',
             var bookDate = new Date(bookingDate);
             bookDate.setHours(parts[0],parts[1],parts[2],0);
 
+            //ini hasilnya timestamp , baik valuOf dan getTime. Juga nilainya sama
             console.log("D : "+bookDate.valueOf());
             console.log("T : "+bookDate.getTime());
 
