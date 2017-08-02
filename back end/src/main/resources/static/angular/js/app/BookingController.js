@@ -52,6 +52,8 @@ angular.module('bookingApp').controller('BookingController',
         self.getBookingTicket = getBookingTicket;
         self.getTicketID = getTicketID;
 
+        self.cancelBooking = cancelBooking;
+
         $scope.loaded={};
 
         self.successMessage = '';
@@ -240,6 +242,23 @@ angular.module('bookingApp').controller('BookingController',
 
         function getAllBookingPerUser() {
             return BookingService.getAllBookingPerUser();
+        }
+
+        function cancelBooking(id) {
+            self.successMessage='';
+            self.errorMessage='';
+            BookingService.getBooking(id).then(
+                function (booking) {
+                    //booking.statusBooking = "0";
+                    self.booking = booking;
+                    self.booking.employee_id = LoginService.user.id_employee;
+                    booking.value[0].statusBooking = "0";
+                    updateBooking (booking.value[0] , id);
+                },
+                function (errResponse){
+                    console.error('Error while editing booking '+id +', Error :'+errResponse.data);
+                }
+            );
         }
 
         function logout (){

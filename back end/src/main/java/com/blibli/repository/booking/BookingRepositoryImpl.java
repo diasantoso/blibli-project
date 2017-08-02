@@ -19,7 +19,7 @@ public class BookingRepositoryImpl implements BookingRepositoryCustom {
     public List<Booking> showById(String id) {
         EntityManager em = entityManagerFactory.createEntityManager();
         List<Booking> result = em.createNativeQuery(
-                "SELECT * FROM BOOKING WHERE ID_BOOKING='"+id+"'", Office.class).getResultList();
+                "SELECT * FROM BOOKING WHERE ID_BOOKING='"+id+"'", Booking.class).getResultList();
         return result;
     }
 

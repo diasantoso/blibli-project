@@ -28,6 +28,7 @@ angular.module('bookingApp').factory('BookingService' ,
                 getBookingByTicket : getBookingByTicket,
                 getAllBookingByTicket : getAllBookingByTicket,
                 getTicketId : getTicketId
+
             };
 
             return factory;
@@ -84,7 +85,7 @@ angular.module('bookingApp').factory('BookingService' ,
             function getBooking(id){
                 console.log('Fetching bookings with id : ' +id);
                 var deferred =  $q.defer();
-                $http.get(urls.BOOKING_SERVICE_API + id)
+                $http.get(urls.BOOKING_SERVICE_API +"/"+ id)
                     .then(
                         function (response){
                             console.log('Fetched successfully bookings with id : ' + id);
@@ -121,7 +122,7 @@ angular.module('bookingApp').factory('BookingService' ,
             function updateBooking(booking , id){
                 console.log('Updating booking with id ' + id);
                 var deferred = $q.defer();
-                $http.put(urls.BOOKING_SERVICE_API + id, user)
+                $http.put(urls.BOOKING_SERVICE_API +'/cancel/'+ id,booking)
                     .then(
                         function (response){
                             loadAllBookings();
@@ -279,7 +280,6 @@ angular.module('bookingApp').factory('BookingService' ,
             function getAllBookingPerUser(){
                 return $localStorage.userBookings;
             }
-
 
         }
     ]);
