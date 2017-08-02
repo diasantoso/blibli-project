@@ -14,10 +14,13 @@ import org.apache.tomcat.jni.Local;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.mail.internet.MimeMessage;
 import java.sql.Time;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
@@ -41,6 +44,9 @@ public class BookingController {
     EmployeeService employeeService;
     @Autowired
     RoomService roomService;
+
+    @Autowired
+    private JavaMailSender sender;
 
     @RequestMapping(value = "/bookings", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
@@ -109,6 +115,50 @@ public class BookingController {
         booking.setBookingTicket(ticket);
 
         Booking result = bookingService.save(booking);
+
+        //notification email admin
+        List<Employee> listAllAdmin = employeeService.getAllAdmin();
+
+        for(Employee e:listAllAdmin) {
+            try {
+                MimeMessage message = sender.createMimeMessage();
+                MimeMessageHelper helper = new MimeMessageHelper(message);
+
+                helper.setTo(e.getEmail());
+                helper.setSubject("Booking Meeting Information");
+                helper.setText("Attention,\n" +
+                        "Has done the process of booking a meeting room, with information such as the following:\n"+
+                        "Subject        : "+booking.getSubject()+"\n"+
+                        "Description    : "+booking.getDescription()+"\n"+
+                        "Date           : "+booking.getDateMeeting()+"\n"+
+                        "Start Time     : "+booking.getStartTime()+"\n"+
+                        "End Time       : "+booking.getEndTime()+"\n"+
+                        "Room           : "+booking.getRoom().getName()+"\n"+
+                        "PIC Contact    : "+booking.getPicContact()+"\n"+
+                        "Special Req    : "+booking.getSpecialRequest());
+                sender.send(message);
+            }catch(Exception ex) { }
+        }
+
+        //notification user yang melakukan booking
+        try {
+            MimeMessage message = sender.createMimeMessage();
+            MimeMessageHelper helper = new MimeMessageHelper(message);
+
+            helper.setTo(employee.getEmail());
+            helper.setSubject("Booking Meeting Information");
+            helper.setText("Attention,\n" +
+                    "Has done the process of booking a meeting room, with information such as the following:\n"+
+                    "Subject        : "+booking.getSubject()+"\n"+
+                    "Description    : "+booking.getDescription()+"\n"+
+                    "Date           : "+booking.getDateMeeting()+"\n"+
+                    "Start Time     : "+booking.getStartTime()+"\n"+
+                    "End Time       : "+booking.getEndTime()+"\n"+
+                    "Room           : "+booking.getRoom().getName()+"\n"+
+                    "PIC Contact    : "+booking.getPicContact()+"\n"+
+                    "Special Req    : "+booking.getSpecialRequest());
+            sender.send(message);
+        }catch(Exception ex) { }        
 
         ResponseBack responseBack = new ResponseBack();
         if(result!=null)

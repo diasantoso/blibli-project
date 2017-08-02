@@ -52,4 +52,8 @@ public class EmployeeService {
     }
 
     public Employee findOneByEmail (String email){return employeeRepository.findOneByEmail(email);}
+
+    public List<Employee> getAllAdmin() {
+        return employeeRepository.getAllAdmin();
+    }
 }

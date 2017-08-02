@@ -64,5 +64,11 @@ public class EmployeeRepositoryImpl implements EmployeeRepositoryCustom {
         return result;
     }
 
-
+    @Override
+    public List<Employee> getAllAdmin() {
+        EntityManager em = entityManagerFactory.createEntityManager();
+        List<Employee> result = em.createNativeQuery(
+                "SELECT * FROM EMPLOYEE WHERE STATUS=1 AND ROLE='Admin'", Employee.class).getResultList();
+        return result;
+    }
 }
