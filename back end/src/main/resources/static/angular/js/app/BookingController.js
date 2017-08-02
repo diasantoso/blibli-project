@@ -49,6 +49,8 @@ angular.module('bookingApp').controller('BookingController',
         self.logout = logout;
 
         self.checkTicket = checkTicket;
+        self.getBookingTicket = getBookingTicket;
+        self.getTicketID = getTicketID;
 
         $scope.loaded={};
 
@@ -188,10 +190,18 @@ angular.module('bookingApp').controller('BookingController',
             console.log('BookingTicket'+self.bookingTicket);
             if(self.bookingTicket!=null){
                 console.log('Go to Show Ticket');
-                $state.go('ShowTicket');
+                $state.go('showticket');
             }else{
                 console.log('Gagal redirect');
             }
+        }
+
+        function getTicketID(){
+            return BookingService.getTicketID();
+        }
+
+        function getBookingTicket(){
+            return BookingService.getAllBookingByTicket();
         }
 
         function getAvailableRoom(){

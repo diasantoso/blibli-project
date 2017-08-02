@@ -249,7 +249,7 @@ app.run(function(LoginService, $rootScope, $state) {
             //(dalam contoh ini cuma boleh ke "state" alias halaman login dan register
 
 
-            if (toState.name != 'login' && toState.name != 'checkticket' && toState.name != 'register' && toState.name != 'home' && toState.name != 'showbooking') {
+            if (toState.name != 'login' && toState.name != 'checkticket' && toState.name != 'showticket' && toState.name != 'register' && toState.name != 'home' && toState.name != 'showbooking') {
                 //selain akses halaman login atau register dia bakal masuk ke blok ini
 
                 event.preventDefault(); //ini buat ngestop paksa (contoh mau kehalamaan office, trus di stop paksa

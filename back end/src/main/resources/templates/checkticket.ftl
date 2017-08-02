@@ -23,6 +23,9 @@
                     <a href="/addbooking">Add Booking</a>
                 </li>
                 <li>
+                    <a href="/checkticket">Check Ticket</a>
+                </li>
+                <li>
                     <a href="/login">Login</a>
                 </li>
                 <li>
