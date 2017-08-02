@@ -28,10 +28,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		web.ignoring()
 				// ignoring the "/", "/index.html", "/app/**", "/register",
 				// "/favicon.ico"
-				.antMatchers("/","/login","/email","/listbooking",
+				.antMatchers("/","/login","/email","/checkticket","/listbooking",
 						"/angular/**","/assets/**","/assets-custom/**","/assets-landingpage/**",
 						"/assets-upload/**","/assets-login/**","/partials/**",
-						"/api/register","/api/login",
+						"/api/register","/api/login","/api/bookings/ticket",
 						"/index.html", "/favicon.ico","/api/bookings/schedule","/api/bookings/used",
 						"/api/offices/**","/addbooking");
 	}

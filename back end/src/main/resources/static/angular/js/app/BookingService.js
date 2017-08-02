@@ -215,6 +215,22 @@ angular.module('bookingApp').factory('BookingService' ,
                 ////return deferred.promise();
             }
 
+            function getBookingByTicket(ticket) {
+                console.log('Fetching bookings by ticket id : ' +ticket);
+
+                $http.get(urls.BOOKING_SERVICE_API +'/ticket?ticket='+ticket)
+                    .then(
+                        function (response){
+                            console.log('Fetched successfully bookings by ticket id : ' + ticket);
+                            $localStorage.bookingByTicket = response.data.value;
+                        },
+                        function (errResponse) {
+                            console.error('Error while loading bookings by ticket id : ' + ticket);
+                        }
+                    );
+                return $localStorage.bookingByTicket;
+            }
+
             function getAllAvailableRooms(){
                 return $localStorage.rooms;
             }
@@ -252,20 +268,6 @@ angular.module('bookingApp').factory('BookingService' ,
                 return $localStorage.userBookings;
             }
 
-            function getBookingByTicket(ticket) {
-                console.log('Fetching bookings by ticket id : ' +ticket);
 
-                $http.get(urls.BOOKING_SERVICE_API +'/ticket')
-                    .then(
-                        function (response){
-                            console.log('Fetched successfully bookings by ticket id : ' + ticket);
-                            $localStorage.bookingByTicket = response.data.value;
-                        },
-                        function (errResponse) {
-                            console.error('Error while loading bookings by ticket id : ' + ticket);
-                        }
-                    );
-                return $localStorage.bookingByTicket;
-            }
         }
     ]);

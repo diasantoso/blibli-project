@@ -275,14 +275,21 @@ public class BookingController {
     //Untuk menampilkan booking berdasarkan ticketID yang diinput
     @RequestMapping(value = "bookings/ticket", method = RequestMethod.GET , produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public BookingResponse showBookingByTicket(@RequestParam String ticket) {
+    public BookingResponseList showBookingByTicket(@RequestParam String ticket) {
 
-        Booking data = bookingService.getBookingByTicket(ticket);
-        BookingResponse response = new BookingResponse();
+        Booking book = bookingService.getBookingByTicket(ticket);
+        List<Booking> data = new ArrayList<>();
+        data.add(book);
+        List<BookingResponse> response = new ArrayList<>();
+        BookingResponseList result = new BookingResponseList();
 
-        BeanUtils.copyProperties(data, response);
-
-        return response;
+        for(Booking room : data) {
+            BookingResponse parse = new BookingResponse();
+            BeanUtils.copyProperties(room, parse);
+            response.add(parse);
+        }
+        result.setValue(response);
+        return result;
     }
 
 }

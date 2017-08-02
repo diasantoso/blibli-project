@@ -19,6 +19,10 @@ angular.module('bookingApp').controller('BookingController',
         self.user = {};
         self.userBooking = {};
         self.userBookings = [];
+        //for booking ticket
+        self.ticket = {};
+        self.bookingTicket = [];
+
         //get date
         $scope.date = new Date();
 
@@ -43,6 +47,8 @@ angular.module('bookingApp').controller('BookingController',
         self.getAllBookingPerUser = getAllBookingPerUser;
 
         self.logout = logout;
+
+        self.checkTicket = checkTicket;
 
         $scope.loaded={};
 
@@ -172,6 +178,17 @@ angular.module('bookingApp').controller('BookingController',
             if(self.rooms!=null){
                 console.log('Go to AvailRooms');
                 $state.go('AvailRooms');
+            }else{
+                console.log('Gagal redirect');
+            }
+        }
+
+        function checkTicket(){
+            self.bookingTicket= BookingService.getBookingByTicket(self.ticket);
+            console.log('BookingTicket'+self.bookingTicket);
+            if(self.bookingTicket!=null){
+                console.log('Go to Show Ticket');
+                $state.go('ShowTicket');
             }else{
                 console.log('Gagal redirect');
             }

@@ -41,11 +41,11 @@
         <h2 class="section-heading">Check Ticket Booking</h2>
         <br/><br/><br/>
         <div>
-            <form class="form-horizontal" ng-submit="..." name="myForm">
+            <form class="form-horizontal" ng-submit="ctrlBooking.checkTicket()" name="myForm">
                 <div class="form-group">
                     <label class="col-sm-3 control-label">Ticket ID :</label>
                     <div class="col-sm-8">
-                        <input type="text" ng-model="..." id="date" class="username form-control input-sm" placeholder="Enter your booking ticket id" required />
+                        <input type="text" ng-model="ctrlBooking.ticket" id="ticket" class="username form-control input-sm" placeholder="Enter your booking ticket id" required />
                     </div>
                 </div>
                 <br/><br/>

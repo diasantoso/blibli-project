@@ -1,0 +1,25 @@
+
+INSERT INTO employee (id_employee, email, name, password, role, status) VALUES ('402881e85cee7df1015cee879ffb0000', 'dias@gmail.com', 'Dias', 'dias', 'Admin', 1);
+INSERT INTO employee (id_employee, email, name, password, role, status) VALUES ('402881e85cee7df1015cee87a0880001', 'audine@gmail.com', 'Audine', 'audine', 'Employee', 1);
+
+
+INSERT INTO office (id_office, address, city, name, status, telephone) VALUES ('402881e85cee7df1015cee87a08f0002', 'Jalan Tubun Raya no 100', 'Jakarta', 'KS. Tubun', 1, '778899');
+INSERT INTO office (id_office, address, city, name, status, telephone) VALUES ('402881e85cee7df1015cee87a0ab0003', 'Jalan Thamrin no 99', 'Jakarta', 'KS. Thamrin', 1, '123456');
+
+
+INSERT INTO room (id_room, capacity, is_conference, is_projector, name, number_extension, status, office_id) VALUES ('402881e85cf94629015cf94974430000', 10, '1', '1', 'Ruang 1', '10008', 1, '402881e85cee7df1015cee87a08f0002');
+INSERT INTO room (id_room, capacity, is_conference, is_projector, name, number_extension, status, office_id) VALUES ('402881e85cf94629015cf95913350003', 120, '1', '1', 'Ruang 2', '987543', 1, '402881e85cee7df1015cee87a08f0002');
+INSERT INTO room (id_room, capacity, is_conference, is_projector, name, number_extension, status, office_id) VALUES ('402881e85cf94629015cf95bb1b30005', 12, '1', '0', 'Ruang 3', '13331', 1, '402881e85cee7df1015cee87a0ab0003');
+INSERT INTO room (id_room, capacity, is_conference, is_projector, name, number_extension, status, office_id) VALUES ('402881e85cf96e92015cf970334d0000', 12, '1', '1', 'Ruang 4', '121212', 1, '402881e85cee7df1015cee87a08f0002');
+INSERT INTO room (id_room, capacity, is_conference, is_projector, name, number_extension, status, office_id) VALUES ('402881e85cf973ef015cf9778c450002', 134, '1', '1', 'Ruang 5', '123', 1, '402881e85cee7df1015cee87a0ab0003');
+
+
+INSERT INTO room_image (id_room_image, image_address, image_description, room_id) VALUES ('ff8080815d5f18d3015d5f1e5f810001', 'room-opeTV-1.jpg', 'Room Image', '402881e85cf94629015cf94974430000');
+INSERT INTO room_image (id_room_image, image_address, image_description, room_id) VALUES ('ff8080815d5f29de015d5f2aa9fb0001', 'room-ywm7B-4.jpg', 'Room Image', '402881e85cf94629015cf95913350003');
+
+
+INSERT INTO booking (id_booking, added_date, date_meeting, description, end_time, start_time, status, status_booking, subject, employee_id, room_id, pic_contact) VALUES ('1', '2017-07-18', '2018-07-21', 'Pertemuan Besar', '15:00:00', '12:00:00', 1, '1', 'subyek', '402881e85cee7df1015cee87a0880001', '402881e85cf94629015cf94974430000', NULL);
+INSERT INTO booking (id_booking, added_date, date_meeting, description, end_time, start_time, status, status_booking, subject, employee_id, room_id, pic_contact) VALUES ('3', '2017-07-19', '2018-07-21', 'tanggal meeting sebelum', '18:00:00', '20:00:00', 1, '1', 'mencoba sebelum', '402881e85cee7df1015cee87a0880001', '402881e85cf94629015cf94974430000', NULL);
+INSERT INTO booking (id_booking, added_date, date_meeting, description, end_time, start_time, status, status_booking, subject, employee_id, room_id, pic_contact) VALUES ('5', '2017-07-19', '2018-07-21', 'Mencoba tanggal hari itu, tapi jam mulai- jam selesai sudah lewat', '20:00:00', '16:00:00', 1, '1', 'no subjek', '402881e85cee7df1015cee87a0880001', '402881e85cf94629015cf94974430000', NULL);
+INSERT INTO booking (id_booking, added_date, date_meeting, description, end_time, start_time, status, status_booking, subject, employee_id, room_id, pic_contact) VALUES ('2', '2017-07-19', '2018-07-21', 'tanggal meeting sama', '22:00:00', '20:00:00', 1, '1', 'mencoba', '402881e85cee7df1015cee87a0880001', '402881e85cf94629015cf94974430000', NULL);
+INSERT INTO booking (id_booking, added_date, date_meeting, description, end_time, start_time, status, status_booking, subject, employee_id, room_id, pic_contact) VALUES ('4', '2017-07-19', '2018-07-21', 'Mencoba tanggal hari itu, tapi jam mulai sudah lewat sedangkan jam selesai belum', '22:00:00', '16:00:00', 1, '1', 'no subjek', '402881e85cee7df1015cee87a0880001', '402881e85cf94629015cf94974430000', NULL);
