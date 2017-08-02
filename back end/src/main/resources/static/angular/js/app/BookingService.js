@@ -23,8 +23,9 @@ angular.module('bookingApp').factory('BookingService' ,
 
                 getBookingPerUser : getBookingPerUser,
                 getAllBookingPerUser : getAllBookingPerUser,
-                getLoggedUser : getLoggedUser
+                getLoggedUser : getLoggedUser,
 
+                getBookingByTicket : getBookingByTicket
             };
 
             return factory;
@@ -249,6 +250,22 @@ angular.module('bookingApp').factory('BookingService' ,
 
             function getAllBookingPerUser(){
                 return $localStorage.userBookings;
+            }
+
+            function getBookingByTicket(ticket) {
+                console.log('Fetching bookings by ticket id : ' +ticket);
+
+                $http.get(urls.BOOKING_SERVICE_API +'/ticket')
+                    .then(
+                        function (response){
+                            console.log('Fetched successfully bookings by ticket id : ' + ticket);
+                            $localStorage.bookingByTicket = response.data.value;
+                        },
+                        function (errResponse) {
+                            console.error('Error while loading bookings by ticket id : ' + ticket);
+                        }
+                    );
+                return $localStorage.bookingByTicket;
             }
         }
     ]);

@@ -56,6 +56,13 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
                     }
                 })
 
+                .state('checkticket',{
+                    url: '/checkticket',
+                    templateUrl: '/partials/checkticket',
+                    controller: 'BookingController',
+                    controllerAs: 'ctrlBooking'
+                })
+
                 .state('login',{
                     url: '/login',
                     templateUrl: '/partials/login',
