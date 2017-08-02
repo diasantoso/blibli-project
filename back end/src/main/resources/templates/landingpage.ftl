@@ -17,7 +17,7 @@
                     <a href="/">Home</a>
                 </li>
                 <li>
-                    <a href="/listbooking">List Booking</a>
+                    <a href="/listbooking">All Booking</a>
                 </li>
                 <li>
                     <a href="/addbooking">Add Booking</a>
