@@ -26,6 +26,8 @@ angular.module('bookingApp').controller('BookingController',
         //get date
         $scope.date = new Date();
 
+
+
         self.submit = submit;
         self.getAllBookings = getAllBookings;
         self.getUpcomingBookings = getUpcomingBookings;
@@ -52,7 +54,9 @@ angular.module('bookingApp').controller('BookingController',
         self.getBookingTicket = getBookingTicket;
         self.getTicketID = getTicketID;
 
+        //booking Page for employee
         self.cancelBooking = cancelBooking;
+        self.getBookingHistory = getBookingHistory;
 
         $scope.loaded={};
 
@@ -259,6 +263,25 @@ angular.module('bookingApp').controller('BookingController',
                     console.error('Error while editing booking '+id +', Error :'+errResponse.data);
                 }
             );
+        }
+        
+        function getBookingHistory(bookingDate,bookingEndTime) {
+            console.log("Compare Date");
+            var parts = bookingEndTime.split(":");
+
+            var bookDate = new Date(bookingDate);
+            bookDate.setHours(parts[0],parts[1],parts[2],0);
+
+            console.log("D : "+bookDate.valueOf());
+            console.log("T : "+bookDate.getTime());
+
+            if ( (bookDate.valueOf() < new Date().valueOf()) ||
+                (bookDate.valueOf() == new Date().valueOf() && bookDate.getTime() <  new Date().getTime() )){
+
+                return true;
+            }
+            else
+                return false;
         }
 
         function logout (){

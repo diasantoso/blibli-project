@@ -63,7 +63,7 @@
 
                             <div class="tab-content">
                                 <div id="menu1" class="tab-pane fade in active">
-                                    <h3>Table Upcoming</h3>
+                                    <h3>Upcoming Booking</h3>
                                     <div class="content table-responsive table-full-width">
                                         <table class="table table-hover table-striped data">
                                             <thead>
@@ -80,13 +80,13 @@
                                             <tbody>
                                             <tr ng-repeat="u in ctrlBooking.getAllBookingPerUser()">
                                                 <!--<td>{{u.idEmployee}}</td>-->
-                                                <td>{{u.dateMeeting}}</td>
-                                                <td>{{u.startTime}}</td>
-                                                <td>{{u.endTime}}</td>
-                                                <td>{{u.room.name}}</td>
-                                                <td>{{u.subject}}</td>
-                                                <td>{{u.description}}</td>
-                                                <td><button type="button" ng-click="ctrlBooking.cancelBooking(u.idBooking)" class="btn btn-success custom-width">Cancel Booking</button></td>
+                                                <td ng-if="!ctrlBooking.getBookingHistory(u.dateMeeting,u.endTime)">{{u.dateMeeting}}</td>
+                                                <td ng-if="!ctrlBooking.getBookingHistory(u.dateMeeting,u.endTime)">{{u.startTime}}</td>
+                                                <td ng-if="!ctrlBooking.getBookingHistory(u.dateMeeting,u.endTime)">{{u.endTime}}</td>
+                                                <td ng-if="!ctrlBooking.getBookingHistory(u.dateMeeting,u.endTime)">{{u.room.name}}</td>
+                                                <td ng-if="!ctrlBooking.getBookingHistory(u.dateMeeting,u.endTime)">{{u.subject}}</td>
+                                                <td ng-if="!ctrlBooking.getBookingHistory(u.dateMeeting,u.endTime)">{{u.description}}</td>
+                                                <td ng-if="!ctrlBooking.getBookingHistory(u.dateMeeting,u.endTime)"><button type="button" ng-click="ctrlBooking.cancelBooking(u.idBooking)" class="btn btn-success custom-width">Cancel Booking</button></td>
                                             </tr>
                                             </tbody>
                                         </table>
@@ -94,7 +94,7 @@
                                 </div>
 
                                 <div id="menu2" class="tab-pane fade">
-                                    <h3>Table Past {{date | date:'yyyy-MM-dd'}}</h3>
+                                    <h3>Booking History {{date | date:'yyyy-MM-dd-hh:mm:ss'}}</h3>
                                     <div class="content table-responsive table-full-width">
                                         <table class="table table-hover table-striped data">
                                             <thead>
@@ -110,12 +110,13 @@
                                             <tbody>
                                             <tr ng-repeat="u in ctrlBooking.getAllBookingPerUser()">
                                                 <!--<td>{{u.idEmployee}}</td>-->
-                                                <td>{{u.dateMeeting}}</td>
-                                                <td>{{u.startTime}}</td>
-                                                <td>{{u.endTime}}</td>
-                                                <td>{{u.room.name}}</td>
-                                                <td>{{u.subject}}</td>
-                                                <td>{{u.description}}</td>
+
+                                                <td ng-if="ctrlBooking.getBookingHistory(u.dateMeeting,u.endTime)">{{u.dateMeeting}}</td>
+                                                <td ng-if="ctrlBooking.getBookingHistory(u.dateMeeting,u.endTime)">{{u.startTime}}</td>
+                                                <td ng-if="ctrlBooking.getBookingHistory(u.dateMeeting,u.endTime)">{{u.endTime}}</td>
+                                                <td ng-if="ctrlBooking.getBookingHistory(u.dateMeeting,u.endTime)">{{u.room.name}}</td>
+                                                <td ng-if="ctrlBooking.getBookingHistory(u.dateMeeting,u.endTime)">{{u.subject}}</td>
+                                                <td ng-if="ctrlBooking.getBookingHistory(u.dateMeeting,u.endTime)">{{u.description}}</td>
                                             </tr>
                                             </tbody>
                                         </table>
@@ -123,7 +124,7 @@
                                 </div>
 
                                 <div id="menu3" class="tab-pane fade">
-                                    <h3>Table Canceled</h3>
+                                    <h3>Cancelled Booking</h3>
                                         <div class="content table-responsive table-full-width">
                                             <table class="table table-hover table-striped data">
                                                 <thead>
@@ -139,12 +140,14 @@
                                                 <tbody>
                                                 <tr ng-repeat="u in ctrlBooking.getAllBookingPerUser()">
                                                     <!--<td>{{u.idEmployee}}</td>-->
-                                                    <td>{{u.dateMeeting}}</td>
-                                                    <td>{{u.startTime}}</td>
-                                                    <td>{{u.endTime}}</td>
-                                                    <td>{{u.room.name}}</td>
-                                                    <td>{{u.subject}}</td>
-                                                    <td>{{u.description}}</td>
+                                                    <div>
+                                                    <td ng-if="u.statusBooking == 0">{{u.dateMeeting}}</td>
+                                                    <td ng-if="u.statusBooking == 0">{{u.startTime}}</td>
+                                                    <td ng-if="u.statusBooking == 0">{{u.endTime}}</td>
+                                                    <td ng-if="u.statusBooking == 0">{{u.room.name}}</td>
+                                                    <td ng-if="u.statusBooking == 0">{{u.subject}}</td>
+                                                    <td ng-if="u.statusBooking == 0">{{u.description}}</td>
+                                                    </div>
                                                 </tr>
                                                 </tbody>
                                             </table>
