@@ -257,7 +257,7 @@ public class BookingController {
     //@PreAuthorize("hasAuthority('Employee')")
     @RequestMapping(value = "bookings/employee/{employee_id}", method = RequestMethod.GET , produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public BookingResponseList ShowBookingForOneUser(@PathVariable String employee_id) {
+    public BookingResponseList showBookingForOneUser(@PathVariable String employee_id) {
 
         List<Booking> data = bookingService.getByEmpId(employee_id);
         List<BookingResponse> response = new ArrayList<>();
@@ -270,7 +270,19 @@ public class BookingController {
         }
         result.setValue(response);
         return result;
+    }
 
+    //Untuk menampilkan booking berdasarkan ticketID yang diinput
+    @RequestMapping(value = "bookings/ticket", method = RequestMethod.GET , produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public BookingResponse showBookingByTicket(@RequestParam String ticket) {
+
+        Booking data = bookingService.getBookingByTicket(ticket);
+        BookingResponse response = new BookingResponse();
+
+        BeanUtils.copyProperties(data, response);
+
+        return response;
     }
 
 }

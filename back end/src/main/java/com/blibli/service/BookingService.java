@@ -39,4 +39,8 @@ public class BookingService {
     public Integer count() {
         return bookingRepository.countBooking();
     }
+
+    public Booking getBookingByTicket(String ticket) {
+        return bookingRepository.getBookingByTicket(ticket);
+    }
 }

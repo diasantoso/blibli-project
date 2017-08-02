@@ -19,7 +19,7 @@ public class BookingRepositoryImpl implements BookingRepositoryCustom {
     public List<Booking> showById(String id) {
         EntityManager em = entityManagerFactory.createEntityManager();
         List<Booking> result = em.createNativeQuery(
-                "SELECT * FROM BOOKING WHERE IDBOOKING='"+id+"'", Office.class).getResultList();
+                "SELECT * FROM BOOKING WHERE ID_BOOKING='"+id+"'", Office.class).getResultList();
         return result;
     }
 
@@ -47,6 +47,14 @@ public class BookingRepositoryImpl implements BookingRepositoryCustom {
         EntityManager em = entityManagerFactory.createEntityManager();
         Integer result = (Integer) em.createNativeQuery(
                 "SELECT count(*) FROM booking WHERE employee_id=", Booking.class).getSingleResult();
+        return result;
+    }
+
+    @Override
+    public Booking getBookingByTicket(String ticket) {
+        EntityManager em = entityManagerFactory.createEntityManager();
+        Booking result = (Booking) em.createNativeQuery(
+                "SELECT * FROM booking WHERE booking_ticket='"+ticket+"'", Booking.class).getSingleResult();
         return result;
     }
 }

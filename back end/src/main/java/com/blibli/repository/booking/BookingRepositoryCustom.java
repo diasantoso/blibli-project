@@ -12,4 +12,5 @@ public interface BookingRepositoryCustom {
     Booking deleteBooking(String id);
     List<Booking> showByEmployeeId(String empId);
     Integer countBooking();
+    Booking getBookingByTicket(String ticket);
 }
