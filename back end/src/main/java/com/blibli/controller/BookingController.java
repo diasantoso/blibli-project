@@ -107,9 +107,6 @@ public class BookingController {
         booking.setStatusBooking("1");
 
         //set the booking ticket
-//        Timestamp timestampNow = new Timestamp(System.currentTimeMillis());
-//        Timestamp timestampMeet =  new Timestamp(booking.getDateMeeting().getTime());
-
         Integer number = bookingService.count() + 1;
         String ticket = "BOOK-"+number;
         booking.setBookingTicket(ticket);
@@ -158,7 +155,7 @@ public class BookingController {
                     "PIC Contact    : "+booking.getPicContact()+"\n"+
                     "Special Req    : "+booking.getSpecialRequest());
             sender.send(message);
-        }catch(Exception ex) { }        
+        }catch(Exception ex) { }
 
         ResponseBack responseBack = new ResponseBack();
         if(result!=null)
