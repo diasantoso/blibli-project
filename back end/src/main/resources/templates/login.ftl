@@ -42,7 +42,7 @@
 </nav>
 
 <div class="login-form">
-    <h1>Blibli</h1>
+    <h1>Login</h1>
     <form ng-submit="login()">
         <div class="form-group ">
             <input type="text" class="form-control" placeholder="Email" ng-model="email" id="email">

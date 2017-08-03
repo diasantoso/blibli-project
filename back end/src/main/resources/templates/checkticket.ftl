@@ -41,40 +41,14 @@
     <!-- /.container -->
 </nav>
 
-<div class="content-section-a">
-    <div class="container">
-        <br/>
-        <h2 class="section-heading">Check Ticket Booking</h2>
-        <br/><br/><br/>
-        <div>
-            <form class="form-horizontal" ng-submit="ctrlBooking.checkTicket()" name="myForm">
-                <div class="form-group">
-                    <label class="col-sm-3 control-label">Ticket ID :</label>
-                    <div class="col-sm-8">
-                        <input type="text" ng-model="ctrlBooking.ticket" id="ticket" class="username form-control input-sm" placeholder="Enter your booking ticket id" required />
-                    </div>
-                </div>
-                <br/><br/>
-                <div class="form-group">
-                    <label class="col-sm-3 control-label"></label>
-                    <div class="col-sm-8">
-                        <input type="submit" value ="Check" class="btn btn-primary" />
-                    </div>
-                </div>
-            </form>
+<div class="login-form">
+    <h1>Check Ticket</h1>
+    <form ng-submit="ctrlBooking.checkTicket()">
+        <div class="form-group">
+            <input type="text" ng-model="ctrlBooking.ticket.id" class="form-control" placeholder="Ticket ID" id="ticket">
+            <i class="fa fa-user"></i>
         </div>
-    </div>
-    <!-- /.container -->
-
+        <span class="alert">Invalid Credentials</span>
+        <input type="submit" value = "Check" class="log-btn">
+    </form>
 </div>
-
-<!-- Footer -->
-<footer>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <p class="copyright text-muted small">Copyright &copy; Future Program Batch 1 - 2017. All Rights Reserved</p>
-            </div>
-        </div>
-    </div>
-</footer>

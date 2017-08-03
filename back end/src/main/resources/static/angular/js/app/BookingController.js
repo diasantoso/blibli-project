@@ -192,7 +192,7 @@ angular.module('bookingApp').controller('BookingController',
         }
 
         function checkTicket(){
-            self.bookingTicket= BookingService.getBookingByTicket(self.ticket);
+            self.bookingTicket= BookingService.getBookingByTicket(self.ticket.id);
             console.log('BookingTicket'+self.bookingTicket);
             if(self.bookingTicket!=null){
                 console.log('Go to Show Ticket');
