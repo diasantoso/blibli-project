@@ -203,7 +203,7 @@ angular.module('bookingApp').controller('BookingController',
         }
 
         function getTicketID(){
-            return BookingService.getTicketID();
+            return BookingService.getTicketId();
         }
 
         function getBookingTicket(){

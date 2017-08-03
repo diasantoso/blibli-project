@@ -45,7 +45,7 @@
     <div class="container">
         <br/>
         <h2 class="section-heading">Booking Data</h2>
-        <p class="category"><h5>This is data booking meeting room which have Ticket ID = {{ctrlBooking.getTicketID()}}</h5></p>
+        <p class="category"><h5>Ticket ID : {{ctrlBooking.getTicketID()}}</h5></p>
         <br/><br/>
         <div class="content table-responsive table-full-width">
             <table class="table table-hover table-striped data">
@@ -61,8 +61,6 @@
                     <th width="200">ROOM</th>
                     <th width="200">REQUEST BY</th>
                     <th width="200">CONTACT</th>
-                    <th width="100"></th>
-                    <th width="100"></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -77,8 +75,6 @@
                     <td>{{u.room.name}}</td>
                     <td>{{u.employee.name}}</td>
                     <td>{{u.picContact}}</td>
-                    <td></td>
-                    <td></td>
                 </tr>
                 </tbody>
             </table>
