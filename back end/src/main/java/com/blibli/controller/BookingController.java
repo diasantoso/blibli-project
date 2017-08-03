@@ -135,7 +135,9 @@ public class BookingController {
                         "End Time       : "+booking.getEndTime()+"\n"+
                         "Room           : "+booking.getRoom().getName()+"\n"+
                         "PIC Contact    : "+booking.getPicContact()+"\n"+
-                        "Special Req    : "+booking.getSpecialRequest());
+                        "Special Req    : "+booking.getSpecialRequest()+"\n\n"+
+                        "YOUR TICKET ID : "+booking.getBookingTicket()+"\n"+
+                        "With your ticket id, you can check your detail of your booking in our system");
                 sender.send(message);
             }catch(Exception ex) { }
         }
@@ -156,7 +158,8 @@ public class BookingController {
                     "End Time       : "+booking.getEndTime()+"\n"+
                     "Room           : "+booking.getRoom().getName()+"\n"+
                     "PIC Contact    : "+booking.getPicContact()+"\n"+
-                    "Special Req    : "+booking.getSpecialRequest());
+                    "Special Req    : "+booking.getSpecialRequest()+"\n"+
+                    "Ticket ID      : "+booking.getBookingTicket());
             sender.send(message);
         }catch(Exception ex) { }
 
