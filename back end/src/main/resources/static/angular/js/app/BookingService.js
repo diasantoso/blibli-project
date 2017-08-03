@@ -227,10 +227,14 @@ angular.module('bookingApp').factory('BookingService' ,
                     .then(
                         function (response){
                             console.log('Fetched successfully bookings by ticket id : ' + ticket);
-                            $localStorage.bookingByTicket = response.data.value;
+                            if(response.data.value!=null)
+                                $localStorage.bookingByTicket = response.data.value;
+                            else
+                                $localStorage.bookingByTicket = null;
                         },
                         function (errResponse) {
                             console.error('Error while loading bookings by ticket id : ' + ticket);
+                            $localStorage.bookingByTicket = null;
                         }
                     );
                 return $localStorage.bookingByTicket;
