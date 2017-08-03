@@ -41,6 +41,22 @@ public class OfficeController {
         return result;
     }
 
+    @RequestMapping(value = "/offices/nonauth", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public OfficeResponseList getAllActiveOfficesNonAuth() {
+        List<Office> data = officeService.getAllActive();
+        List<OfficeResponse> response = new ArrayList<>();
+        OfficeResponseList result = new OfficeResponseList();
+
+        for(Office office : data) {
+            OfficeResponse parse = new OfficeResponse();
+            BeanUtils.copyProperties(office, parse);
+            response.add(parse);
+        }
+        result.setValue(response);
+        return result;
+    }
+
     @PreAuthorize("hasAuthority('Admin')")
     @RequestMapping(value = "/offices", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody

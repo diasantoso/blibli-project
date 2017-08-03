@@ -7,6 +7,7 @@ import com.blibli.response.ResponseBack;
 import com.blibli.response.booking.BookingResponse;
 import com.blibli.response.booking.BookingResponseList;
 import com.blibli.response.employee.EmployeeResponse;
+import com.blibli.response.room.RoomResponse;
 import com.blibli.service.BookingService;
 import com.blibli.service.EmployeeService;
 import com.blibli.service.RoomService;
@@ -189,47 +190,63 @@ public class BookingController {
         return responseBack;
     }
 
-    @RequestMapping(value = "/bookings", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/bookings/extend/{id}??????", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public ResponseBack deleteBooking(@RequestParam String id) {
-        Booking result = bookingService.delete(id);
+    public ResponseBack extendBooking(@RequestBody BookingResponse param, @RequestBody Time extendTime, @RequestBody RoomResponse extendRoom) {
+        Booking booking = new Booking();
+        BeanUtils.copyProperties(param, booking);
+        Booking result = bookingService.save(booking);
 
         ResponseBack responseBack = new ResponseBack();
         if(result!=null)
-            responseBack.setResponse("success delete");
+            responseBack.setResponse("success updating");
         else
-            responseBack.setResponse("failed delete");
+            responseBack.setResponse("failed updating");
 
         return responseBack;
     }
 
-    //Untuk menampilkan data booking sesuai tanggal dan waktu yang dimasukkan user
-    @RequestMapping(value = "bookings/used", method = RequestMethod.GET , produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseBody
-    public BookingResponseList getBookingByDateTime(@RequestParam Date date, @RequestParam Time startTime,
-                                                    @RequestParam Time endTime){
-        List<Booking> data = bookingService.getAllBooking();
-        List<BookingResponse> responses = new ArrayList<>();
-        BookingResponseList result = new BookingResponseList();
-
-        for(Booking book : data){
-            //(book.startTime >= startTime && book.startTime <endTime)
-            //(book.endTime <= endTime && book.endTime > startTime)
-
-            if( (book.getDateMeeting().equals(date) &&
-                    (((book.getStartTime().equals(startTime) || book.getStartTime().before(startTime))&& book.getEndTime().after(startTime))||
-                            ((book.getEndTime().equals(endTime) || book.getEndTime().after(endTime) && book.getStartTime().before(endTime)))))
-                    && book.getStatusBooking().equalsIgnoreCase("1")){
-                BookingResponse parse = new BookingResponse();
-                BeanUtils.copyProperties(book,parse);
-                responses.add(parse);
-            }
-
-
-        }
-        result.setValue(responses);
-        return result;
-    }
+//    @RequestMapping(value = "/bookings", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
+//    @ResponseBody
+//    public ResponseBack deleteBooking(@RequestParam String id) {
+//        Booking result = bookingService.delete(id);
+//
+//        ResponseBack responseBack = new ResponseBack();
+//        if(result!=null)
+//            responseBack.setResponse("success delete");
+//        else
+//            responseBack.setResponse("failed delete");
+//
+//        return responseBack;
+//    }
+//
+//    //Untuk menampilkan data booking sesuai tanggal dan waktu yang dimasukkan user
+//    @RequestMapping(value = "bookings/used", method = RequestMethod.GET , produces = MediaType.APPLICATION_JSON_VALUE)
+//    @ResponseBody
+//    public BookingResponseList getBookingByDateTime(@RequestParam Date date, @RequestParam Time startTime,
+//                                                    @RequestParam Time endTime){
+//        List<Booking> data = bookingService.getAllBooking();
+//        List<BookingResponse> responses = new ArrayList<>();
+//        BookingResponseList result = new BookingResponseList();
+//
+//        for(Booking book : data){
+//            //(book.startTime >= startTime && book.startTime <endTime)
+//            //(book.endTime <= endTime && book.endTime > startTime)
+//
+//            if( (book.getDateMeeting().equals(date) &&
+//                    (((book.getStartTime().equals(startTime) || book.getStartTime().before(startTime))&& book.getEndTime().after(startTime))||
+//                            ((book.getEndTime().equals(endTime) || book.getEndTime().after(endTime) && book.getStartTime().before(endTime)))))
+//                    && book.getStatusBooking().equalsIgnoreCase("1")){
+//                BookingResponse parse = new BookingResponse();
+//                BeanUtils.copyProperties(book,parse);
+//                responses.add(parse);
+//            }
+//
+//
+//        }
+//        result.setValue(responses);
+//        return result;
+//    }
 
     //Untuk menampilkan jadwal booking yang belum kadaluarsa
     @RequestMapping(value = "bookings/schedule", method = RequestMethod.GET , produces = MediaType.APPLICATION_JSON_VALUE)

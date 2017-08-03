@@ -158,7 +158,7 @@ angular.module('bookingApp').factory('BookingService' ,
             function loadOffices(){
                 console.log('Fetching all offices');
                 var deferred = $q.defer();
-                $http.get(urls.OFFICE_SERVICE_API)
+                $http.get(urls.OFFICE_NOAUTH_SERVICE_API)
                     .then(
                         function (response){
                             console.log('Fetched successfully all offices');

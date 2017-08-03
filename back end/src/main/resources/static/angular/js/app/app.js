@@ -3,6 +3,7 @@ var app = angular.module('bookingApp',['ui.router','ngStorage']);
 app.constant('urls',{
     BASE : 'http://localhost:8080/',
     OFFICE_SERVICE_API : 'http://localhost:8080/api/offices/',
+    OFFICE_NOAUTH_SERVICE_API : 'http://localhost:8080/api/offices/nonauth',
     ROOM_SERVICE_API : 'http://localhost:8080/api/rooms/',
     EMPLOYEE_SERVICE_API : 'http://localhost:8080/api/employees',
     REGISTER_EMPLOYEE_SERVICE_API : 'http://localhost:8080/api/register',

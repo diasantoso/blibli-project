@@ -32,8 +32,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 						"/angular/**","/assets/**","/assets-custom/**","/assets-landingpage/**",
 						"/assets-upload/**","/assets-login/**","/partials/**",
 						"/api/register","/api/login","/api/bookings/ticket",
-						"/index.html", "/favicon.ico","/api/bookings/schedule","/api/bookings/used",
-						"/api/offices/**","/addbooking");
+						"/index.html", "/favicon.ico","/api/bookings/schedule","/api/bookings/used","/addbooking","/api/offices/nonauth");
 	}
 
 	// This method is used for override HttpSecurity of the web Application.
