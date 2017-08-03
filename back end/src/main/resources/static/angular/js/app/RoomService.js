@@ -181,10 +181,5 @@ angular.module('bookingApp').factory('RoomService',
 
                 return deferred.promise;
             }
-
-            //-------------Showing Available room based on date,startTime,endTime and Office---------------//
-
-
-
         }
      ]);

@@ -35,6 +35,11 @@ public class BookingService {
         return result;
     }
 
+    public Booking find(String booking) {
+        Booking result = bookingRepository.findOne(booking);
+        return result;
+    }
+
     public  List<Booking> getByEmpId(String empId){ return bookingRepository.showByEmployeeId(empId);}
 
     public BigInteger count() {

@@ -190,22 +190,6 @@ public class BookingController {
         return responseBack;
     }
 
-    @RequestMapping(value = "/bookings/extend/{id}??????", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseBody
-    public ResponseBack extendBooking(@RequestBody BookingResponse param, @RequestBody Time extendTime, @RequestBody RoomResponse extendRoom) {
-        Booking booking = new Booking();
-        BeanUtils.copyProperties(param, booking);
-        Booking result = bookingService.save(booking);
-
-        ResponseBack responseBack = new ResponseBack();
-        if(result!=null)
-            responseBack.setResponse("success updating");
-        else
-            responseBack.setResponse("failed updating");
-
-        return responseBack;
-    }
-
 //    @RequestMapping(value = "/bookings", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
 //    @ResponseBody
 //    public ResponseBack deleteBooking(@RequestParam String id) {
@@ -312,6 +296,97 @@ public class BookingController {
         }
         result.setValue(response);
         return result;
+    }
+
+    @RequestMapping(value = "/bookings/extend/{id}", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public ResponseBack extendBooking(@PathVariable String id, @RequestParam Time newEndTime) {
+        Booking booking = new Booking();
+        booking = bookingService.find(id);
+        Boolean check_room = false;
+        Booking result = null;
+
+        //Check Room Available or not
+        List<Booking> data_book = bookingService.getAllBooking();
+
+        for (Booking used : data_book) {
+            //(book.startTime >= startTime && book.startTime <endTime)
+            //(book.endTime <= endTime && book.endTime > startTime)
+
+            if(used.getDateMeeting().equals(booking.getDateMeeting())){
+                if(used.getStartTime().after(booking.getEndTime()) && used.getStartTime().before(newEndTime)){
+                    if (used.getRoom().getIdRoom().equalsIgnoreCase(booking.getRoom().getIdRoom())){
+                        check_room = true;
+                    }
+                }
+            }
+
+        }
+
+        if(check_room==false) {
+            //Set Data Booking Baru
+//            booking.setIdBooking("");
+//            booking.setStartTime(booking.getEndTime());
+//            booking.setEndTime(newEndTime);
+
+
+            Booking newbooking = new Booking();
+
+            //set added data to current date
+            LocalDate localDate = LocalDate.now();
+            java.sql.Date date = java.sql.Date.valueOf(localDate);
+            newbooking.setAddedDate(date);
+
+            //set the booking ticket
+            newbooking.setDateMeeting(booking.getDateMeeting());
+
+            //set Description
+            newbooking.setDescription(booking.getDescription()+" (extend)");
+
+            //set endTime
+            newbooking.setEndTime(newEndTime);
+
+            //set PIC Contact
+            newbooking.setPicContact(booking.getPicContact());
+
+            //Set Special Request
+            newbooking.setSpecialRequest(booking.getSpecialRequest());
+
+            //set start Time
+            newbooking.setStartTime(booking.getEndTime());
+
+            //set subject
+            newbooking.setSubject(booking.getSubject());
+
+            //set the employee
+            Employee employee = employeeService.getOneActive(booking.getEmployee().getIdEmployee());
+            newbooking.setEmployee(booking.getEmployee());
+
+            //set The room
+            newbooking.setRoom(booking.getRoom());
+
+
+            //set status and statusbooking to 1
+            newbooking.setStatus(1);
+            newbooking.setStatusBooking("1");
+
+            //set the booking ticket
+            BigInteger addingNumber;
+            addingNumber = new BigInteger("1");
+            BigInteger number = bookingService.count().add(addingNumber);
+            String ticket = "BOOK-"+ number;
+            newbooking.setBookingTicket(ticket);
+
+            result = bookingService.save(newbooking);
+        }
+
+        ResponseBack responseBack = new ResponseBack();
+        if(result!=null)
+            responseBack.setResponse("success extending");
+        else
+            responseBack.setResponse("failed extending");
+
+        return responseBack;
     }
 
 }

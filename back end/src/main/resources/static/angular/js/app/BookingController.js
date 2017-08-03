@@ -57,6 +57,7 @@ angular.module('bookingApp').controller('BookingController',
         //booking Page for employee
         self.cancelBooking = cancelBooking;
         self.getBookingHistory = getBookingHistory;
+        self.extendBooking = extendBooking;
 
         $scope.loaded={};
 
@@ -253,7 +254,6 @@ angular.module('bookingApp').controller('BookingController',
             self.errorMessage='';
             BookingService.getBooking(id).then(
                 function (booking) {
-                    //booking.statusBooking = "0";
                     self.booking = booking;
                     self.booking.employee_id = LoginService.user.id_employee;
                     booking.value[0].statusBooking = "0";
@@ -283,6 +283,41 @@ angular.module('bookingApp').controller('BookingController',
             }
             else
                 return false;
+        }
+
+        function extendBooking(bookingId, newEndTime){
+            BookingService.getBooking(bookingId).then(
+                function (booking) {
+                    self.searchVar.startTime = booking.startTime;
+                    self.searchVar.endTime = booking.endTime;
+                    self.searchVar.date = booking.dateMeeting;
+
+                    RoomService.getRoom(booking.room.idRoom).then(
+                        function (room) {
+                            self.searchVar.officeId = room.office.idOffice;
+
+                            BookingService.getAvailableRooms(searchVar).then(
+                                function (rooms) {
+
+                                }
+                            )
+                        },
+                        function (errResponse) {
+                            console.error('Error while getting room with id ' + booking.room.idRoom + ', Error :' + errResponse.data);
+                        }
+                    );
+
+
+
+                    self.booking = booking;
+                    self.booking.employee_id = LoginService.user.id_employee;
+                    // booking.value[0].statusBooking = "0";
+                    // updateBooking (booking.value[0] , id);
+                },
+                function (errResponse){
+                    console.error('Error while editing booking '+id +', Error :'+errResponse.data);
+                }
+            );
         }
 
         function logout (){
