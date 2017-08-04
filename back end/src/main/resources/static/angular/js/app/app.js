@@ -242,13 +242,17 @@ app.run(function(LoginService, $rootScope, $state, $sessionStorage) {
 
         // getting data session token & user
         console.log("SESSION : " + $sessionStorage.token + " - " + $sessionStorage.user);
-        $http.defaults.headers.common['Authorization'] = $sessionStorage.token;
-        LoginService.user = $sessionStorage.user;
+
+        if($sessionStorage.user!=undefined && $sessionStorage.token!=null) {
+            $http.defaults.headers.common['Authorization'] = $sessionStorage.token;
+            LoginService.user = $sessionStorage.user;
+        }
 
         if(toState.data!=null)
-        console.log('To State Data Role ='+toState.data.role);
+            console.log('To State Data Role ='+toState.data.role);
         else
-            console.log('ToState Data Role null.')
+            console.log('ToState Data Role null.');
+
         if (!LoginService.user) { //Ini buat ngecek user login belum, nah kalau belum dia bakal masuk ke dalam blok if nya
             // To avoiding the infinite looping of state change we have to add a
             // if condition.

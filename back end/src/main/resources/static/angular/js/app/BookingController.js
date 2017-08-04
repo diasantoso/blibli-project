@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('bookingApp').controller('BookingController',
-    ['BookingService', 'LoginService', 'RoomService', '$scope', '$state', '$sessionStorage', function( BookingService ,LoginService, RoomService, $scope, $state, $sessionStorage) {
+    ['BookingService', 'LoginService', 'RoomService', '$scope', '$state', '$sessionStorage', '$http', function( BookingService ,LoginService, RoomService, $scope, $state, $sessionStorage, $http) {
 
         var self = this;
         self.booking = {};
@@ -307,8 +307,6 @@ angular.module('bookingApp').controller('BookingController',
                         }
                     );
 
-
-
                     self.booking = booking;
                     self.booking.employee_id = LoginService.user.id_employee;
                     // booking.value[0].statusBooking = "0";
@@ -324,8 +322,8 @@ angular.module('bookingApp').controller('BookingController',
             LoginService.user = null;
 
             // setting session token & user become null (logout)
-            $sessionStorage.token = null;
-            $sessionStorage.user = null;
+            $sessionStorage.token = undefined;
+            $sessionStorage.user = undefined;
 
             console.log("Logout Successfully");
             $state.go('home');
