@@ -118,6 +118,11 @@ angular.module('bookingApp').controller('OfficeController',
 
         function logout (){
             LoginService.user = null;
+
+            // setting session token & user become null (logout)
+            $sessionStorage.token = null;
+            $sessionStorage.user = null;
+
             console.log("Logout Successfully");
             $state.go('home');
         };
