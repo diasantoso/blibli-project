@@ -2,7 +2,7 @@
 
 angular.module('bookingApp')
 // Creating the Angular Controller
-    .controller('LoginController', function($http, $scope, $state, LoginService, $rootScope, $localStorage, urls) {
+    .controller('LoginController', function($http, $scope, $state, LoginService, $rootScope, $localStorage, urls, $sessionStorage) {
         // method for login
         $scope.login = function() {
             console.log("Debug : Login");
@@ -26,6 +26,12 @@ angular.module('bookingApp')
                     LoginService.user = res.user;
                     $localStorage.user = res.user;
                     $rootScope.$broadcast('LoginSuccessful');
+
+                    // setting session token & user
+                    $sessionStorage.token = 'Bearer ' + res.token;
+                    $sessionStorage.user = res.user;
+                    console.log("SESSION : " + $sessionStorage.token + " - " + $sessionStorage.user);
+
                     // going to the home page
                     console.log("Debug : Login Success -> Going Dashboard");
                     console.log("Debug : Login Token -> "+res.token);
@@ -52,6 +58,11 @@ angular.module('bookingApp')
         };
         $scope.logout = function(){
             LoginService.user = null;
+
+            // setting session token & user become null (logout)
+            $sessionStorage.token = null;
+            $sessionStorage.user = null;
+
             $rootScope.$broadcast('LogoutSuccessful');
             $state.go('home');
         };
