@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('bookingApp').controller('BookingController',
-    ['BookingService', 'LoginService', 'RoomService' , '$scope', '$state' , function( BookingService ,LoginService, RoomService, $scope, $state) {
+    ['BookingService', 'LoginService', 'RoomService', '$scope', '$state', '$sessionStorage', function( BookingService ,LoginService, RoomService, $scope, $state, $sessionStorage) {
 
         var self = this;
         self.booking = {};

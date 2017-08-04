@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('bookingApp').controller('CountController',
-    ['$state', 'CountService', 'LoginService', '$scope' , function( $state, CountService , LoginService, $scope) {
+    ['$state', 'CountService', 'LoginService', '$scope', '$sessionStorage', function( $state, CountService , LoginService, $scope, $sessionStorage) {
 
         var self = this;
         self.getCountOffice = getCountOffice;
