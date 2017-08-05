@@ -42,16 +42,16 @@
                 </thead>
                 <tbody>
                 <tr ng-repeat="u in ctrlBooking.getUpcomingBookings()">
+                    <!--<td>{{u.subject}}</td>
+                    <td>{{u.description}}</td>
+                    <td>{{u.addedDate}}</td>
+                    <td>{{u.status}}</td>-->
                     <td>{{u.dateMeeting}}</td>
                     <td>{{u.startTime}}</td>
                     <td>{{u.endTime}}</td>
                     <td>{{u.room.name}}</td>
                     <td>{{u.employee.name}}</td>
                     <td>{{u.picContact}}</td>
-                    <!--<td>{{u.subject}}</td>
-                    <td>{{u.description}}</td>
-                    <td>{{u.addedDate}}</td>
-                    <td>{{u.status}}</td>-->
                     <td></td>
                     <td></td>
                 </tr>

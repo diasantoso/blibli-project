@@ -22,10 +22,12 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
                     url: '/',
                     templateUrl: '/partials/landingpage'
                 })
+
                 .state('access-denied', {
                     url : '/access-denied',
                     templateUrl: '/partials/access-denied'
                 })
+
                 .state('showbooking',{
                     url: '/listbooking',
                     templateUrl: '/partials/showbooking',
@@ -206,7 +208,25 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
                             BookingService.getBookingPerUser(empId);
                         }
                     }
-                });
+                })
+
+                .state('EmpUpcomingBooking',{
+                    url: '/employees/upcoming',
+                    templateUrl: '/partials/employees/empupcomingbooking',
+                    controller: 'BookingController',
+                    controllerAs: 'ctrlBooking',
+                    resolve: {
+                        offices: function ($q, BookingService) {
+                            console.log('Load all bookings');
+                            var deferred = $q.defer();
+                            BookingService.loadUpcomingBookings()
+                                .then(deferred.resolve,deferred.resolve);
+                            return deferred.promise;
+                        }
+                    }
+                })
+
+                ;
 
 
        // use the HTML5 History API

@@ -3,19 +3,19 @@
         <div class="sidebar-wrapper">
             <div class="logo">
                 <a href="#" class="simple-text">
-                    <strong>BOOKING ROOM</strong>
+                    <strong>EMPLOYEE | BOOKING ROOM</strong>
                 </a>
             </div>
             <!--NAVIGATION-->
             <ul class="nav">
                 <li >
-                    <a href="showbooking">
+                    <a href="/employees/upcoming">
                         <i class="pe-7s-note2"></i>
                         <p>Upcoming Bookings</p>
                     </a>
                 </li>
                 <li class="active">
-                    <a href="">
+                    <a href="/employees/dashboard">
                         <i class="pe-7s-graph"></i>
                         <p>Your Bookings</p>
                     </a>
@@ -40,7 +40,6 @@
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
-
                     <div class="col-md-12">
                         <div class="card card-plain">
                             <div class="header">
