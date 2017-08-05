@@ -3,12 +3,12 @@
         <div class="sidebar-wrapper">
             <div class="logo">
                 <a href="#" class="simple-text">
-                    <strong>EMPLOYEE | BOOKING ROOM</strong>
+                    <strong>EMP | BOOKING ROOM</strong>
                 </a>
             </div>
             <!--NAVIGATION-->
             <ul class="nav">
-                <li >
+                <li>
                     <a href="/employees/upcoming">
                         <i class="pe-7s-note2"></i>
                         <p>Upcoming Bookings</p>
@@ -21,7 +21,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="">
+                    <a href="/employees/addbooking">
                         <i class="pe-7s-note2"></i>
                         <p>Add Booking</p>
                     </a>

@@ -226,6 +226,21 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
                     }
                 })
 
+                .state('EmpAddBooking',{
+                    url: '/employees/addbooking',
+                    templateUrl: '/partials/employees/empaddbooking',
+                    controller: 'BookingController',
+                    controllerAs: 'ctrlBooking',
+                    resolve: {
+                        offices: function ($q, BookingService) {
+                            var deferred = $q.defer();
+                            BookingService.loadOffices()
+                                .then(deferred.resolve, deferred.resolve);
+                            return deferred.promise;
+                        }
+                    }
+                })
+
                 ;
 
 
