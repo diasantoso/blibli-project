@@ -41,6 +41,7 @@ angular.module('bookingApp').controller('BookingController',
 
         //to show and check the available room
         self.check = check;
+        self.checkForEmployeeSite = checkForEmployeeSite;
         self.getAvailableRoom = getAvailableRoom;
         self.getSearchVar = getSearchVar;
 
@@ -187,6 +188,22 @@ angular.module('bookingApp').controller('BookingController',
             if(self.rooms!=null){
                 console.log('Go to AvailRooms');
                 $state.go('AvailRooms');
+            }else{
+                console.log('Gagal redirect');
+            }
+        }
+
+        function checkForEmployeeSite(){
+            console.log('Fetched successfully All available rooms in office with id : '+self.searchVar.officeId+
+                ' on date : ' +self.searchVar.date +
+                ' with start Time : '+self.searchVar.startTime+
+                ' And end Time : '+self.searchVar.endTime);
+
+            self.rooms= BookingService.getAvailableRooms(self.searchVar);
+            console.log('rooms'+self.rooms);
+            if(self.rooms!=null){
+                console.log('Go to EmpAvailRooms');
+                $state.go('EmpAvailRooms');
             }else{
                 console.log('Gagal redirect');
             }

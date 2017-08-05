@@ -56,6 +56,7 @@
     </div>
     <!-- /.container -->
 </div>
+
 <div class="modal fade" id="myModalAdd" role="dialog">
     <div class="modal-dialog">
 

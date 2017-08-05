@@ -241,6 +241,13 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
                     }
                 })
 
+                .state('EmpAvailRooms',{
+                    url: '/employees/availableroom',
+                    templateUrl: '/partials/employees/empshowavailableroom',
+                    controller: 'BookingController',
+                    controllerAs: 'ctrlBooking'
+                })
+
                 ;
 
 

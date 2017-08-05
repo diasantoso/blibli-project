@@ -48,7 +48,7 @@
                             </div>
                             <br/><br/>
                             <div>
-                                <form class="form-horizontal" ng-submit="ctrlBooking.check()" name="myForm">
+                                <form class="form-horizontal" ng-submit="ctrlBooking.checkForEmployeeSite()" name="myForm">
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label">Office :</label>
                                         <div class="col-sm-8">
