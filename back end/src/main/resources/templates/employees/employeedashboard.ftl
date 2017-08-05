@@ -80,7 +80,8 @@
                                                     <td>{{u.room.name}}</td>
                                                     <td>{{u.subject}}</td>
                                                     <td>{{u.description}}</td>
-                                                    <td ng-if-end="!ctrlBooking.getBookingHistory(u.dateMeeting,u.endTime)"><button type="button" ng-click="ctrlBooking.cancelBooking(u.idBooking)" class="btn btn-success custom-width">Cancel Booking</button></td>
+                                                <td><button type="button" ng-click="ctrlBooking.cancelBooking(u.idBooking)" class="btn btn-success custom-width">Cancel Booking</button></td>
+                                                <td ng-if-end="!ctrlBooking.getBookingHistory(u.dateMeeting,u.endTime)"><button type="button" ng-click="" class="btn btn-success custom-width">Extend Booking</button></td>
                                             </tr>
                                             </tbody>
                                         </table>
@@ -154,5 +155,34 @@
                 </div> <!-- row -->
             </div>
         </div>
+    </div>
+</div>
+
+<div class="modal fade" id="myModalExtend" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Aditional Booking Data</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" ng-submit="" name="myForm">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Insert New Time for Extend</label>
+                        <div class="col-sm-8">
+                            <input type="text" ng-model="ctrlBooking.booking.endTime" id="endTime" class="username form-control input-sm" placeholder="Enter New Time To extend Your Booking" required />
+                        </div>
+                    </div>
+
+                    <div class="form-group modal-footer">
+                        <input type="submit" data-dismiss="myModalExtenf" value="Extend" class="btn btn-primary btn-sm" ng-disabled="myForm.$invalid || myForm.$pristine">
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
     </div>
 </div>
