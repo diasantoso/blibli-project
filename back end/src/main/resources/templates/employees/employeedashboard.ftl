@@ -8,12 +8,6 @@
             </div>
             <!--NAVIGATION-->
             <ul class="nav">
-                <li>
-                    <a href="home">
-                        <i class="pe-7s-note2"></i>
-                        <p>Home</p>
-                    </a>
-                </li>
                 <li >
                     <a href="showbooking">
                         <i class="pe-7s-note2"></i>

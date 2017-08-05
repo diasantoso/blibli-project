@@ -20,7 +20,7 @@
                     <a href="/listbooking">All Booking</a>
                 </li>
                 <li>
-                    <a href="/addbooking">Add Booking</a>
+                    <a href="/addbooking">Check Room</a>
                 </li>
                 <li>
                     <a href="/checkticket">Check Ticket</a>
@@ -30,9 +30,6 @@
                 </li>
                 <li>
                     <a href="/register">Register</a>
-                </li>
-                <li>
-                    <a href="/employees/dashboard">Employe Dashboard</a>
                 </li>
             </ul>
         </div>
