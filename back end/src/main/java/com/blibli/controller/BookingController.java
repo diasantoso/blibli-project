@@ -8,6 +8,7 @@ import com.blibli.response.booking.BookingResponse;
 import com.blibli.response.booking.BookingResponseList;
 import com.blibli.response.employee.EmployeeResponse;
 import com.blibli.response.room.RoomResponse;
+import com.blibli.response.room.RoomResponseList;
 import com.blibli.service.BookingService;
 import com.blibli.service.EmployeeService;
 import com.blibli.service.RoomService;
@@ -306,6 +307,11 @@ public class BookingController {
         Boolean check_room = false;
         Booking result = null;
 
+        List<Room> data = roomService.getAllActive();
+        List<Room> data_used = new ArrayList<>();
+        List<RoomResponse> responses = new ArrayList<>();
+        RoomResponseList listOfRooms = new RoomResponseList();
+
         //Check Room Available or not
         List<Booking> data_book = bookingService.getAllBooking();
 
@@ -315,7 +321,7 @@ public class BookingController {
 
             if(used.getDateMeeting().equals(booking.getDateMeeting())){
                 if(used.getStartTime().after(booking.getEndTime()) && used.getStartTime().before(newEndTime)){
-                    if (used.getRoom().getIdRoom().equalsIgnoreCase(booking.getRoom().getIdRoom())){
+                    if ((used.getRoom().getIdRoom().equalsIgnoreCase(booking.getRoom().getIdRoom()) && used.getStatusBooking().equalsIgnoreCase("1"))){
                         check_room = true;
                     }
                 }
@@ -323,13 +329,11 @@ public class BookingController {
 
         }
 
+        //Jika ruangan yang dia gunakan saat itu kosong,
+        //Maka akan dibuat booking baru , dengan data yang sama dan beberapa data baru
+        //Data yang baru adalah start Time (diambil dari endTime booking sebelumnya) dan
+        //endTime (Merupakan input baru dari user)
         if(check_room==false) {
-            //Set Data Booking Baru
-//            booking.setIdBooking("");
-//            booking.setStartTime(booking.getEndTime());
-//            booking.setEndTime(newEndTime);
-
-
             Booking newbooking = new Booking();
 
             //set added data to current date
@@ -378,6 +382,42 @@ public class BookingController {
             newbooking.setBookingTicket(ticket);
 
             result = bookingService.save(newbooking);
+        }
+        //Jika ruangan yang dia gunakan saat itu telah digunakan (tidak bisa untuk extend),
+        //Maka akan ditampilkan daftar ruangan yang kosong saat itu
+
+        else{
+
+            //get the office id for getAvailable / unavailable Room
+            String roomId = booking.getRoom().getIdRoom();
+            Room usedRoom = roomService.getOneActive(roomId);
+            String officeId = usedRoom.getOffice().getIdOffice();
+
+            //Get Unavailable Room
+            for (Booking book : data_book) {
+                //(book.startTime >= startTime && book.startTime <endTime)
+                //(book.endTime <= endTime && book.endTime > startTime)
+
+                if ((book.getDateMeeting().equals(booking.getDateMeeting()) &&
+                        (((book.getStartTime().equals(booking.getEndTime()) || book.getStartTime().before(booking.getEndTime())) && book.getEndTime().after(booking.getEndTime())) ||
+                                ((book.getEndTime().equals(newEndTime) || book.getEndTime().after(newEndTime) && book.getStartTime().before(newEndTime)))))
+                        && book.getStatusBooking().equalsIgnoreCase("1")) {
+                    data_used.add(book.getRoom());
+                }
+            }
+
+            //Get Available Room
+            data.removeAll(data_used);
+
+            for(Room room : data){
+                RoomResponse parse = new RoomResponse();
+                BeanUtils.copyProperties(room, parse);
+                if(officeId.equals(room.getOffice().getIdOffice())) {
+                    responses.add(parse);
+                }
+            }
+
+
         }
 
         ResponseBack responseBack = new ResponseBack();

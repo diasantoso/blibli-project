@@ -39,7 +39,7 @@ public class RoomRepositoryImpl implements RoomRepositoryCustom {
         Room result = null;
         try {
             result = (Room) em.createNativeQuery(
-                    "SELECT * FROM ROOM WHERE STATUS=1 AND id_room= '" + id + "' ", Room.class).getSingleResult();
+                    "SELECT * FROM ROOM WHERE STATUS=1 AND id_room= '" + id + "'; ", Room.class).getSingleResult();
             return result;
         } catch(Exception e){
 
