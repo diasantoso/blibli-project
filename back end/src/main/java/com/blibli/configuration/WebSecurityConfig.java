@@ -28,11 +28,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		web.ignoring()
 				// ignoring the "/", "/index.html", "/app/**", "/register",
 				// "/favicon.ico"
-				.antMatchers("/","/login","/email","/checkticket","/showticket","/listbooking",
-						"/angular/**","/assets/**","/assets-custom/**","/assets-landingpage/**",
-						"/assets-upload/**","/assets-login/**","/partials/**",
+				.antMatchers("/","/login","/email",
 						"/api/register","/api/login","/api/bookings/ticket",
-						"/index.html", "/favicon.ico","/api/bookings/schedule","/api/bookings/used","/addbooking","/api/offices/nonauth");
+						"/api/bookings/schedule","/api/bookings/used",
+						"/addbooking","/api/offices/nonauth","/rooms/available",
+						"/checkticket","/showticket","/listbooking",
+
+						"/index.html", "/favicon.ico","/angular/**",
+						"/assets/**","/assets-custom/**","/assets-landingpage/**","/assets-upload/**","/assets-login/**","/partials/**");
 	}
 
 	// This method is used for override HttpSecurity of the web Application.

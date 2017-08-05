@@ -55,13 +55,12 @@
                     <th>HAVE PROJECTOR</th>
                     <th>NUMBER EXTENSION</th>
                     <th>OFFICE</th>
-                    <th width="100"></th>
+                    <#--<th width="100"></th>-->
                     <th width="100"></th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr ng-repeat="u in ctrlBooking.getAvailableRoom()">
-                    <!--<td>{{u.idRoom}}</td>-->
                     <td>{{$index +1}}</td>
                     <td>{{u.name}}</td>
                     <td>{{u.capacity}}</td>
@@ -69,9 +68,8 @@
                     <td>{{u.isProjector}}</td>
                     <td>{{u.numberExtension}}</td>
                     <td>{{u.office.name}}</td>
-                    <td><button type="button" ng-click="ctrlBooking.getRoombyId(u.idRoom)" data-toggle="modal" data-target="#myModalAdd" class="btn btn-success custom-width">Book</button></td>
+                    <#--<td><button type="button" ng-click="ctrlBooking.getRoombyId(u.idRoom)" data-toggle="modal" data-target="#myModalAdd" class="btn btn-success custom-width">Book</button></td>-->
                     <td><button type="button" ng-click="" class="btn btn-danger custom-width">Details</button></td>
-                    <#--data-toggle="modal" data-target="#myModalAdd"-->
                 </tr>
                 </tbody>
             </table>

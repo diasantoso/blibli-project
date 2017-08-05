@@ -57,6 +57,13 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
                     }
                 })
 
+                .state('AvailRooms',{
+                    url: '/rooms/available',
+                    templateUrl: '/partials/addnewbooking',
+                    controller: 'BookingController',
+                    controllerAs: 'ctrlBooking'
+                })
+
                 .state('checkticket',{
                     url: '/checkticket',
                     templateUrl: '/partials/checkticket',
@@ -187,13 +194,6 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
                     }
                 })
 
-               .state('AvailRooms',{
-                   url: '/rooms/available',
-                   templateUrl: '/partials/addnewbooking',
-                   controller: 'BookingController',
-                   controllerAs: 'ctrlBooking'
-               })
-
                 .state('EmpDashboard',{
                     url: '/employees/dashboard',
                     templateUrl: '/partials/employees/employeedashboard',
@@ -253,14 +253,10 @@ app.run(function(LoginService, $rootScope, $state, $sessionStorage) {
         else
             console.log('ToState Data Role null.');
 
-        if (!LoginService.user) { //Ini buat ngecek user login belum, nah kalau belum dia bakal masuk ke dalam blok if nya
-            // To avoiding the infinite looping of state change we have to add a
-            // if condition.
-            //disini if nya ngecek, kalau belum login halaman apa aja yg boleh dikunjungi
-            //(dalam contoh ini cuma boleh ke "state" alias halaman login dan register
+        if (!LoginService.user) {
+            //Ini buat ngecek user login belum, kalau belum dia bakal masuk ke dalam blok if nya
 
-
-            if (toState.name != 'login' && toState.name != 'checkticket' && toState.name != 'showticket' && toState.name != 'register' && toState.name != 'home' && toState.name != 'showbooking') {
+            if (toState.name != 'login' && toState.name != 'addbooking' && toState.name != 'AvailRooms' && toState.name != 'checkticket' && toState.name != 'showticket' && toState.name != 'register' && toState.name != 'home' && toState.name != 'showbooking') {
                 //selain akses halaman login atau register dia bakal masuk ke blok ini
 
                 event.preventDefault(); //ini buat ngestop paksa (contoh mau kehalamaan office, trus di stop paksa
