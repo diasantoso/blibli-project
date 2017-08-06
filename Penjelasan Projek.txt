@@ -1,0 +1,42 @@
+Booking Meeting Room System : 
+	System yang digunakan untuk melakukan pengelolaan peminjaman ruangan meeting
+
+Teknologi :
+	Back-end 	-> SpringBoot 1.4.4
+	Front-end	-> AngularJS 1.6
+
+SpringBoot 1.4.4 Dependencies :
+	spring-boot-starter-web
+	spring-boot-starter-mail
+	spring-boot-starter-test
+	spring-boot-starter-data-jpa
+	spring-boot-starter-hateoas
+	spring-boot-starter-security
+	jjwt
+	postgresql
+
+Feature :
+- Non login
+	Login
+	Register
+	Upcoming Booking
+	Check Available Room
+	Check Booking by Ticket
+
+- Login sebagai employee
+	Upcoming Booking
+	Your Booking (Upcoming, Past, Cancelled)
+	Add Booking	
+
+- Login sebagai admin
+	Room Manage (Create, Update, Delete, Restore)	
+	Office Manage (Create, Update, Delete, Restore)
+	Employee Manage (Create, Update, Delete, Restore)
+	Booking manage (Delete, Restore)
+	Logout
+
+Security Auth menggunakan JWT-Auth
+Session Token & User menggunakan sessionStorage dari AngularJS
+
+
+	
