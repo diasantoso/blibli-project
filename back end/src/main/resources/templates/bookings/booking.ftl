@@ -74,12 +74,10 @@
                                     <th width="200">ADDED DATE</th>
                                     <th width="200">STATUS</th>
                                     <th width="100"></th>
-                                    <th width="100"></th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <tr ng-repeat="u in ctrlBooking.getAllBookings()">
-                                    <!--<td>{{u.idBooking}}</td>-->
                                     <td>{{$index +1}}</td>
                                     <td>{{u.subject}}</td>
                                     <td>{{u.description}}</td>
@@ -89,14 +87,10 @@
                                     <td>{{u.endTime}}</td>
                                     <td>{{u.addedDate}}</td>
                                     <td>{{u.status}}</td>
-                                    <td></td>
-                                    <td></td>
+                                    <td><button type="button" ng-click="ctrlBooking.removeBooking(u.idBooking)" class="btn btn-success custom-width">Delete</button></td>
                                 </tr>
                                 </tbody>
                             </table>
-
-                            <a href="#bookings/add" type="button" class="btn btn-primary">Add New Data</a><br/><br/>
-
                         </div>
                     </div>
                 </div>

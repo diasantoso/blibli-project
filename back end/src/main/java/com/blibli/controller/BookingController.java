@@ -191,20 +191,20 @@ public class BookingController {
         return responseBack;
     }
 
-//    @RequestMapping(value = "/bookings", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
-//    @ResponseBody
-//    public ResponseBack deleteBooking(@RequestParam String id) {
-//        Booking result = bookingService.delete(id);
-//
-//        ResponseBack responseBack = new ResponseBack();
-//        if(result!=null)
-//            responseBack.setResponse("success delete");
-//        else
-//            responseBack.setResponse("failed delete");
-//
-//        return responseBack;
-//    }
-//
+    @RequestMapping(value = "/bookings", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public ResponseBack deleteBooking(@RequestParam String id) {
+        Booking result = bookingService.delete(id);
+
+        ResponseBack responseBack = new ResponseBack();
+        if(result!=null)
+            responseBack.setResponse("success delete");
+        else
+            responseBack.setResponse("failed delete");
+
+        return responseBack;
+    }
+
 //    //Untuk menampilkan data booking sesuai tanggal dan waktu yang dimasukkan user
 //    @RequestMapping(value = "bookings/used", method = RequestMethod.GET , produces = MediaType.APPLICATION_JSON_VALUE)
 //    @ResponseBody

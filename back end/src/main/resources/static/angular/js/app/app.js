@@ -180,22 +180,6 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
                     }
                 })
 
-                .state('BookingAdd',{
-                    url: '/bookings/add',
-                    templateUrl: '/partials/bookings/addbooking',
-                    controller: 'BookingController',
-                    controllerAs: 'ctrlBooking',
-                    resolve: {
-                        offices: function ($q, BookingService) {
-                            console.log('Load all bookings');
-                            var deferred = $q.defer();
-                            BookingService.loadAllBookings()
-                                .then(deferred.resolve,deferred.resolve);
-                            return deferred.promise;
-                        }
-                    }
-                })
-
                 .state('EmpDashboard',{
                     url: '/employees/dashboard',
                     templateUrl: '/partials/employees/employeedashboard',
