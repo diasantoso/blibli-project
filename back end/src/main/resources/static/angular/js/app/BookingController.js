@@ -309,13 +309,30 @@ angular.module('bookingApp').controller('BookingController',
         function extendBooking(bookingId, newEndTime){
             var result = BookingService.extendBooking(bookingId,newEndTime);
             console.log(result);
+            self.successMessage='You Successfully Extend Your booking time!';
+            self.errorMessage='There is an error while extending the booking time!';
             if (result==true){
                 console.log('Jam selesai baru : ' + newEndTime);
                 console.log(self.userBookings);
                 console.log('extend success');
-                $state.go('EmpDashboard');
+                $state.go('');
             } else {
                 console.log('extend failed.');
+                self.booking = BookingService.getBooking(bookingId)[1];
+                self.searchVar.date = self.booking.dateMeeting;
+                self.searchVar.startTime = self.booking.endTime;
+                self.searchVar.endTime = newEndTime;
+                var roomData = RoomService.getRoombyId(self.booking.room.idRoom);
+                self.searchVar.officeId = roomData.office.idOffice;
+
+                self.rooms= BookingService.getAvailableRooms(self.searchVar);
+                console.log('rooms'+self.rooms);
+                if(self.rooms!=null){
+                    console.log('');
+                    $state.go('');
+                }else{
+                    console.log('Gagal redirect');
+                }
             }
         }
 
