@@ -27,14 +27,16 @@ angular.module('bookingApp').controller('CountController',
         }
 
         function logout (){
-            LoginService.user = null;
+            if (confirm("Are you sure to logout?")) {
+                LoginService.user = null;
 
-            // setting session token & user become null (logout)
-            $sessionStorage.token = null;
-            $sessionStorage.user = null;
+                // setting session token & user become null (logout)
+                $sessionStorage.token = undefined;
+                $sessionStorage.user = undefined;
 
-            console.log("Logout Successfully");
-            $state.go('home');
+                console.log("Logout Successfully");
+                $state.go('home');
+            }
         };
     }
     ]);

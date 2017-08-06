@@ -35,59 +35,65 @@ angular.module('bookingApp').controller('EmployeeController',
         }
 
         function createEmployee (employee){
-            console.log('About to create employee');
-            EmployeeService.createEmployee(employee)
-                .then(
-                    function (response){
-                        console.log('Employee created successfully');
-                        self.successMessage = 'Employee created successfully';
-                        self.errorMessage = '';
-                        self.done = true;
-                        self.employee={};
-                        $scope.myForm.$setPristine();
-                    },
+            if (confirm("Please confirm?")) {
+                console.log('About to create employee');
+                EmployeeService.createEmployee(employee)
+                    .then(
+                        function (response) {
+                            console.log('Employee created successfully');
+                            self.successMessage = 'Employee created successfully';
+                            self.errorMessage = '';
+                            self.done = true;
+                            self.employee = {};
+                            $scope.myForm.$setPristine();
+                        },
 
-                    function (errResponse){
-                        console.log('Error while creating employee');
-                        self.errorMessage = 'Error while creating employee';
-                        self.successMessage = '';
-                    }
-                );
+                        function (errResponse) {
+                            console.log('Error while creating employee');
+                            self.errorMessage = 'Error while creating employee';
+                            self.successMessage = '';
+                        }
+                    );
+            }
         }
 
         function updateEmployee (employee , id){
-            console.log('About to update employee');
-            EmployeeService.updateEmployee(employee , id)
-                .then(
-                    function (response){
-                        console.log('Employee updated successfully');
-                        self.successMessage='Employee updated successfully';
-                        self.errorMessage='';
-                        self.done = true;
-                        $scope.myForm.$setPristine();
-                    },
+            if (confirm("Please confirm?")) {
+                console.log('About to update employee');
+                EmployeeService.updateEmployee(employee, id)
+                    .then(
+                        function (response) {
+                            console.log('Employee updated successfully');
+                            self.successMessage = 'Employee updated successfully';
+                            self.errorMessage = '';
+                            self.done = true;
+                            $scope.myForm.$setPristine();
+                        },
 
-                    function (errResponse){
-                        console.log('Error while updating employee');
-                        self.errorMessage = 'Error while updating employee';
-                        self.successMessage = '';
-                    }
-                );
+                        function (errResponse) {
+                            console.log('Error while updating employee');
+                            self.errorMessage = 'Error while updating employee';
+                            self.successMessage = '';
+                        }
+                    );
+            }
         }
 
         function removeEmployee (id){
-            console.log('About to remove employee with id '+id);
-            EmployeeService.removeEmployee(id)
-                .then(
-                    function(){
-                        console.log('Employee with '+id + ' removed successfully');
-                        self.successMessage='Employee removed successfully';
-                        self.errorMessage='';
-                    },
-                    function (errResponse){
-                        console.error('Error while removing employee '+id +', Error :'+errResponse.data);
-                    }
-                );
+            if (confirm("Please confirm?")) {
+                console.log('About to remove employee with id ' + id);
+                EmployeeService.removeEmployee(id)
+                    .then(
+                        function () {
+                            console.log('Employee with ' + id + ' removed successfully');
+                            self.successMessage = 'Employee removed successfully';
+                            self.errorMessage = '';
+                        },
+                        function (errResponse) {
+                            console.error('Error while removing employee ' + id + ', Error :' + errResponse.data);
+                        }
+                    );
+            }
         }
 
         function getAllEmployees(){
@@ -115,14 +121,16 @@ angular.module('bookingApp').controller('EmployeeController',
         }
 
         function logout (){
-            LoginService.user = null;
+            if (confirm("Are you sure to logout?")) {
+                LoginService.user = null;
 
-            // setting session token & user become null (logout)
-            $sessionStorage.token = null;
-            $sessionStorage.user = null;
+                // setting session token & user become null (logout)
+                $sessionStorage.token = undefined;
+                $sessionStorage.user = undefined;
 
-            console.log("Logout Successfully");
-            $state.go('home');
+                console.log("Logout Successfully");
+                $state.go('home');
+            }
         };
     }
     ]);

@@ -35,60 +35,66 @@ angular.module('bookingApp').controller('OfficeController',
         }
 
         function createOffice (office){
-            console.log('About to create offices');
-            OfficeService.createOffice(office)
-                .then(
-                    function (response){
-                      console.log('Office created successfully');
-                      self.successMessage = 'Office created successfully';
-                      self.errorMessage = '';
-                      self.done = true;
-                      self.office={};
-                      self.office.status=1;
-                      $scope.myForm.$setPristine();
-                    },
+            if (confirm("Please confirm?")) {
+                console.log('About to create offices');
+                OfficeService.createOffice(office)
+                    .then(
+                        function (response) {
+                            console.log('Office created successfully');
+                            self.successMessage = 'Office created successfully';
+                            self.errorMessage = '';
+                            self.done = true;
+                            self.office = {};
+                            self.office.status = 1;
+                            $scope.myForm.$setPristine();
+                        },
 
-                    function (errResponse){
-                        console.log('Error while creating office');
-                        self.errorMessage = 'Error while creating office';
-                        self.successMessage = '';
-                    }
-                );
+                        function (errResponse) {
+                            console.log('Error while creating office');
+                            self.errorMessage = 'Error while creating office';
+                            self.successMessage = '';
+                        }
+                    );
+            }
         }
 
         function updateOffice (office , id){
-            console.log('About to update offices');
-            OfficeService.updateOffice(office , id)
-                .then(
-                    function (response){
-                        console.log('Office updated successfully');
-                        self.successMessage='Office updated successfully';
-                        self.errorMessage='';
-                        self.done = true;
-                        $scope.myForm.$setPristine();
-                    },
+            if (confirm("Please confirm?")) {
+                console.log('About to update offices');
+                OfficeService.updateOffice(office, id)
+                    .then(
+                        function (response) {
+                            console.log('Office updated successfully');
+                            self.successMessage = 'Office updated successfully';
+                            self.errorMessage = '';
+                            self.done = true;
+                            $scope.myForm.$setPristine();
+                        },
 
-                    function (errResponse){
-                        console.log('Error while updating office');
-                        self.errorMessage = 'Error while updating office';
-                        self.successMessage = '';
-                    }
-                );
+                        function (errResponse) {
+                            console.log('Error while updating office');
+                            self.errorMessage = 'Error while updating office';
+                            self.successMessage = '';
+                        }
+                    );
+            }
         }
 
         function removeOffice (id){
-            console.log('About to remove Office with id '+id);
-            OfficeService.removeOffice(id)
-                .then(
-                    function(){
-                        console.log('Office with '+id + ' removed successfully');
-                        self.successMessage='Office removed successfully';
-                        self.errorMessage='';
-                    },
-                    function (errResponse){
-                        console.error('Error while removing offices '+id +', Error :'+errResponse.data);
-                    }
-                );
+            if (confirm("Please confirm?")) {
+                console.log('About to remove Office with id ' + id);
+                OfficeService.removeOffice(id)
+                    .then(
+                        function () {
+                            console.log('Office with ' + id + ' removed successfully');
+                            self.successMessage = 'Office removed successfully';
+                            self.errorMessage = '';
+                        },
+                        function (errResponse) {
+                            console.error('Error while removing offices ' + id + ', Error :' + errResponse.data);
+                        }
+                    );
+            }
         }
 
         function getAllOffices(){
@@ -117,14 +123,16 @@ angular.module('bookingApp').controller('OfficeController',
         }
 
         function logout (){
-            LoginService.user = null;
+            if (confirm("Are you sure to logout?")) {
+                LoginService.user = null;
 
-            // setting session token & user become null (logout)
-            $sessionStorage.token = null;
-            $sessionStorage.user = null;
+                // setting session token & user become null (logout)
+                $sessionStorage.token = undefined;
+                $sessionStorage.user = undefined;
 
-            console.log("Logout Successfully");
-            $state.go('home');
+                console.log("Logout Successfully");
+                $state.go('home');
+            }
         };
     }
     ]);

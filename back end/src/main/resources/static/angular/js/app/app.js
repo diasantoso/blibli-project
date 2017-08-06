@@ -239,7 +239,6 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
        $locationProvider.html5Mode(true);
        $urlRouterProvider.otherwise('/');}]);
 
-
 app.directive("ngUploadChange",function(){
     return{
         scope:{

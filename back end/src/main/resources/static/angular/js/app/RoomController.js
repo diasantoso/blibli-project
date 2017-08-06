@@ -43,60 +43,66 @@ angular.module('bookingApp').controller('RoomController',
         }
 
         function createRoom (room){
-            console.log('About to create rooms');
-            RoomService.createRoom(room)
-                .then(
-                    function (response){
-                      console.log('Room created successfully');
-                      //Save Room Image With Room Id
-                        submitImage(response.response);
-                      self.successMessage = 'Room created successfully';
-                      self.errorMessage = '';
-                      self.done = true;
-                      reset();
-                    },
+            if (confirm("Please confirm?")) {
+                console.log('About to create rooms');
+                RoomService.createRoom(room)
+                    .then(
+                        function (response) {
+                            console.log('Room created successfully');
+                            //Save Room Image With Room Id
+                            submitImage(response.response);
+                            self.successMessage = 'Room created successfully';
+                            self.errorMessage = '';
+                            self.done = true;
+                            reset();
+                        },
 
-                    function (errResponse){
-                        console.log('Error while creating room');
-                        self.errorMessage = 'Error while creating room';
-                        self.successMessage = '';
-                    }
-                );
+                        function (errResponse) {
+                            console.log('Error while creating room');
+                            self.errorMessage = 'Error while creating room';
+                            self.successMessage = '';
+                        }
+                    );
+            }
         }
 
         function updateRoom (room , id){
-            console.log('About to update room');
-            RoomService.updateRoom(room , id)
-                .then(
-                    function (response){
-                        console.log('Room updated successfully');
-                        self.successMessage='Room updated successfully';
-                        self.errorMessage='';
-                        self.done = true;
-                        reset();
-                    },
+            if (confirm("Please confirm?")) {
+                console.log('About to update room');
+                RoomService.updateRoom(room, id)
+                    .then(
+                        function (response) {
+                            console.log('Room updated successfully');
+                            self.successMessage = 'Room updated successfully';
+                            self.errorMessage = '';
+                            self.done = true;
+                            reset();
+                        },
 
-                    function (errResponse){
-                        console.log('Error while updating room');
-                        self.errorMessage = 'Error while updating room';
-                        self.successMessage = '';
-                    }
-                );
+                        function (errResponse) {
+                            console.log('Error while updating room');
+                            self.errorMessage = 'Error while updating room';
+                            self.successMessage = '';
+                        }
+                    );
+            }
         }
 
         function removeRoom (id){
-            console.log('About to remove Room with id '+id);
-            RoomService.removeRoom(id)
-                .then(
-                    function(){
-                        console.log('Room with '+id + ' removed successfully');
-                        self.successMessage='Room removed successfully';
-                        self.errorMessage='';
-                    },
-                    function (errResponse){
-                        console.error('Error while removing room '+id +', Error :'+errResponse.data);
-                    }
-                );
+            if (confirm("Please confirm?")) {
+                console.log('About to remove Room with id ' + id);
+                RoomService.removeRoom(id)
+                    .then(
+                        function () {
+                            console.log('Room with ' + id + ' removed successfully');
+                            self.successMessage = 'Room removed successfully';
+                            self.errorMessage = '';
+                        },
+                        function (errResponse) {
+                            console.error('Error while removing room ' + id + ', Error :' + errResponse.data);
+                        }
+                    );
+            }
         }
 
         function getAllRooms(){
@@ -202,14 +208,16 @@ angular.module('bookingApp').controller('RoomController',
         }
 
         function logout (){
-            LoginService.user = null;
+            if (confirm("Are you sure to logout?")) {
+                LoginService.user = null;
 
-            // setting session token & user become null (logout)
-            $sessionStorage.token = null;
-            $sessionStorage.user = null;
+                // setting session token & user become null (logout)
+                $sessionStorage.token = undefined;
+                $sessionStorage.user = undefined;
 
-            console.log("Logout Successfully");
-            $state.go('home');
+                console.log("Logout Successfully");
+                $state.go('home');
+            }
         };
     }
     ]);

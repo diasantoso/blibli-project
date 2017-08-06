@@ -131,18 +131,20 @@ angular.module('bookingApp').controller('BookingController',
         }
 
         function removeBooking (id){
-            console.log('About to remove booking with id '+id);
-            BookingService.removeBooking(id)
-                .then(
-                    function(){
-                        console.log('Booking with '+id + ' removed successfully');
-                        self.successMessage='Booking removed successfully';
-                        self.errorMessage='';
-                    },
-                    function (errResponse){
-                        console.error('Error while removing booking '+id +', Error :'+errResponse.data);
-                    }
-                );
+            if (confirm("Please confirm?")) {
+                console.log('About to remove booking with id ' + id);
+                BookingService.removeBooking(id)
+                    .then(
+                        function () {
+                            console.log('Booking with ' + id + ' removed successfully');
+                            self.successMessage = 'Booking removed successfully';
+                            self.errorMessage = '';
+                        },
+                        function (errResponse) {
+                            console.error('Error while removing booking ' + id + ', Error :' + errResponse.data);
+                        }
+                    );
+            }
         }
 
         function getAllBookings(){
@@ -336,14 +338,16 @@ angular.module('bookingApp').controller('BookingController',
         }
 
         function logout (){
-            LoginService.user = null;
+            if (confirm("Are you sure to logout?")) {
+                LoginService.user = null;
 
-            // setting session token & user become null (logout)
-            $sessionStorage.token = undefined;
-            $sessionStorage.user = undefined;
+                // setting session token & user become null (logout)
+                $sessionStorage.token = undefined;
+                $sessionStorage.user = undefined;
 
-            console.log("Logout Successfully");
-            $state.go('home');
+                console.log("Logout Successfully");
+                $state.go('home');
+            }
         };
     }
     ]);
