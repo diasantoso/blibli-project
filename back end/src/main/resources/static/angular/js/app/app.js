@@ -232,6 +232,13 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
                     controllerAs: 'ctrlBooking'
                 })
 
+                .state('EmpExtend',{
+                    url: '/employees/extend',
+                    templateUrl: '/partials/employees/empextend',
+                    controller: 'BookingController',
+                    controllerAs: 'ctrlBooking'
+                })
+
                 ;
 
 
