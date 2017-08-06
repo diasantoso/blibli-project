@@ -19,7 +19,12 @@ public class RoomRepositoryImpl implements RoomRepositoryCustom {
         EntityManager em = entityManagerFactory.createEntityManager();
         em.getTransaction().begin();
         Room result = em.find(Room.class, id);
-        result.setStatus(0);
+
+        if(result.getStatus()==1)
+            result.setStatus(0);
+        else if(result.getStatus()==0)
+            result.setStatus(1);
+
         em.getTransaction().commit();
 
         return result;

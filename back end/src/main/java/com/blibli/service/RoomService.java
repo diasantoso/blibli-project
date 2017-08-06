@@ -20,6 +20,8 @@ public class RoomService {
         return roomRepository.showActiveRoom();
     }
 
+    public List<Room> getAll() { return roomRepository.findAll(); }
+
     public Room getOneActive (String id){ return roomRepository.showOneRoom(id);}
 
     public Room save(Room room) {

@@ -95,9 +95,33 @@
                                         </div>
                                     </td>
                                     <td>{{u.numberExtension}}</td>
+                                    <td>
+                                        <div ng-switch on="{{u.status}}">
+                                            <div ng-switch-when="1">Active</div>
+                                            <div ng-switch-when="0">Deactive</div>
+                                        </div>
+                                    </td>
                                     <td>{{u.office.name}}</td>
-                                    <td><button type="button" ng-click="ctrlRoom.editRoom(u.idRoom)" data-toggle="modal" data-target="#myModalAdd" class="btn btn-success custom-width">Edit</button></td>
-                                    <td><button type="button" ng-click="ctrlRoom.removeRoom(u.idRoom)" class="btn btn-danger custom-width">Remove</button></td>
+                                    <td>
+                                        <div ng-switch on="{{u.status}}">
+                                            <div ng-switch-when="1">
+                                                <button type="button" ng-click="ctrlRoom.editRoom(u.idRoom)" data-toggle="modal" data-target="#myModalAdd" class="btn btn-success custom-width">Edit</button>
+                                            </div>
+                                            <div ng-switch-when="0">
+
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div ng-switch on="{{u.status}}">
+                                            <div ng-switch-when="1">
+                                                <button type="button" ng-click="ctrlRoom.removeRoom(u.idRoom)" class="btn btn-danger custom-width">Delete</button>
+                                            </div>
+                                            <div ng-switch-when="0">
+                                                <button type="button" ng-click="ctrlRoom.removeRoom(u.idRoom)" class="btn btn-success custom-width">Restore</button>
+                                            </div>
+                                        </div>
+                                    </td>
                                 </tr>
                                 </tbody>
                             </table>

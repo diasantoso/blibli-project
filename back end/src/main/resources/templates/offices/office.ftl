@@ -104,7 +104,7 @@
                                                 <button type="button" ng-click="ctrlOffice.removeOffice(u.idOffice)" class="btn btn-danger custom-width">Delete</button>
                                             </div>
                                             <div ng-switch-when="0">
-                                                <button type="button" ng-click="ctrlOffice.removeOffice(u.idOffice)" class="btn btn-danger custom-width">Restore</button>
+                                                <button type="button" ng-click="ctrlOffice.removeOffice(u.idOffice)" class="btn btn-success custom-width">Restore</button>
                                             </div>
                                         </div>
                                     </td>

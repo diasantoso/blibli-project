@@ -38,8 +38,8 @@ public class RoomController {
 
     @RequestMapping(value = "/rooms", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public RoomResponseList getAllActiveRooms() {
-        List<Room> data = roomService.getAllActive();
+    public RoomResponseList getAllRooms() {
+        List<Room> data = roomService.getAll();
         List<RoomResponse> response = new ArrayList<>();
         RoomResponseList result = new RoomResponseList();
 
