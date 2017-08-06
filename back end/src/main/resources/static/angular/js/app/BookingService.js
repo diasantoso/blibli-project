@@ -306,7 +306,7 @@ angular.module('bookingApp').factory('BookingService' ,
                             // deferred.reject(errResponse);
                         }
                     );
-                return false
+                //return false
             }
 
         }

@@ -287,15 +287,15 @@ angular.module('bookingApp').controller('BookingController',
         }
         
         function getBookingHistory(bookingDate,bookingEndTime) {
-            console.log("Compare Date");
+            //console.log("Compare Date");
             var parts = bookingEndTime.split(":");
 
             var bookDate = new Date(bookingDate);
             bookDate.setHours(parts[0],parts[1],parts[2],0);
 
             //ini hasilnya timestamp , baik valuOf dan getTime. Juga nilainya sama
-            console.log("D : "+bookDate.valueOf());
-            console.log("T : "+bookDate.getTime());
+            //console.log("D : "+bookDate.valueOf());
+           //console.log("T : "+bookDate.getTime());
 
             if ( (bookDate.valueOf() < new Date().valueOf()) ||
                 (bookDate.valueOf() == new Date().valueOf() && bookDate.getTime() <  new Date().getTime() )){
@@ -307,32 +307,58 @@ angular.module('bookingApp').controller('BookingController',
         }
 
         function extendBooking(bookingId, newEndTime){
+            $('.modal-backdrop').hide();
+            $('.modal').hide();
+            $('#myModalExtend').hide();
+
             var result = BookingService.extendBooking(bookingId,newEndTime);
             console.log(result);
-            self.successMessage='You Successfully Extend Your booking time!';
+            self.successMessage='';
             self.errorMessage='There is an error while extending the booking time!';
             if (result==true){
                 console.log('Jam selesai baru : ' + newEndTime);
                 console.log(self.userBookings);
                 console.log('extend success');
-                $state.go('');
+                $scope.successMessage='You Successfully Extend Your booking time!';
+                //$state.go('EmpExtend');
             } else {
                 console.log('extend failed.');
-                self.booking = BookingService.getBooking(bookingId)[1];
-                self.searchVar.date = self.booking.dateMeeting;
-                self.searchVar.startTime = self.booking.endTime;
-                self.searchVar.endTime = newEndTime;
-                var roomData = RoomService.getRoombyId(self.booking.room.idRoom);
-                self.searchVar.officeId = roomData.office.idOffice;
+                $scope.successMessage='You Cannot Extend Your booking time!';
+                self.booking={}
 
-                self.rooms= BookingService.getAvailableRooms(self.searchVar);
-                console.log('rooms'+self.rooms);
-                if(self.rooms!=null){
-                    console.log('');
-                    $state.go('');
-                }else{
-                    console.log('Gagal redirect');
-                }
+                BookingService.getBooking(bookingId).then(
+                    function (booking) {
+                        self.booking = booking;
+                        console.log('cek booking :'+self.booking);
+                        self.searchVar.date = self.booking.value[0].dateMeeting;
+                        self.searchVar.startTime = self.booking.value[0].endTime;
+                        self.searchVar.endTime = newEndTime;
+
+                        RoomService.getRoom(self.booking.value[0].room.idRoom).then(
+                            function (room) {
+                                console.log(room);
+                                self.room = room;
+                                self.searchVar.officeId = self.room.office.idOffice;
+
+                                self.rooms= BookingService.getAvailableRooms(self.searchVar);
+                                console.log('rooms'+self.rooms);
+                                if(self.rooms!=null){
+                                    console.log('');
+                                    $state.go('EmpExtend');
+                                }else{
+                                    console.log('Gagal redirect');
+                                }
+                            },
+                            function (errResponse){
+                                console.error('Error while getting room '+roomId +', Error :'+errResponse.data);
+                            }
+                        );
+
+                    },
+                    function (errResponse){
+                        console.error('Error while editing booking '+id +', Error :'+errResponse.data);
+                    }
+                );
             }
         }
 

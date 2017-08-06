@@ -264,7 +264,7 @@ app.directive("ngUploadChange",function(){
 
 // the following method will run at the time of initializing the module. That
 // means it will run only one time.
-app.run(function(LoginService, $rootScope, $state, $sessionStorage) {
+app.run(function(LoginService, $rootScope, $state, $sessionStorage,$http) {
     // For implementing the authentication with ui-router we need to listen the
     // state change. For every state change the ui-router module will broadcast
     // the '$stateChangeStart'.
