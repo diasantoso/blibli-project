@@ -68,6 +68,7 @@
                                         <th width="200">NAME</th>
                                         <th width="250">EMAIL</th>
                                         <th width="180">ROLE</th>
+                                        <th width="180">STATUS</th>
                                         <th width="100"></th>
                                         <th width="100"></th>
                                     </tr>
@@ -79,8 +80,32 @@
                                         <td>{{u.name}}</td>
                                         <td>{{u.email}}</td>
                                         <td>{{u.role}}</td>
-                                        <td><button type="button" ng-click="ctrlEmployee.editEmployee(u.idEmployee)" data-toggle="modal" data-target="#myModalAdd" class="btn btn-success custom-width">Edit</button></td>
-                                        <td><button type="button" ng-click="ctrlEmployee.removeEmployee(u.idEmployee)" class="btn btn-danger custom-width">Remove</button></td>
+                                        <td>
+                                            <div ng-switch on="{{u.status}}">
+                                                <div ng-switch-when="1">Active</div>
+                                                <div ng-switch-when="0">Deactive</div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div ng-switch on="{{u.status}}">
+                                                <div ng-switch-when="1">
+                                                    <button type="button" ng-click="ctrlEmployee.editEmployee(u.idEmployee)" data-toggle="modal" data-target="#myModalAdd" class="btn btn-success custom-width">Edit</button>
+                                                </div>
+                                                <div ng-switch-when="0">
+
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div ng-switch on="{{u.status}}">
+                                                <div ng-switch-when="1">
+                                                    <button type="button" ng-click="ctrlEmployee.removeEmployee(u.idEmployee)" class="btn btn-danger custom-width">Delete</button>
+                                                </div>
+                                                <div ng-switch-when="0">
+                                                    <button type="button" ng-click="ctrlEmployee.removeEmployee(u.idEmployee)" class="btn btn-success custom-width">Restore</button>
+                                                </div>
+                                            </div>
+                                        </td>
                                     </tr>
                                     </tbody>
                                 </table>

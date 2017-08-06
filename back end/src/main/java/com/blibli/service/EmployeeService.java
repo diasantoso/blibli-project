@@ -37,6 +37,8 @@ public class EmployeeService {
         return employeeRepository.showActiveEmployee();
     }
 
+    public List<Employee> getAll() { return employeeRepository.findAll(); }
+
     public Employee getOneActive(String id){
         return employeeRepository.showOneEmployee(id);
     }

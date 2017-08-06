@@ -138,7 +138,7 @@ public class EmployeeController {
     @RequestMapping(value = "/employees", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public EmployeeResponseList getAllActiveEmployees() {
-        List<Employee> data = employeeService.getAllActive();
+        List<Employee> data = employeeService.getAll();
         List<EmployeeResponse> response = new ArrayList<>();
         EmployeeResponseList result = new EmployeeResponseList();
 
