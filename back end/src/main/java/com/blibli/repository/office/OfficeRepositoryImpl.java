@@ -19,7 +19,12 @@ public class OfficeRepositoryImpl implements OfficeRepositoryCustom {
         EntityManager em = entityManagerFactory.createEntityManager();
         em.getTransaction().begin();
         Office result = em.find(Office.class, id);
-        result.setStatus(0);
+
+        if(result.getStatus()==1)
+            result.setStatus(0);
+        else if(result.getStatus()==0)
+            result.setStatus(1);
+
         em.getTransaction().commit();
 
         return result;

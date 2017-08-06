@@ -69,6 +69,7 @@
                                     <th width="250">ADDRESS</th>
                                     <th width="180">CITY</th>
                                     <th width="200">TELEPHONE</th>
+                                    <th width="200">STATUS</th>
                                     <th width="100"></th>
                                     <th width="100"></th>
                                 </tr>
@@ -81,8 +82,32 @@
                                     <td>{{u.address}}</td>
                                     <td>{{u.city}}</td>
                                     <td>{{u.telephone}}</td>
-                                    <td><button type="button" ng-click="ctrlOffice.editOffice(u.idOffice)" data-toggle="modal" data-target="#myModalAdd" class="btn btn-success custom-width">Edit</button></td>
-                                    <td><button type="button" ng-click="ctrlOffice.removeOffice(u.idOffice)" class="btn btn-danger custom-width">Remove</button></td>
+                                    <td>
+                                        <div ng-switch on="{{u.status}}">
+                                            <div ng-switch-when="1">Active</div>
+                                            <div ng-switch-when="0">Deactive</div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div ng-switch on="{{u.status}}">
+                                            <div ng-switch-when="1">
+                                                <button type="button" ng-click="ctrlOffice.editOffice(u.idOffice)" data-toggle="modal" data-target="#myModalAdd" class="btn btn-success custom-width">Edit</button>
+                                            </div>
+                                            <div ng-switch-when="0">
+
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div ng-switch on="{{u.status}}">
+                                            <div ng-switch-when="1">
+                                                <button type="button" ng-click="ctrlOffice.removeOffice(u.idOffice)" class="btn btn-danger custom-width">Delete</button>
+                                            </div>
+                                            <div ng-switch-when="0">
+                                                <button type="button" ng-click="ctrlOffice.removeOffice(u.idOffice)" class="btn btn-danger custom-width">Restore</button>
+                                            </div>
+                                        </div>
+                                    </td>
                                 </tr>
                                 </tbody>
                             </table>

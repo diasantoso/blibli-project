@@ -20,6 +20,8 @@ public class OfficeService {
         return officeRepository.showActiveOffice();
     }
 
+    public List<Office> getAll() { return officeRepository.findAll(); }
+
     public Office getOneActive(String id){
         return officeRepository.showOneOffice(id);
     }

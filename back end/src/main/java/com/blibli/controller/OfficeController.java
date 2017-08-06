@@ -27,6 +27,22 @@ public class OfficeController {
 
     @RequestMapping(value = "/offices", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
+    public OfficeResponseList getAllOffices() {
+        List<Office> data = officeService.getAll();
+        List<OfficeResponse> response = new ArrayList<>();
+        OfficeResponseList result = new OfficeResponseList();
+
+        for(Office office : data) {
+            OfficeResponse parse = new OfficeResponse();
+            BeanUtils.copyProperties(office, parse);
+            response.add(parse);
+        }
+        result.setValue(response);
+        return result;
+    }
+
+    @RequestMapping(value = "/offices/active", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
     public OfficeResponseList getAllActiveOffices() {
         List<Office> data = officeService.getAllActive();
         List<OfficeResponse> response = new ArrayList<>();
