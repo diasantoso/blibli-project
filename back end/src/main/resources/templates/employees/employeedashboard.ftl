@@ -80,7 +80,7 @@
                                                     <td>{{u.subject}}</td>
                                                     <td>{{u.description}}</td>
                                                 <td><button type="button" ng-click="ctrlBooking.cancelBooking(u.idBooking)" class="btn btn-success custom-width">Cancel Booking</button></td>
-                                                <td ng-if-end="!ctrlBooking.getBookingHistory(u.dateMeeting,u.endTime)"><button type="button" ng-click="" class="btn btn-success custom-width">Extend Booking</button></td>
+                                                <td ng-if-end="!ctrlBooking.getBookingHistory(u.dateMeeting,u.endTime)"><button type="button" ng-click="" data-toggle="modal" data-target="#myModalExtend" class="btn btn-success custom-width">Extend Booking</button></td>
                                             </tr>
                                             </tbody>
                                         </table>
@@ -167,7 +167,7 @@
                 <h4 class="modal-title">Aditional Booking Data</h4>
             </div>
             <div class="modal-body">
-                <form class="form-horizontal" ng-submit="" name="myForm">
+                <form class="form-horizontal" ng-submit="ctrlBooking.extendBooking('402881955db2cef1015db2cfe5190000','23:15:50')" name="myForm">
                     <div class="form-group">
                         <label class="col-sm-3 control-label">Insert New Time for Extend</label>
                         <div class="col-sm-8">
@@ -176,7 +176,7 @@
                     </div>
 
                     <div class="form-group modal-footer">
-                        <input type="submit" data-dismiss="myModalExtenf" value="Extend" class="btn btn-primary btn-sm" ng-disabled="myForm.$invalid || myForm.$pristine">
+                        <input type="submit" value="Extend" class="btn btn-primary btn-sm" ng-disabled="myForm.$invalid || myForm.$pristine">
                     </div>
                 </form>
 

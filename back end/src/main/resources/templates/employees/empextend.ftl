@@ -43,7 +43,7 @@
                     <div class="col-md-12">
                         <div class="card card-plain">
                             <div class="header">
-                                <h3 class="title"><strong>{{ctrlBooking.successMessage}}</strong></h3><br/>
+                                <h3 class="title"><strong>Successfully extended your booking time!</strong></h3><br/>
                                 <p class="category"><h5></h5></p>
                             </div>
                             <br/><br/>
