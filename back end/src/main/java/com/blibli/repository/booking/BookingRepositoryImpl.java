@@ -29,7 +29,12 @@ public class BookingRepositoryImpl implements BookingRepositoryCustom {
         EntityManager em = entityManagerFactory.createEntityManager();
         em.getTransaction().begin();
         Booking result = em.find(Booking.class, id);
-        result.setStatus(0);
+
+        if(result.getStatus()==0)
+            result.setStatus(1);
+        else if(result.getStatus()==1)
+            result.setStatus(0);
+
         em.getTransaction().commit();
 
         return result;
