@@ -86,7 +86,12 @@
                                     <td>{{u.startTime}}</td>
                                     <td>{{u.endTime}}</td>
                                     <td>{{u.addedDate}}</td>
-                                    <td>{{u.status}}</td>
+                                    <td>
+                                        <div ng-switch on="{{u.status}}">
+                                            <div ng-switch-when="1">Active</div>
+                                            <div ng-switch-when="0">Deactive</div>
+                                        </div>
+                                    </td>
                                     <td><button type="button" ng-click="ctrlBooking.removeBooking(u.idBooking)" class="btn btn-success custom-width">Delete</button></td>
                                 </tr>
                                 </tbody>

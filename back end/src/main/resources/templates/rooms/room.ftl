@@ -82,8 +82,18 @@
                                     <td>{{$index +1}}</td>
                                     <td>{{u.name}}</td>
                                     <td>{{u.capacity}}</td>
-                                    <td>{{u.isConference}}</td>
-                                    <td>{{u.isProjector}}</td>
+                                    <td>
+                                        <div ng-switch on="{{u.isConference}}">
+                                            <div ng-switch-when="1">Yes</div>
+                                            <div ng-switch-when="0">No</div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div ng-switch on="{{u.isProjector}}">
+                                            <div ng-switch-when="1">Yes</div>
+                                            <div ng-switch-when="0">No</div>
+                                        </div>
+                                    </td>
                                     <td>{{u.numberExtension}}</td>
                                     <td>{{u.office.name}}</td>
                                     <td><button type="button" ng-click="ctrlRoom.editRoom(u.idRoom)" data-toggle="modal" data-target="#myModalAdd" class="btn btn-success custom-width">Edit</button></td>
