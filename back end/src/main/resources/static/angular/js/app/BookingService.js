@@ -27,7 +27,9 @@ angular.module('bookingApp').factory('BookingService' ,
 
                 getBookingByTicket : getBookingByTicket,
                 getAllBookingByTicket : getAllBookingByTicket,
-                getTicketId : getTicketId
+                getTicketId : getTicketId,
+
+                extendBooking : extendBooking
 
             };
 
@@ -283,6 +285,28 @@ angular.module('bookingApp').factory('BookingService' ,
 
             function getAllBookingPerUser(){
                 return $localStorage.userBookings;
+            }
+
+            function extendBooking(bookingId,newEndTime){
+                console.log('Checking Room For Extending');
+                var deferred = $q.defer();
+                $http.post(urls.BOOKING_SERVICE_API+'/extend/'+bookingId+'?newEndTime='+ newEndTime)
+                    .then(
+                        function (response){
+                            if(response.data.value=="success extending"){
+                                return true;
+                            }else if (response.data.value == "failed extending"){
+                                return false;
+                            }
+                            // deferred.resolve(response);
+                        },
+                        function (errResponse){
+                            console.error('Error while Checking Room For Extending');
+                            console.error(errResponse);
+                            // deferred.reject(errResponse);
+                        }
+                    );
+                return false
             }
 
         }
