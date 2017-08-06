@@ -212,13 +212,15 @@ angular.module('bookingApp').controller('BookingController',
         }
 
         function checkTicket(){
-            self.bookingTicket= BookingService.getBookingByTicket(self.ticket.id);
-            console.log('BookingTicket'+self.bookingTicket);
-            if(self.bookingTicket!=null){
-                console.log('Go to Show Ticket');
-                $state.go('showticket');
-            }else{
-                console.log('Gagal redirect');
+            if(confirm("Checking Booking with Ticket ID="+self.ticket.id+" ?")) {
+                self.bookingTicket = BookingService.getBookingByTicket(self.ticket.id);
+                console.log('BookingTicket' + self.bookingTicket);
+                if (self.bookingTicket != null) {
+                    console.log('Go to Show Ticket');
+                    $state.go('showticket');
+                } else {
+                    console.log('Gagal redirect');
+                }
             }
         }
 

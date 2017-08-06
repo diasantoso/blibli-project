@@ -36,9 +36,11 @@ angular.module('bookingApp')
                     console.log("Debug : Login Success -> Going Dashboard");
                     console.log("Debug : Login Token -> "+res.token);
                     if(res.user.role=='Admin'){
+                        alert("Welcome Admin!");
                         $state.go('dashboard');
                     }
                     else if(res.user.role=='Employee'){
+                        alert("Welcome Employee!");
                         $state.go('EmpDashboard');
                     }
                     else {

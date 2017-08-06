@@ -40,6 +40,7 @@ angular.module('bookingApp').controller('OfficeController',
                 OfficeService.createOffice(office)
                     .then(
                         function (response) {
+                            alert("Adding Office Success!");
                             console.log('Office created successfully');
                             self.successMessage = 'Office created successfully';
                             self.errorMessage = '';
@@ -50,6 +51,7 @@ angular.module('bookingApp').controller('OfficeController',
                         },
 
                         function (errResponse) {
+                            alert("Adding Office Failed!");
                             console.log('Error while creating office');
                             self.errorMessage = 'Error while creating office';
                             self.successMessage = '';
@@ -64,6 +66,7 @@ angular.module('bookingApp').controller('OfficeController',
                 OfficeService.updateOffice(office, id)
                     .then(
                         function (response) {
+                            alert("Updating Office Success!");
                             console.log('Office updated successfully');
                             self.successMessage = 'Office updated successfully';
                             self.errorMessage = '';
@@ -72,6 +75,7 @@ angular.module('bookingApp').controller('OfficeController',
                         },
 
                         function (errResponse) {
+                            alert("Updating Office Failed!");
                             console.log('Error while updating office');
                             self.errorMessage = 'Error while updating office';
                             self.successMessage = '';

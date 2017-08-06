@@ -40,6 +40,7 @@ angular.module('bookingApp').controller('EmployeeController',
                 EmployeeService.createEmployee(employee)
                     .then(
                         function (response) {
+                            alert("Register Success!")
                             console.log('Employee created successfully');
                             self.successMessage = 'Employee created successfully';
                             self.errorMessage = '';
@@ -49,6 +50,7 @@ angular.module('bookingApp').controller('EmployeeController',
                         },
 
                         function (errResponse) {
+                            alert("Register Failed!");
                             console.log('Error while creating employee');
                             self.errorMessage = 'Error while creating employee';
                             self.successMessage = '';
@@ -63,6 +65,7 @@ angular.module('bookingApp').controller('EmployeeController',
                 EmployeeService.updateEmployee(employee, id)
                     .then(
                         function (response) {
+                            alert("Update Success!");
                             console.log('Employee updated successfully');
                             self.successMessage = 'Employee updated successfully';
                             self.errorMessage = '';
@@ -71,6 +74,7 @@ angular.module('bookingApp').controller('EmployeeController',
                         },
 
                         function (errResponse) {
+                            alert("Update Failed!");
                             console.log('Error while updating employee');
                             self.errorMessage = 'Error while updating employee';
                             self.successMessage = '';

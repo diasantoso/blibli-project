@@ -48,6 +48,7 @@ angular.module('bookingApp').controller('RoomController',
                 RoomService.createRoom(room)
                     .then(
                         function (response) {
+                            alert("Adding Room Success!");
                             console.log('Room created successfully');
                             //Save Room Image With Room Id
                             submitImage(response.response);
@@ -58,6 +59,7 @@ angular.module('bookingApp').controller('RoomController',
                         },
 
                         function (errResponse) {
+                            alert("Adding Room Failed!");
                             console.log('Error while creating room');
                             self.errorMessage = 'Error while creating room';
                             self.successMessage = '';
@@ -72,6 +74,7 @@ angular.module('bookingApp').controller('RoomController',
                 RoomService.updateRoom(room, id)
                     .then(
                         function (response) {
+                            alert("Updating Room Success!");
                             console.log('Room updated successfully');
                             self.successMessage = 'Room updated successfully';
                             self.errorMessage = '';
@@ -80,6 +83,7 @@ angular.module('bookingApp').controller('RoomController',
                         },
 
                         function (errResponse) {
+                            alert("Updating Room Failed!");
                             console.log('Error while updating room');
                             self.errorMessage = 'Error while updating room';
                             self.successMessage = '';
