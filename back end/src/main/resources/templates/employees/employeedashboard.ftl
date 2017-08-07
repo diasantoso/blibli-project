@@ -80,7 +80,8 @@
                                                     <td>{{u.subject}}</td>
                                                     <td>{{u.description}}</td>
                                                 <td><button type="button" ng-click="ctrlBooking.cancelBooking(u.idBooking)" class="btn btn-success custom-width">Cancel Booking</button></td>
-                                                <td ng-if-end="!ctrlBooking.getBookingHistory(u.dateMeeting,u.endTime)"><button type="button" ng-click="" data-toggle="modal" data-target="#myModalExtend" class="btn btn-success custom-width">Extend Booking</button></td>
+                                                <td ng-if-end="!ctrlBooking.getBookingHistory(u.dateMeeting,u.endTime)">
+                                                    <button type="button" ng-click="ctrlBooking.extendId = u.idBooking" data-toggle="modal" data-target="#myModalExtend" class="btn btn-success custom-width">Extend Booking {{ctrlBooking.test}}</button></td>
                                             </tr>
                                             </tbody>
                                         </table>
@@ -164,19 +165,19 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Aditional Booking Data</h4>
+                <h4 class="modal-title">Extending Booking Time</h4>
             </div>
             <div class="modal-body">
-                <form class="form-horizontal" ng-submit="ctrlBooking.extendBooking('402881955db2cef1015db2cfe5190000','23:17:09')" name="myForm">
+                <form class="form-horizontal" ng-submit="ctrlBooking.extendBooking(ctrlBooking.extendId,ctrlBooking.booking.endTime)" name="myForm">
                     <div class="form-group">
-                        <label class="col-sm-3 control-label">Insert New Time for Extend</label>
+                        <label class="col-sm-3 control-label">Insert New Time for Extend{{ctrlBooking.extendId}}{{ctrlBooking.booking.endTime}}</label>
                         <div class="col-sm-8">
                             <input type="text" ng-model="ctrlBooking.booking.endTime" id="endTime" class="username form-control input-sm" placeholder="Enter New Time To extend Your Booking" required />
                         </div>
                     </div>
 
                     <div class="form-group modal-footer">
-                        <input type="submit" value="Extend" class="btn btn-primary btn-sm" ng-disabled="myForm.$invalid || myForm.$pristine">
+                        <input type="submit" ng-model="ctrlBooking.booking.endTime" value="Extend" class="btn btn-primary btn-sm" ng-disabled="myForm.$invalid || myForm.$pristine">
                     </div>
                 </form>
 
