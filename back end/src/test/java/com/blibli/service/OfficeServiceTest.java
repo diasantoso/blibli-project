@@ -44,6 +44,7 @@ public class OfficeServiceTest {
         BDDMockito.given(this.officeRepository.showActiveOffice()).willReturn(listOffice);
 
         List<Office> result = officeService.getAllActive();
+        
         Assert.assertEquals(listOffice, result);
         Mockito.verify(this.officeRepository, Mockito.times(1))
                 .showActiveOffice();
