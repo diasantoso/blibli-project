@@ -31,6 +31,7 @@ import java.util.List;
 @Controller
 @RequestMapping(value="/api/rooms")
 public class RoomImageController {
+
     @Autowired
     RoomImageService roomImageService;
     @Autowired
@@ -74,8 +75,6 @@ public class RoomImageController {
     @RequestMapping(value="/images", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public ResponseBack createRoomImages(@RequestBody RoomImageResponse param){
-
-
         //Image Room Save to Database
         RoomImage roomImage = new RoomImage();
         BeanUtils.copyProperties(param,roomImage);
@@ -105,7 +104,5 @@ public class RoomImageController {
 
         return responseBack;
     }
-
-
 }
 

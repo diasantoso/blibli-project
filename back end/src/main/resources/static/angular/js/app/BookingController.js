@@ -26,8 +26,6 @@ angular.module('bookingApp').controller('BookingController',
         //get date
         $scope.date = new Date();
 
-
-
         self.submit = submit;
         self.getAllBookings = getAllBookings;
         self.getUpcomingBookings = getUpcomingBookings;
@@ -70,6 +68,10 @@ angular.module('bookingApp').controller('BookingController',
         self.onlyNumbers = /^\d+([,.]\d+)?$/;
 
         function submit(){
+            $('.modal-backdrop').hide();
+            $('.modal').hide();
+            $('#myModalAdd').hide();
+
             console.log('Submitting');
             if(self.booking.id === undefined || self.booking.id === null) {
                 console.log('Saving new booking');
@@ -100,9 +102,6 @@ angular.module('bookingApp').controller('BookingController',
                         self.booking={};
                         //$scope.myForm.$setPristine();
                         $state.go('EmpUpcomingBooking');
-                        $('.modal-backdrop').hide();
-                        $('.modal').hide();
-                        $('#myModalAdd').hide();
                     },
 
                     function (errResponse){
@@ -123,12 +122,18 @@ angular.module('bookingApp').controller('BookingController',
                         self.errorMessage='';
                         self.done = true;
                         $scope.myForm.$setPristine();
+
+                        alert("Booking success cancelled!");
+                        $state.reload();
                     },
 
                     function (errResponse){
                         console.log('Error while updating booking');
                         self.errorMessage = 'Error while updating booking';
                         self.successMessage = '';
+
+                        alert("Booking failed cancelled!");
+                        $state.go('EmpDashboard');
                     }
                 );
         }
@@ -274,19 +279,21 @@ angular.module('bookingApp').controller('BookingController',
         }
 
         function cancelBooking(id) {
-            self.successMessage='';
-            self.errorMessage='';
-            BookingService.getBooking(id).then(
-                function (booking) {
-                    self.booking = booking;
-                    self.booking.employee_id = LoginService.user.id_employee;
-                    booking.value[0].statusBooking = "0";
-                    updateBooking (booking.value[0] , id);
-                },
-                function (errResponse){
-                    console.error('Error while editing booking '+id +', Error :'+errResponse.data);
-                }
-            );
+            if (confirm("Please confirm?")) {
+                self.successMessage = '';
+                self.errorMessage = '';
+                BookingService.getBooking(id).then(
+                    function (booking) {
+                        self.booking = booking;
+                        self.booking.employee_id = LoginService.user.id_employee;
+                        booking.value[0].statusBooking = "0";
+                        updateBooking(booking.value[0], id);
+                    },
+                    function (errResponse) {
+                        console.error('Error while editing booking ' + id + ', Error :' + errResponse.data);
+                    }
+                );
+            }
         }
         
         function getBookingHistory(bookingDate,bookingEndTime) {

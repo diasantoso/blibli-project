@@ -32,8 +32,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.time.*;
-
-
 /**
  * Created by Dias on 4/8/2017.
  */
@@ -205,44 +203,14 @@ public class BookingController {
         return responseBack;
     }
 
-//    //Untuk menampilkan data booking sesuai tanggal dan waktu yang dimasukkan user
-//    @RequestMapping(value = "bookings/used", method = RequestMethod.GET , produces = MediaType.APPLICATION_JSON_VALUE)
-//    @ResponseBody
-//    public BookingResponseList getBookingByDateTime(@RequestParam Date date, @RequestParam Time startTime,
-//                                                    @RequestParam Time endTime){
-//        List<Booking> data = bookingService.getAllBooking();
-//        List<BookingResponse> responses = new ArrayList<>();
-//        BookingResponseList result = new BookingResponseList();
-//
-//        for(Booking book : data){
-//            //(book.startTime >= startTime && book.startTime <endTime)
-//            //(book.endTime <= endTime && book.endTime > startTime)
-//
-//            if( (book.getDateMeeting().equals(date) &&
-//                    (((book.getStartTime().equals(startTime) || book.getStartTime().before(startTime))&& book.getEndTime().after(startTime))||
-//                            ((book.getEndTime().equals(endTime) || book.getEndTime().after(endTime) && book.getStartTime().before(endTime)))))
-//                    && book.getStatusBooking().equalsIgnoreCase("1")){
-//                BookingResponse parse = new BookingResponse();
-//                BeanUtils.copyProperties(book,parse);
-//                responses.add(parse);
-//            }
-//
-//
-//        }
-//        result.setValue(responses);
-//        return result;
-//    }
-
     //Untuk menampilkan jadwal booking yang belum kadaluarsa
     @RequestMapping(value = "bookings/schedule", method = RequestMethod.GET , produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public BookingResponseList getBookingSchedule (){
-
         List<Booking> data = bookingService.getAllBooking();
         List<BookingResponse> responses = new ArrayList<>();
         BookingResponseList result = new BookingResponseList();
 
-        //DateTimeFormatter dtf = new DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         LocalDate localDate = LocalDate.now();
         LocalTime localTime = LocalTime.now();
 
@@ -329,7 +297,6 @@ public class BookingController {
                     }
                 }
             }
-
         }
 
         //Jika ruangan yang dia gunakan saat itu kosong,
@@ -432,5 +399,4 @@ public class BookingController {
 
         return responseBack;
     }
-
 }

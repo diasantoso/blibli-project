@@ -55,7 +55,6 @@ angular.module('bookingApp').factory('BookingService' ,
                 return deferred.promise;
             }
 
-
             function loadUpcomingBookings(){
                 console.log('Fetching upcoming bookings');
                 var deferred = $q.defer();
@@ -309,7 +308,6 @@ angular.module('bookingApp').factory('BookingService' ,
                             else {
                                 console.log('syalalala');
                             }
-                            // deferred.resolve(response);
                         },
                         function (errResponse){
                             console.error('Error while Checking Room For Extending');
@@ -320,6 +318,5 @@ angular.module('bookingApp').factory('BookingService' ,
                 //return false
                 return deferred.promise;
             }
-
         }
     ]);

@@ -29,6 +29,7 @@ import java.util.List;
 @Controller
 @RequestMapping(value = "/api")
 public class RoomController {
+
     @Autowired
     RoomService roomService;
     @Autowired
@@ -157,7 +158,5 @@ public class RoomController {
         System.out.println("## Room Available : "+data.size());
         System.out.println("## Room Booked    : "+data_used.size());
         return result;
-
     }
-
 }
