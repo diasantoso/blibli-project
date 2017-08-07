@@ -289,7 +289,7 @@ angular.module('bookingApp').factory('BookingService' ,
 
             function extendBooking(bookingId,newEndTime){
                 console.log('Checking Room For Extending');
-                //var deferred = $q.defer();
+                var deferred = $q.defer();
                 var checkResult;
                 $http.post(urls.BOOKING_SERVICE_API+'/extend/'+bookingId+'?newEndTime='+ newEndTime)
                     .then(
@@ -299,10 +299,12 @@ angular.module('bookingApp').factory('BookingService' ,
                             //                  key      :   value
                             if(response.data.response =="success extending"){
                                console.log('hasil service nya true');
-                                return true;
+                                deferred.resolve(response);
+                                //return true;
                             }else if (response.data.response == "failed extending"){
                                 console.log('hasil service nya false');
-                                return false;
+                                deferred.resolve(response);
+                                //return false;
                             }
                             else {
                                 console.log('syalalala');
@@ -312,10 +314,11 @@ angular.module('bookingApp').factory('BookingService' ,
                         function (errResponse){
                             console.error('Error while Checking Room For Extending');
                             console.error(errResponse);
-                            // deferred.reject(errResponse);
+                            deferred.reject(errResponse);
                         }
                     );
                 //return false
+                return deferred.promise;
             }
 
         }
