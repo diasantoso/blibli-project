@@ -49,7 +49,7 @@ public class Configuration {
     @Bean
     HibernateJpaVendorAdapter jpaVendorAdapter() {
         HibernateJpaVendorAdapter jpaVendorAdapter = new HibernateJpaVendorAdapter();
-        jpaVendorAdapter.setDatabase(Database.H2);
+        jpaVendorAdapter.setDatabase(Database.POSTGRESQL);
         jpaVendorAdapter.setGenerateDdl(true);
         jpaVendorAdapter.setShowSql(true);
         return jpaVendorAdapter;
