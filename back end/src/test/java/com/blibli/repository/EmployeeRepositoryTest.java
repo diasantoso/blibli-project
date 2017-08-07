@@ -50,7 +50,7 @@ public class EmployeeRepositoryTest {
     }
 
     @Test
-    public void showActiveEmployee() {
+    public void showActiveEmployeeTest() {
         Employee employee = this.employeeRepository.save(new Employee("12345", "Test Employee", "emp@mail.com", "Employee"));
 
         List<Employee> listEmployee = this.employeeRepository.showActiveEmployee();
@@ -61,7 +61,7 @@ public class EmployeeRepositoryTest {
     }
 
     @Test
-    public void showOneEmployee() {
+    public void showOneEmployeeTest() {
         Employee employee = this.employeeRepository.save(new Employee("12345", "Test Employee", "emp@mail.com", "Employee"));
 
         Employee cekEmployee = this.employeeRepository.showOneEmployee("12345");
@@ -71,7 +71,7 @@ public class EmployeeRepositoryTest {
     }
 
     @Test
-    public void deleteEmployee() {
+    public void deleteEmployeeTest() {
         Employee employee = this.employeeRepository.save(new Employee("12345", "Test Employee", "emp@mail.com", "Employee"));
 
         Employee deleteEmployee = this.employeeRepository.deleteEmployee("12345");
@@ -81,7 +81,7 @@ public class EmployeeRepositoryTest {
     }
 
     @Test
-    public void findOneByEmail() {
+    public void findOneByEmailTest() {
         Employee employee = this.employeeRepository.save(new Employee("12345", "Test Employee", "emp@mail.com", "Employee"));
 
         Employee cekEmployee = this.employeeRepository.findOneByEmail("emp@mail.com");
@@ -91,7 +91,7 @@ public class EmployeeRepositoryTest {
     }
 
     @Test
-    public void getAllAdmin() {
+    public void getAllAdminTest() {
         Employee employee = this.employeeRepository.save(new Employee("12345", "Test Employee", "emp@mail.com", "Admin"));
 
         List<Employee> listAdmin = this.employeeRepository.getAllAdmin();

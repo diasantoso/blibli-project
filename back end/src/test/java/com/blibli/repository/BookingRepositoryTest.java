@@ -52,7 +52,7 @@ public class BookingRepositoryTest {
     }
 
     @Test
-    public void showById() {
+    public void showByIdTest() {
         Employee emp = new Employee("12345", "Test Employee", "emp@mail.com", "Employee");
         Booking booking = this.bookingRepository.save(new Booking("12345", "Test Booking", "book-1", emp));
 
@@ -63,7 +63,7 @@ public class BookingRepositoryTest {
     }
 
     @Test
-    public void deleteBooking() {
+    public void deleteBookingTest() {
         Employee emp = new Employee("12345", "Test Employee", "emp@mail.com", "Employee");
         Booking booking = this.bookingRepository.save(new Booking("12345", "Test Booking", "book-1", emp));
 
@@ -74,7 +74,7 @@ public class BookingRepositoryTest {
     }
 
     @Test
-    public void showByEmployeeId() {
+    public void showByEmployeeIdTest() {
         Employee emp = new Employee("12345", "Test Employee", "emp@mail.com", "Employee");
         Booking booking = this.bookingRepository.save(new Booking("12345", "Test Booking", "book-1", emp));
 
@@ -85,7 +85,7 @@ public class BookingRepositoryTest {
     }
 
     @Test
-    public void countBooking() {
+    public void countBookingTest() {
         Employee emp = new Employee("12345", "Test Employee", "emp@mail.com", "Employee");
         Booking booking = this.bookingRepository.save(new Booking("12345", "Test Booking", "book-1", emp));
 
@@ -95,7 +95,7 @@ public class BookingRepositoryTest {
     }
 
     @Test
-    public void getBookingByTicket(String ticket) {
+    public void getBookingByTicketTest() {
         Employee emp = new Employee("12345", "Test Employee", "emp@mail.com", "Employee");
         Booking booking = this.bookingRepository.save(new Booking("12345", "Test Booking", "book-1", emp));
 
