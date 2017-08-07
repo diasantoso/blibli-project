@@ -25,9 +25,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.mail.internet.MimeMessage;
 import java.math.BigInteger;
 import java.sql.Time;
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -327,7 +324,9 @@ public class BookingController {
             newbooking.setSpecialRequest(booking.getSpecialRequest());
 
             //set start Time
-            newbooking.setStartTime(booking.getEndTime());
+            LocalTime localtime = booking.getEndTime().toLocalTime();
+            localtime = localtime.plusMinutes(1);
+            newbooking.setStartTime(java.sql.Time.valueOf(localtime));
 
             //set subject
             newbooking.setSubject(booking.getSubject());
