@@ -25,9 +25,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.mail.internet.MimeMessage;
 import java.math.BigInteger;
 import java.sql.Time;
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -287,6 +284,9 @@ public class BookingController {
             //(book.startTime >= startTime && book.startTime <endTime)
             //(book.endTime <= endTime && book.endTime > startTime)
 
+            //pertama, jika tanggal dari booking dalam perulangan = booking extend
+            //kedua, jika (jam mulai book perulangan SETELAH jam selesai book extend) DAN (jam mulai book perulangan SEBELUM jam selesai yang baru)
+            //ketiga, jika (ruangan dari book perulangan SAMA dengan ruangan dari book extend) DAN (status dari book perulanagan adalah 1(Aktif))
             if(used.getDateMeeting().equals(booking.getDateMeeting())){
                 if(used.getStartTime().after(booking.getEndTime()) && used.getStartTime().before(newEndTime)){
                     if ((used.getRoom().getIdRoom().equalsIgnoreCase(booking.getRoom().getIdRoom()) && used.getStatusBooking().equalsIgnoreCase("1"))){
@@ -324,7 +324,9 @@ public class BookingController {
             newbooking.setSpecialRequest(booking.getSpecialRequest());
 
             //set start Time
-            newbooking.setStartTime(booking.getEndTime());
+            LocalTime localtime = booking.getEndTime().toLocalTime();
+            localtime = localtime.plusMinutes(1);
+            newbooking.setStartTime(java.sql.Time.valueOf(localtime));
 
             //set subject
             newbooking.setSubject(booking.getSubject());
@@ -355,6 +357,7 @@ public class BookingController {
 
         else if (check_room==true){
 
+            result=null;
 //            //get the office id for getAvailable / unavailable Room
 //            String roomId = booking.getRoom().getIdRoom();
 //            Room usedRoom = roomService.getOneActive(roomId);

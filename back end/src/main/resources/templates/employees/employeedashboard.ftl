@@ -167,7 +167,7 @@
                 <h4 class="modal-title">Aditional Booking Data</h4>
             </div>
             <div class="modal-body">
-                <form class="form-horizontal" ng-submit="ctrlBooking.extendBooking('402881955db2cef1015db2cfe5190000','23:16:24')" name="myForm">
+                <form class="form-horizontal" ng-submit="ctrlBooking.extendBooking('402881955db2cef1015db2cfe5190000','23:17:09')" name="myForm">
                     <div class="form-group">
                         <label class="col-sm-3 control-label">Insert New Time for Extend</label>
                         <div class="col-sm-8">
