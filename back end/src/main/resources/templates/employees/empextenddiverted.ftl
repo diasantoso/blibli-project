@@ -43,13 +43,40 @@
                     <div class="col-md-12">
                         <div class="card card-plain">
                             <div class="header">
-                                <h3 class="title"><strong>Successfully extended your booking time!</strong></h3><br/>
-                                <p class="category"> <a href="/employees/dashboard">
-                                                    <i class="pe-7s-note2"></i>
-                                                        <p>Go Back to Previous Page</p>
-                                                        </a><h5></h5></p>
+                                <h3 class="title"><strong>Sorry, The room is used at your requested extend-booking-time!</strong></h3><br/>
                             </div>
                             <br/><br/>
+                            <p>Here is the available room at your given extend-time</p>
+                            <div class="content table-responsive table-full-width">
+                                <table class="table table-hover table-striped data">
+                                    <thead>
+                                    <tr>
+                                        <th>No.</th>
+                                        <th>NAME</th>
+                                        <th>CAPACITY</th>
+                                        <th>HAVE CONFERENCE</th>
+                                        <th>HAVE PROJECTOR</th>
+                                        <th>NUMBER EXTENSION</th>
+                                        <th>OFFICE</th>
+                                        <th width="100"></th>
+                                        <th width="100"></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr ng-repeat="u in ctrlBooking.getAvailableRoom()">
+                                        <td>{{$index +1}}</td>
+                                        <td>{{u.name}}</td>
+                                        <td>{{u.capacity}}</td>
+                                        <td>{{u.isConference}}</td>
+                                        <td>{{u.isProjector}}</td>
+                                        <td>{{u.numberExtension}}</td>
+                                        <td>{{u.office.name}}</td>
+                                        <td><button type="button" ng-click="ctrlBooking.getRoombyId(u.idRoom)" data-toggle="modal" data-target="#myModalAdd" class="btn btn-success custom-width">Book</button></td>
+                                        <td><button type="button" ng-click="" class="btn btn-danger custom-width">Details</button></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div> <!-- row -->

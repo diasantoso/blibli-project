@@ -170,7 +170,7 @@
             <div class="modal-body">
                 <form class="form-horizontal" ng-submit="ctrlBooking.extendBooking(ctrlBooking.extendId,ctrlBooking.booking.endTime)" name="myForm">
                     <div class="form-group">
-                        <label class="col-sm-3 control-label">Insert New Time for Extend{{ctrlBooking.extendId}}{{ctrlBooking.booking.endTime}}</label>
+                        <label class="col-sm-3 control-label">Insert New Time for Extend</label>
                         <div class="col-sm-8">
                             <input type="text" ng-model="ctrlBooking.booking.endTime" id="endTime" class="username form-control input-sm" placeholder="Enter New Time To extend Your Booking" required />
                         </div>
