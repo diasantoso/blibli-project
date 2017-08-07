@@ -239,6 +239,13 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
                     controllerAs: 'ctrlBooking'
                 })
 
+                .state('EmpExtendUnsuccess',{
+                    url: '/employees/extendunsuccesfull',
+                    templateUrl: '/partials/employees/empextenddiverted',
+                    controller: 'BookingController',
+                    controllerAs: 'ctrlBooking'
+                })
+
                 ;
 
 
