@@ -100,6 +100,9 @@ angular.module('bookingApp').controller('BookingController',
                         self.booking={};
                         //$scope.myForm.$setPristine();
                         $state.go('EmpUpcomingBooking');
+                        $('.modal-backdrop').hide();
+                        $('.modal').hide();
+                        $('#myModalAdd').hide();
                     },
 
                     function (errResponse){
