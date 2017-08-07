@@ -51,7 +51,7 @@ public class EmployeeRepositoryTest {
 
     @Test
     public void showActiveEmployee() {
-        Employee employee = this.employeeRepository.save(new Employee("12345", "Test Employee"));
+        Employee employee = this.employeeRepository.save(new Employee("12345", "Test Employee", "emp@mail.com", "Employee"));
 
         List<Employee> listEmployee = this.employeeRepository.showActiveEmployee();
         LOG.debug("listEmployee:{}", listEmployee);
@@ -62,7 +62,7 @@ public class EmployeeRepositoryTest {
 
     @Test
     public void showOneEmployee() {
-        Employee employee = this.employeeRepository.save(new Employee("12345", "Test Employee"));
+        Employee employee = this.employeeRepository.save(new Employee("12345", "Test Employee", "emp@mail.com", "Employee"));
 
         Employee cekEmployee = this.employeeRepository.showOneEmployee("12345");
         LOG.debug("cekEmployee:", cekEmployee);
@@ -72,11 +72,32 @@ public class EmployeeRepositoryTest {
 
     @Test
     public void deleteEmployee() {
-        Employee employee = this.employeeRepository.save(new Employee("12345", "Test Employee"));
+        Employee employee = this.employeeRepository.save(new Employee("12345", "Test Employee", "emp@mail.com", "Employee"));
 
         Employee deleteEmployee = this.employeeRepository.deleteEmployee("12345");
         LOG.debug("deleteEmployee:", deleteEmployee);
 
         Assert.assertThat(deleteEmployee, Matchers.equalTo(employee));
+    }
+
+    @Test
+    public void findOneByEmail() {
+        Employee employee = this.employeeRepository.save(new Employee("12345", "Test Employee", "emp@mail.com", "Employee"));
+
+        Employee cekEmployee = this.employeeRepository.findOneByEmail("emp@mail.com");
+        LOG.debug("cekEmployee:", cekEmployee);
+
+        Assert.assertThat(cekEmployee, Matchers.equalTo(employee));
+    }
+
+    @Test
+    public void getAllAdmin() {
+        Employee employee = this.employeeRepository.save(new Employee("12345", "Test Employee", "emp@mail.com", "Admin"));
+
+        List<Employee> listAdmin = this.employeeRepository.getAllAdmin();
+        LOG.debug("listAdmin:{}", listAdmin);
+
+        Assert.assertThat(listAdmin.isEmpty(), Matchers.equalTo(false));
+        Assert.assertThat(listAdmin.get(0), Matchers.equalTo(employee));
     }
 }

@@ -2,6 +2,7 @@ package com.blibli.repository;
 
 import com.blibli.Configuration;
 import com.blibli.model.Booking;
+import com.blibli.model.Employee;
 import com.blibli.repository.booking.BookingRepository;
 import org.hamcrest.Matchers;
 import org.junit.After;
@@ -21,6 +22,7 @@ import org.springframework.test.context.transaction.TransactionalTestExecutionLi
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManagerFactory;
+import java.math.BigInteger;
 import java.util.List;
 
 /**
@@ -51,7 +53,8 @@ public class BookingRepositoryTest {
 
     @Test
     public void showById() {
-        Booking booking = this.bookingRepository.save(new Booking("12345", "Test Booking"));
+        Employee emp = new Employee("12345", "Test Employee", "emp@mail.com", "Employee");
+        Booking booking = this.bookingRepository.save(new Booking("12345", "Test Booking", "book-1", emp));
 
         List<Booking> cekBooking = this.bookingRepository.showById("12345");
         LOG.debug("cekBooking:", cekBooking);
@@ -60,12 +63,45 @@ public class BookingRepositoryTest {
     }
 
     @Test
-    public void deleteOffice() {
-        Booking booking = this.bookingRepository.save(new Booking("12345", "Test Booking"));
+    public void deleteBooking() {
+        Employee emp = new Employee("12345", "Test Employee", "emp@mail.com", "Employee");
+        Booking booking = this.bookingRepository.save(new Booking("12345", "Test Booking", "book-1", emp));
 
         Booking deleteBooking = this.bookingRepository.deleteBooking("12345");
         LOG.debug("deleteBooking:", deleteBooking);
 
         Assert.assertThat(deleteBooking, Matchers.equalTo(booking));
+    }
+
+    @Test
+    public void showByEmployeeId() {
+        Employee emp = new Employee("12345", "Test Employee", "emp@mail.com", "Employee");
+        Booking booking = this.bookingRepository.save(new Booking("12345", "Test Booking", "book-1", emp));
+
+        List<Booking> cekBooking = this.bookingRepository.showByEmployeeId("12345");
+        LOG.debug("cekBooking:", cekBooking);
+
+        Assert.assertThat(cekBooking.get(0), Matchers.equalTo(booking));
+    }
+
+    @Test
+    public void countBooking() {
+        Employee emp = new Employee("12345", "Test Employee", "emp@mail.com", "Employee");
+        Booking booking = this.bookingRepository.save(new Booking("12345", "Test Booking", "book-1", emp));
+
+        BigInteger countBooking = this.bookingRepository.countBooking();
+
+        Assert.assertThat(countBooking, Matchers.equalTo(1));
+    }
+
+    @Test
+    public void getBookingByTicket(String ticket) {
+        Employee emp = new Employee("12345", "Test Employee", "emp@mail.com", "Employee");
+        Booking booking = this.bookingRepository.save(new Booking("12345", "Test Booking", "book-1", emp));
+
+        Booking getBookingByTicket = this.bookingRepository.getBookingByTicket("book-1");
+        LOG.debug("getBookingByTicket:", getBookingByTicket);
+
+        Assert.assertThat(getBookingByTicket, Matchers.equalTo(booking));
     }
 }

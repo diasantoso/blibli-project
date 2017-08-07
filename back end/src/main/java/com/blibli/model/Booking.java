@@ -42,9 +42,11 @@ public class Booking {
     @JoinColumn(name="roomId", nullable = false)
     private Room room;
 
-    public Booking(String idBooking, String subject) {
+    public Booking(String idBooking, String subject, String ticket, Employee employee) {
         setIdBooking(idBooking);
         setSubject(subject);
+        setBookingTicket(ticket);
+        setEmployee(employee);
     }
 
     public Booking() {}
