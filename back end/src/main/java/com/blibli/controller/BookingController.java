@@ -302,7 +302,7 @@ public class BookingController {
     @RequestMapping(value = "/bookings/extend/{id}", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public ResponseBack extendBooking(@PathVariable String id, @RequestParam Time newEndTime) {
-        Booking booking = new Booking();
+        Booking booking;
         booking = bookingService.find(id);
         Boolean check_room = false;
         Booking result = null;
@@ -386,36 +386,36 @@ public class BookingController {
         //Jika ruangan yang dia gunakan saat itu telah digunakan (tidak bisa untuk extend),
         //Maka akan ditampilkan daftar ruangan yang kosong saat itu
 
-        else{
+        else if (check_room==true){
 
-            //get the office id for getAvailable / unavailable Room
-            String roomId = booking.getRoom().getIdRoom();
-            Room usedRoom = roomService.getOneActive(roomId);
-            String officeId = usedRoom.getOffice().getIdOffice();
-
-            //Get Unavailable Room
-            for (Booking book : data_book) {
-                //(book.startTime >= startTime && book.startTime <endTime)
-                //(book.endTime <= endTime && book.endTime > startTime)
-
-                if ((book.getDateMeeting().equals(booking.getDateMeeting()) &&
-                        (((book.getStartTime().equals(booking.getEndTime()) || book.getStartTime().before(booking.getEndTime())) && book.getEndTime().after(booking.getEndTime())) ||
-                                ((book.getEndTime().equals(newEndTime) || book.getEndTime().after(newEndTime) && book.getStartTime().before(newEndTime)))))
-                        && book.getStatusBooking().equalsIgnoreCase("1")) {
-                    data_used.add(book.getRoom());
-                }
-            }
-
-            //Get Available Room
-            data.removeAll(data_used);
-
-            for(Room room : data){
-                RoomResponse parse = new RoomResponse();
-                BeanUtils.copyProperties(room, parse);
-                if(officeId.equals(room.getOffice().getIdOffice())) {
-                    responses.add(parse);
-                }
-            }
+//            //get the office id for getAvailable / unavailable Room
+//            String roomId = booking.getRoom().getIdRoom();
+//            Room usedRoom = roomService.getOneActive(roomId);
+//            String officeId = usedRoom.getOffice().getIdOffice();
+//
+//            //Get Unavailable Room
+//            for (Booking book : data_book) {
+//                //(book.startTime >= startTime && book.startTime <endTime)
+//                //(book.endTime <= endTime && book.endTime > startTime)
+//
+//                if ((book.getDateMeeting().equals(booking.getDateMeeting()) &&
+//                        (((book.getStartTime().equals(booking.getEndTime()) || book.getStartTime().before(booking.getEndTime())) && book.getEndTime().after(booking.getEndTime())) ||
+//                                ((book.getEndTime().equals(newEndTime) || book.getEndTime().after(newEndTime) && book.getStartTime().before(newEndTime)))))
+//                        && book.getStatusBooking().equalsIgnoreCase("1")) {
+//                    data_used.add(book.getRoom());
+//                }
+//            }
+//
+//            //Get Available Room
+//            data.removeAll(data_used);
+//
+//            for(Room room : data){
+//                RoomResponse parse = new RoomResponse();
+//                BeanUtils.copyProperties(room, parse);
+//                if(officeId.equals(room.getOffice().getIdOffice())) {
+//                    responses.add(parse);
+//                }
+//            }
 
 
         }

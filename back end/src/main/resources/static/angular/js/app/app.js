@@ -232,9 +232,9 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
                     controllerAs: 'ctrlBooking'
                 })
 
-                .state('EmpExtend',{
-                    url: '/employees/extend',
-                    templateUrl: '/partials/employees/empextend',
+                .state('EmpExtendSuccess',{
+                    url: '/employees/extendsuccess',
+                    templateUrl: '/partials/employees/empextendsuccess',
                     controller: 'BookingController',
                     controllerAs: 'ctrlBooking'
                 })

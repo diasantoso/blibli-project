@@ -319,8 +319,7 @@ angular.module('bookingApp').controller('BookingController',
                 console.log('Jam selesai baru : ' + newEndTime);
                 console.log(self.userBookings);
                 console.log('extend success');
-                $scope.successMessage='You Successfully Extend Your booking time!';
-                //$state.go('EmpExtend');
+
             } else {
                 console.log('extend failed.');
                 $scope.successMessage='You Cannot Extend Your booking time!';
@@ -344,7 +343,7 @@ angular.module('bookingApp').controller('BookingController',
                                 console.log('rooms'+self.rooms);
                                 if(self.rooms!=null){
                                     console.log('');
-                                    $state.go('EmpExtend');
+                                    $state.go('EmpExtendSuccess');
                                 }else{
                                     console.log('Gagal redirect');
                                 }

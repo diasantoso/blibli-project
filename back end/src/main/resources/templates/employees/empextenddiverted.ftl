@@ -44,7 +44,10 @@
                         <div class="card card-plain">
                             <div class="header">
                                 <h3 class="title"><strong>Successfully extended your booking time!</strong></h3><br/>
-                                <p class="category"><h5></h5></p>
+                                <p class="category"> <a href="/employees/dashboard">
+                                                    <i class="pe-7s-note2"></i>
+                                                        <p>Go Back to Previous Page</p>
+                                                        </a><h5></h5></p>
                             </div>
                             <br/><br/>
                         </div>
