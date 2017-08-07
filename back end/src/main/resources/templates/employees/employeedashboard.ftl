@@ -73,7 +73,7 @@
                                             <tbody>
                                             <tr ng-repeat="u in ctrlBooking.getAllBookingPerUser()">
                                                 <!--<td>{{u.idEmployee}}</td>-->
-                                                    <td ng-if-start="!ctrlBooking.getBookingHistory(u.dateMeeting,u.endTime)">{{u.dateMeeting}}</td>
+                                                    <td ng-if-start="!ctrlBooking.getBookingHistory(u.dateMeeting,u.endTime) && u.statusBooking==1">{{u.dateMeeting}}</td>
                                                     <td>{{u.startTime}}</td>
                                                     <td>{{u.endTime}}</td>
                                                     <td>{{u.room.name}}</td>
