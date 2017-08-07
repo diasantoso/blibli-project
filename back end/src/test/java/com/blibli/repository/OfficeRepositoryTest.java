@@ -50,7 +50,7 @@ public class OfficeRepositoryTest {
     }
 
     @Test
-    public void showActiveOffice() {
+    public void showActiveOfficeTest() {
         Office office = this.officeRepository.save(new Office("12345", "Test Office"));
 
         List<Office> listOffice = this.officeRepository.showActiveOffice();
@@ -61,7 +61,7 @@ public class OfficeRepositoryTest {
     }
 
     @Test
-    public void showOneOffice() {
+    public void showOneOfficeTest() {
         Office office = this.officeRepository.save(new Office("12345", "Test Office"));
 
         Office cekOffice = this.officeRepository.showOneOffice("12345");
@@ -71,7 +71,7 @@ public class OfficeRepositoryTest {
     }
 
     @Test
-    public void deleteOffice() {
+    public void deleteOfficeTest() {
         Office office = this.officeRepository.save(new Office("12345", "Test Office"));
 
         Office deleteOffice = this.officeRepository.deleteOffice("12345");

@@ -50,7 +50,7 @@ public class RoomRepositoryTest {
     }
 
     @Test
-    public void showActiveRoom() {
+    public void showActiveRoomTest() {
         Room room = this.roomRepository.save(new Room("12345", "Test Room"));
 
         List<Room> listRoom = this.roomRepository.showActiveRoom();
@@ -61,7 +61,7 @@ public class RoomRepositoryTest {
     }
 
     @Test
-    public void showOneRoom() {
+    public void showOneRoomTest() {
         Room room = this.roomRepository.save(new Room("12345", "Test Room"));
 
         Room cekRoom = this.roomRepository.showOneRoom("12345");
@@ -71,7 +71,7 @@ public class RoomRepositoryTest {
     }
 
     @Test
-    public void deleteRoom() {
+    public void deleteRoomTest() {
         Room room = this.roomRepository.save(new Room("12345", "Test Room"));
 
         Room deleteRoom = this.roomRepository.deleteRoom("12345");
