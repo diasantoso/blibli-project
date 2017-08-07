@@ -49,11 +49,13 @@ angular.module('bookingApp')
                 } else {
                     // if the token is not present in the response then the
                     // authentication was not successful. Setting the error message.
+                    alert("Wrong Username/Password! Please try again");
                     console.log("Debug : Login Failed");
                     $scope.message = 'Authetication Failed !';
                 }
             }).error(function(error) {
                 // if authentication was not successful. Setting the error message.
+                alert("Wrong Username/Password! Please try again");
                 console.log("Debug : Login Failed");
                 $scope.message = 'Authetication Failed !';
             });

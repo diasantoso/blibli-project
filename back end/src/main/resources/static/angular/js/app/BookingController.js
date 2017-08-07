@@ -99,7 +99,7 @@ angular.module('bookingApp').controller('BookingController',
                         self.done = true;
                         self.booking={};
                         //$scope.myForm.$setPristine();
-                        $state.go('showbooking');
+                        $state.go('EmpUpcomingBooking');
                     },
 
                     function (errResponse){
