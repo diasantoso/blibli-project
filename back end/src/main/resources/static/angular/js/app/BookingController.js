@@ -68,6 +68,10 @@ angular.module('bookingApp').controller('BookingController',
         self.onlyNumbers = /^\d+([,.]\d+)?$/;
 
         function submit(){
+            $('.modal-backdrop').hide();
+            $('.modal').hide();
+            $('#myModalAdd').hide();
+
             console.log('Submitting');
             if(self.booking.id === undefined || self.booking.id === null) {
                 console.log('Saving new booking');
@@ -98,9 +102,6 @@ angular.module('bookingApp').controller('BookingController',
                         self.booking={};
                         //$scope.myForm.$setPristine();
                         $state.go('EmpUpcomingBooking');
-                        $('.modal-backdrop').hide();
-                        $('.modal').hide();
-                        $('#myModalAdd').hide();
                     },
 
                     function (errResponse){
