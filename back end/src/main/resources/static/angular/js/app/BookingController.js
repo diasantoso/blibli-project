@@ -350,11 +350,10 @@ angular.module('bookingApp').controller('BookingController',
                                         self.room = room;
                                         self.searchVar.officeId = self.room.office.idOffice;
 
-                                        self.rooms = BookingService.getAvailableRooms(self.searchVar);
-                                        console.log('rooms' + self.rooms);
+                                        BookingService.getAvailableRooms(self.searchVar);
+
                                         if (self.rooms != null) {
-                                            console.log('');
-                                            $state.go('');
+                                            $state.go('EmpExtendUnsuccess');
                                         } else {
                                             console.log('Gagal redirect');
                                         }
