@@ -32,26 +32,6 @@ import java.util.stream.Collectors;
  */
 @Controller
 public class UploadingController {
-//    public static final String uploadingdir = System.getProperty("user.dir") + "/src/main/resources/static/images/";
-//
-//    @RequestMapping("/upload")
-//    public String uploading (Model model){
-//        File file = new File(uploadingdir);
-//        model.addAttribute("files",file.listFiles());
-//        return "uploading";
-//    }
-//
-//    @RequestMapping(value = "/upload", method = RequestMethod.POST)
-//    public String uploadingPost(@RequestParam("uploadingFiles") MultipartFile[] uploadingFiles) throws IOException {
-//
-//            for(MultipartFile uploadedFile : uploadingFiles) {
-//                File file = new File(uploadingdir + uploadedFile.getOriginalFilename());
-//                uploadedFile.transferTo(file);
-//            }
-//
-//        return "redirect:/upload";
-//
-//    }
 
     private static final Logger log = LoggerFactory.getLogger(UploadingController.class);
 

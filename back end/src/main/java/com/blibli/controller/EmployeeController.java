@@ -1,12 +1,10 @@
 package com.blibli.controller;
 
-import com.blibli.configuration.DatabaseSeeder;
 import com.blibli.model.Employee;
 import com.blibli.response.ResponseBack;
 import com.blibli.response.employee.EmployeeResponse;
 import com.blibli.response.employee.EmployeeResponseList;
 import com.blibli.service.EmployeeService;
-import org.hibernate.boot.model.relational.Database;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -48,37 +46,6 @@ public class EmployeeController {
         return responseBack;
     }
 
-    //=========================================================================================================
-    @Autowired
-    DatabaseSeeder databaseSeeder;
-
-    //Load DatabaseSeeder
-    @RequestMapping(value = "/load", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseBody
-    public ResponseBack load() {
-        databaseSeeder.mockupData();
-        ResponseBack responseBack = new ResponseBack();
-        responseBack.setResponse("success loading");
-        return responseBack;
-    }
-    //=========================================================================================================
-
-//    //Login Employee
-//    @RequestMapping(value = "/login", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-//    @ResponseBody
-//    public EmployeeResponse doLogin(@RequestBody EmployeeResponse param) {
-//        Employee employee = employeeService.doLogin(param.getEmail(), param.getPassword());
-//
-//        if(employee!=null){
-//            EmployeeResponse result = new EmployeeResponse();
-//            BeanUtils.copyProperties(employee, result);
-//
-//            return result;
-//        } else {
-//            return null;
-//        }
-//    }
-
     @RequestMapping(value = "/login", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public ResponseEntity<Map<String, Object>> doLogin(@RequestParam String email, @RequestParam String password, HttpServletResponse response) {
@@ -102,7 +69,6 @@ public class EmployeeController {
         }
     }
 
-
     //============================= CRUDS EMPLOYEE ================================
 
     /**
@@ -113,16 +79,18 @@ public class EmployeeController {
      * @return
      */
 
-
     @RequestMapping(value = "/register", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public ResponseBack createEmployee(@RequestBody EmployeeResponse param) {
         Employee emp = new Employee();
         BeanUtils.copyProperties(param, emp);
+
         if(employeeService.findOneByEmail(emp.getEmail())!=null){
             throw new RuntimeException("Email is already used");
         }
+
         emp.setRole("Employee");
+        emp.setStatus(1);
         Employee result = employeeService.save(emp);
 
         ResponseBack responseBack = new ResponseBack();

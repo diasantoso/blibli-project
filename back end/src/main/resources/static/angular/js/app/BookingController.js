@@ -26,8 +26,6 @@ angular.module('bookingApp').controller('BookingController',
         //get date
         $scope.date = new Date();
 
-
-
         self.submit = submit;
         self.getAllBookings = getAllBookings;
         self.getUpcomingBookings = getUpcomingBookings;
