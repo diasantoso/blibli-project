@@ -57,6 +57,7 @@ angular.module('bookingApp').controller('BookingController',
         self.cancelBooking = cancelBooking;
         self.getBookingHistory = getBookingHistory;
         self.extendBooking = extendBooking;
+        self.extend = extend;
 
         $scope.loaded={};
 
@@ -66,6 +67,10 @@ angular.module('bookingApp').controller('BookingController',
 
         self.onlyIntegers = /^\d+$/;
         self.onlyNumbers = /^\d+([,.]\d+)?$/;
+
+        function extend() {
+            createBooking(self.booking);
+        }
 
         function submit(){
             $('.modal-backdrop').hide();
@@ -86,9 +91,10 @@ angular.module('bookingApp').controller('BookingController',
 
                 createBooking(self.booking);
             }
+
         }
 
-        function createBooking (booking , roomId , room){
+        function createBooking (booking){
             console.log('About to create booking');
             //Taking data from previous form
 
