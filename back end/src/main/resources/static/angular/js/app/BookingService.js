@@ -29,7 +29,9 @@ angular.module('bookingApp').factory('BookingService' ,
                 getAllBookingByTicket : getAllBookingByTicket,
                 getTicketId : getTicketId,
 
-                extendBooking : extendBooking
+                extendBooking : extendBooking,
+                getBookingFailedExtend : getBookingFailedExtend,
+                saveBooking : saveBooking
 
             };
 
@@ -58,6 +60,7 @@ angular.module('bookingApp').factory('BookingService' ,
             function loadUpcomingBookings(){
                 console.log('Fetching upcoming bookings');
                 var deferred = $q.defer();
+                console.log(urls.BOOKING_SERVICE_API+'/schedule')
                 $http.get(urls.BOOKING_SERVICE_API+'/schedule')
                     .then(
                         function (response){
@@ -255,6 +258,14 @@ angular.module('bookingApp').factory('BookingService' ,
 
             function getSearchVar(){
                 return $localStorage.searchVar;
+            }
+
+            function saveBooking(booking) {
+                $localStorage.booking=booking;
+            }
+
+            function getBookingFailedExtend(){
+                return $localStorage.booking;
             }
 
             function getLoggedUser(){
