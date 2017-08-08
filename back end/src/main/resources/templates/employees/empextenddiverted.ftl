@@ -46,7 +46,7 @@
                                 <h3 class="title"><strong>Sorry, The room is used at your requested extend-booking-time!</strong></h3><br/>
                             </div>
                             <br/><br/>
-                            <p>Here is the available room at your given extend-time</p>
+                            <p>Here is the available room at your given extend-time {{ctrlBooking.getSearchVar()}}</p>
                             <div class="content table-responsive table-full-width">
                                 <table class="table table-hover table-striped data">
                                     <thead>
@@ -71,7 +71,7 @@
                                         <td>{{u.isProjector}}</td>
                                         <td>{{u.numberExtension}}</td>
                                         <td>{{u.office.name}}</td>
-                                        <td><button type="button" ng-click="ctrlBooking.getRoombyId(u.idRoom)" data-toggle="modal" data-target="#myModalAdd" class="btn btn-success custom-width">Book</button></td>
+                                        <td><button type="button" ng-click="ctrlBooking.extend(u.idRoom)" data-toggle="modal" data-target="#myModalAdd" class="btn btn-success custom-width">Book</button></td>
                                     </tr>
                                     </tbody>
                                 </table>
