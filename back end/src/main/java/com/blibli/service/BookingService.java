@@ -35,8 +35,8 @@ public class BookingService {
         return result;
     }
 
-    public Booking find(String booking) {
-        Booking result = bookingRepository.findOne(booking);
+    public Booking find(String idBooking) {
+        Booking result = bookingRepository.findOne(idBooking);
         return result;
     }
 

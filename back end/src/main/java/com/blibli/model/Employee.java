@@ -43,10 +43,11 @@ public class Employee implements UserDetails {
     @JoinColumn(name="employeeId" , nullable = false, insertable = false, updatable = false)
     private List<Booking> bookings = Collections.emptyList();
 
-    public Employee(String idEmployee, String name, String email, String role) {
+    public Employee(String idEmployee, String name, String email, String password, String role) {
         setIdEmployee(idEmployee);
         setName(name);
         setEmail(email);
+        setPassword(password);
         setRole(role);
         setStatus(1);
     }

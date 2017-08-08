@@ -31,21 +31,6 @@ public class EmployeeController {
     @Autowired
     EmployeeService employeeService;
 
-    //Load Employee Dummy Data
-    @RequestMapping(value = "/loadEmployees", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseBody
-    public ResponseBack loadEmployee() {
-        Employee result = employeeService.loadEmployee();
-
-        ResponseBack responseBack = new ResponseBack();
-        if(result!=null)
-            responseBack.setResponse("success adding");
-        else
-            responseBack.setResponse("failed adding");
-
-        return responseBack;
-    }
-
     @RequestMapping(value = "/login", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public ResponseEntity<Map<String, Object>> doLogin(@RequestParam String email, @RequestParam String password, HttpServletResponse response) {

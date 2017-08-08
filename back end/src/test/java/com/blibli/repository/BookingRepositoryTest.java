@@ -53,7 +53,7 @@ public class BookingRepositoryTest {
 
     @Test
     public void showByIdTest() {
-        Employee emp = new Employee("12345", "Test Employee", "emp@mail.com", "Employee");
+        Employee emp = new Employee("12345", "Test Employee", "emp@mail.com", "emp", "Employee");
         Booking booking = this.bookingRepository.save(new Booking("12345", "Test Booking", "book-1", emp));
 
         List<Booking> cekBooking = this.bookingRepository.showById("12345");
@@ -64,7 +64,7 @@ public class BookingRepositoryTest {
 
     @Test
     public void deleteBookingTest() {
-        Employee emp = new Employee("12345", "Test Employee", "emp@mail.com", "Employee");
+        Employee emp = new Employee("12345", "Test Employee", "emp@mail.com", "emp", "Employee");
         Booking booking = this.bookingRepository.save(new Booking("12345", "Test Booking", "book-1", emp));
 
         Booking deleteBooking = this.bookingRepository.deleteBooking("12345");
@@ -75,7 +75,7 @@ public class BookingRepositoryTest {
 
     @Test
     public void showByEmployeeIdTest() {
-        Employee emp = new Employee("12345", "Test Employee", "emp@mail.com", "Employee");
+        Employee emp = new Employee("12345", "Test Employee", "emp@mail.com", "emp", "Employee");
         Booking booking = this.bookingRepository.save(new Booking("12345", "Test Booking", "book-1", emp));
 
         List<Booking> cekBooking = this.bookingRepository.showByEmployeeId("12345");
@@ -86,7 +86,7 @@ public class BookingRepositoryTest {
 
     @Test
     public void countBookingTest() {
-        Employee emp = new Employee("12345", "Test Employee", "emp@mail.com", "Employee");
+        Employee emp = new Employee("12345", "Test Employee", "emp@mail.com", "emp", "Employee");
         Booking booking = this.bookingRepository.save(new Booking("12345", "Test Booking", "book-1", emp));
 
         BigInteger countBooking = this.bookingRepository.countBooking();
@@ -96,7 +96,7 @@ public class BookingRepositoryTest {
 
     @Test
     public void getBookingByTicketTest() {
-        Employee emp = new Employee("12345", "Test Employee", "emp@mail.com", "Employee");
+        Employee emp = new Employee("12345", "Test Employee", "emp@mail.com", "emp", "Employee");
         Booking booking = this.bookingRepository.save(new Booking("12345", "Test Booking", "book-1", emp));
 
         Booking getBookingByTicket = this.bookingRepository.getBookingByTicket("book-1");

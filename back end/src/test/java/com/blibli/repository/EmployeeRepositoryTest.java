@@ -51,7 +51,7 @@ public class EmployeeRepositoryTest {
 
     @Test
     public void showActiveEmployeeTest() {
-        Employee employee = this.employeeRepository.save(new Employee("12345", "Test Employee", "emp@mail.com", "Employee"));
+        Employee employee = this.employeeRepository.save(new Employee("12345", "Test Employee", "emp@mail.com", "emp", "Employee"));
 
         List<Employee> listEmployee = this.employeeRepository.showActiveEmployee();
         LOG.debug("listEmployee:{}", listEmployee);
@@ -62,7 +62,7 @@ public class EmployeeRepositoryTest {
 
     @Test
     public void showOneEmployeeTest() {
-        Employee employee = this.employeeRepository.save(new Employee("12345", "Test Employee", "emp@mail.com", "Employee"));
+        Employee employee = this.employeeRepository.save(new Employee("12345", "Test Employee", "emp@mail.com", "emp", "Employee"));
 
         Employee cekEmployee = this.employeeRepository.showOneEmployee("12345");
         LOG.debug("cekEmployee:", cekEmployee);
@@ -72,7 +72,7 @@ public class EmployeeRepositoryTest {
 
     @Test
     public void deleteEmployeeTest() {
-        Employee employee = this.employeeRepository.save(new Employee("12345", "Test Employee", "emp@mail.com", "Employee"));
+        Employee employee = this.employeeRepository.save(new Employee("12345", "Test Employee", "emp@mail.com", "emp", "Employee"));
 
         Employee deleteEmployee = this.employeeRepository.deleteEmployee("12345");
         LOG.debug("deleteEmployee:", deleteEmployee);
@@ -82,7 +82,7 @@ public class EmployeeRepositoryTest {
 
     @Test
     public void findOneByEmailTest() {
-        Employee employee = this.employeeRepository.save(new Employee("12345", "Test Employee", "emp@mail.com", "Employee"));
+        Employee employee = this.employeeRepository.save(new Employee("12345", "Test Employee", "emp@mail.com", "emp", "Employee"));
 
         Employee cekEmployee = this.employeeRepository.findOneByEmail("emp@mail.com");
         LOG.debug("cekEmployee:", cekEmployee);
@@ -92,7 +92,7 @@ public class EmployeeRepositoryTest {
 
     @Test
     public void getAllAdminTest() {
-        Employee employee = this.employeeRepository.save(new Employee("12345", "Test Employee", "emp@mail.com", "Admin"));
+        Employee employee = this.employeeRepository.save(new Employee("12345", "Test Employee", "emp@mail.com", "emp", "Admin"));
 
         List<Employee> listAdmin = this.employeeRepository.getAllAdmin();
         LOG.debug("listAdmin:{}", listAdmin);

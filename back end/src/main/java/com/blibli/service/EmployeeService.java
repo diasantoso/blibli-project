@@ -21,18 +21,6 @@ public class EmployeeService {
         return result;
     }
 
-    public Employee loadEmployee() {
-        Employee employee = new Employee();
-        employee.setName("Dias");
-        employee.setEmail("dias@gmail.com");
-        employee.setPassword("dias");
-        employee.setRole("Engineer");
-        employee.setStatus(1);
-
-        Employee result = employeeRepository.save(employee);
-        return result;
-    }
-
     public List<Employee> getAllActive() {
         return employeeRepository.showActiveEmployee();
     }
