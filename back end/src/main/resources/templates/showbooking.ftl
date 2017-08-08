@@ -19,9 +19,8 @@
 
 <div class="content-section-a">
     <div class="container">
-        <br/>
         <h2 class="section-heading">Upcoming Booking</h2>
-        <br/><br/>
+        <br/>
         <div class="content table-responsive table-full-width">
             <table class="table table-hover table-striped data">
                 <thead>
