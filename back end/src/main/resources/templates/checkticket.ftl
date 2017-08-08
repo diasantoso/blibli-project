@@ -25,6 +25,6 @@
             <i class="fa fa-user"></i>
         </div>
         <span class="alert">Invalid Credentials</span>
-        <input type="submit" value = "Check" class="log-btn">
+        <input type="submit" value = "Check" class="log-btn2">
     </form>
 </div>

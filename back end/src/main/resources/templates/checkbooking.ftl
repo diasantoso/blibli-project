@@ -35,7 +35,7 @@
             <input type="text" class="form-control" placeholder="End Time" ng-model="ctrlBooking.searchVar.endTime" id="endtime">
         </div>
         <span class="alert">Invalid Credentials</span>
-        <button type="submit" class="log-btn" >Check</button>
+        <button type="submit" class="log-btn2" >Check</button>
     </form>
 </div>
 
