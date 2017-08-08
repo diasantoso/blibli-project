@@ -64,7 +64,7 @@
                         <div class="right_col" role="main">
                             <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                                 <div class="tile-stats">
-                                    <a href="#rooms">
+                                    <a href="rooms">
                                         <div class="icon"><i class="fa fa-university"></i>
                                         </div>
                                         <div class="count">{{ctrlCount.getCountRoom()}}</div>
@@ -76,7 +76,7 @@
                             </div>
                             <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                                 <div class="tile-stats">
-                                    <a href="#offices">
+                                    <a href="offices">
                                         <div class="icon"><i class="fa fa-university"></i>
                                         </div>
                                         <div class="count">{{ctrlCount.getCountOffice()}}</div>
@@ -88,7 +88,7 @@
                             </div>
                             <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                                 <div class="tile-stats">
-                                    <a href="#employees">
+                                    <a href="employees">
                                         <div class="icon"><i class="fa fa-users"></i>
                                         </div>
                                         <div class="count">{{ctrlCount.getCountEmployee()}}</div>
@@ -100,7 +100,7 @@
                             </div>
                             <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                                 <div class="tile-stats">
-                                    <a href="#bookings">
+                                    <a href="bookings">
                                         <div class="icon"><i class="fa fa-exchange"></i>
                                         </div>
                                         <div class="count">{{ctrlCount.getCountBooking()}}</div>
