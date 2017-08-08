@@ -172,7 +172,23 @@
                     <div class="form-group">
                         <label class="col-sm-3 control-label">Insert New Time for Extend</label>
                         <div class="col-sm-8">
-                            <input type="text" ng-model="ctrlBooking.booking.endTime" id="endTime" class="username form-control input-sm" placeholder="Enter New Time To extend Your Booking" required />
+                            <!--<input type="text" class="username form-control input-sm" required />-->
+                            <select class="username form-control input-sm" ng-model="ctrlBooking.booking.endTime"  id="endTime" ng-model="ctrlBooking.searchVar.startTime" placeholder="Enter New Time To extend Your Booking"  required>
+                                <option value="08:00:00">08.00</option>
+                                <option value="09:00:00">09.00</option>
+                                <option value="10:00:00">10.00</option>
+                                <option value="11:00:00">11.00</option>
+                                <option value="12:00:00">12.00</option>
+                                <option value="13:00:00">13.00</option>
+                                <option value="14:00:00">14.00</option>
+                                <option value="15:00:00">15.00</option>
+                                <option value="16:00:00">16.00</option>
+                                <option value="17:00:00">17.00</option>
+                                <option value="18:00:00">18.00</option>
+                                <option value="19:00:00">19.00</option>
+                                <option value="20:00:00">20.00</option>
+                                <option value="21:00:00">21.00</option>
+                            </select>
                         </div>
                     </div>
 
