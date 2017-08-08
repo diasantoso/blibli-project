@@ -137,7 +137,7 @@ public class RoomController {
             //(book.startTime >= startTime && book.startTime <endTime)
             //(book.endTime <= endTime && book.endTime > startTime)
 
-            if ((book.getDateMeeting().equals(data) &&
+            if ((book.getDateMeeting().equals(date) &&
                     (((book.getStartTime().equals(startTime) || book.getStartTime().before(startTime)) && book.getEndTime().after(startTime)) ||
                             ((book.getEndTime().equals(endTime) || book.getEndTime().after(endTime) && book.getStartTime().before(endTime)))))
                     && book.getStatus()==1) {
