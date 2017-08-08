@@ -68,8 +68,29 @@ angular.module('bookingApp').controller('BookingController',
         self.onlyIntegers = /^\d+$/;
         self.onlyNumbers = /^\d+([,.]\d+)?$/;
 
-        function extend() {
-            createBooking(self.booking);
+        function extend(roomId) {
+            RoomService.getRoom(roomId).then(
+                function (room) {
+                    console.log(room);
+                    self.room = room;
+                    self.booking = BookingService.getBookingFailedExtend();
+                    console.log(self.booking);
+
+                    self.booking.employee = LoginService.user;
+                    self.searchVar = getSearchVar();
+                    self.booking.room = self.room;
+
+                    self.booking.startTime = self.searchVar.startTime;
+                    self.booking.endTime = self.searchVar.endTime;
+
+                    createBooking(self.booking);
+                },
+                function (errResponse){
+                    console.error('Error while getting room '+roomId +', Error :'+errResponse.data);
+                }
+            );
+
+
         }
 
         function submit(){
@@ -358,6 +379,7 @@ angular.module('bookingApp').controller('BookingController',
                             function (booking) {
                                 self.booking = booking;
                                 console.log('cek booking :' + self.booking);
+                                BookingService.saveBooking(self.booking.value[0]);
                                 self.searchVar.date = self.booking.value[0].dateMeeting;
                                 self.searchVar.startTime = self.booking.value[0].endTime;
                                 self.searchVar.endTime = newEndTime;
