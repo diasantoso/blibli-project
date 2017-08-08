@@ -100,9 +100,8 @@ public class BookingController {
         booking.setRoom(room);
 
 
-        //set status and statusbooking to 1
+        //set status to 1
         booking.setStatus(1);
-        booking.setStatusBooking("1");
 
         //set the booking ticket
         BigInteger addingNumber;
@@ -174,7 +173,7 @@ public class BookingController {
     public ResponseBack updateBooking(@RequestBody BookingResponse param) {
         Booking booking = new Booking();
         BeanUtils.copyProperties(param, booking);
-        booking.setStatusBooking("0");
+        booking.setStatus(0);
         Booking result = bookingService.save(booking);
 
         ResponseBack responseBack = new ResponseBack();
@@ -289,7 +288,7 @@ public class BookingController {
             //ketiga, jika (ruangan dari book perulangan SAMA dengan ruangan dari book extend) DAN (status dari book perulanagan adalah 1(Aktif))
             if(used.getDateMeeting().equals(booking.getDateMeeting())){
                 if(used.getStartTime().after(booking.getEndTime()) && used.getStartTime().before(newEndTime)){
-                    if ((used.getRoom().getIdRoom().equalsIgnoreCase(booking.getRoom().getIdRoom()) && used.getStatusBooking().equalsIgnoreCase("1"))){
+                    if ((used.getRoom().getIdRoom().equalsIgnoreCase(booking.getRoom().getIdRoom()) && used.getStatus()==1)){
                         check_room = true;
                     }
                 }
@@ -339,9 +338,8 @@ public class BookingController {
             newbooking.setRoom(booking.getRoom());
 
 
-            //set status and statusbooking to 1
+            //set status to 1
             newbooking.setStatus(1);
-            newbooking.setStatusBooking("1");
 
             //set the booking ticket
             BigInteger addingNumber;
@@ -371,7 +369,7 @@ public class BookingController {
 //                if ((book.getDateMeeting().equals(booking.getDateMeeting()) &&
 //                        (((book.getStartTime().equals(booking.getEndTime()) || book.getStartTime().before(booking.getEndTime())) && book.getEndTime().after(booking.getEndTime())) ||
 //                                ((book.getEndTime().equals(newEndTime) || book.getEndTime().after(newEndTime) && book.getStartTime().before(newEndTime)))))
-//                        && book.getStatusBooking().equalsIgnoreCase("1")) {
+//                        && book.getStatus()==1) {
 //                    data_used.add(book.getRoom());
 //                }
 //            }

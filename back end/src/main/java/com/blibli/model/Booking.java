@@ -24,7 +24,6 @@ public class Booking {
     private Time startTime;
     private Time endTime;
     private Date addedDate;
-    private String statusBooking;
     private Integer status;
 
     //Tambahan
@@ -129,14 +128,6 @@ public class Booking {
 
     public void setRoom(Room room) {
         this.room = room;
-    }
-
-    public String getStatusBooking() {
-        return statusBooking;
-    }
-
-    public void setStatusBooking(String statusBooking) {
-        this.statusBooking = statusBooking;
     }
 
     public String getPicContact() {

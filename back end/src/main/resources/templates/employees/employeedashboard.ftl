@@ -73,7 +73,7 @@
                                             <tbody>
                                             <tr ng-repeat="u in ctrlBooking.getAllBookingPerUser()">
                                                 <!--<td>{{u.idEmployee}}</td>-->
-                                                    <td ng-if-start="!ctrlBooking.getBookingHistory(u.dateMeeting,u.endTime) && u.statusBooking==1">{{u.dateMeeting}}</td>
+                                                    <td ng-if-start="!ctrlBooking.getBookingHistory(u.dateMeeting,u.endTime) && u.status==1">{{u.dateMeeting}}</td>
                                                     <td>{{u.startTime}}</td>
                                                     <td>{{u.endTime}}</td>
                                                     <td>{{u.room.name}}</td>
@@ -136,12 +136,12 @@
                                                 <tr ng-repeat="u in ctrlBooking.getAllBookingPerUser()">
                                                     <!--<td>{{u.idEmployee}}</td>-->
                                                     <div>
-                                                    <td ng-if-start="u.statusBooking == 0">{{u.dateMeeting}}</td>
+                                                    <td ng-if-start="u.status == 0">{{u.dateMeeting}}</td>
                                                     <td>{{u.startTime}}</td>
                                                     <td>{{u.endTime}}</td>
                                                     <td>{{u.room.name}}</td>
                                                     <td>{{u.subject}}</td>
-                                                    <td ng-if-end="u.statusBooking == 0">{{u.description}}</td>
+                                                    <td ng-if-end="u.status == 0">{{u.description}}</td>
                                                     </div>
                                                 </tr>
                                                 </tbody>
