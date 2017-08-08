@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('bookingApp').controller('BookingController',
-    ['BookingService', 'LoginService', 'RoomService', '$scope', '$state', '$sessionStorage', '$http', function( BookingService ,LoginService, RoomService, $scope, $state, $sessionStorage, $http) {
+    ['BookingService', 'LoginService', 'RoomService', '$scope', '$state', '$sessionStorage', '$http', '$filter', function( BookingService ,LoginService, RoomService, $scope, $state, $sessionStorage, $http, $filter) {
 
         var self = this;
         self.booking = {};
@@ -194,8 +194,10 @@ angular.module('bookingApp').controller('BookingController',
         }
 
         function check(){
+            self.searchVar.date = $filter('date')(self.searchVar.date, "yyyy-MM-dd");
+
             console.log('Fetched successfully All available rooms in office with id : '+self.searchVar.officeId+
-                ' on date : ' +self.searchVar.date +
+                ' on date : ' +self.searchVar.date+
                 ' with start Time : '+self.searchVar.startTime+
                 ' And end Time : '+self.searchVar.endTime);
 
@@ -210,6 +212,8 @@ angular.module('bookingApp').controller('BookingController',
         }
 
         function checkForEmployeeSite(){
+            self.searchVar.date = $filter('date')(self.searchVar.date, "yyyy-MM-dd");
+
             console.log('Fetched successfully All available rooms in office with id : '+self.searchVar.officeId+
                 ' on date : ' +self.searchVar.date +
                 ' with start Time : '+self.searchVar.startTime+

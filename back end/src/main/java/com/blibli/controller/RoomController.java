@@ -19,6 +19,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Time;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -121,7 +123,7 @@ public class RoomController {
     @RequestMapping(value = "/rooms/available", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public RoomResponseList getAvailableRoom(@RequestParam java.sql.Date date, @RequestParam Time startTime,
-                                             @RequestParam Time endTime, @RequestParam String officeId) {
+                                             @RequestParam Time endTime, @RequestParam String officeId) throws ParseException {
 
         List<Room> data = roomService.getAllActive();
         List<Room> data_used = new ArrayList<>();
@@ -135,7 +137,7 @@ public class RoomController {
             //(book.startTime >= startTime && book.startTime <endTime)
             //(book.endTime <= endTime && book.endTime > startTime)
 
-            if ((book.getDateMeeting().equals(date) &&
+            if ((book.getDateMeeting().equals(data) &&
                     (((book.getStartTime().equals(startTime) || book.getStartTime().before(startTime)) && book.getEndTime().after(startTime)) ||
                             ((book.getEndTime().equals(endTime) || book.getEndTime().after(endTime) && book.getStartTime().before(endTime)))))
                     && book.getStatus()==1) {

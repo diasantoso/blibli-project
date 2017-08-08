@@ -70,8 +70,8 @@
                                     <th>HAVE CONFERENCE</th>
                                     <th>HAVE PROJECTOR</th>
                                     <th>NUMBER EXTENSION</th>
-                                    <th>STATUS</th>
                                     <th>OFFICE</th>
+                                    <th>STATUS</th>
                                     <th width="100"></th>
                                     <th width="100"></th>
                                 </tr>
@@ -95,13 +95,13 @@
                                         </div>
                                     </td>
                                     <td>{{u.numberExtension}}</td>
+                                    <td>{{u.office.name}}</td>
                                     <td>
                                         <div ng-switch on="{{u.status}}">
                                             <div ng-switch-when="1">Active</div>
                                             <div ng-switch-when="0">Deactive</div>
                                         </div>
                                     </td>
-                                    <td>{{u.office.name}}</td>
                                     <td>
                                         <div ng-switch on="{{u.status}}">
                                             <div ng-switch-when="1">
