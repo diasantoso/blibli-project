@@ -2,7 +2,11 @@ package com.blibli.model;
 
 import org.junit.Assert;
 import org.junit.Test;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -95,5 +99,39 @@ public class EmployeeTest {
     public void setStatusTest() {
         emp.setStatus(0);
         Assert.assertEquals((Integer) 0, emp.getStatus());
+    }
+
+    @Test
+    public void isEnabledTest() {
+        Assert.assertEquals(true, emp.isEnabled());
+    }
+
+    @Test
+    public void isCredentialNonExpired() {
+        Assert.assertEquals(true, emp.isCredentialsNonExpired());
+    }
+
+    @Test
+    public void isAccountNonLocked() {
+        Assert.assertEquals(true, emp.isAccountNonLocked());
+    }
+
+    @Test
+    public void isAccountNonExpired() {
+        Assert.assertEquals(true, emp.isAccountNonExpired());
+    }
+
+    @Test
+    public void getAuthoritiesTest() {
+        Collection<GrantedAuthority> authorities = new ArrayList<>();
+        authorities.add(new SimpleGrantedAuthority(emp.getRole()));
+
+        Assert.assertEquals(authorities, emp.getAuthorities());
+    }
+
+    @Test
+    public void getUsernameTest() {
+        String result = emp.getUsername();
+        Assert.assertEquals(result, emp.getUsername());
     }
 }

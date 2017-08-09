@@ -104,14 +104,6 @@ public class BookingResponse {
         this.room = room;
     }
 
-    public String getStatusBooking() {
-        return statusBooking;
-    }
-
-    public void setStatusBooking(String statusBooking) {
-        this.statusBooking = statusBooking;
-    }
-
     public Employee getEmployee() {
         return employee;
     }
