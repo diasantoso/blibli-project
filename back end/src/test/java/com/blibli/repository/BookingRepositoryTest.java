@@ -52,6 +52,17 @@ public class BookingRepositoryTest {
     }
 
     @Test
+    public void showAllTest() {
+        Employee emp = new Employee("12345", "Test Employee", "emp@mail.com", "emp", "Employee");
+        Booking booking = this.bookingRepository.save(new Booking("12345", "Test Booking", "book-1", emp));
+
+        List<Booking> cekBooking = this.bookingRepository.showAll();
+        LOG.debug("cekBooking:", cekBooking);
+
+        Assert.assertThat(cekBooking.get(0), Matchers.equalTo(booking));
+    }
+
+    @Test
     public void showByIdTest() {
         Employee emp = new Employee("12345", "Test Employee", "emp@mail.com", "emp", "Employee");
         Booking booking = this.bookingRepository.save(new Booking("12345", "Test Booking", "book-1", emp));
