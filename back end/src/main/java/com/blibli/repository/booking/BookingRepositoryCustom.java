@@ -9,6 +9,7 @@ import java.util.List;
  * Created by Dias on 4/8/2017.
  */
 public interface BookingRepositoryCustom {
+    List<Booking> showAll();
     List<Booking> showById(String id);
     Booking deleteBooking(String id);
     List<Booking> showByEmployeeId(String empId);

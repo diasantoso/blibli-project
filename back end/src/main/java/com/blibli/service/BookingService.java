@@ -18,7 +18,7 @@ public class BookingService {
     BookingRepository bookingRepository;
 
     public List<Booking> getAllBooking() {
-        return bookingRepository.findAll();
+        return bookingRepository.showAll();
     }
 
     public List<Booking> getById(String id) {

@@ -17,6 +17,14 @@ public class BookingRepositoryImpl implements BookingRepositoryCustom {
     EntityManagerFactory entityManagerFactory;
 
     @Override
+    public List<Booking> showAll() {
+        EntityManager em = entityManagerFactory.createEntityManager();
+        List<Booking> result = em.createNativeQuery(
+                "SELECT * FROM booking ORDER BY date_meeting DESC;", Booking.class).getResultList();
+        return result;
+    }
+
+    @Override
     public List<Booking> showById(String id) {
         EntityManager em = entityManagerFactory.createEntityManager();
         List<Booking> result = em.createNativeQuery(
