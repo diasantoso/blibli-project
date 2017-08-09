@@ -16,11 +16,6 @@ public class EmployeeService {
     @Autowired
     EmployeeRepository employeeRepository;
 
-    public Employee doLogin(String email, String password) {
-        Employee result = employeeRepository.findLogin(email, password);
-        return result;
-    }
-
     public List<Employee> getAllActive() {
         return employeeRepository.showActiveEmployee();
     }

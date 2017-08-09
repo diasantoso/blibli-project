@@ -15,15 +15,6 @@ public class EmployeeRepositoryImpl implements EmployeeRepositoryCustom {
     EntityManagerFactory entityManagerFactory;
 
     @Override
-    public Employee findLogin(String email, String password) {
-        EntityManager em = entityManagerFactory.createEntityManager();
-        List<Employee> result = em.createNativeQuery(
-                "SELECT * FROM EMPLOYEE WHERE EMAIL='"+email+"' AND PASSWORD='"+password+"'", Employee.class).getResultList();
-
-        return result.get(0);
-    }
-
-    @Override
     public Employee deleteEmployee(String id) {
         EntityManager em = entityManagerFactory.createEntityManager();
         em.getTransaction().begin();

@@ -37,18 +37,6 @@ public class EmployeeServiceTest {
     }
 
     @Test
-    public void doLoginTest() {
-        Employee emp = new Employee("1111", "Test Employee 1", "emp@mail.com", "emp", "Employee");
-        BDDMockito.given(this.employeeRepository.findLogin("emp@mail.com", "emp")).willReturn(emp);
-
-        Employee result = employeeService.doLogin("emp@mail.com", "emp");
-
-        Assert.assertEquals(emp, result);
-        Mockito.verify(this.employeeRepository, Mockito.times(1))
-                .findLogin("emp@mail.com", "emp");
-    }
-
-    @Test
     public void getAllActiveTest() {
         List<Employee> listEmp = new ArrayList<Employee>();
         listEmp.add(new Employee("1111", "Test Office 1", "emp1@mail.com", "emp1", "Employee"));
