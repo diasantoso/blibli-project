@@ -128,6 +128,7 @@ angular.module('bookingApp').controller('BookingController',
                         self.done = true;
                         self.booking={};
                         //$scope.myForm.$setPristine();
+                        alert("Successfully Booked!");
                         $state.go('EmpUpcomingBooking');
                     },
 
@@ -135,6 +136,7 @@ angular.module('bookingApp').controller('BookingController',
                         console.log('Error while creating booking');
                         self.errorMessage = 'Error while creating booking';
                         self.successMessage = '';
+                        alert("Failed Booked");
                     }
                 );
         }
