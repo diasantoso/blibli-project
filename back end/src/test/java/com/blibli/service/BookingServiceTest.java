@@ -44,13 +44,13 @@ public class BookingServiceTest {
         Employee emp = new Employee("12345", "Test Employee", "emp@mail.com", "emp", "Employee");
         listBooking.add(new Booking("11111", "Test Booking 1", "book-1", emp));
         listBooking.add(new Booking("22222", "Test Booking 2", "book-2", emp));
-        BDDMockito.given(this.bookingRepository.findAll()).willReturn(listBooking);
+        BDDMockito.given(this.bookingRepository.showAll()).willReturn(listBooking);
 
         List<Booking> result = bookingService.getAllBooking();
 
         Assert.assertEquals(listBooking, result);
         Mockito.verify(this.bookingRepository, Mockito.times(1))
-                .findAll();
+                .showAll();
     }
 
     @Test
