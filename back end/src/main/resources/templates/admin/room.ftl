@@ -178,7 +178,7 @@
                     <div class="form-group">
                         <label class="col-sm-3 control-label">Number Extension :</label>
                         <div class="col-sm-8">
-                            <input type="text" ng-model="ctrlRoom.room.numberExtension" id="numberExtension" class="username form-control input-sm" placeholder="Enter Number Extension for new Room" required />
+                            <input type="number" ng-model="ctrlRoom.room.numberExtension" id="numberExtension" class="username form-control input-sm" placeholder="Enter Number Extension for new Room" required />
                         </div>
                     </div>
                     <div class="form-group">

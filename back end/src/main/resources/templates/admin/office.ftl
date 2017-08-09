@@ -158,7 +158,7 @@
                     <div class="form-group">
                         <label class="col-sm-3 control-label">Telephone :</label>
                         <div class="col-sm-8">
-                            <input type="text" ng-model="ctrlOffice.office.telephone" id="Telpne" class="username form-control input-sm" placeholder="Enter new office telephone" style="width:200px;"/>
+                            <input type="number" ng-model="ctrlOffice.office.telephone" id="Telpne" class="username form-control input-sm" placeholder="Enter new office telephone" style="width:200px;"/>
                         </div>
                     </div>
                     <div class="form-group modal-footer">
