@@ -35,8 +35,6 @@
                     <th width="200">ROOM</th>
                     <th width="200">REQUEST BY</th>
                     <th width="200">CONTACT</th>
-                    <th width="100"></th>
-                    <th width="100"></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -45,14 +43,12 @@
                     <td>{{u.description}}</td>
                     <td>{{u.addedDate}}</td>
                     <td>{{u.status}}</td>-->
-                    <td>{{u.dateMeeting}}</td>
+                    <td  ng-if-start="u.status == 1">{{u.dateMeeting}}</td>
                     <td>{{u.startTime}}</td>
                     <td>{{u.endTime}}</td>
                     <td>{{u.room.name}}</td>
                     <td>{{u.employee.name}}</td>
-                    <td>{{u.picContact}}</td>
-                    <td></td>
-                    <td></td>
+                    <td  ng-if-end="u.status == 1">{{u.picContact}}</td>
                 </tr>
                 </tbody>
             </table>
