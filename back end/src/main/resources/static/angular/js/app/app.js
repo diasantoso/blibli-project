@@ -88,10 +88,10 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
                 })
 
                 .state('register',{
-                url: '/register',
-                templateUrl: '/partials/register',
-                controller: 'EmployeeController',
-                controllerAs: 'ctrlEmployee'
+                    url: '/register',
+                    templateUrl: '/partials/register',
+                    controller: 'EmployeeController',
+                    controllerAs: 'ctrlEmployee'
                 })
 
                 .state('dashboard',{
