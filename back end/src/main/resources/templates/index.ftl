@@ -13,8 +13,6 @@
 
     <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 
-
-
     <#--AngularJS Source Scripts-->
     <script src="../angular/js/lib/angular.min.js" ></script>
     <script src="../angular/js/lib/angular-ui-router.min.js" ></script>

@@ -7,7 +7,7 @@
         <ul class="nav navbar-nav">
             <li class="active"><a href="/">Home</a></li>
             <li><a href="/listbooking">Upcoming Booking</a></li>
-            <li><a href="/addbooking">Check Room</a></li>
+            <li><a href="/checkroom">Check Room</a></li>
             <li><a href="/checkticket">Check Ticket</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">

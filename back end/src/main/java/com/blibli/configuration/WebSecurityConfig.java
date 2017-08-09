@@ -31,7 +31,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/","/login","/email",
 						"/api/register","/api/login","/api/bookings/ticket",
 						"/api/bookings/schedule","/api/bookings/used",
-						"/addbooking","/api/offices/nonauth","/rooms/available",
+						"/checkroom","/api/offices/nonauth","/rooms/available",
 						"/checkticket","/showticket","/listbooking",
 
 						"/index.html", "/favicon.ico","/angular/**",

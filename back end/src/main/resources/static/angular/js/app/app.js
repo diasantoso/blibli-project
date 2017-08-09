@@ -44,9 +44,9 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
                     }
                 })
 
-                .state('addbooking',{
-                    url: '/addbooking',
-                    templateUrl: '/partials/checkbooking',
+                .state('checkroom',{
+                    url: '/checkroom',
+                    templateUrl: '/partials/checkroom',
                     controller: 'BookingController',
                     controllerAs: 'ctrlBooking',
                     resolve: {
@@ -61,7 +61,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
 
                 .state('AvailRooms',{
                     url: '/rooms/available',
-                    templateUrl: '/partials/addnewbooking',
+                    templateUrl: '/partials/availroom',
                     controller: 'BookingController',
                     controllerAs: 'ctrlBooking'
                 })
@@ -97,7 +97,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
                 .state('dashboard',{
                     url: '/dashboard',
                     //data : {role:'Admin'},
-                    templateUrl: '/partials/home',
+                    templateUrl: '/partials/admin/home',
                     controller: 'CountController',
                     controllerAs: 'ctrlCount',
                     resolve: {
@@ -114,7 +114,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
                 .state('Office',{
                     url: '/offices',
                     data : {role:'Admin'},
-                    templateUrl: '/partials/offices/office',
+                    templateUrl: '/partials/admin/office',
                     controller: 'OfficeController',
                     controllerAs: 'ctrlOffice',
                     resolve: {
@@ -131,7 +131,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
                 .state('Room',{
                     url: '/rooms',
                     data : {role:'Admin'},
-                    templateUrl: 'partials/rooms/room',
+                    templateUrl: 'partials/admin/room',
                     controller: 'RoomController',
                     controllerAs: 'ctrlRoom',
                     resolve: {
@@ -150,7 +150,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
                 .state('Employee',{
                     url: '/employees',
                     data : {role:'Admin'},
-                    templateUrl: '/partials/employees/employee',
+                    templateUrl: '/partials/admin/employee',
                     controller: 'EmployeeController',
                     controllerAs: 'ctrlEmployee',
                     resolve: {
@@ -166,7 +166,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
 
                 .state('Booking',{
                     url: '/bookings',
-                    templateUrl: '/partials/bookings/booking',
+                    templateUrl: '/partials/admin/booking',
                     controller: 'BookingController',
                     controllerAs: 'ctrlBooking',
                     resolve: {
@@ -294,7 +294,7 @@ app.run(function(LoginService, $rootScope, $state, $sessionStorage,$http) {
 
         if (!LoginService.user) {
             //Ini buat ngecek user login belum, kalau belum dia bakal masuk ke dalam blok if nya
-            if (toState.name != 'login' && toState.name != 'addbooking' && toState.name != 'AvailRooms' && toState.name != 'checkticket' && toState.name != 'showticket' && toState.name != 'register' && toState.name != 'home' && toState.name != 'showbooking') {
+            if (toState.name != 'login' && toState.name != 'checkroom' && toState.name != 'AvailRooms' && toState.name != 'checkticket' && toState.name != 'showticket' && toState.name != 'register' && toState.name != 'home' && toState.name != 'showbooking') {
                 //selain akses halaman login atau register dia bakal masuk ke blok ini
                 event.preventDefault(); //ini buat ngestop paksa (contoh mau kehalamaan office, trus di stop paksa
                 $state.go('login'); // dipaksa ke halaman login dulu

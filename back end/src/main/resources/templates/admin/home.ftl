@@ -27,7 +27,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="employees">
+                    <a href="../employees">
                         <i class="pe-7s-note2"></i>
                         <p>Employee Manage</p>
                     </a>
@@ -88,7 +88,7 @@
                             </div>
                             <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                                 <div class="tile-stats">
-                                    <a href="employees">
+                                    <a href="../employees">
                                         <div class="icon"><i class="fa fa-users"></i>
                                         </div>
                                         <div class="count">{{ctrlCount.getCountEmployee()}}</div>
