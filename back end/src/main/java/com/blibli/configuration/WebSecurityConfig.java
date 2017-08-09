@@ -9,25 +9,15 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-/**
- * Spring Web security configuration class
- *
- */
 @Configurable
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-// Modifying or overriding the default spring boot security.
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-	// This method is for overriding some configuration of the WebSecurity
-	// If you want to ignore some request or request patterns then you can
-	// specify that inside this method
 	@Override
 	public void configure(WebSecurity web) throws Exception {
 
 		web.ignoring()
-				// ignoring the "/", "/index.html", "/app/**", "/register",
-				// "/favicon.ico"
 				.antMatchers("/","/login","/email",
 						"/api/register","/api/login","/api/bookings/ticket",
 						"/api/bookings/schedule","/api/bookings/used",

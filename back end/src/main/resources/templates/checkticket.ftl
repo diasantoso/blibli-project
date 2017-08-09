@@ -22,7 +22,6 @@
     <form ng-submit="ctrlBooking.checkTicket()">
         <div class="form-group">
             <input type="text" ng-model="ctrlBooking.ticket.id" class="form-control" placeholder="Ticket ID" id="ticket">
-            <i class="fa fa-user"></i>
         </div>
         <span class="alert">Invalid Credentials</span>
         <input type="submit" value = "Check" class="log-btn2">

@@ -22,10 +22,6 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureException;
 
-/**
- * A generic filter for security. I will check token present in the header.
- *
- */
 public class JWTFilter extends GenericFilterBean {
 	private static final String AUTHORIZATION_HEADER = "Authorization";
 	private static final String AUTHORITIES_KEY = "role";
@@ -51,13 +47,6 @@ public class JWTFilter extends GenericFilterBean {
 		}
 	}
 
-	/**
-	 * Method for creating Authentication for Spring Security Context Holder
-	 * from JWT claims
-	 * 
-	 * @param claims
-	 * @return
-	 */
 	public Authentication getAuthentication(Claims claims) {
 		List<SimpleGrantedAuthority> authorities = new ArrayList<SimpleGrantedAuthority>();
 		String role = (String) claims.get(AUTHORITIES_KEY);
