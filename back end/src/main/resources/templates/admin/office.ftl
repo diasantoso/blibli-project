@@ -57,7 +57,7 @@
                     <div class="card card-plain">
                         <div class="header">
                             <h3 class="title"><strong>OFFICE DATA</strong></h3><br/>
-                            <p class="category"><h5>This is office data from Blibli.com. You can manage to add, update, delete data office.</h5></p>
+                            <p class="category"><h5>This is office data from Blibli.com. You can manage to add, update, delete and restore data office.</h5></p>
                         </div>
                         <br/><br/>
                         <div class="content table-responsive table-full-width">

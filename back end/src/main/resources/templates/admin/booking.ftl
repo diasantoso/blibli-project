@@ -57,7 +57,7 @@
                     <div class="card card-plain">
                         <div class="header">
                             <h3 class="title"><strong>BOOKING DATA</strong></h3><br/>
-                            <p class="category"><h5>This is booking data from Blibli.com. You can see list of booking meeting room.</h5></p>
+                            <p class="category"><h5>This is booking data from Blibli.com. You can manage data booking meeting room.</h5></p>
                         </div>
                         <br/><br/>
                         <div class="content table-responsive table-full-width">
