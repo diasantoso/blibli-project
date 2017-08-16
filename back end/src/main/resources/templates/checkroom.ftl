@@ -5,6 +5,9 @@
     <#--<a class="navbar-brand" href="">Blibli.com</a>-->
     <#--</div>-->
         <ul class="nav navbar-nav">
+            <li>
+                <a href="/" class="logo"><img src="https://www.blibli.com/page/wp-content/uploads/logo-blibli.png" alt="logo karir" width="100" height="25"></a>
+            </li>
             <li class="active"><a href="/">Home</a></li>
             <li><a href="/listbooking">Upcoming Booking</a></li>
             <li><a href="/checkroom">Check Room</a></li>
@@ -18,7 +21,7 @@
 </nav>
 
 <div class="login-form">
-    <h1>Check Available Room</h1>
+    <h3 style="color: #ccc; text-align: center;">Check Available Room</h3><br/>
     <form ng-submit="ctrlBooking.check()">
         <div class="form-group ">
             <div class="nama">Office :</div>

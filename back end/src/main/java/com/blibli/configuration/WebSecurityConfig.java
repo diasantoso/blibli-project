@@ -23,7 +23,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 						"/api/bookings/schedule","/api/bookings/used",
 						"/checkroom","/api/offices/nonauth","/rooms/available",
 						"/checkticket","/showticket","/listbooking",
-
+						"/api/rooms/available",
 						"/index.html", "/favicon.ico","/angular/**",
 						"/assets/**","/assets-custom/**","/assets-landingpage/**","/assets-upload/**","/assets-login/**","/partials/**");
 	}

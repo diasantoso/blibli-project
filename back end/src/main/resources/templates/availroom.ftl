@@ -5,6 +5,9 @@
     <#--<a class="navbar-brand" href="">Blibli.com</a>-->
     <#--</div>-->
         <ul class="nav navbar-nav">
+            <li>
+                <a href="/" class="logo"><img src="https://www.blibli.com/page/wp-content/uploads/logo-blibli.png" alt="logo karir" width="100" height="25"></a>
+            </li>
             <li class="active"><a href="/">Home</a></li>
             <li><a href="/listbooking">Upcoming Booking</a></li>
             <li><a href="/checkroom">Check Room</a></li>

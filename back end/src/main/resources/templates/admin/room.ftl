@@ -105,7 +105,7 @@
                                     <td>
                                         <div ng-switch on="{{u.status}}">
                                             <div ng-switch-when="1">
-                                                <button type="button" ng-click="ctrlRoom.editRoom(u.idRoom)" data-toggle="modal" data-target="#myModalAdd" class="btn btn-success custom-width">Edit</button>
+                                                <button type="button" ng-click="ctrlRoom.editRoom(u.idRoom)" data-toggle="modal" data-target="#myModalAdd" class="btn btn-primary custom-width">Edit</button>
                                             </div>
                                             <div ng-switch-when="0">
 
@@ -118,7 +118,7 @@
                                                 <button type="button" ng-click="ctrlRoom.removeRoom(u.idRoom)" class="btn btn-danger custom-width">Delete</button>
                                             </div>
                                             <div ng-switch-when="0">
-                                                <button type="button" ng-click="ctrlRoom.removeRoom(u.idRoom)" class="btn btn-success custom-width">Restore</button>
+                                                <button type="button" ng-click="ctrlRoom.removeRoom(u.idRoom)" class="btn btn-primary custom-width">Restore</button>
                                             </div>
                                         </div>
                                     </td>

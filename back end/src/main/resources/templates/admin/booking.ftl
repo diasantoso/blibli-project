@@ -95,7 +95,7 @@
                                     <td>
                                         <div ng-switch on="{{u.status}}">
                                             <div ng-switch-when="1"><button type="button" ng-click="ctrlBooking.removeBooking(u.idBooking)" class="btn btn-danger custom-width">Delete</button></div>
-                                            <div ng-switch-when="0"><button type="button" ng-click="ctrlBooking.removeBooking(u.idBooking)" class="btn btn-success custom-width">Restore</button></div>
+                                            <div ng-switch-when="0"><button type="button" ng-click="ctrlBooking.removeBooking(u.idBooking)" class="btn btn-primary custom-width">Restore</button></div>
                                         </div>
                                     </td>
                                 </tr>
