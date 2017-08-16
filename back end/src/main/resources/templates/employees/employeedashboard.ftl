@@ -56,7 +56,6 @@
 
                             <div class="tab-content">
                                 <div id="upcoming" class="tab-pane fade in active">
-                                    <h3>Upcoming Booking</h3>
                                     <div class="content table-responsive table-full-width">
                                         <table class="table table-hover table-striped data">
                                             <thead>
@@ -89,7 +88,6 @@
                                 </div>
 
                                 <div id="past" class="tab-pane fade">
-                                    <h3>Booking History</h3>
                                     <div class="content table-responsive table-full-width">
                                         <table class="table table-hover table-striped data">
                                             <thead>
@@ -119,7 +117,6 @@
                                 </div>
 
                                 <div id="cancel" class="tab-pane fade">
-                                    <h3>Cancelled Booking</h3>
                                         <div class="content table-responsive table-full-width">
                                             <table class="table table-hover table-striped data">
                                                 <thead>
