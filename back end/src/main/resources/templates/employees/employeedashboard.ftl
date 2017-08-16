@@ -78,9 +78,9 @@
                                                     <td>{{u.room.name}}</td>
                                                     <td>{{u.subject}}</td>
                                                     <td>{{u.description}}</td>
-                                                <td><button type="button" ng-click="ctrlBooking.cancelBooking(u.idBooking)" class="btn btn-danger custom-width">Cancel Booking</button></td>
+                                                <td><button type="button" ng-click="ctrlBooking.cancelBooking(u.idBooking)" class="btn btn-danger custom-width">Cancel</button></td>
                                                 <td ng-if-end="!ctrlBooking.getBookingHistory(u.dateMeeting,u.endTime)">
-                                                    <button type="button" ng-click="ctrlBooking.extendId = u.idBooking" data-toggle="modal" data-target="#myModalExtend" class="btn btn-primary custom-width">Extend Booking {{ctrlBooking.test}}</button></td>
+                                                    <button type="button" ng-click="ctrlBooking.extendId = u.idBooking" data-toggle="modal" data-target="#myModalExtend" class="btn btn-primary custom-width">Extend</button></td>
                                             </tr>
                                             </tbody>
                                         </table>
