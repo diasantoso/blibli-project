@@ -2,7 +2,7 @@
 
 INSERT INTO employee (id_employee, email, name, password, role, status) VALUES ('4028abcf5dc0bff8015dc0c8e6b40000', 'amelly@gmail.com', 'Amelly', 'amelly', 'Employee', 1);
 INSERT INTO employee (id_employee, email, name, password, role, status) VALUES ('4028abcf5dc0bff8015dc0c8e6b12345', 'audin@gmail.com', 'audin', 'audin', 'Admin', 1);
-INSERT INTO employee (id_employee, email, name, password, role, status) VALUES ('402881955dc2fd28015dc52f8c120000', 'dias@gmail.com', 'User1', 'user1', 'Employee', 1);
+INSERT INTO employee (id_employee, email, name, password, role, status) VALUES ('402881955dc2fd28015dc52f8c120000', 'dias@gmail.com', 'Dias', 'dias', 'Employee', 1);
 
 
 INSERT INTO office (id_office, address, city, name, status, telephone) VALUES ('4028abcf5dc0bff8015dc0cf3fff0001', 'Jalan Tubun', 'Tubun City Metro', 'Kantor Tubun', 1, '0878882311');
