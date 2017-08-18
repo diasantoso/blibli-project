@@ -44,15 +44,15 @@ h1 {
   border: none;
   padding: 5px 7px 5px 15px;
   background: #fff;
-  color: #666;
+  color: #999;
   border: 2px solid #ddd;
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
   border-radius: 4px;
 }
 .form-control:focus, .form-control:focus + .fa {
-  border-color: #888886;
-  color: #888886;
+  border-color: #999;
+  color: #999;
 }
 
 .form-group .fa {

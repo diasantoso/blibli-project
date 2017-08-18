@@ -60,6 +60,8 @@
                             <p class="category"><h5>This is office data from Blibli.com. You can manage to add, update, delete and restore data office.</h5></p>
                         </div>
                         <br/><br/>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalAdd">Add New Data</button>
+                        <br>
                         <div class="content table-responsive table-full-width">
                             <table class="table table-hover table-striped data">
                                 <thead>
@@ -111,9 +113,6 @@
                                 </tr>
                                 </tbody>
                             </table>
-
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalAdd">Add New Data</button><br/><br/>
-
                         </div>
                     </div>
                 </div>
